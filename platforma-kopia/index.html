@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI w Szkole – Platforma Szkoleniowa | WP4 COVE / WIN4SMEs</title>
+<meta name="description" content="Interaktywna platforma szkoleniowa: AI w pracy nauczyciela i szkoły. Praktyczny warsztat od podstaw do wdrożenia – COVE Polska / WIN4SMEs / ZSZ5 Wrocław">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ═══════════════════════ TOP BAR ═══════════════════════ -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-logos">
+      <img src="../orzeł logo ZSZ5.png" alt="ZSZ5 Wrocław" class="logo-zsz5">
+      <img src="../COVE Polska bez tła.png" alt="COVE Polska" class="logo-cove">
+      <img src="../win4smes-logo-eu-logo-2025.png" alt="WIN4SMEs – Co-funded by the European Union" class="logo-win">
+    </div>
+    <div class="topbar-right">
+      <button class="btn-continue" id="btnContinue" onclick="continueLearning()" style="display:none">
+        ▶ Kontynuuj
+      </button>
+      <button class="topbar-search-btn" onclick="toggleSearch()" aria-label="Szukaj">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </button>
+      <button class="topbar-menu-btn" onclick="toggleMobileMenu()" aria-label="Menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ SEARCH OVERLAY ═══════════════════════ -->
+<div class="search-overlay" id="searchOverlay" onclick="closeSearch(event)">
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Szukaj: prompt, ćwiczenie, RODO, PARTS..." oninput="runSearch(this.value)" autocomplete="off">
+    <div class="search-results" id="searchResults"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ SIDEBAR NAV ═══════════════════════ -->
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <span class="sidebar-title">Nawigacja</span>
+    <button onclick="toggleMobileMenu()" class="sidebar-close">✕</button>
+  </div>
+  <ul class="nav-list">
+    <li><a href="#" onclick="showPage('home')" class="nav-link" data-page="home">🏠 Strona główna</a></li>
+    <li class="nav-group-label">KURS</li>
+    <li><a href="#" onclick="showPage('module1')" class="nav-link" data-page="module1">📘 Moduł 1 – Czym jest AI?</a></li>
+    <li><a href="#" onclick="showPage('module2')" class="nav-link" data-page="module2">✍️ Moduł 2 – Prompting PARTS</a></li>
+    <li><a href="#" onclick="showPage('module3')" class="nav-link" data-page="module3">🎓 Moduł 3 – AI w dydaktyce</a></li>
+    <li><a href="#" onclick="showPage('module4')" class="nav-link" data-page="module4">🌍 Moduł 4 – Projekty i ryzyka</a></li>
+    <li class="nav-group-label">NARZĘDZIA</li>
+    <li><a href="#" onclick="showPage('exercises')" class="nav-link" data-page="exercises">🧩 Ćwiczenia warsztatowe</a></li>
+    <li><a href="#" onclick="showPage('prompts')" class="nav-link" data-page="prompts">💡 Promptownik (30+ promptów)</a></li>
+    <li><a href="#" onclick="showPage('checklists')" class="nav-link" data-page="checklists">✅ Checklisty</a></li>
+    <li class="nav-group-label">MATERIAŁY</li>
+    <li><a href="#" onclick="showPage('participants')" class="nav-link" data-page="participants">📋 Dla uczestnika</a></li>
+    <li><a href="#" onclick="showPage('trainer')" class="nav-link" data-page="trainer">🎤 Dla prowadzącego</a></li>
+    <li><a href="#" onclick="showPage('slides')" class="nav-link" data-page="slides">📊 Prezentacja – slajdy</a></li>
+    <li><a href="#" onclick="showPage('bibliography')" class="nav-link" data-page="bibliography">📚 Źródła i bibliografia</a></li>
+  </ul>
+  <div class="sidebar-progress">
+    <div class="progress-label">Twój postęp</div>
+    <div class="progress-bar-wrap"><div class="progress-bar-fill" id="sidebarProgress"></div></div>
+    <div class="progress-text" id="sidebarProgressText">0 / 8 ukończonych</div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════ MAIN CONTENT ═══════════════════════ -->
+<div class="layout-wrap">
+  <main class="main-content" id="mainContent">
+    <!-- pages render here via JS -->
+  </main>
+</div>
+
+<!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-logos">
+      <img src="../orzeł logo ZSZ5.png" alt="ZSZ5" class="footer-logo">
+      <img src="../COVE Polska bez tła.png" alt="COVE Polska" class="footer-logo footer-logo-cove">
+      <img src="../win4smes-logo-eu-logo-2025.png" alt="WIN4SMEs EU" class="footer-logo">
+    </div>
+    <div class="footer-text">
+      <p>Platforma szkoleniowa opracowana w ramach projektu <strong>WIN4SMEs – Workplace Innovation for SMEs</strong><br>
+      Współfinansowanego przez Unię Europejską · <strong>COVE Polska</strong> · ZSZ nr 5 we Wrocławiu</p>
+      <p class="footer-small">Treści oparte na: UNESCO AI CFT (2024) · OECD TALIS 2024 · Komisja Europejska – Digital Education Action Plan 2021–2027</p>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
