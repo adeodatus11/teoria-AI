@@ -1233,3 +1233,57 @@ document.addEventListener('DOMContentLoaded', () => {
   showPage(startPage);
   updateContinueBtn();
 });
+/* ══════════════════════════════════════
+   HIDING TOPBAR ON SCROLL
+══════════════════════════════════════ */
+let lastScrollY = window.scrollY;
+const topbar = document.querySelector('.topbar');
+
+window.addEventListener('scroll', () => {
+  const currentScrollY = window.scrollY;
+  const isMobile = window.innerWidth < 900;
+  
+  if (!topbar) return;
+
+  // Don't hide if any overlay is open
+  const isOverlayOpen = 
+    document.getElementById('sidebar').classList.contains('open') ||
+    document.getElementById('searchOverlay').classList.contains('open') ||
+    document.getElementById('notesPanel').classList.contains('open');
+
+  if (isOverlayOpen) {
+    topbar.classList.remove('hidden');
+    return;
+  }
+
+  if (isMobile) {
+    if (currentScrollY > lastScrollY && currentScrollY > 100) {
+      topbar.classList.add('hidden');
+    } else {
+      topbar.classList.remove('hidden');
+    }
+  } else {
+    topbar.classList.remove('hidden');
+  }
+  
+  lastScrollY = currentScrollY;
+}, { passive: true });
+
+// Ensure topbar shows when opening overlays
+const originalToggleMobileMenu = toggleMobileMenu;
+toggleMobileMenu = function() {
+  topbar.classList.remove('hidden');
+  originalToggleMobileMenu();
+};
+
+const originalToggleSearch = toggleSearch;
+toggleSearch = function() {
+  topbar.classList.remove('hidden');
+  originalToggleSearch();
+};
+
+const originalToggleNotes = toggleNotes;
+toggleNotes = function() {
+  topbar.classList.remove('hidden');
+  originalToggleNotes();
+};

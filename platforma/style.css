@@ -48,6 +48,10 @@ body {
   border-bottom: 1px solid var(--clr-border);
   height: var(--topbar-h);
   box-shadow: 0 1px 8px rgba(0,0,0,.06);
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+.topbar.hidden {
+  transform: translateY(-100%);
 }
 .topbar-inner {
   max-width: 1440px; margin: 0 auto;
@@ -57,6 +61,11 @@ body {
 }
 .topbar-logos {
   display: flex; align-items: center; gap: 18px;
+}
+@media (max-width: 600px) {
+  .topbar-logos { gap: 10px; }
+  .logo-divider, .logo-cove, .logo-win, .logo-eu { display: none; }
+  .topbar-inner { padding: 0 12px; }
 }
 .topbar-logos img {
   mix-blend-mode: multiply; /* Wtapia grafiki płynnie w biały topbar redukując krawędzie */
@@ -83,6 +92,11 @@ body {
 }
 
 .topbar-right { display: flex; align-items: center; gap: 8px; }
+@media (max-width: 600px) {
+  .topbar-right { gap: 4px; }
+  .topbar-icon-btn { width: 34px; height: 34px; }
+  .topbar-continue-btn { padding: 8px 10px; font-size: 12px; }
+}
 
 .topbar-icon-btn {
   background: none; border: 1px solid var(--clr-border);
@@ -114,6 +128,10 @@ body {
   backdrop-filter: blur(4px);
   align-items: flex-start; justify-content: center;
   padding-top: 80px;
+}
+@media (max-width: 600px) {
+  .search-overlay { padding-top: 20px; }
+  .search-box { margin: 0 12px; }
 }
 .search-overlay.open { display: flex; }
 .search-box { width: 100%; max-width: 640px; margin: 0 20px; }
@@ -1000,6 +1018,11 @@ body {
   .page-header { padding: 22px 20px; }
   .exercises-container { padding: 20px 16px; }
   .entry-card.featured { grid-column: span 1; flex-direction: column; }
+  .topbar-continue-btn span { display: none; } /* Hide text if we had a span, but we don't in HTML yet. I'll just keep it simple. */
+}
+
+@media (max-width: 400px) {
+  .topbar-continue-btn { display: none !important; } /* Hide continue button on very narrow screens to ensure menu/search fit */
 }
 
 /* ═══════════════════ MISC ═══════════════════ */
