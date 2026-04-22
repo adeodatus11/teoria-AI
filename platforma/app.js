@@ -84,7 +84,7 @@ function markDone(id) {
 }
 
 function updateProgress() {
-  const tracked = ['module1', 'module2', 'module3', 'module4', 'exercises', 'prompts', 'checklists', 'myplan'];
+  const tracked = ['module1', 'module2', 'module3', 'module4', 'module5', 'module6', 'exercises', 'prompts', 'checklists', 'myplan'];
   const s = gs();
   const done = (s.done || []).filter(m => tracked.includes(m));
   const pct = Math.round((done.length / tracked.length) * 100);
@@ -612,6 +612,129 @@ Zaprojektuj dla mnie doskonały prompt w układzie PARTS, którego użycie zmusi
       </div>`,
   `<ul><li>AI podała poprawną konstrukcję promptu naśladującego</li><li>Wychwycono "Ton" i "Personę" oryginału</li><li>Zdobyto wiedzę o promptach budowanych przez samą AI</li></ul>`
 )}
+    ${ex('ex16', '16', 'Rozpisz projekt na 7 etapów', 'basic', '20–25 min',
+  'Zastosować model 7 etapów do realnego projektu edukacyjnego lub zawodowego.',
+  `<ol>
+        <li>Wybierz projekt, nad którym pracujesz lub planujesz pracować (plan lekcji, raport semestralny, aplikacja projektowa, materiał szkoleniowy).</li>
+        <li>Otwórz nowy plik TXT lub MD (Notatnik lub dowolny edytor tekstowy).</li>
+        <li>Wypełnij tabelę 7 etapów dla swojego projektu:</li>
+      </ol>
+      <div class="prompt-box" style="position:relative">
+        <button class="prompt-copy-btn" onclick="copyPrompt(this)">Kopiuj</button>
+        <pre>Etap 1 — Cel i kontekst:
+Etap 2 — Materiały wejściowe:
+Etap 3 — Zadania do rozbicia:
+Etap 4 — Kolejność pracy:
+Etap 5 — Co zapiszę po każdej sesji:
+Etap 6 — Co będę poprawiać i jak:
+Etap 7 — Jak zweryfikuję wynik końcowy:</pre>
+      </div>
+      <ol start="4">
+        <li>Zapisz plik jako <code>projekt_[nazwa]_etapy.txt</code></li>
+        <li>Wklej tabelę do AI z prośbą: „Przejrzyj ten plan i wskaż, gdzie mogę mieć lukę lub problem."</li>
+        <li>Porównaj swój plan z sugestią AI i zapisz wnioski w tym samym pliku.</li>
+      </ol>`,
+  `<ul><li>Wypełniona tabela 7 etapów dla realnego projektu</li><li>Plik zapisany lokalnie w TXT lub MD</li><li>Feedback od AI z zapisanymi wnioskami</li></ul>`
+)}
+    ${ex('ex17', '17', 'Zmierz wagę kontekstową pliku', 'basic', '15–20 min',
+  'Porównać, jak różne formaty plików wpływają na jakość odpowiedzi AI.',
+  `<ol>
+        <li>Weź dowolny dokument, który masz pod ręką (raport, plan lekcji, instrukcja).</li>
+        <li>Jeśli jest w PDF lub DOCX — skopiuj jego treść (Ctrl+A, Ctrl+C) i wklej do Notatnika. Zapisz jako TXT.</li>
+        <li>Otwórz AI i wklej zawartość pliku TXT z pytaniem:</li>
+      </ol>
+      <div class="prompt-box" style="position:relative">
+        <button class="prompt-copy-btn" onclick="copyPrompt(this)">Kopiuj</button>
+        <pre>Wymień 3 główne tematy tego dokumentu i podaj jedno zdanie podsumowania każdego z nich.</pre>
+      </div>
+      <ol start="4">
+        <li>W nowej sesji wgraj oryginalny plik PDF/DOCX i zadaj dokładnie to samo pytanie.</li>
+        <li>Porównaj: która odpowiedź jest dokładniejsza? Która była szybsza? Czy AI miało problem z odczytem PDF?</li>
+        <li>Zapisz wnioski w pliku TXT.</li>
+      </ol>`,
+  `<ul><li>Przeprowadzone porównanie obu formatów</li><li>Zapisane wnioski o tym, który format lepiej działa dla Twojego dokumentu</li></ul>`
+)}
+    ${ex('ex18', '18', 'Stwórz plik roboczy projektu', 'basic', '20–30 min',
+  'Zbudować lekki plik pośredni, który będzie pamięcią projektu.',
+  `<ol>
+        <li>Otwórz Notatnik lub edytor Markdown.</li>
+        <li>Stwórz plik <code>projekt_[nazwa]_roboczy.md</code> korzystając z szablonu:</li>
+      </ol>
+      <div class="prompt-box" style="position:relative">
+        <button class="prompt-copy-btn" onclick="copyPrompt(this)">Kopiuj</button>
+        <pre># Projekt: [Twoja nazwa]
+
+## Cel
+[Jedno zdanie: co chcę osiągnąć]
+
+## Decyzje
+- [Data]: [Jaką decyzję podjąłem/podjęłam]
+
+## Materiały
+- [Lista plików, dokumentów, linków]
+
+## Wyniki po każdej sesji
+### Sesja 1 — [Data]
+[Krótkie podsumowanie: co zrobiłem/zrobiłam, co zostało]
+
+## Do zrobienia
+- [ ] Zadanie 1
+- [ ] Zadanie 2</pre>
+      </div>
+      <ol start="3">
+        <li>Wypełnij sekcje na podstawie wybranego projektu.</li>
+        <li>Otwórz AI i powiedz: „To jest plik roboczy mojego projektu. Na jego podstawie zaproponuj prompt do pierwszej sesji roboczej."</li>
+        <li>Zapisz wygenerowany prompt w sekcji „Sesja 1".</li>
+      </ol>`,
+  `<ul><li>Gotowy plik MD z wypełnioną strukturą</li><li>Zapisany prompt do pierwszej sesji roboczej</li></ul>`
+)}
+    ${ex('ex19', '19', 'Napisz stałą instrukcję do projektu', 'med', '25–35 min',
+  'Stworzyć stałą instrukcję (system prompt), która nada AI stały kontekst pracy.',
+  `<ol>
+        <li>Pomyśl o typowym projekcie, w którym AI ma odgrywać stałą rolę (np. asystent ds. projektów UE, korektor dokumentów szkolnych).</li>
+        <li>Otwórz plik TXT i napisz instrukcję według szablonu:</li>
+      </ol>
+      <div class="prompt-box" style="position:relative">
+        <button class="prompt-copy-btn" onclick="copyPrompt(this)">Kopiuj</button>
+        <pre>Jesteś [rola AI].
+Twoim zadaniem jest [główne zadanie].
+Zawsze:
+- [zasada 1]
+- [zasada 2]
+- [zasada 3]
+Unikasz:
+- [czego nie robić]
+Gdy czegoś nie wiesz, [co ma zrobić AI].
+Styl odpowiedzi: [formalny / przyjazny / techniczny].</pre>
+      </div>
+      <ol start="3">
+        <li>Wklej instrukcję jako pierwszy prompt w nowej sesji AI.</li>
+        <li>Przetestuj: zadaj 2–3 pytania typowe dla swojego projektu. Czy AI zachowuje się zgodnie z instrukcją?</li>
+        <li>Popraw instrukcję na podstawie tego, co nie zadziałało. Zapisz notatkę o zmianach.</li>
+      </ol>`,
+  `<ul><li>Gotowa instrukcja zapisana w TXT</li><li>Przetestowana w AI z min. 2 pytaniami</li><li>Notatka o wprowadzonych poprawkach</li></ul>`
+)}
+    ${ex('ex20', '20', 'Zidentyfikuj, czego naprawdę potrzebujesz', 'med', '20–25 min',
+  'Nauczyć się wybierać właściwy typ pracy z AI dla konkretnego zadania.',
+  `<ol>
+        <li>Dla każdego scenariusza poniżej zdecyduj, jakiego narzędzia użyjesz:</li>
+      </ol>
+      <div class="prompt-box" style="position:relative">
+        <pre>Scenariusz 1: Przetłumacz jedno zdanie
+Scenariusz 2: Piszę raport przez 2 tygodnie
+Scenariusz 3: Zawsze sprawdzaj RODO w moich dokumentach
+Scenariusz 4: Chcę zadawać pytania do 20 PDF-ów z projektu
+Scenariusz 5: Potrzebuję aktualnych danych z GUS
+Scenariusz 6: Napisz e-mail do rodziców ucznia</pre>
+      </div>
+      <div class="tip-box">Typy do wyboru: jednorazowy prompt / projekt / stała instrukcja / skill / file search / narzędzie</div>
+      <ol start="2">
+        <li>Porównaj swoje odpowiedzi z tabelą z Lekcji 5 Modułu 5. Gdzie są różnice?</li>
+        <li>Dla dwóch scenariuszy, które wybrałeś najgorzej — napisz krótką notatkę, dlaczego właściwy wybór jest lepszy.</li>
+        <li>Weź swój realny projekt i zdecyduj: jakiego typu pracy z AI naprawdę potrzebujesz?</li>
+      </ol>`,
+  `<ul><li>Uzupełniona tabela scenariuszy</li><li>Dwie notatki z uzasadnieniem wyboru</li><li>Decyzja dla Twojego realnego projektu</li></ul>`
+)}
   </div>
 `;
 
@@ -866,6 +989,110 @@ Twoje zadanie to wyłuskać wyłącznie "sygnał" i ukryć "szum":
 2. Tabela: [Kto musi to zrobić] | [Konkretne zadanie przypisane u] | [Deadline]
 3. Oznacz "Na Cito" czy jest tam jakaś tykająca bomba lub pytanie, które jest bez odpowiedzi od dwóch dni.`)}
 
+    ${pc('pF1', 'F', 'F1 – Rozpisanie projektu na etapy',
+                            'Użyj na początku każdego projektu trwającego dłużej niż jedną sesję z AI.',
+                            'Sprawdź, czy proponowane etapy są wykonalne. AI może nie znać specyfiki Twojej organizacji.',
+                            `Mam projekt: [OPISZ PROJEKT W 2–3 ZDANIACH].
+Rozpisz go na logiczne etapy pracy, które mogę realizować krok po kroku.
+Każdy etap powinien dać konkretny, mierzalny wynik.`,
+                            `Jesteś doświadczonym koordynatorem projektów edukacyjnych.
+Mam projekt: [OPISZ PROJEKT].
+Cel końcowy: [CEL].
+Odbiorcy: [KTOŚ ODBIERA WYNIK].
+Termin: [DATA].
+
+Rozpisz projekt na etapy według modelu:
+1. Cel i kontekst — co definiujemy na start
+2. Materiały wejściowe — co przygotowuję
+3. Zadania — co rozbijam na prompty
+4. Praca etapami — co robię po kolei
+5. Zapis wyników — co zapisuję po każdej sesji
+6. Korekta — jak i kiedy wracam do poprawek
+7. Finalizacja — jak weryfikuję wynik końcowy
+
+Dla każdego etapu: nazwa, czas, format roboczego pliku, wskaźnik ukończenia.`)}
+    ${pc('pF2', 'F', 'F2 – Stworzenie stałej instrukcji (system prompt)',
+                            'Użyj gdy chcesz nadać AI stałą rolę dla powtarzalnych typów zadań.',
+                            'Testuj instrukcję na kilku przykładach przed wdrożeniem. Instrukcja ogólna może dawać gorsze wyniki niż konkretna.',
+                            `Napisz dla mnie stałą instrukcję do AI, która będzie moim asystentem ds. [OBSZAR PRACY].
+Styl: [formalny/przyjazny]. Zawsze ma [CO ROBIĆ]. Nigdy nie ma [CZEGO UNIKAĆ].`,
+                            `Jesteś projektantem promptów dla systemów edukacyjnych.
+Stwórz stałą instrukcję (system prompt) dla AI pełniącego rolę: [ROLA].
+Kontekst: pracuję w [TYP INSTYTUCJI], moje zadania to głównie [3 TYPY ZADAŃ].
+
+Instrukcja powinna zawierać:
+- Definicję roli AI (persona, kompetencje)
+- Listę zasad zawsze stosowanych (min. 3)
+- Listę zakazów (min. 2)
+- Instrukcję na wypadek braku wiedzy
+- Oczekiwany format i styl odpowiedzi
+- Język i poziom formalności
+
+Wersja gotowa do skopiowania i wklejenia jako system prompt.`)}
+    ${pc('pF3', 'F', 'F3 – Dobór formatu pliku do zadania',
+                            'Użyj gdy nie wiesz, w jakim formacie przygotować materiał do pracy z AI.',
+                            'AI może nie znać Twoich narzędzi i ograniczeń systemowych — doprecyzuj kontekst.',
+                            `Mam dokument: [OPISZ DOKUMENT, NP. RAPORT 20-STRONICOWY W PDF].
+Chcę użyć go do pracy z AI. W jakim formacie powinienem/powinnam go przygotować i dlaczego?`,
+                            `Pracuję z AI nad projektem i mam następujące materiały:
+[OPISZ PLIKI: typ, rozmiar orientacyjny, zawartość]
+
+Chcę wykonać zadanie: [OPISZ ZADANIE].
+Używam narzędzia AI: [NAZWA NARZĘDZIA LUB „nie wiem"].
+
+Dla każdego pliku podaj:
+1. Czy format jest optymalny do pracy z AI?
+2. Jaki format polecasz zamiast/zamiast tego?
+3. Jak przekonwertować (jeśli trzeba)?
+4. Ile tokenu orientacyjnie zajmie każdy plik?
+5. Który plik wrzucić najpierw, żeby nie zmarnować kontekstu?`)}
+    ${pc('pF4', 'F', 'F4 – Podsumowanie sesji i plik roboczy',
+                            'Użyj na końcu każdej dłuższej sesji roboczej z AI, zanim zamkniesz okno.',
+                            'Zapisz wynik poza AI — historia czatu może być niedostępna w kolejnej sesji.',
+                            `Podsumuj naszą dzisiejszą sesję:
+- Co zostało zrobione?
+- Jakie decyzje podjęliśmy?
+- Co zostało do zrobienia?
+- Od czego mam zacząć następnym razem?
+
+Podaj jako listę wypunktowaną gotową do wklejenia do pliku TXT.`,
+                            `Jesteś asystentem ds. zarządzania projektami.
+Przejrzyj naszą rozmowę i przygotuj podsumowanie sesji roboczej w formacie gotowym do pliku MD:
+
+# Sesja — [DATA]
+
+## Co zostało zrobione
+[lista]
+
+## Kluczowe decyzje
+[lista z uzasadnieniami]
+
+## Otwarte pytania
+[lista]
+
+## Następna sesja — od czego zacząć
+[konkretny pierwszy krok z sugestią promptu]
+
+## Pliki robocze
+[lista plików stworzonych lub zmienionych]`)}
+    ${pc('pF5', 'F', 'F5 – Diagnoza chaosu projektowego',
+                            'Użyj gdy praca z AI zaczyna się kręcić w kółko lub wyniki są niespójne.',
+                            'Diagnoza AI jest wskazówką, nie diagnozą ostateczną — dodaj własną ocenę sytuacji.',
+                            `Moja praca z AI nad [PROJEKT] nie idzie dobrze. Opisz mi, co mogło pójść nie tak i jak to naprawić.
+Kontekst: [OPISZ KRÓTKO CO ROBIŁEŚ/AŚ I CO SIĘ DZIEJE].`,
+                            `Jestem projektantem dydaktycznym i analizuję problemy w pracy z AI.
+Opis sytuacji: [OPISZ PROJEKT, CO ROBIŁEŚ/AŚ, CO POSZŁO NIE TAK].
+
+Zdiagnozuj problem według listy typowych przyczyn:
+1. Niejasny cel na starcie
+2. Zbyt długi kontekst (wszystko w jednym wątku)
+3. Brak pliku roboczego poza AI
+4. Zmieniające się wymagania w trakcie sesji
+5. Zły format pliku wejściowego
+6. Brak weryfikacji wyników między etapami
+
+Dla każdego pasującego punktu: czy to mój problem (tak/nie/możliwe) + konkretna sugestia naprawy.
+Na końcu: proponowany plan naprawczy w 3 krokach.`)}
     ${pc('pH1', 'H', 'H1 – Weryfikacja i krytyczna analiza odpowiedzi AI',
                             'Użyj <em>zawsze</em> po otrzymaniu ważnej odpowiedzi AI – szczególnie w kwestiach faktycznych, prawnych lub projektowych.',
                             '',
@@ -886,7 +1113,7 @@ Podaj konkretne wskazania – nie ogólniki.`)}
 `;
 
 function pc(anchor, cat, title, when, warn, basic, advanced) {
-  const catLabel = { A: 'Dydaktyka', B: 'Dokumenty i org.', C: 'Komunikacja', D: 'Projekty UE', H: 'Weryfikacja AI' }[cat];
+  const catLabel = { A: 'Dydaktyka', B: 'Dokumenty i org.', C: 'Komunikacja', D: 'Projekty UE', F: 'Praca projektowa', H: 'Weryfikacja AI' }[cat];
   return `
   <div class="prompt-card" id="${anchor}" data-cat="${cat}">
     <div class="prompt-card-hdr" onclick="togglePromptCard(this)">

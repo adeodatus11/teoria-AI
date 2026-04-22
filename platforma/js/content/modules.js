@@ -659,19 +659,227 @@ Zaznacz [UZUPEŁNIJ] wszędzie, gdzie potrzebne są konkretne dane.</pre>
 `;
 
 /* ══════════════════════════════════════
-   PAGE: MODULE 5 (ŚLAD WĘGLOWY I WODNY)
+   PAGE: MODULE 5 (PRACA PROJEKTOWA Z AI)
 ══════════════════════════════════════ */
 PAGES.module5 = () => `
   <div class="lesson-header">
     <div class="breadcrumb"><a href="#" onclick="showPage('home')">🏠 Start</a> <span class="bc-sep">›</span> Moduł 5</div>
-    <div class="lesson-number">Moduł 5 z 5</div>
+    <div class="lesson-number">Moduł 5 z 6</div>
+    <h2>Praca projektowa z AI: etapowanie, kontekst, tokeny i procedury</h2>
+    <div class="lesson-meta">
+      <span class="meta-badge">⏱ ok. 45 minut</span>
+      <span class="meta-badge">🗂️ Tokeny · Formaty · Skills · Bezpieczeństwo</span>
+      <span class="meta-badge">📈 Średnio zaawansowany</span>
+    </div>
+    <p class="lesson-intro">Wiesz już, jak pisać prompty. Ale co, gdy projekt trwa tydzień, a nie 5 minut? Ten moduł daje Ci strukturę dłuższej pracy z AI: jak dzielić zadania na etapy, zarządzać kontekstem, dobierać formaty plików i rozróżniać typy narzędzi.</p>
+    <button id="doneBtn_module5" class="mark-done-btn" onclick="markDone('module5')">✓ Oznacz jako ukończony</button>
+  </div>
+
+  <div class="lesson-body">
+    <div class="learning-goals">
+      <h3>📌 Po tym module będziesz umieć:</h3>
+      <ul class="lg-list">
+        <li>rozpoznać, dlaczego projekty AI wpadają w chaos i jak temu zapobiec</li>
+        <li>rozpisać pracę projektową według modelu 7 etapów</li>
+        <li>wyjaśnić, czym jest okno kontekstu i dlaczego AI „zapomina"</li>
+        <li>dobrać format pliku (PDF, DOCX, TXT, MD, CSV) do konkretnego zadania</li>
+        <li>rozróżnić: prompt jednorazowy, projekt, stałą instrukcję, skill i narzędzie</li>
+        <li>zastosować podstawowe zasady bezpieczeństwa przy pracy z agentami AI</li>
+        <li>opisać, czym są agent skills i jak działa progressive disclosure</li>
+      </ul>
+    </div>
+
+    <div class="lesson-section" id="chaos">
+      <h3><span class="ls-icon">🌀</span> Lekcja 1: Dlaczego projekty z AI wpadają w chaos</h3>
+      <p>Wielu użytkowników AI zauważa ten sam wzorzec: pierwsze wyniki są świetne, a potem coraz gorzej. AI zaczyna się powtarzać, „zapominać" wcześniejsze ustalenia lub generuje coś zupełnie innego niż chciałeś. To nie jest błąd AI — to brak struktury pracy.</p>
+      <div class="info-grid">
+        <div class="info-card">
+          <h4>Brak celu na start</h4>
+          <p>Praca zaczyna się od „spróbujmy" zamiast od „chcę osiągnąć X". Bez jasnego celu trudno ocenić wyniki i łatwo dryfować w nieskończoność.</p>
+        </div>
+        <div class="info-card">
+          <h4>Wszystko w jednym wątku</h4>
+          <p>Jeden długi czat łączący analizę, pisanie i korektę to przepis na bałagan. Kontekst się zapełnia, AI traci wątek i zaczyna „zapominać".</p>
+        </div>
+        <div class="info-card">
+          <h4>Brak pliku roboczego</h4>
+          <p>Ustalenia, decyzje, fragmenty tekstu zostają tylko w czacie, który za tydzień będzie nieczytelny. Nie ma gdzie wrócić.</p>
+        </div>
+        <div class="info-card">
+          <h4>Zły format pliku</h4>
+          <p>Wrzucenie ciężkiego PDF-a zamiast lekkiego TXT może „zająć" większość kontekstu jeszcze przed pierwszym pytaniem.</p>
+        </div>
+      </div>
+      <div class="key-insight">
+        <strong>Zasada nr 1:</strong> Zanim zaczniesz pracę z AI nad projektem — napisz w jednym zdaniu, co chcesz osiągnąć na końcu. Jeśli nie potrafisz tego zdania sformułować, nie jesteś jeszcze gotowy/a do pracy.
+      </div>
+    </div>
+
+    <div class="lesson-section" id="etapy">
+      <h3><span class="ls-icon">📋</span> Lekcja 2: Model 7 etapów pracy projektowej z AI</h3>
+      <p>Praca projektowa z AI to sekwencja kroków, nie seria przypadkowych promptów. Model 7 etapów pomaga utrzymać porządek niezależnie od rodzaju projektu.</p>
+      <div class="info-grid">
+        <div class="info-card"><h4>1. Cel i kontekst</h4><p>Definiujesz co chcesz osiągnąć. Opisujesz AI rolę, odbiorców, wymagania.</p></div>
+        <div class="info-card"><h4>2. Materiały wejściowe</h4><p>Przygotowujesz pliki i dane w odpowiednim formacie (patrz Lekcja 4).</p></div>
+        <div class="info-card"><h4>3. Rozbicie na zadania</h4><p>Dzielisz projekt na kroki. Każdy krok = osobny prompt lub sesja.</p></div>
+        <div class="info-card"><h4>4. Praca etapami</h4><p>Wykonujesz zadania jedno po drugim. Weryfikujesz każdy wynik przed przejściem dalej.</p></div>
+        <div class="info-card"><h4>5. Zapis roboczych wyników</h4><p>Kluczowe fragmenty zapisujesz w pliku TXT/MD — nie zostawiasz ich tylko w czacie.</p></div>
+        <div class="info-card"><h4>6. Korekta i iteracja</h4><p>Wracasz do AI z konkretnym fragmentem do poprawy, nie z całością naraz.</p></div>
+        <div class="info-card"><h4>7. Finalizacja i weryfikacja</h4><p>Czytasz całość samodzielnie. AI nie zastąpi Twojego osądu na końcu.</p></div>
+      </div>
+      <div class="key-insight">
+        <strong>Zasada:</strong> Jeden etap — jedna sesja. Nie mieszaj w jednym czacie analizy, pisania i korekty. Każde zadanie ma swój czas i swój kontekst.
+      </div>
+      <div class="try-it">
+        <div class="try-label">🧪 Mini-zadanie</div>
+        <p>Weź dowolny projekt, nad którym pracujesz. Rozpisz go na 7 etapów w tabeli powyżej. Które etapy zajmą najwięcej czasu?</p>
+      </div>
+    </div>
+
+    <div class="lesson-section" id="tokeny">
+      <h3><span class="ls-icon">🔢</span> Lekcja 3: Tokeny i kontekst — co kosztuje, co ginie</h3>
+      <p>AI nie czyta dokumentów jak człowiek. Przetwarza tekst w jednostkach zwanych tokenami, a każda sesja ma ograniczone „okno", w którym może trzymać informacje. Gdy okno się zapełni — AI dosłownie zapomina, co było wcześniej.</p>
+      <div class="info-grid">
+        <div class="info-card">
+          <h4>Czym jest token?</h4>
+          <p>Jedno polskie słowo ≈ 2–3 tokeny. Każdy element sesji — Twój prompt, odpowiedź AI, wklejony dokument — zużywa tokeny.</p>
+        </div>
+        <div class="info-card">
+          <h4>Okno kontekstu</h4>
+          <p>Maksymalna liczba tokenów widoczna AI jednocześnie. Popularne modele: 8 000 – 200 000 tokenów. Gdy okno pełne — AI wypycha najstarsze fragmenty.</p>
+        </div>
+        <div class="info-card">
+          <h4>Objawy przepełnionego kontekstu</h4>
+          <p>AI zaczyna się powtarzać, ignoruje wcześniejsze instrukcje, zmienia ton lub „zapomina" o poprawkach, które wprowadzał wcześniej.</p>
+        </div>
+        <div class="info-card">
+          <h4>Długi kontekst ≠ lepsza pamięć</h4>
+          <p>Modele mogą mieć trudność z wyciąganiem informacji z bardzo długich kontekstów — szczególnie gdy kluczowe dane są na początku długiego dokumentu.</p>
+        </div>
+      </div>
+      <div class="key-insight">
+        <strong>Zasada:</strong> Mniej znaczy więcej. Zamiast wrzucać cały dokument — wytnij tylko tę część, która jest potrzebna do konkretnego zadania. Kontekst jest skończony; nie marnuj go.
+      </div>
+    </div>
+
+    <div class="lesson-section" id="formaty">
+      <h3><span class="ls-icon">📄</span> Lekcja 4: Formaty plików — PDF, DOCX, TXT, MD, CSV</h3>
+      <p>Wybór formatu pliku decyduje o tym, ile kontekstu zajmie dokument, jak dokładnie AI odczyta treść, i czy w ogóle będzie mógł z nim pracować efektywnie.</p>
+      <div class="info-grid">
+        <div class="info-card">
+          <h4>TXT — najlepszy do pracy pośredniej</h4>
+          <p>Czysty tekst, minimalna waga kontekstowa. Idealny do notatek roboczych, instrukcji, szkiców. AI czyta perfekcyjnie.</p>
+        </div>
+        <div class="info-card">
+          <h4>MD (Markdown) — lekki z strukturą</h4>
+          <p>Jak TXT, ale zachowuje nagłówki i listy. Doskonały do dokumentów roboczych z podziałem na sekcje.</p>
+        </div>
+        <div class="info-card">
+          <h4>CSV — dla danych tabelarycznych</h4>
+          <p>Mała waga, czytelna struktura. Używaj do zestawień, ankiet, danych liczbowych.</p>
+        </div>
+        <div class="info-card">
+          <h4>DOCX — do finalnych wersji</h4>
+          <p>Dobrze odczytywany, ale większa waga niż TXT. Używaj do gotowych dokumentów wymagających formatowania.</p>
+        </div>
+      </div>
+      <div class="key-insight">
+        <strong>Mit obalony: PDF nie jest lżejszy niż DOCX.</strong> PDF może ważyć mniej megabajtów, ale kontekstowo bywa cięższy — metadane, układ strony, informacje o czcionkach. Skanowane PDF-y (zdjęcia tekstu) AI odczytuje przez OCR z błędami i ogromnym kosztem tokenów. Do pracy pośredniej z AI używaj TXT lub MD.
+      </div>
+      <div class="try-it">
+        <div class="try-label">🧪 Mini-zadanie</div>
+        <p>Masz jakiś dokument w PDF? Skopiuj jego treść i zapisz jako TXT. Wrzuć oba do AI i zadaj to samo pytanie. Porównaj, która wersja dała lepszą odpowiedź i była szybsza.</p>
+      </div>
+    </div>
+
+    <div class="lesson-section" id="typy">
+      <h3><span class="ls-icon">🧩</span> Lekcja 5: Prompt, projekt, instrukcja, skill, narzędzie</h3>
+      <p>Praca z AI ewoluuje. To, co zaczynasz jako zwykłe pytanie, może przerodzić się w projekt wymagający stałych instrukcji i specjalnych narzędzi. Warto wiedzieć, czego używasz i po co.</p>
+      <div class="info-grid">
+        <div class="info-card">
+          <h4>Jednorazowy prompt</h4>
+          <p>Pojedyncze pytanie w nowej rozmowie. Używaj do prostych, izolowanych zadań: przetłumacz zdanie, napisz e-mail.</p>
+        </div>
+        <div class="info-card">
+          <h4>Projekt / Workspace</h4>
+          <p>Trwała sesja z plikami, kontekstem i pamięcią. Używaj gdy praca trwa wiele sesji i wymaga spójności.</p>
+        </div>
+        <div class="info-card">
+          <h4>Stała instrukcja</h4>
+          <p>Zasady wczytywane przed każdą rozmową (AGENTS.md, system prompt). Definiuje rolę AI, styl, ograniczenia.</p>
+        </div>
+        <div class="info-card">
+          <h4>Skill</h4>
+          <p>Zapisana procedura (jak coś robić), wywoływana świadomie. Dla powtarzalnych zadań z ustaloną metodą.</p>
+        </div>
+        <div class="info-card">
+          <h4>File search / Retrieval</h4>
+          <p>Przeszukiwanie bazy dokumentów. Używaj gdy masz wiele plików i chcesz zadawać pytania do ich treści.</p>
+        </div>
+        <div class="info-card">
+          <h4>Tool / MCP <span class="meta-badge" style="font-size:11px">Advanced</span></h4>
+          <p>Zewnętrzne narzędzie podłączone do AI (baza danych, API, przeglądarka). Gdy potrzebujesz danych w czasie rzeczywistym.</p>
+        </div>
+      </div>
+      <div class="key-insight">
+        <strong>Zasada:</strong> Zanim zaczniesz pracę, zadaj sobie pytanie: czy to jednorazowe zadanie, czy projekt? Błędna odpowiedź kosztuje czas i chaos.
+      </div>
+    </div>
+
+    <div class="lesson-section" id="bezpieczenstwo">
+      <h3><span class="ls-icon">🛡️</span> Lekcja 6: Bezpieczeństwo i agent skills</h3>
+      <p>AI agenci mogą robić coraz więcej: przeglądać internet, wykonywać skrypty, wysyłać e-maile. To ogromna moc — i ogromna odpowiedzialność.</p>
+      <div class="info-grid">
+        <div class="info-card">
+          <h4>Nie uruchamiaj skryptów bez lektury</h4>
+          <p>Jeśli AI generuje kod lub skrypt, przeczytaj go przed uruchomieniem. Niegroźnie wyglądający skrypt może usunąć pliki lub wysłać dane.</p>
+        </div>
+        <div class="info-card">
+          <h4>Zacznij od instruction-only</h4>
+          <p>Konfigurując agenta lub workflow, najpierw sprawdź co robi w trybie tylko-instrukcji. Dopiero gdy rozumiesz logikę — pozwól działać.</p>
+        </div>
+        <div class="info-card">
+          <h4>Ogranicz uprawnienia</h4>
+          <p>Agent potrzebuje dostępu tylko do tego, co niezbędne. Nie dawaj mu dostępu do całego dysku, gdy potrzebuje tylko jednego folderu.</p>
+        </div>
+        <div class="info-card">
+          <h4>Weryfikuj wynik przed użyciem</h4>
+          <p>Każdy wynik AI — tekst, dokument, dane — wymaga Twojego sprawdzenia. AI może mylić się w datach, liczbach i szczegółach.</p>
+        </div>
+      </div>
+      <div class="key-insight">
+        <strong>O agent skills</strong> <span class="meta-badge" style="font-size:11px">Advanced</span><br>
+        Skill to zapisana procedura. AI „widzi" skill przez jego <strong>nazwę i opis</strong> — to decyduje, kiedy go użyje. Stosuj <strong>progressive disclosure</strong>: zacznij od wersji minimalnej (jedno zadanie, prosto), rozbudowuj dopiero gdy potrzebujesz. Skill to pamięć proceduralna (jak coś robić), a baza wiedzy to pamięć faktograficzna (co jest prawdą) — nie mieszaj tych ról.
+      </div>
+      <div class="key-insight">
+        <strong>Zasada bezwzględna:</strong> Agenty AI dają moc, ale nie zwalniają Cię z odpowiedzialności. Twój podpis pod dokumentem — Twoja odpowiedzialność. AI to narzędzie, nie autor.
+      </div>
+    </div>
+
+    <div class="lesson-nav">
+      <button class="btn-secondary" onclick="showPage('module4')">← Moduł 4</button>
+      <div style="display:flex;gap:12px;align-items:center">
+        <button id="doneBtn_module5" class="btn-done" onclick="markDone('module5')">✓ Ukończono moduł 5</button>
+        <button class="btn-primary" onclick="showPage('module6')">Moduł 6 →</button>
+      </div>
+    </div>
+  </div>
+`;
+
+/* ══════════════════════════════════════
+   PAGE: MODULE 6 (ŚLAD WĘGLOWY I WODNY)
+══════════════════════════════════════ */
+PAGES.module6 = () => `
+  <div class="lesson-header">
+    <div class="breadcrumb"><a href="#" onclick="showPage('home')">🏠 Start</a> <span class="bc-sep">›</span> Moduł 6</div>
+    <div class="lesson-number">Moduł 6 z 6</div>
     <h2>Zrównoważone Zarządzanie AI (Ekologia)</h2>
     <div class="lesson-meta">
       <span class="meta-badge">⏱ ok. 15 minut</span>
       <span class="meta-badge">🌱 Ślad węglowy · Ślad wodny · Etyka kosztów</span>
     </div>
     <p class="lesson-intro">Ten krótki i w pełni teoretyczny moduł uświadamia nam, że działanie potężnych algorytmów ma swoją mierzalną, fizyczną cenę w realnym świecie.</p>
-    <button id="doneBtn_module5" class="mark-done-btn" onclick="markDone('module5')">✓ Oznacz jako ukończony</button>
+    <button id="doneBtn_module6" class="mark-done-btn" onclick="markDone('module6')">✓ Oznacz jako ukończony</button>
   </div>
 
   <div class="lesson-body">
@@ -725,9 +933,9 @@ PAGES.module5 = () => `
     </div>
 
     <div class="lesson-nav">
-      <button class="btn-secondary" onclick="showPage('module4')">← Moduł 4</button>
+      <button class="btn-secondary" onclick="showPage('module5')">← Moduł 5</button>
       <div style="display:flex;gap:12px;align-items:center">
-        <button id="doneBtn_module5" class="btn-done" onclick="markDone('module5')">✓ Ukończono moduł 5</button>
+        <button id="doneBtn_module6" class="btn-done" onclick="markDone('module6')">✓ Ukończono moduł 6</button>
         <button class="btn-primary" onclick="showPage('myplan')">Mój plan wdrożenia →</button>
       </div>
     </div>

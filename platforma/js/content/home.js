@@ -16,7 +16,7 @@ PAGES.home = () => {
       <h1>AI w pracy nauczyciela i szkoły<br><em>Samodzielny kurs online</em></h1>
       <p class="hero-subtitle">Ucz się we własnym tempie. Przejdź moduły, wykonuj ćwiczenia i korzystaj z gotowych promptów bez logowania i bez prowadzącego. Wszystko jest zapisywane lokalnie w Twojej przeglądarce.</p>
       <div class="hero-stats">
-        <div class="hero-stat"><div class="sn">4</div><div class="sl">moduły samodzielnej nauki</div></div>
+        <div class="hero-stat"><div class="sn">6</div><div class="sl">modułów samodzielnej nauki</div></div>
         <div class="hero-stat"><div class="sn">30+</div><div class="sl">gotowych promptów do skopiowania</div></div>
         <div class="hero-stat"><div class="sn">15</div><div class="sl">ćwiczeń z instrukcjami</div></div>
         <div class="hero-stat"><div class="sn">5,9h</div><div class="sl">oszczędności / tydzień (Gallup 2025)<sup>*</sup></div></div>
@@ -43,8 +43,8 @@ PAGES.home = () => {
       <div class="entry-card featured" onclick="showPage('module1')">
         <div class="ec-icon">🚀</div>
         <div class="ec-text">
-          <div class="ec-title">Pełny kurs – 4 moduły</div>
-          <div class="ec-desc">Przejdź kurs od podstaw AI po projekty unijne. Każdy moduł to lekcja z ćwiczeniami.</div>
+          <div class="ec-title">Pełny kurs – 6 modułów</div>
+          <div class="ec-desc">Przejdź kurs od podstaw AI po pracę projektową i ekologię AI. Każdy moduł to lekcja z ćwiczeniami.</div>
           <span class="ec-tag">⭐ Polecamy dla początkujących</span>
         </div>
       </div>
