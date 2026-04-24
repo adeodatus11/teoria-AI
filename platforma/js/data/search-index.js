@@ -5,6 +5,7 @@ const IDX = [
 
   { t: 'Framework PARTS – jak budować dobre prompty', p: 'module2', a: 'parts', tags: ['PARTS', 'prompt', 'struktura'], c: 'Persona, Aim, Recipients, Tone, Structure.' },
   { t: '5 Złotych Zasad Promptowania', p: 'module2', a: 'rules', tags: ['prompt', 'zasady', 'iteracja'], c: 'Konkretny cel, kontekst, format, iteracja i weryfikacja.' },
+  { t: 'Ćwiczenie grupowe – Prompt w trzech wersjach', p: 'module2', a: 'group-prompt-lab', tags: ['ćwiczenie grupowe', 'prompt', 'iteracja'], c: 'Porównanie trzech wersji tego samego promptu i wybór najlepszej.' },
 
   { t: 'AI w dydaktyce', p: 'module3', a: 'dydaktyka', tags: ['dydaktyka', 'lekcja', 'materiały'], c: 'Scenariusze lekcji, różnicowanie i pytania sprawdzające.' },
   { t: 'AI w administracji i komunikacji', p: 'module3', a: 'administracja', tags: ['administracja', 'mail', 'protokół'], c: 'Maile, ogłoszenia, podsumowania i teksty organizacyjne.' },
@@ -12,6 +13,7 @@ const IDX = [
   { t: 'Analiza dokumentów i przepływu informacji', p: 'module4', a: 'documents', tags: ['dokumenty', 'analiza', 'wątek'], c: 'Wyciąganie decyzji, zadań i terminów z długich tekstów.' },
   { t: 'Zamknięte piaskownice i RAG', p: 'module4', a: 'sandbox', tags: ['RAG', 'NotebookLM', 'źródła'], c: 'Kiedy zwykły czat nie wystarcza i warto pracować na źródłach.' },
   { t: 'Porównanie dwóch dokumentów', p: 'module4', a: 'compare', tags: ['porównanie', 'różnice', 'sprzeczności'], c: 'Tabela rozbieżności i luk między tekstami.' },
+  { t: 'Ćwiczenie grupowe – Mini-laboratorium analizy ankiety', p: 'module4', a: 'survey-lab', tags: ['ćwiczenie grupowe', 'ankiety', 'analiza'], c: 'Zespołowe projektowanie analizy krótkich danych z ankiet i informacji zwrotnych.' },
   { t: 'Bezpieczeństwo danych w pracy analitycznej', p: 'module4', a: 'rodo', tags: ['RODO', 'anonimizacja', 'dane'], c: 'Zasady bezpiecznego wklejania dokumentów do AI.' },
 
   { t: 'AI w pracy projektowej', p: 'module5', a: 'projekty', tags: ['projekty', 'granty', 'koordynacja'], c: 'Co AI może przyspieszyć w pracy projektowej, a czego nie zastąpi.' },
@@ -23,6 +25,7 @@ const IDX = [
   { t: 'AI to także infrastruktura', p: 'module6', a: 'infrastruktura', tags: ['energia', 'woda', 'centra danych'], c: 'Moduł o fizycznej infrastrukturze stojącej za działaniem AI.' },
   { t: 'Jak czytać liczby o śladzie AI', p: 'module6', a: 'metryki', tags: ['ślad', 'energia', 'woda'], c: 'Liczby są użyteczne, ale zależą od modelu, lokalizacji i sposobu użycia.' },
   { t: 'Zasada proporcji w użyciu AI', p: 'module6', a: 'proporcja', tags: ['zrównoważone AI', 'proporcja', 'praktyka'], c: 'Używaj AI tam, gdzie daje realny zysk jakości, czasu lub dostępności.' },
+  { t: 'Ćwiczenie grupowe – Mini-kodeks odpowiedzialnego używania AI', p: 'module6', a: 'mini-codeks', tags: ['ćwiczenie grupowe', 'kodeks AI', 'odpowiedzialność'], c: 'Tworzenie prostych zasad używania AI dla szkoły, zespołu lub projektu.' },
 
   { t: 'Ćwiczenie 1 – Twój pierwszy prompt', p: 'exercises', a: 'ex1', tags: ['ćwiczenie', 'start'], c: 'Pierwsze uruchomienie narzędzia AI.' },
   { t: 'Ćwiczenie 2 – Ulepsz słaby prompt', p: 'exercises', a: 'ex2', tags: ['ćwiczenie', 'PARTS'], c: 'Porównanie promptu przed i po doprecyzowaniu.' },
@@ -37,6 +40,9 @@ const IDX = [
   { t: 'Ćwiczenie 13 – Trening rezyliencji', p: 'exercises', a: 'ex13', tags: ['ćwiczenie', 'komunikacja', 'symulacja'], c: 'AI jako trudny rozmówca do ćwiczenia komunikacji.' },
   { t: 'Ćwiczenie 14 – Ujarzmienie ankiet', p: 'exercises', a: 'ex14', tags: ['ćwiczenie', 'ankiety', 'analiza'], c: 'Porządkowanie danych opisowych i odpowiedzi.' },
   { t: 'Ćwiczenie 15 – Odwrócona inżynieria promptu', p: 'exercises', a: 'ex15', tags: ['ćwiczenie', 'prompt', 'reverse engineering'], c: 'Odtwarzanie logiki promptu na podstawie gotowego wyniku.' },
+  { t: 'Ćwiczenie 16 – Prompt w trzech wersjach', p: 'exercises', a: 'ex16', tags: ['ćwiczenie', 'prompt', 'praca zespołowa'], c: 'Zespół porównuje trzy wersje promptu i wybiera finalną.' },
+  { t: 'Ćwiczenie 17 – Mini-laboratorium analizy ankiety', p: 'exercises', a: 'ex17', tags: ['ćwiczenie', 'ankiety', 'praca zespołowa'], c: 'Bezpieczna analiza krótkich danych i szkic mini-raportu.' },
+  { t: 'Ćwiczenie 18 – Mini-kodeks odpowiedzialnego używania AI', p: 'exercises', a: 'ex18', tags: ['ćwiczenie', 'kodeks AI', 'praca zespołowa'], c: 'Wypracowanie prostych zasad użycia AI dla wybranego zespołu.' },
 
   { t: 'Prompt: Konspekt lekcji', p: 'prompts', a: 'pA1', tags: ['prompt', 'lekcja', 'dydaktyka'], c: 'Gotowy prompt do planowania lekcji.' },
   { t: 'Prompt: Różnicowanie materiału', p: 'prompts', a: 'pA2', tags: ['prompt', 'różnicowanie', 'SPE'], c: 'Wersje materiału dla różnych potrzeb uczniów.' },

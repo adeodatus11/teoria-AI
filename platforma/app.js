@@ -368,11 +368,11 @@ PAGES.exercises = () => `
   <div class="page-header">
     <div class="breadcrumb"><a href="#" onclick="showPage('home')">🏠 Start</a> <span class="bc-sep">›</span> Ćwiczenia</div>
     <h2>🧩 Ćwiczenia praktyczne</h2>
-    <p>Piętnaście głównych ćwiczeń kursu. Każde zawiera instrukcję krok po kroku, gotowy prompt i kryteria oceny własnej pracy.</p>
+    <p>Osiemnaście głównych ćwiczeń kursu. Każde zawiera instrukcję krok po kroku, materiał startowy lub gotowy prompt i kryteria oceny własnej pracy.</p>
     <button id="doneBtn_exercises" class="mark-done-btn" onclick="markDone('exercises')">✓ Oznacz jako ukończony</button>
   </div>
   <div class="filter-bar">
-    <button class="filter-btn active" onclick="filterEx('all',this)">Wszystkie (15)</button>
+    <button class="filter-btn active" onclick="filterEx('all',this)">Wszystkie (18)</button>
     <button class="filter-btn" onclick="filterEx('basic',this)">Podstawowe</button>
     <button class="filter-btn" onclick="filterEx('med',this)">Średniozaawansowane</button>
   </div>
@@ -627,6 +627,158 @@ Chcę tworzyć tak dobre materiały za pomocą AI w przyszłości.
 Zaprojektuj dla mnie doskonały prompt w układzie PARTS, którego użycie zmusiłoby Cię do napisania dokładnie tego, co powyżej.</pre>
       </div>`,
   `<ul><li>AI podała poprawną konstrukcję promptu naśladującego</li><li>Wychwycono "Ton" i "Personę" oryginału</li><li>Zdobyto wiedzę o promptach budowanych przez samą AI</li></ul>`
+)}
+    ${ex('ex16', '16', 'Prompt w trzech wersjach', 'basic', '20–25 min',
+  'Przećwicz pracę zespołową nad jednym zadaniem i sprawdź, które elementy promptu realnie poprawiają wynik AI.',
+  `<p><strong>Praca:</strong> zespoły 2–3 osoby</p>
+      <p><strong>Sytuacja wyjściowa:</strong> Wasz zespół ma przygotować jeden konkretny materiał z pomocą AI, np. mail, streszczenie dokumentu, plan lekcji, opis działania projektowego albo analizę krótkich odpowiedzi z ankiety. Chcecie porównać, jak zmienia się wynik przy trzech poziomach doprecyzowania promptu.</p>
+      <table class="data-table">
+        <thead><tr><th>Rola</th><th>Zakres odpowiedzialności</th></tr></thead>
+        <tbody>
+          <tr><td>Osoba 1 – właściciel zadania</td><td>wybiera zadanie i określa, po czym poznać dobry wynik</td></tr>
+          <tr><td>Osoba 2 – operator AI</td><td>wpisuje prompty i zapisuje odpowiedzi</td></tr>
+          <tr><td>Osoba 3 – recenzent</td><td>ocenia użyteczność, kompletność i ryzyka</td></tr>
+        </tbody>
+      </table>
+      <p><strong>Jeśli pracujecie w dwie osoby:</strong> jedna osoba łączy role operatora i recenzenta.</p>
+      <ol>
+        <li>Wybierzcie jedno zadanie i dopiszcie dwa kryteria sukcesu, np. „ma być gotowe do użycia jutro" albo „ma zawierać tabelę z terminami".</li>
+        <li>Napiszcie <strong>wersję 1 – prostą</strong>: tylko sam cel zadania.</li>
+        <li>Napiszcie <strong>wersję 2 – doprecyzowaną</strong>: dodajcie kontekst, odbiorcę i format odpowiedzi.</li>
+        <li>Napiszcie <strong>wersję 3 – ekspercką</strong>: dodajcie rolę AI, ograniczenia, kryteria jakości i prośbę o zaznaczenie miejsc do weryfikacji.</li>
+        <li>Uruchomcie wszystkie trzy prompty w tym samym narzędziu AI i porównajcie wyniki.</li>
+        <li>Uzupełnijcie tabelę porównawczą: co się poprawiło, co nadal jest słabe i które elementy promptu miały największy wpływ.</li>
+        <li>Na końcu przygotujcie jedną wspólną wersję finalną promptu, którą można zapisać i użyć ponownie.</li>
+      </ol>
+      <table class="data-table">
+        <thead><tr><th>Wersja</th><th>Co dodaliście</th><th>Co działa lepiej</th><th>Co jeszcze poprawić</th></tr></thead>
+        <tbody>
+          <tr><td>1. Prosta</td><td>sam cel zadania</td><td></td><td></td></tr>
+          <tr><td>2. Doprecyzowana</td><td>kontekst, odbiorca, format</td><td></td><td></td></tr>
+          <tr><td>3. Ekspercka</td><td>rola, ograniczenia, kryteria jakości, weryfikacja</td><td></td><td></td></tr>
+          <tr><td>4. Finalna</td><td>najlepsze elementy z trzech wersji</td><td></td><td></td></tr>
+        </tbody>
+      </table>
+      <div class="tip-box" style="margin-top:12px"><strong>Produkt końcowy:</strong> tabela porównawcza 3 odpowiedzi AI oraz 1 finalny prompt zespołu gotowy do zapisania w Promptowniku lub notatkach.</div>
+      <div class="reflection-box">
+        <div class="rb-label">Pytania do refleksji</div>
+        <ul>
+          <li>Który element promptu najbardziej poprawił wynik: rola, kontekst, format czy kryteria jakości?</li>
+          <li>Czy najlepsza odpowiedź AI była od razu gotowa do użycia, czy nadal wymagała korekty człowieka?</li>
+          <li>Jak możecie wykorzystać ten sposób pracy przy kolejnym zadaniu w szkole, projekcie albo organizacji?</li>
+        </ul>
+      </div>
+      <div class="tip-box" style="margin-top:12px"><strong>Opcjonalne rozszerzenie:</strong> przetestujcie ten sam finalny prompt w drugim narzędziu AI i sprawdźcie, czy wynik jest podobny.</div>`,
+  `<ul><li>Zespół przetestował trzy wersje tego samego promptu</li><li>Potraficie wskazać, które elementy najbardziej poprawiły odpowiedź</li><li>Macie jedną finalną wersję promptu do ponownego użycia</li><li>Wskazaliście przynajmniej jedno miejsce, które nadal wymaga weryfikacji człowieka</li></ul>`
+)}
+    ${ex('ex17', '17', 'Mini-laboratorium analizy ankiety', 'med', '25–30 min',
+  'Zaprojektuj bezpieczny sposób analizy krótkich odpowiedzi z ankiety i przygotuj z pomocą AI szkic mini-raportu.',
+  `<p><strong>Praca:</strong> zespoły 2–3 osoby</p>
+      <p><strong>Sytuacja wyjściowa:</strong> macie krótkie, zanonimizowane odpowiedzi z ankiety po szkoleniu, spotkaniu, wydarzeniu szkolnym lub działaniu projektowym. Chcecie szybko wyciągnąć główne kategorie, wnioski i rekomendacje, ale bez utraty kontroli nad danymi.</p>
+      <table class="data-table">
+        <thead><tr><th>Rola</th><th>Zakres odpowiedzialności</th></tr></thead>
+        <tbody>
+          <tr><td>Osoba 1 – moderator</td><td>ustala pytanie analityczne i pilnuje celu pracy</td></tr>
+          <tr><td>Osoba 2 – operator AI</td><td>przygotowuje prompty i uruchamia analizę</td></tr>
+          <tr><td>Osoba 3 – recenzent danych</td><td>sprawdza anonimizację, ryzyka i wiarygodność wniosków</td></tr>
+        </tbody>
+      </table>
+      <div class="alert-box"><strong>Najpierw bezpieczeństwo:</strong> nie wklejajcie imion, nazwisk, maili, numerów telefonów, nazw klas, nazw firm ani innych danych pozwalających rozpoznać konkretną osobę.</div>
+      <p><strong>Jeśli nie macie własnych danych, użyjcie próbki:</strong></p>
+      <div class="prompt-box"><pre>"Za mało czasu na ćwiczenia praktyczne."
+"Dobre tempo, ale przydałyby się prostsze instrukcje."
+"Najbardziej pomogły mi gotowe przykłady promptów."
+"Chciałabym więcej przykładów z pracy administracyjnej."
+"Za dużo teorii na początku modułu."
+"Ćwiczenia były przydatne, ale zabrakło podsumowania."
+"Chcę krótkiej checklisty do pracy po szkoleniu."
+"Przydałoby się więcej przykładów analizy dokumentów."</pre></div>
+      <ol>
+        <li>Ustalcie jedno pytanie analityczne, np. „co poprawić w szkoleniu?" albo „jakie potrzeby najczęściej zgłasza zespół?".</li>
+        <li>Wypiszcie, jakich danych nie wolno wkleić do publicznego narzędzia AI i jak je zastąpić.</li>
+        <li>Przygotujcie trzy prompty: do grupowania odpowiedzi, wyciągania wniosków i szkicu raportu.</li>
+        <li>Uruchomcie prompty i sprawdźcie, czy AI nie łączy zbyt odmiennych wypowiedzi w jedną kategorię.</li>
+        <li>Przygotujcie mini-raport: 3 główne kategorie, 3 wnioski i 2 rekomendacje dla zespołu.</li>
+        <li>Na końcu dopiszcie krótką notatkę: czego nie można stwierdzić na podstawie tych danych i co trzeba sprawdzić ręcznie.</li>
+      </ol>
+      <div class="prompt-box" style="position:relative">
+        <button class="prompt-copy-btn" onclick="copyPrompt(this)">Kopiuj</button>
+        <pre>Mam zanonimizowane odpowiedzi z ankiety.
+Pogrupuj je w 3-5 kategorii tematycznych.
+Dla każdej kategorii podaj:
+1. krótki opis problemu lub potrzeby,
+2. przykładowy cytat,
+3. ostrożny wniosek,
+4. czego nie można stwierdzić z tych danych.
+Na końcu przygotuj szkic mini-raportu:
+Kategorie | Główne wnioski | Rekomendacje.
+Dane: [WKLEJ ZANONIMIZOWANE ODPOWIEDZI]</pre>
+      </div>
+      <div class="tip-box" style="margin-top:12px"><strong>Produkt końcowy:</strong> plan analizy, 3 prompty, mini-raport oraz krótka lista danych, których nie wolno wklejać do AI.</div>
+      <div class="reflection-box">
+        <div class="rb-label">Pytania do refleksji</div>
+        <ul>
+          <li>W którym momencie AI pomogła najbardziej: przy porządkowaniu danych czy przy pisaniu wniosków?</li>
+          <li>Jakie ryzyko pojawia się, gdy zespół bezkrytycznie kopiuje gotowy raport AI?</li>
+          <li>Co trzeba było poprawić ręcznie, żeby raport był wiarygodny i użyteczny?</li>
+        </ul>
+      </div>
+      <div class="tip-box" style="margin-top:12px"><strong>Opcjonalne rozszerzenie:</strong> przygotujcie drugą wersję raportu dla innego odbiorcy, np. dyrekcji, zespołu projektowego albo partnera zewnętrznego.</div>`,
+  `<ul><li>Zespół zaprojektował prosty i bezpieczny proces analizy danych</li><li>Powstały trzy prompty do pracy z ankietą</li><li>Macie mini-raport z kategoriami, wnioskami i rekomendacjami</li><li>Wskazaliście, których danych nie wolno wkleić do publicznego narzędzia AI</li></ul>`
+)}
+    ${ex('ex18', '18', 'Mini-kodeks odpowiedzialnego używania AI', 'med', '20–25 min',
+  'Stwórz praktyczny zestaw zasad dla wybranego zespołu, tak żeby AI wspierała pracę bez osłabiania odpowiedzialności, prywatności i jakości treści.',
+  `<p><strong>Praca:</strong> zespoły 2–3 osoby</p>
+      <p><strong>Sytuacja wyjściowa:</strong> zespół nauczycieli, dział administracyjny, koordynatorzy projektu albo pracownicy organizacji chcą korzystać z AI, ale potrzebują krótkiego dokumentu z jasnymi zasadami: kiedy wolno użyć AI, czego nie wolno wkleić, co trzeba oznaczyć i co musi sprawdzić człowiek.</p>
+      <table class="data-table">
+        <thead><tr><th>Rola</th><th>Zakres odpowiedzialności</th></tr></thead>
+        <tbody>
+          <tr><td>Osoba 1 – właściciel kontekstu</td><td>wybiera środowisko pracy i najczęstsze sytuacje użycia AI</td></tr>
+          <tr><td>Osoba 2 – analityk ryzyk</td><td>wskazuje ryzyka: dane osobowe, błędy, stronniczość, prawa autorskie, nadmierne poleganie</td></tr>
+          <tr><td>Osoba 3 – redaktor zasad</td><td>zamienia ustalenia zespołu w prosty mini-kodeks</td></tr>
+        </tbody>
+      </table>
+      <ol>
+        <li>Wybierzcie kontekst: szkoła, zespół projektowy, administracja, biblioteka, biuro albo inna organizacja.</li>
+        <li>Wypiszcie 5-7 sytuacji, w których ktoś może chcieć użyć AI, np. mail do rodziców, analiza ankiety, opis działania projektowego, streszczenie dokumentu, przygotowanie materiałów promocyjnych.</li>
+        <li>Dla każdej sytuacji wpiszcie decyzję: <strong>wolno</strong>, <strong>wolno warunkowo</strong> albo <strong>nie używamy</strong>.</li>
+        <li>Dopiszcie główne ryzyko i jedno zabezpieczenie, np. anonimizacja, obowiązkowa weryfikacja, oznaczenie użycia AI albo zatwierdzenie przez człowieka.</li>
+        <li>Przygotujcie mini-kodeks na 1 stronę: 5-7 zasad głównych oraz tabelę sytuacji i decyzji.</li>
+        <li>Na końcu przetestujcie kodeks na jednym trudniejszym przypadku i poprawcie jedną zasadę, jeśli okaże się zbyt ogólna.</li>
+      </ol>
+      <table class="data-table">
+        <thead><tr><th>Sytuacja użycia</th><th>Decyzja</th><th>Główne ryzyko</th><th>Zabezpieczenie</th></tr></thead>
+        <tbody>
+          <tr><td>Mail / komunikat</td><td></td><td></td><td></td></tr>
+          <tr><td>Analiza ankiety</td><td></td><td></td><td></td></tr>
+          <tr><td>Dokument lub raport</td><td></td><td></td><td></td></tr>
+          <tr><td>Materiały promocyjne</td><td></td><td></td><td></td></tr>
+          <tr><td>Inne zastosowanie</td><td></td><td></td><td></td></tr>
+        </tbody>
+      </table>
+      <div class="prompt-box" style="position:relative">
+        <button class="prompt-copy-btn" onclick="copyPrompt(this)">Kopiuj</button>
+        <pre>Pracujemy nad mini-kodeksem odpowiedzialnego używania AI dla:
+[SZKOŁY / ZESPOŁU / PROJEKTU / ORGANIZACJI]
+Nasze przykładowe sytuacje użycia AI:
+[WKLEJ 5-7 SYTUACJI]
+Pomóż uporządkować je w tabeli:
+Sytuacja | Wolno / Wolno warunkowo / Nie używamy | Ryzyko | Zabezpieczenie.
+Nie twórz gotowej polityki za zespół.
+Zaproponuj roboczą strukturę i pytania, które zespół powinien sam rozstrzygnąć.</pre>
+      </div>
+      <div class="alert-box"><strong>Ważne:</strong> AI może pomóc uporządkować materiał, ale nie powinna sama decydować o zasadach. Ostateczny kodeks musi zatwierdzić człowiek odpowiedzialny za zespół, dokumenty i dane.</div>
+      <div class="tip-box" style="margin-top:12px"><strong>Produkt końcowy:</strong> mini-kodeks na 1 stronę z tabelą sytuacji użycia AI i zasadami bezpieczeństwa.</div>
+      <div class="reflection-box">
+        <div class="rb-label">Pytania do refleksji</div>
+        <ul>
+          <li>Która zasada była najtrudniejsza do uzgodnienia i dlaczego?</li>
+          <li>W których sytuacjach zespół dopuścił użycie AI warunkowo, a nie bez ograniczeń?</li>
+          <li>Czy kodeks jest wystarczająco prosty, żeby nowa osoba w zespole mogła z niego skorzystać od razu?</li>
+        </ul>
+      </div>
+      <div class="tip-box" style="margin-top:12px"><strong>Opcjonalne rozszerzenie:</strong> dodajcie krótki wzór oznaczenia „ten materiał był redagowany z pomocą AI” albo procedurę zgłaszania wyjątków.</div>`,
+  `<ul><li>Zespół przygotował kodeks możliwy do użycia w praktyce</li><li>W tabeli pojawiło się co najmniej 5 sytuacji użycia AI</li><li>Przy każdej sytuacji określono ryzyko i zabezpieczenie</li><li>Kodeks jasno rozróżnia: wolno, wolno warunkowo i nie używamy</li></ul>`
 )}
   </div>
 `;

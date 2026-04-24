@@ -171,7 +171,7 @@ PAGES.module2 = () => `
     <div class="lesson-meta">
       <span class="meta-badge">⏱ ok. 35 minut</span>
       <span class="meta-badge">🎯 Framework <span translate="no" class="notranslate">PARTS</span> · Ćwiczenia poprawy promptów</span>
-      <span class="meta-badge">📝 2 ćwiczenia praktyczne</span>
+      <span class="meta-badge">📝 3 ćwiczenia praktyczne</span>
     </div>
     <p class="lesson-intro">Jakość wyniku AI zależy bezpośrednio od jakości pytania. W tym module nauczysz się pisać prompty według struktury <span translate="no" class="notranslate">PARTS</span> – i od razu przetestujesz różnicę.</p>
     <button id="doneBtn_module2" class="mark-done-btn" onclick="markDone('module2')">✓ Oznacz jako ukończony</button>
@@ -281,6 +281,43 @@ PROMPT B: „Zrób mail do rodziców."
 PROMPT C: „Opisz projekt."</pre>
         </div>
         <p>Potrzebujesz więcej inspiracji? Przejdź do <a href="#" onclick="showPage('exercises','ex2')" style="color:var(--clr-primary)">Ćwiczenia #2 – Ulepsz słaby prompt</a> z pełną instrukcją.</p>
+      </div>
+    </div>
+
+    <div class="lesson-section" id="group-prompt-lab">
+      <h3><span class="ls-icon">🤝</span> Ćwiczenie grupowe – Prompt w trzech wersjach</h3>
+      <p>To zadanie pokazuje, jak dużo daje wspólna praca nad jednym promptem. Jedna osoba pilnuje celu, druga testuje kolejne wersje w narzędziu, a trzecia ocenia wynik pod kątem jakości i użyteczności.</p>
+
+      <table class="data-table">
+        <thead><tr><th>Rola</th><th>Za co odpowiada</th></tr></thead>
+        <tbody>
+          <tr><td>Osoba 1 – właściciel zadania</td><td>wybiera sytuację i określa, jaki wynik będzie naprawdę przydatny</td></tr>
+          <tr><td>Osoba 2 – operator AI</td><td>wpisuje prompty, zapisuje różnice i pilnuje porównania wyników</td></tr>
+          <tr><td>Osoba 3 – recenzent</td><td>sprawdza ton, kompletność, ryzyka i wskazuje, co jeszcze poprawić</td></tr>
+        </tbody>
+      </table>
+
+      <div class="try-it">
+        <div class="try-label">🧪 Pracujcie w zespole 2–3 osoby</div>
+        <p><strong>Sytuacja:</strong> wybierzcie jedno realne zadanie: mail, streszczenie dokumentu, plan lekcji, opis działania albo analizę krótkiej ankiety.</p>
+        <ol>
+          <li>Ustalcie, jaki ma być efekt końcowy i po czym poznacie, że wynik jest dobry.</li>
+          <li>Przygotujcie trzy wersje promptu: prostą, doprecyzowaną i ekspercką.</li>
+          <li>Wpiszcie wszystkie trzy wersje do AI i porównajcie odpowiedzi.</li>
+          <li>Zapiszcie, które elementy najbardziej poprawiły wynik: rola, kontekst, format, kryteria jakości czy prośba o weryfikację.</li>
+          <li>Na końcu zbudujcie jedną wspólną wersję promptu, którą można wykorzystać ponownie.</li>
+        </ol>
+        <p><strong>Produkt końcowy:</strong> tabela porównawcza 3 promptów i 1 finalny prompt zespołu.</p>
+        <p>Pełną wersję tego zadania znajdziesz w <a href="#" onclick="showPage('exercises','ex16')" style="color:var(--clr-primary)">Ćwiczeniu #16 – Prompt w trzech wersjach</a>.</p>
+      </div>
+
+      <div class="reflection-box">
+        <div class="rb-label">Refleksja po zadaniu</div>
+        <ul>
+          <li>Co najbardziej poprawiło wynik: doprecyzowanie celu czy dopiero dodanie formatu i kryteriów jakości?</li>
+          <li>Który element promptu najłatwiej pominąć, mimo że ma duży wpływ na odpowiedź?</li>
+          <li>Jak wykorzystać taki sposób pracy przy kolejnym zadaniu w szkole, projekcie lub biurze?</li>
+        </ul>
       </div>
     </div>
 
@@ -446,6 +483,7 @@ PAGES.module4 = () => `
     <div class="lesson-meta">
       <span class="meta-badge">⏱ ok. 35 minut</span>
       <span class="meta-badge">🎯 Dokumenty · analiza · RAG · bezpieczeństwo</span>
+      <span class="meta-badge">🤝 1 ćwiczenie grupowe</span>
     </div>
     <p class="lesson-intro">W tym module skupiasz się na pracy z informacją: długimi dokumentami, wielowątkowymi wiadomościami i dużymi plikami. Celem jest szybkie oddzielanie decyzji i zadań od szumu oraz wybór właściwego narzędzia do analizy.</p>
     <button id="doneBtn_module4" class="mark-done-btn" onclick="markDone('module4')">✓ Oznacz jako ukończony</button>
@@ -553,6 +591,38 @@ Tekst B: [WKLEJ]
 Zwróć wynik w tabeli:
 Obszar | Na czym polega rozbieżność | Co trzeba doprecyzować</pre>
         </div>
+      </div>
+    </div>
+
+    <div class="lesson-section" id="survey-lab">
+      <h3><span class="ls-icon">📊</span> Ćwiczenie grupowe – Mini-laboratorium analizy ankiety</h3>
+      <p>W pracy projektowej i organizacyjnej AI przydaje się nie tylko do pisania, ale też do porządkowania odpowiedzi z ankiet, notatek i informacji zwrotnych. To ćwiczenie uczy, jak zaprojektować analizę, nie tracąc kontroli nad danymi i wnioskami.</p>
+
+      <table class="data-table">
+        <thead><tr><th>Rola</th><th>Za co odpowiada</th></tr></thead>
+        <tbody>
+          <tr><td>Osoba 1 – moderator</td><td>ustala cel analizy i pilnuje, by zespół odpowiadał na właściwe pytanie</td></tr>
+          <tr><td>Osoba 2 – operator AI</td><td>przygotowuje prompty, uruchamia analizę i zapisuje odpowiedzi</td></tr>
+          <tr><td>Osoba 3 – recenzent danych</td><td>sprawdza anonimizację, ryzyka i ocenia jakość wniosków</td></tr>
+        </tbody>
+      </table>
+
+      <div class="try-it">
+        <div class="try-label">🧪 Pracujcie na zanonimizowanych danych</div>
+        <p><strong>Sytuacja:</strong> macie krótkie odpowiedzi z ankiety po szkoleniu, wydarzeniu, projekcie albo działaniu szkolnym i chcecie przygotować z nich uporządkowane wnioski.</p>
+        <ol>
+          <li>Ustalcie cel analizy: co chcecie wiedzieć po lekturze odpowiedzi?</li>
+          <li>Sprawdźcie, czego nie wolno wklejać do publicznego narzędzia AI.</li>
+          <li>Zaprojektujcie 3 prompty: do grupowania odpowiedzi, wyciągania wniosków i szkicu mini-raportu.</li>
+          <li>Przetestujcie prompty na krótkiej próbce danych.</li>
+          <li>Na końcu przygotujcie 1 stronę roboczą: główne kategorie, 3 wnioski i 2 rekomendacje.</li>
+        </ol>
+        <p><strong>Produkt końcowy:</strong> plan analizy, zestaw promptów i szkic mini-raportu.</p>
+        <p>Pełną instrukcję znajdziesz w <a href="#" onclick="showPage('exercises','ex17')" style="color:var(--clr-primary)">Ćwiczeniu #17 – Mini-laboratorium analizy ankiety</a>.</p>
+      </div>
+
+      <div class="alert-box">
+        <strong>Ważne:</strong> jeśli w odpowiedziach pojawiają się dane osobowe, informacje wrażliwe albo treści pozwalające rozpoznać konkretną osobę, najpierw je usuńcie lub zastąpcie neutralnymi oznaczeniami.
       </div>
     </div>
 
@@ -736,6 +806,7 @@ PAGES.module6 = () => `
     <div class="lesson-meta">
       <span class="meta-badge">⏱ ok. 15 minut</span>
       <span class="meta-badge">🌱 Energia · woda · infrastruktura · proporcja użycia</span>
+      <span class="meta-badge">🤝 1 ćwiczenie grupowe</span>
     </div>
     <p class="lesson-intro">Ten krótki moduł pokazuje, że AI nie działa w abstrakcyjnej "chmurze", tylko na fizycznej infrastrukturze: serwerach, energii elektrycznej i systemach chłodzenia. Celem nie jest zniechęcanie do używania AI, ale bardziej świadome wybieranie sytuacji, w których daje realną wartość.</p>
     <button id="doneBtn_module6" class="mark-done-btn" onclick="markDone('module6')">✓ Oznacz jako ukończony</button>
@@ -818,6 +889,43 @@ PAGES.module6 = () => `
 
       <div class="alert-box" style="margin-top:20px">
         <strong>Wniosek praktyczny:</strong> zrównoważone użycie AI polega na wybieraniu takich zastosowań, w których narzędzie daje wyraźny zysk merytoryczny, organizacyjny lub dostępnościowy. Nie chodzi o zakaz, tylko o lepszą decyzję, kiedy warto po nie sięgnąć.
+      </div>
+    </div>
+
+    <div class="lesson-section" id="mini-codeks">
+      <h3><span class="ls-icon">🧭</span> Ćwiczenie grupowe – Mini-kodeks odpowiedzialnego używania AI</h3>
+      <p>Świadome używanie AI nie kończy się na pojedynczej decyzji. W praktyce zespół potrzebuje kilku prostych zasad: kiedy AI wolno użyć, czego nie wolno wklejać, co trzeba oznaczyć i co musi sprawdzić człowiek przed użyciem wyniku.</p>
+
+      <table class="data-table">
+        <thead><tr><th>Rola</th><th>Za co odpowiada</th></tr></thead>
+        <tbody>
+          <tr><td>Osoba 1 – właściciel kontekstu</td><td>wybiera środowisko pracy: szkoła, zespół projektowy, administracja albo biuro</td></tr>
+          <tr><td>Osoba 2 – analityk ryzyk</td><td>wskazuje sytuacje ryzykowne: dane osobowe, błędy, stronniczość, prawa autorskie</td></tr>
+          <tr><td>Osoba 3 – redaktor zasad</td><td>zamienia ustalenia zespołu w krótki i jasny mini-kodeks</td></tr>
+        </tbody>
+      </table>
+
+      <div class="try-it">
+        <div class="try-label">🧪 Zbudujcie kodeks na 1 stronę</div>
+        <p><strong>Sytuacja:</strong> Wasz zespół chce korzystać z AI, ale potrzebuje prostych zasad, które da się zastosować od jutra w codziennej pracy.</p>
+        <ol>
+          <li>Wybierzcie jeden kontekst: szkoła, dział administracyjny, projekt UE, zespół nauczycieli albo organizacja.</li>
+          <li>Wypiszcie 5–7 sytuacji, w których ktoś może chcieć użyć AI.</li>
+          <li>Przy każdej sytuacji dopiszcie decyzję: wolno, wolno warunkowo, nie używamy.</li>
+          <li>Ustalcie obowiązkowe zabezpieczenia: anonimizacja, weryfikacja faktów, oznaczanie użycia AI, odpowiedzialność człowieka.</li>
+          <li>Na końcu przygotujcie mini-kodeks, który zmieści się na jednej stronie.</li>
+        </ol>
+        <p><strong>Produkt końcowy:</strong> praktyczny mini-kodeks odpowiedzialnego używania AI dla wybranego zespołu.</p>
+        <p>Pełna wersja zadania jest w <a href="#" onclick="showPage('exercises','ex18')" style="color:var(--clr-primary)">Ćwiczeniu #18 – Mini-kodeks odpowiedzialnego używania AI</a>.</p>
+      </div>
+
+      <div class="reflection-box">
+        <div class="rb-label">Sprawdźcie swój kodeks</div>
+        <ul>
+          <li>Czy z zasad wynika jasno, co wolno, czego nie wolno i co wymaga dodatkowej zgody lub sprawdzenia?</li>
+          <li>Czy kodeks da się zastosować w praktyce także przez osobę początkującą?</li>
+          <li>Która zasada najbardziej ogranicza ryzyko błędu lub nadużycia?</li>
+        </ul>
       </div>
     </div>
 
