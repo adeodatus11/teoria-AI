@@ -560,13 +560,34 @@ Przygotuj:
 )}
     ${ex('ex11', '11', '10 Zasad AI – Ranking Postaw', 'basic', '20 min',
   'Praca grupowa, refleksja nad własnymi postawami wobec AI i etyką.',
-  `<ol>
-        <li>W grupie 3-4 osobowej przeanalizuj dostępne zasady użycia AI w edukacji.</li>
-        <li>Wybierz i ułóż TOP 10 najważniejszych zasad, które realnie powinny obowiązywać w Twojej szkole.</li>
-        <li>Uzasadnijcie, dlaczego zrezygnowaliście z innych na rzecz tej dziesiątki.</li>
+  `<p><strong>Praca:</strong> zespoły 2–3 osoby</p>
+      <p><strong>Sytuacja wyjściowa:</strong> Wasz zespół chce korzystać z AI w sposób odpowiedzialny, ale zamiast długiej polityki potrzebuje krótkiej listy zasad, które naprawdę da się stosować w codziennej pracy szkoły, projektu albo biura.</p>
+      <table class="data-table">
+        <thead><tr><th>Rola</th><th>Zakres odpowiedzialności</th></tr></thead>
+        <tbody>
+          <tr><td>Osoba 1 – moderator</td><td>pilnuje celu zadania i prowadzi wybór najważniejszych zasad</td></tr>
+          <tr><td>Osoba 2 – analityk przykładów</td><td>podaje sytuacje z praktyki i sprawdza, czy zasady są użyteczne</td></tr>
+          <tr><td>Osoba 3 – redaktor</td><td>zapisuje ranking i krótkie uzasadnienia</td></tr>
+        </tbody>
+      </table>
+      <ol>
+        <li>Przeczytajcie dostępne zasady użycia AI i dopiszcie 2-3 własne propozycje, jeśli czegoś brakuje.</li>
+        <li>Każda osoba wybiera indywidualnie 5 najważniejszych zasad.</li>
+        <li>Połączcie listy i wspólnie ułóżcie <strong>TOP 10</strong> zasad dla Waszego kontekstu pracy.</li>
+        <li>Do każdej zasady dopiszcie krótkie uzasadnienie: dlaczego jest ważna i przed czym chroni.</li>
+        <li>Wybierzcie jedną zasadę, która była najtrudniejsza do uzgodnienia, i zapiszcie dlaczego.</li>
       </ol>
-      <div class="tip-box" style="margin-top:10px">Zasady do dyskusji: Weryfikacja faktów, Ochrona danych uczniów (Brak puszczania RODO do AI), Narzędzia zatwierdzone przez szkołę, Transparentność twórcza.</div>`,
-  `<ul><li>Zespół wypracował krytyczny konsensus</li><li>Uzasadniono wybory priorytetów edukacyjnych</li><li>Ujawniono różnice w podejściu indywidualnym do technologii</li></ul>`
+      <div class="tip-box" style="margin-top:10px"><strong>Produkt końcowy:</strong> lista 10 najważniejszych zasad wraz z krótkim uzasadnieniem i jedną zasadą oznaczoną jako „najtrudniejszą do uzgodnienia”.</div>
+      <div class="tip-box" style="margin-top:10px"><strong>Przykładowe zasady do dyskusji:</strong> weryfikacja faktów, ochrona danych uczniów i pracowników, korzystanie z zatwierdzonych narzędzi, oznaczanie użycia AI, odpowiedzialność człowieka za wynik.</div>
+      <div class="reflection-box">
+        <div class="rb-label">Pytania do refleksji</div>
+        <ul>
+          <li>Które zasady są dla Was absolutnie obowiązkowe, a które zależą od sytuacji?</li>
+          <li>W którym miejscu pojawiła się największa różnica opinii w zespole?</li>
+          <li>Czy ten ranking da się zastosować od razu w praktyce, czy wymaga doprecyzowania?</li>
+        </ul>
+      </div>`,
+  `<ul><li>Zespół przygotował wspólną listę 10 zasad</li><li>Przy każdej zasadzie pojawiło się krótkie uzasadnienie</li><li>Wskazaliście co najmniej jedną zasadę trudną do uzgodnienia</li><li>Ranking nadaje się do wykorzystania jako robocza karta zasad dla zespołu</li></ul>`
 )}
     ${ex('ex12', '12', 'Checklista bezpieczeństwa', 'basic', '10 min',
   'Utrwalenie zaleceń kursu dla zabezpieczenia własnej pracy pedagogicznej.',
@@ -581,21 +602,42 @@ Przygotuj:
 )}
     ${ex('ex13', '13', 'Trening rezyliencji – AI jako trudny rodzic', 'med', '20 min',
   'Użycie sztucznej inteligencji jako wirtualnego partnera rezonującego (Roleplay), do generowania interakcji, zamiast jednostronnego tekstu.',
-  `<ol>
-        <li>Zamiast prosić o gotowy tekst, poproś o wejście w scenkę sytuacyjną.</li>
-        <li>Wpisz poniższy prompt:</li>
+  `<p><strong>Praca:</strong> solo lub w parze</p>
+      <p><strong>Sytuacja wyjściowa:</strong> chcesz przećwiczyć trudną rozmowę z rodzicem, zanim odbędzie się ona naprawdę. AI ma odegrać wymagającego rozmówcę, a jeśli pracujecie w parze, druga osoba ma obserwować przebieg i dać informację zwrotną.</p>
+      <table class="data-table">
+        <thead><tr><th>Rola</th><th>Zakres odpowiedzialności</th></tr></thead>
+        <tbody>
+          <tr><td>Osoba 1 – prowadzący rozmowę</td><td>rozmawia z AI i ćwiczy spokojne, rzeczowe odpowiedzi</td></tr>
+          <tr><td>Osoba 2 – obserwator</td><td>notuje, co działa dobrze, a co wymaga poprawy</td></tr>
+        </tbody>
+      </table>
+      <p><strong>Jeśli pracujesz solo:</strong> po zakończeniu rozmowy samodzielnie oceń przebieg według kryteriów poniżej.</p>
+      <ol>
+        <li>Zamiast prosić o gotowy tekst, poproś AI o wejście w scenkę sytuacyjną.</li>
+        <li>Wpisz poniższy prompt i rozpocznij rozmowę.</li>
+        <li>Odpowiedz na co najmniej 3 trudne komunikaty „rodzica”, zachowując spokojny i rzeczowy ton.</li>
+        <li>Jeśli pracujecie w parze, obserwator zapisuje 2 mocne strony i 2 rzeczy do poprawy.</li>
+        <li>Na końcu przygotuj krótką notatkę: które sformułowanie zadziałało najlepiej i co warto przećwiczyć jeszcze raz.</li>
       </ol>
       <div class="prompt-box" style="position:relative">
         <button class="prompt-copy-btn" onclick="copyPrompt(this)">Kopiuj</button>
         <pre>Działaj jako poirytowany rodzic ósmoklasisty, któremu właśnie wystawiłem słabą ocenę.
-Jesteś wymagający, roszczeniowy, obwiniasz metody szkoły za oceny syna. 
+Jesteś wymagający, roszczeniowy, obwiniasz metody szkoły za oceny syna.
 Ja zagram rolę nauczyciela. Będę symulował rozmowę przez okno czatu.
-Pisz bardzo krótkie wiadomości, max 2-3 zdania. 
-Zawsze czekaj na moją odpowiedź! Nie pisz całego dialogu na raz.
+Pisz bardzo krótkie wiadomości, max 2-3 zdania.
+Zawsze czekaj na moją odpowiedź. Nie pisz całego dialogu na raz.
 Zaczynam: Dzień dobry, Panie Tomaszu, chciałem omówić ostatnie wyniki syna...</pre>
       </div>
-      <p>Odeprzyj 3 ataki "rodzica" na bieżąco reagując na argumenty w oknie czatu.</p>`,
-  `<ul><li>Udało się wywołać symulację krok-po-kroku</li><li>AI przestała być grzeczna i asystująca</li><li>Oceniono wiarygodność psychologiczną rozmówcy</li></ul>`
+      <div class="tip-box" style="margin-top:12px"><strong>Produkt końcowy:</strong> zapis 3-4 wymian zdań oraz krótka notatka z informacją, co zadziałało dobrze, a co wymaga dalszego ćwiczenia.</div>
+      <div class="reflection-box">
+        <div class="rb-label">Pytania do refleksji</div>
+        <ul>
+          <li>W którym momencie rozmowa zaczęła się uspokajać albo zaostrzać?</li>
+          <li>Jakie sformułowanie najlepiej chroniło relację, a jednocześnie nie rozmywało odpowiedzialności?</li>
+          <li>Co chcesz zmienić przy kolejnej próbie?</li>
+        </ul>
+      </div>`,
+  `<ul><li>Udało się przeprowadzić rozmowę krok po kroku, bez generowania całego dialogu naraz</li><li>Masz zapis co najmniej 3 odpowiedzi na trudne komunikaty</li><li>Powstała krótka notatka z mocnymi stronami i obszarami do poprawy</li><li>Ćwiczenie pomogło przełożyć prompt na realną sytuację komunikacyjną</li></ul>`
 )}
     ${ex('ex14', '14', 'Ujarzmienie chaosu z ankiet', 'med', '15 min',
   'Analiza i wprowadzanie struktury do brudnych, niefachowych danych tekstowych z użyciem tabel.',
