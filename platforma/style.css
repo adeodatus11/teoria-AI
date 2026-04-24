@@ -948,6 +948,37 @@ body {
 .slide-set-btn.active { border-color: var(--clr-primary); background: #eff6ff; color: var(--clr-primary); }
 .slide-set-btn:hover { border-color: var(--clr-primary); color: var(--clr-primary); }
 
+/* ═══════════════════ INFOGRAPHICS ═══════════════════ */
+.infographic-page { max-width: 1040px; margin: 0 auto; padding: 28px 40px; display: flex; flex-direction: column; gap: 18px; }
+.infographic-card {
+  background: white; border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg); padding: 22px;
+  display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 22px; align-items: center;
+  box-shadow: var(--shadow-sm);
+}
+.infographic-module {
+  font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--clr-primary); margin-bottom: 10px;
+}
+.infographic-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+.infographic-card p { font-size: 14px; color: var(--clr-text-muted); line-height: 1.7; margin-bottom: 12px; }
+.infographic-card ul { list-style: none; margin: 0; }
+.infographic-card ul li {
+  font-size: 13.5px; line-height: 1.6; padding: 4px 0 4px 18px; position: relative;
+}
+.infographic-card ul li::before {
+  content: '→'; position: absolute; left: 0; top: 4px; color: var(--clr-primary); font-size: 12px;
+}
+.infographic-actions { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 16px; }
+.infographic-preview {
+  background: linear-gradient(180deg, #f8fafc 0%, #eef2ff 100%);
+  border: 1px solid var(--clr-border); border-radius: var(--radius-md);
+  padding: 12px; display: flex; align-items: center; justify-content: center;
+}
+.infographic-preview img {
+  width: 100%; height: auto; border-radius: 10px; display: block; background: white;
+}
+
 /* ═══════════════════ BIBLIOGRAPHY ═══════════════════ */
 .bib-page { max-width: 840px; margin: 0 auto; padding: 28px 40px; }
 .bib-entry {
@@ -1021,12 +1052,13 @@ body {
   .section-block { padding: 28px 20px; }
   .lesson-header { padding: 22px 20px; }
   .lesson-body { padding: 22px 20px 40px; }
-  .prompt-library, .checklist-page, .bib-page, .slide-viewer-wrap { padding: 20px 16px; }
+  .prompt-library, .checklist-page, .bib-page, .slide-viewer-wrap, .infographic-page { padding: 20px 16px; }
   .filter-bar { padding: 10px 16px; }
   .page-header { padding: 22px 20px; }
   .exercises-container { padding: 20px 16px; }
   .entry-card.featured { grid-column: span 1; flex-direction: column; }
   .topbar-continue-btn span { display: none; } /* Hide text if we had a span, but we don't in HTML yet. I'll just keep it simple. */
+  .infographic-card { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 400px) {

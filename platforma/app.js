@@ -34,13 +34,22 @@ function migrateCourseState() {
 const PAGES = {};
 let currentPage = 'home';
 
+function parseSlideTarget(target) {
+  if (!target) return { setKey: 'm1', slideIdx: 0 };
+  const [setKeyRaw, slideRaw] = String(target).split(':');
+  const setKey = setKeyRaw && typeof SLIDE_SETS !== 'undefined' && SLIDE_SETS[setKeyRaw] ? setKeyRaw : 'm1';
+  const slideIdx = /^s\d+$/.test(slideRaw || '') ? Math.max(0, Number(slideRaw.slice(1)) - 1) : 0;
+  return { setKey, slideIdx };
+}
+
 function showPage(id, arg2) {
   currentPage = id;
   document.getElementById('sidebar').classList.remove('open');
   us({ lastPage: id });
 
   document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-  const pageSelector = id === 'slides' && arg2 ? `${id}_${arg2}` : id;
+  const slideTarget = id === 'slides' ? parseSlideTarget(arg2) : null;
+  const pageSelector = id === 'slides' && slideTarget ? `${id}_${slideTarget.setKey}` : id;
   const lnk = document.querySelector(`.nav-link[data-page="${pageSelector}"]`);
   if (lnk) lnk.classList.add('active');
 
@@ -61,7 +70,7 @@ function showPage(id, arg2) {
 
   if (arg2) {
     if (id === 'slides') {
-      setTimeout(() => switchSlideSet(arg2), 50);
+      setTimeout(() => switchSlideSet(slideTarget.setKey, slideTarget.slideIdx), 50);
     } else {
       setTimeout(() => {
         const el = document.getElementById(arg2);
@@ -300,15 +309,36 @@ function chk(id, label) {
    SEARCH
 ══════════════════════════════════════ */
 
+function searchScore(item, lq) {
+  const title = item.t.toLowerCase();
+  const context = item.c.toLowerCase();
+  let score = 0;
+
+  if (title === lq) score += 120;
+  else if (title.startsWith(lq)) score += 80;
+  else if (title.includes(lq)) score += 50;
+
+  item.tags.forEach(tag => {
+    const lt = tag.toLowerCase();
+    if (lt === lq) score += 35;
+    else if (lt.startsWith(lq)) score += 24;
+    else if (lt.includes(lq)) score += 16;
+  });
+
+  if (context.includes(lq)) score += 10;
+  return score;
+}
+
 function runSearch(q) {
   const res = document.getElementById('searchResults');
   if (!q.trim()) { res.innerHTML = ''; return; }
   const lq = q.toLowerCase();
-  const hits = IDX.filter(i =>
-    i.t.toLowerCase().includes(lq) ||
-    i.c.toLowerCase().includes(lq) ||
-    i.tags.some(tg => tg.toLowerCase().includes(lq))
-  ).slice(0, 10);
+  const hits = IDX
+    .map(i => ({ item: i, score: searchScore(i, lq) }))
+    .filter(h => h.score > 0)
+    .sort((a, b) => b.score - a.score || a.item.t.localeCompare(b.item.t, 'pl'))
+    .slice(0, 12)
+    .map(h => h.item);
 
   if (!hits.length) { res.innerHTML = `<div class="search-empty">Brak wyników dla „${q}"</div>`; return; }
   res.innerHTML = hits.map(h => `
@@ -333,7 +363,7 @@ function modulePills() {
     { id: 'exercises', emoji: '🧩', label: 'Ćwiczenia' },
     { id: 'prompts', emoji: '💡', label: 'Promptownik' },
     { id: 'checklists', emoji: '✅', label: 'Checklisty' },
-    { id: 'myplan', emoji: '🎯', label: 'Mój plan' },
+    { id: 'myplan', emoji: '🎯', label: 'Mój plan wdrożenia' },
   ];
   const doneCount = done.filter(d => ms.map(m => m.id).includes(d)).length;
   const pct = Math.round(doneCount / ms.length * 100);
@@ -368,7 +398,7 @@ PAGES.exercises = () => `
   <div class="page-header">
     <div class="breadcrumb"><a href="#" onclick="showPage('home')">🏠 Start</a> <span class="bc-sep">›</span> Ćwiczenia</div>
     <h2>🧩 Ćwiczenia praktyczne</h2>
-    <p>Osiemnaście głównych ćwiczeń kursu. Każde zawiera instrukcję krok po kroku, materiał startowy lub gotowy prompt i kryteria oceny własnej pracy.</p>
+    <p>18 głównych ćwiczeń kursu. Każde zawiera cel, instrukcję krok po kroku, materiał startowy lub gotowy prompt oraz kryteria sukcesu.</p>
     <button id="doneBtn_exercises" class="mark-done-btn" onclick="markDone('exercises')">✓ Oznacz jako ukończony</button>
   </div>
   <div class="filter-bar">
@@ -380,7 +410,7 @@ PAGES.exercises = () => `
     ${ex('ex1', '1', 'Mój pierwszy prompt', 'basic', '15–20 min',
   'Otwórz narzędzie AI i wykonaj swoje pierwsze zadanie. Oceń wynik.',
   `<ol>
-        <li>Otwórz jedno narzędzie: <strong>chat.openai.com</strong> (ChatGPT), <strong>gemini.google.com</strong> (Gemini) lub <strong>claude.ai</strong></li>
+        <li>Otwórz jedno narzędzie: <strong>chatgpt.com</strong> (ChatGPT), <strong>gemini.google.com</strong> (Gemini) lub <strong>claude.ai</strong></li>
         <li>Pomyśl o jednym zadaniu zawodowym, które regularnie zajmuje Ci dużo czasu.</li>
         <li>Opisz to zadanie w polu tekstowym – tak, jak napisałbyś/napisałabyś do kolegi z prośbą o pomoc.</li>
         <li>Kliknij „Wyślij" i przeczytaj wynik.</li>
@@ -489,7 +519,7 @@ Oddaj to w postaci tabeli roboczej dla Project Managera.</pre>
   `<ul><li>Zrozumiałeś/aś ryzyko podawania długiego PDFa do otwartego <span translate="no" class="notranslate">LLM</span></li><li>Zauważyłeś/aś próbę kompresji z pominięciem detali</li><li>Znasz prompt audytowy do skanowania warunków zaporowych</li></ul>`
 )}
     ${ex('ex7', '7', 'Mail w języku obcym', 'basic', '15 min',
-  'Praktyczne używanie AI do korespondencji zagranicznej w projektach.',
+  'Przećwicz użycie AI do korespondencji projektowej w języku obcym.',
   `<ol>
         <li>Napisz w języku polskim, co chcesz przekazać (luźne notatki, np. spotkanie planowane było na 15 maja, zmieniamy na 22 maja).</li>
         <li>Wpisz do AI:</li>
@@ -506,7 +536,7 @@ Format: Temat maila + Treść (max 120 słów) + Podpis [TWOJE IMIE]</pre>
   `<ul><li>Język jest poprawny gramatycznie i grzecznościowo</li><li>Uchwycono kluczowe zmiany z notatek</li><li>Wygenerowany mail nadaje się do wysłania po korekcie danych osobowych</li></ul>`
 )}
     ${ex('ex8', '8', 'Dostosowanie materiału do ucznia SPE', 'med', '15 min',
-  'Praktyczne różnicowanie materiałów dydaktycznych dla uczniów ze specjalnymi potrzebami edukacyjnymi.',
+  'Dostosuj materiał dydaktyczny do potrzeb ucznia ze SPE.',
   `<ol>
         <li>Przygotuj krótki tekst dydaktyczny ze swojego przedmiotu.</li>
         <li>Wklej jego treść do narzędzia AI i napisz:</li>
@@ -527,7 +557,7 @@ Przepisz go w wersji dostosowanej do ucznia z dysleksją:
   `<ul><li>Zdania stały się krótsze i łatwiejsze w odbiorze</li><li>Treść merytoryczna została zachowana</li><li>Metoda nadaje się do szybkiego przygotowania kart dla uczniów SPE</li></ul>`
 )}
     ${ex('ex9', '9', 'Podsumowanie spotkania z notatek', 'basic', '10 min',
-  'Szybkie tworzenie protokołów i podsumowań z brudnych notatek.',
+  'Zamień surowe notatki w protokół i krótkie podsumowanie.',
   `<ol>
         <li>Wklej poniższe notatki ze spotkania rady pedagogicznej do AI i poproś o protokół:</li>
       </ol>
@@ -543,7 +573,7 @@ Przepisz go w wersji dostosowanej do ucznia z dysleksją:
   `<ul><li>Powstał uporządkowany protokół</li><li>Wyodrębniono konkretne zadania dla osób</li><li>Streszczenie jest zwięzłe i trafne</li></ul>`
 )}
     ${ex('ex10', '10', 'Tworzenie treści promocyjnych projektu', 'basic', '15 min',
-  'Generowanie krótkich treści marketingowych i informacyjnych o projekcie.',
+  'Przygotuj krótkie treści informacyjne i promocyjne o projekcie.',
   `<ol>
         <li>Pomyśl o szkolnym projekcie i wymyśl co chcesz o nim napisać (Facebook/Strona www).</li>
       </ol>
@@ -559,7 +589,7 @@ Przygotuj:
   `<ul><li>Ton postu na Facebooka diametralnie różni się od opisu na stronę www</li><li>Tekst nie używa ciężkiego "projektowego" żargonu</li><li>Wymaga minimalnej redakcji przed publikacją</li></ul>`
 )}
     ${ex('ex11', '11', '10 Zasad AI – Ranking Postaw', 'basic', '20 min',
-  'Praca grupowa, refleksja nad własnymi postawami wobec AI i etyką.',
+  'Ustal wspólną listę zasad odpowiedzialnego używania AI.',
   `<p><strong>Praca:</strong> zespoły 2–3 osoby</p>
       <p><strong>Sytuacja wyjściowa:</strong> Wasz zespół chce korzystać z AI w sposób odpowiedzialny, ale zamiast długiej polityki potrzebuje krótkiej listy zasad, które naprawdę da się stosować w codziennej pracy szkoły, projektu albo biura.</p>
       <table class="data-table">
@@ -577,7 +607,7 @@ Przygotuj:
         <li>Do każdej zasady dopiszcie krótkie uzasadnienie: dlaczego jest ważna i przed czym chroni.</li>
         <li>Wybierzcie jedną zasadę, która była najtrudniejsza do uzgodnienia, i zapiszcie dlaczego.</li>
       </ol>
-      <div class="tip-box" style="margin-top:10px"><strong>Produkt końcowy:</strong> lista 10 najważniejszych zasad wraz z krótkim uzasadnieniem i jedną zasadą oznaczoną jako „najtrudniejszą do uzgodnienia”.</div>
+      <div class="tip-box" style="margin-top:10px"><strong>Efekt końcowy:</strong> lista 10 najważniejszych zasad wraz z krótkim uzasadnieniem i jedną zasadą oznaczoną jako „najtrudniejszą do uzgodnienia”.</div>
       <div class="tip-box" style="margin-top:10px"><strong>Przykładowe zasady do dyskusji:</strong> weryfikacja faktów, ochrona danych uczniów i pracowników, korzystanie z zatwierdzonych narzędzi, oznaczanie użycia AI, odpowiedzialność człowieka za wynik.</div>
       <div class="reflection-box">
         <div class="rb-label">Pytania do refleksji</div>
@@ -590,7 +620,7 @@ Przygotuj:
   `<ul><li>Zespół przygotował wspólną listę 10 zasad</li><li>Przy każdej zasadzie pojawiło się krótkie uzasadnienie</li><li>Wskazaliście co najmniej jedną zasadę trudną do uzgodnienia</li><li>Ranking nadaje się do wykorzystania jako robocza karta zasad dla zespołu</li></ul>`
 )}
     ${ex('ex12', '12', 'Checklista bezpieczeństwa', 'basic', '10 min',
-  'Utrwalenie zaleceń kursu dla zabezpieczenia własnej pracy pedagogicznej.',
+  'Sprawdź, czy znasz podstawowe zasady bezpiecznego używania AI.',
   `<div class="alert-box"><strong>Zweryfikuj samego siebie przed wyjazdem ze szkolenia:</strong>
       <ol>
       <li>Wiem, co to jest LLM i dlaczego AI potrafi "kłamać"?</li>
@@ -601,7 +631,7 @@ Przygotuj:
   `<ul><li>Rozumienie ograniczeń modelu LLM</li><li>Gotowość do zaprzęgnięcia narzędzia bezpiecznie w pracy dydaktycznej</li></ul>`
 )}
     ${ex('ex13', '13', 'Trening rezyliencji – AI jako trudny rodzic', 'med', '20 min',
-  'Użycie sztucznej inteligencji jako wirtualnego partnera rezonującego (Roleplay), do generowania interakcji, zamiast jednostronnego tekstu.',
+  'Przećwicz trudną rozmowę z pomocą AI w formie roleplay.',
   `<p><strong>Praca:</strong> solo lub w parze</p>
       <p><strong>Sytuacja wyjściowa:</strong> chcesz przećwiczyć trudną rozmowę z rodzicem, zanim odbędzie się ona naprawdę. AI ma odegrać wymagającego rozmówcę, a jeśli pracujecie w parze, druga osoba ma obserwować przebieg i dać informację zwrotną.</p>
       <table class="data-table">
@@ -628,7 +658,7 @@ Pisz bardzo krótkie wiadomości, max 2-3 zdania.
 Zawsze czekaj na moją odpowiedź. Nie pisz całego dialogu na raz.
 Zaczynam: Dzień dobry, Panie Tomaszu, chciałem omówić ostatnie wyniki syna...</pre>
       </div>
-      <div class="tip-box" style="margin-top:12px"><strong>Produkt końcowy:</strong> zapis 3-4 wymian zdań oraz krótka notatka z informacją, co zadziałało dobrze, a co wymaga dalszego ćwiczenia.</div>
+      <div class="tip-box" style="margin-top:12px"><strong>Efekt końcowy:</strong> zapis 3-4 wymian zdań oraz krótka notatka z informacją, co zadziałało dobrze, a co wymaga dalszego ćwiczenia.</div>
       <div class="reflection-box">
         <div class="rb-label">Pytania do refleksji</div>
         <ul>
@@ -640,7 +670,7 @@ Zaczynam: Dzień dobry, Panie Tomaszu, chciałem omówić ostatnie wyniki syna..
   `<ul><li>Udało się przeprowadzić rozmowę krok po kroku, bez generowania całego dialogu naraz</li><li>Masz zapis co najmniej 3 odpowiedzi na trudne komunikaty</li><li>Powstała krótka notatka z mocnymi stronami i obszarami do poprawy</li><li>Ćwiczenie pomogło przełożyć prompt na realną sytuację komunikacyjną</li></ul>`
 )}
     ${ex('ex14', '14', 'Ujarzmienie chaosu z ankiet', 'med', '15 min',
-  'Analiza i wprowadzanie struktury do brudnych, niefachowych danych tekstowych z użyciem tabel.',
+  'Uporządkuj chaotyczne odpowiedzi z ankiety i zamień je w tabelę.',
   `<ol>
         <li>Skopiuj i wklej do AI poniższy zlepek "surowych" uwag uczniów wraz z podanym promptem:</li>
       </ol>
@@ -655,7 +685,7 @@ Dane wejściowe:
   `<ul><li>AI poprawnie pogrupowała chaotyczne myśli</li><li>Wygenerowano format tabeli zamiast opowiadania</li><li>Zrozumiano użyteczność AI do pracy analitycznej</li></ul>`
 )}
     ${ex('ex15', '15', 'Odwrócona inżynieria (Reverse Prompting)', 'med', '15 min',
-  'Metapoznanie: myślenie kategoriami modelu językowego zamiast pisarza.',
+  'Odtwórz dobry prompt na podstawie gotowego tekstu.',
   `<ol>
         <li>Znajdź w internecie bardzo dobry konspekt lekcji lub oficjalne ogłoszenie z urzędu.</li>
         <li>Wklej cały jego tekst do okna AI wraz z komendą inżynierii wstecznej:</li>
@@ -701,7 +731,7 @@ Zaprojektuj dla mnie doskonały prompt w układzie PARTS, którego użycie zmusi
           <tr><td>4. Finalna</td><td>najlepsze elementy z trzech wersji</td><td></td><td></td></tr>
         </tbody>
       </table>
-      <div class="tip-box" style="margin-top:12px"><strong>Produkt końcowy:</strong> tabela porównawcza 3 odpowiedzi AI oraz 1 finalny prompt zespołu gotowy do zapisania w Promptowniku lub notatkach.</div>
+      <div class="tip-box" style="margin-top:12px"><strong>Efekt końcowy:</strong> tabela porównawcza 3 odpowiedzi AI oraz 1 finalny prompt zespołu gotowy do zapisania w Promptowniku lub notatkach.</div>
       <div class="reflection-box">
         <div class="rb-label">Pytania do refleksji</div>
         <ul>
@@ -756,7 +786,7 @@ Na końcu przygotuj szkic mini-raportu:
 Kategorie | Główne wnioski | Rekomendacje.
 Dane: [WKLEJ ZANONIMIZOWANE ODPOWIEDZI]</pre>
       </div>
-      <div class="tip-box" style="margin-top:12px"><strong>Produkt końcowy:</strong> plan analizy, 3 prompty, mini-raport oraz krótka lista danych, których nie wolno wklejać do AI.</div>
+      <div class="tip-box" style="margin-top:12px"><strong>Efekt końcowy:</strong> plan analizy, 3 prompty, mini-raport oraz krótka lista danych, których nie wolno wklejać do AI.</div>
       <div class="reflection-box">
         <div class="rb-label">Pytania do refleksji</div>
         <ul>
@@ -810,7 +840,7 @@ Nie twórz gotowej polityki za zespół.
 Zaproponuj roboczą strukturę i pytania, które zespół powinien sam rozstrzygnąć.</pre>
       </div>
       <div class="alert-box"><strong>Ważne:</strong> AI może pomóc uporządkować materiał, ale nie powinna sama decydować o zasadach. Ostateczny kodeks musi zatwierdzić człowiek odpowiedzialny za zespół, dokumenty i dane.</div>
-      <div class="tip-box" style="margin-top:12px"><strong>Produkt końcowy:</strong> mini-kodeks na 1 stronę z tabelą sytuacji użycia AI i zasadami bezpieczeństwa.</div>
+      <div class="tip-box" style="margin-top:12px"><strong>Efekt końcowy:</strong> mini-kodeks na 1 stronę z tabelą sytuacji użycia AI i zasadami bezpieczeństwa.</div>
       <div class="reflection-box">
         <div class="rb-label">Pytania do refleksji</div>
         <ul>
@@ -843,7 +873,7 @@ function ex(anchor, num, title, level, time, goal, body, results) {
         <p style="color:var(--clr-text-muted);margin-bottom:14px"><strong>Cel:</strong> ${goal}</p>
         ${body}
         <div class="sep"></div>
-        <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--clr-primary);margin-bottom:8px">✓ Sprawdź się – kryteria sukcesu</div>
+        <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--clr-primary);margin-bottom:8px">✓ Kryteria sukcesu</div>
         ${results}
       </div>
     </div>`;
@@ -1215,7 +1245,7 @@ PAGES.checklists = () => `
       ${chk('cs10', 'Wiem, do kogo w szkole zwrócić się z pytaniem o politykę AI i RODO')}
       <div class="tip-box" style="margin-top:14px">
         <strong>Gdzie zaznaczasz NIE:</strong> wróć do odpowiedniego modułu lub ćwiczenia.<br>
-        <strong>Gdzie zaznaczasz WSZYSTKIE TAK:</strong> jesteś gotowy/a do wdrożenia AI! 🎉
+        <strong>Gdzie zaznaczasz same TAK:</strong> jesteś gotowy/a do wdrożenia AI! 🎉
       </div>
       <button class="checklist-reset" onclick="resetChecks('cs')">↺ Zacznij od nowa</button>
     </div>
@@ -1229,7 +1259,7 @@ PAGES.myplan = () => `
   <div class="page-header">
     <div class="breadcrumb"><a href="#" onclick="showPage('home')">🏠 Start</a> <span class="bc-sep">›</span> Mój plan</div>
     <h2>🎯 Mój plan wdrożenia AI</h2>
-    <p>7 konkretnych zadań na pierwszy tydzień. Zaznaczaj ukończone – twój postęp jest zapisywany automatycznie.</p>
+    <p>7 konkretnych zadań na pierwszy tydzień. Zaznaczaj ukończone – Twój postęp jest zapisywany automatycznie.</p>
     <button id="doneBtn_myplan" class="mark-done-btn" onclick="markDone('myplan')">✓ Oznacz jako ukończony</button>
   </div>
   <div class="checklist-page">
@@ -1298,7 +1328,7 @@ PAGES.slides = () => `
   <div class="page-header">
     <div class="breadcrumb"><a href="#" onclick="showPage('home')">🏠 Start</a> <span class="bc-sep">›</span> Prezentacje</div>
     <h2>📊 Prezentacje – slajdy kursu</h2>
-    <p>Zestaw interaktywnych slajdów wprowadzających do platformy (wersja dla prowadzącego). Rekomendujemy ich wykorzystanie w trybie pełnoekranowym na rzutniku, jako krótkie wprowadzenie do kolejnych etapów szkolenia. Do nawigacji możesz używać strzałek na klawiaturze.</p>
+    <p>Zestaw interaktywnych slajdów do każdego modułu. Możesz używać ich jako krótkiego wprowadzenia do szkolenia, materiału dla prowadzącego albo szybkiej powtórki treści. Do nawigacji możesz używać strzałek na klawiaturze.</p>
   </div>
   <div class="slide-viewer-wrap">
     <div class="slide-set-nav">
@@ -1343,15 +1373,17 @@ function renderAllSlides(setKey) {
 function initSlides() {
   updateSlideUI();
 }
-function switchSlideSet(key) {
-  currentSet = key; currentSlideIdx = 0;
+function switchSlideSet(key, startIdx = 0) {
+  if (!SLIDE_SETS[key]) key = 'm1';
+  currentSet = key;
+  currentSlideIdx = Math.max(0, Math.min(startIdx, SLIDE_SETS[key].slides.length - 1));
   document.querySelectorAll('.slide-set-btn').forEach((b, i) => {
     b.classList.toggle('active', Object.keys(SLIDE_SETS)[i] === key);
   });
   const area = document.getElementById('slideArea');
   if (area) { area.innerHTML = renderAllSlides(key); }
   const dotsEl = document.getElementById('slideDots');
-  if (dotsEl) dotsEl.innerHTML = SLIDE_SETS[key].slides.map((_, i) => `<div class="sdot ${i === 0 ? 'active' : ''}" onclick="goSlide(${i})"></div>`).join('');
+  if (dotsEl) dotsEl.innerHTML = SLIDE_SETS[key].slides.map((_, i) => `<div class="sdot ${i === currentSlideIdx ? 'active' : ''}" onclick="goSlide(${i})"></div>`).join('');
   const title = document.getElementById('slideSetTitle');
   if (title) title.textContent = SLIDE_SETS[key].title;
   updateSlideUI();
@@ -1388,8 +1420,88 @@ function updateSlideUI() {
 }
 
 /* ══════════════════════════════════════
+   PAGE: INFOGRAPHICS
+══════════════════════════════════════ */
+const INFOGRAPHICS = [
+  {
+    id: 'inf-parts',
+    title: 'PARTS – anatomia dobrego promptu',
+    moduleLabel: 'Moduł 2 – Prompting',
+    desc: 'Jednostronicowa ściąga pokazująca 5 elementów dobrego promptu: rolę, cel, odbiorcę, ton i strukturę odpowiedzi.',
+    points: ['krótkie pytania kontrolne do każdego elementu', 'przykład promptu złożonego z 5 części', 'materiał do wydruku lub otwarcia na ekranie'],
+    asset: 'assets/infographic-parts.svg',
+    modulePage: 'module2',
+    moduleAnchor: 'parts'
+  },
+  {
+    id: 'inf-rodo',
+    title: 'RODO + AI – co wklejać, czego nie wklejać',
+    moduleLabel: 'Moduł 4 – Projekty i analityka',
+    desc: 'Wizualna karta decyzji do pracy z dokumentami, ankietami i notatkami. Rozdziela treści zakazane, wymagające anonimizacji i zwykle bezpieczne.',
+    points: ['kolorystyczny podział na trzy poziomy ryzyka', 'przykłady danych osobowych i danych wrażliwych', 'krótka checklista przed wklejeniem treści do AI'],
+    asset: 'assets/infographic-rodo-ai.svg',
+    modulePage: 'module4',
+    moduleAnchor: 'rodo'
+  },
+  {
+    id: 'inf-proporcja',
+    title: 'Zasada proporcji – kiedy AI daje realną wartość',
+    moduleLabel: 'Moduł 6 – Zrównoważone AI',
+    desc: 'Infografika wspiera decyzję, czy dane użycie AI ma sens. Pomaga odróżnić pracę o wysokiej wartości od zbędnych iteracji.',
+    points: ['dwa typy użycia: o wyraźnej i niskiej wartości', 'krótki test 4 pytań przed uruchomieniem AI', 'prosta zasada: używaj AI tam, gdzie daje realny zysk'],
+    asset: 'assets/infographic-zasada-proporcji.svg',
+    modulePage: 'module6',
+    moduleAnchor: 'proporcja'
+  }
+];
+
+PAGES.infographics = () => `
+  <div class="page-header">
+    <div class="breadcrumb"><a href="#" onclick="showPage('home')">🏠 Start</a> <span class="bc-sep">›</span> Infografiki</div>
+    <h2>🖼️ Infografiki</h2>
+    <p>Trzy krótkie materiały wizualne do wykorzystania podczas szkolenia, samodzielnej nauki albo pracy z zespołem. Każdą infografikę możesz otworzyć jako osobny plik SVG i powiązać z odpowiednim modułem kursu.</p>
+  </div>
+  <div class="infographic-page">
+    ${INFOGRAPHICS.map(info => `
+      <section class="infographic-card" id="${info.id}">
+        <div class="infographic-copy">
+          <div class="infographic-module">${info.moduleLabel}</div>
+          <h3>${info.title}</h3>
+          <p>${info.desc}</p>
+          <ul>
+            ${info.points.map(point => `<li>${point}</li>`).join('')}
+          </ul>
+          <div class="infographic-actions">
+            <a class="bib-link" href="${info.asset}" target="_blank" rel="noopener noreferrer">Otwórz SVG ↗</a>
+            <a class="bib-link" href="#" onclick="showPage('${info.modulePage}','${info.moduleAnchor}');return false;">Przejdź do modułu →</a>
+          </div>
+        </div>
+        <div class="infographic-preview">
+          <img src="${info.asset}" alt="${info.title}">
+        </div>
+      </section>
+    `).join('')}
+  </div>
+`;
+
+/* ══════════════════════════════════════
    PAGE: BIBLIOGRAPHY
 ══════════════════════════════════════ */
+const BIB_SOURCES = [
+  { id: 'bib-unesco-framework', title: 'UNESCO AI Competency Framework for Teachers', year: '2024', org: 'UNESCO', note: 'Definiuje kompetencje AI dla nauczycieli i porządkuje rozwój zawodowy wokół użycia AI w edukacji.', prio: '1', url: 'https://www.unesco.org/en/articles/ai-competency-framework-teachers' },
+  { id: 'bib-talis-2024', title: 'Results from TALIS 2024', year: '2024', org: 'OECD', note: 'Oficjalny raport TALIS z danymi o pracy nauczycieli, lukach kompetencyjnych i potrzebie rozwoju zawodowego.', prio: '1', url: 'https://www.oecd.org/en/publications/results-from-talis-2024_90df6235-en.html' },
+  { id: 'bib-gallup-ai-time', title: 'Three in 10 Teachers Are Saving Weeks of Time With AI', year: '2025', org: 'Gallup', note: 'Źródło danych o oszczędności czasu przy regularnym używaniu AI w pracy nauczycieli.', prio: '1', url: 'https://news.gallup.com/poll/691967/three-teachers-weekly-saving-six-weeks-year.aspx' },
+  { id: 'bib-ec-ethical-guidelines', title: 'Ethical guidelines on the use of artificial intelligence and data in teaching and learning for educators', year: '2024', org: 'Komisja Europejska', note: 'Wytyczne dotyczące etycznego i odpowiedzialnego użycia AI oraz danych w edukacji.', prio: '1', url: 'https://education.ec.europa.eu/news/ethical-guidelines-on-the-use-of-artificial-intelligence-and-data-in-teaching-and-learning-for-educators' },
+  { id: 'bib-digcompedu', title: 'DigCompEdu', year: '2017', org: 'Joint Research Centre, Komisja Europejska', note: 'Europejskie ramy kompetencji cyfrowych edukatorów. Ważny punkt odniesienia dla wdrożeń AI w edukacji.', prio: '1', url: 'https://joint-research-centre.ec.europa.eu/digcompedu_en' },
+  { id: 'bib-deap', title: 'Digital Education Action Plan 2021–2027', year: '2021', org: 'Komisja Europejska', note: 'Strategiczny kontekst dla edukacji cyfrowej, kompetencji i działań systemowych w UE.', prio: '2', url: 'https://education.ec.europa.eu/focus-topics/digital-education/action-plan' },
+  { id: 'bib-unesco-generative-ai', title: 'Guidance for generative AI in education and research', year: '2023', org: 'UNESCO', note: 'Praktyczne wskazówki dotyczące wdrażania generatywnej AI w edukacji i badaniach.', prio: '2', url: 'https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research' },
+  { id: 'bib-ai-in-education-platform', title: 'AI in Education', year: '2024', org: 'European School Education Platform', note: 'Kurs i zasoby dla osób pracujących w edukacji, pokazujące praktyczne scenariusze użycia AI.', prio: '2', url: 'https://school-education.ec.europa.eu/en/learn/courses/ai-education' },
+  { id: 'bib-gemini-for-education', title: 'Gemini for Education', year: '2025', org: 'Google for Education', note: 'Oficjalny opis narzędzia edukacyjnego i jego ograniczeń oraz zabezpieczeń.', prio: '3', url: 'https://edu.google.com/ai/gemini-for-education/' },
+  { id: 'bib-iea-energy-ai', title: 'Energy and AI', year: '2025', org: 'International Energy Agency', note: 'Oficjalny raport o energii, centrach danych i wpływie rozwoju AI na zapotrzebowanie energetyczne.', prio: '2', url: 'https://www.iea.org/reports/energy-and-ai' },
+  { id: 'bib-li-water-footprint', title: 'Making AI Less "Thirsty": Uncovering and Addressing the Secret Water Footprint of AI Models', year: '2025', org: 'Li et al.', note: 'Badanie o śladzie wodnym modeli AI, wykorzystywane w module o zrównoważonym AI.', prio: '2', url: 'https://arxiv.org/abs/2304.03271' },
+  { id: 'bib-luccioni-bloom', title: 'Estimating the Carbon Footprint of BLOOM, a 176B Parameter Language Model', year: '2022', org: 'Luccioni et al.', note: 'Opracowanie porównawcze dotyczące śladu węglowego dużych modeli językowych.', prio: '2', url: 'https://www.jmlr.org/papers/v24/23-0069.html' }
+];
+
 PAGES.bibliography = () => `
   <div class="page-header">
     <div class="breadcrumb"><a href="#" onclick="showPage('home')">🏠 Start</a> <span class="bc-sep">›</span> Źródła</div>
@@ -1397,25 +1509,15 @@ PAGES.bibliography = () => `
     <p>Badania, raporty i dokumenty instytucjonalne, na których oparty jest kurs. Każdy wpis zawiera link do źródła, które możesz otworzyć w przeglądarce.</p>
   </div>
   <div class="bib-page">
-    ${bib('UNESCO AI Competency Framework for Teachers', '2024', 'UNESCO', 'Definiuje kompetencje AI dla nauczycieli i porządkuje rozwój zawodowy wokół użycia AI w edukacji.', '1', 'https://www.unesco.org/en/articles/ai-competency-framework-teachers')}
-    ${bib('Results from TALIS 2024', '2024', 'OECD', 'Oficjalny raport TALIS z danymi o pracy nauczycieli, lukach kompetencyjnych i potrzebie rozwoju zawodowego.', '1', 'https://www.oecd.org/en/publications/results-from-talis-2024_90df6235-en.html')}
-    ${bib('Three in 10 Teachers Are Saving Weeks of Time With AI', '2025', 'Gallup', 'Źródło danych o oszczędności czasu przy regularnym używaniu AI w pracy nauczycieli.', '1', 'https://news.gallup.com/poll/691967/three-teachers-weekly-saving-six-weeks-year.aspx')}
-    ${bib('Ethical guidelines on the use of artificial intelligence and data in teaching and learning for educators', '2024', 'Komisja Europejska', 'Wytyczne dotyczące etycznego i odpowiedzialnego użycia AI oraz danych w edukacji.', '1', 'https://education.ec.europa.eu/news/ethical-guidelines-on-the-use-of-artificial-intelligence-and-data-in-teaching-and-learning-for-educators')}
-    ${bib('DigCompEdu', '2017', 'Joint Research Centre, Komisja Europejska', 'Europejskie ramy kompetencji cyfrowych edukatorów. Ważny punkt odniesienia dla wdrożeń AI w edukacji.', '1', 'https://joint-research-centre.ec.europa.eu/digcompedu_en')}
-    ${bib('Digital Education Action Plan 2021–2027', '2021', 'Komisja Europejska', 'Strategiczny kontekst dla edukacji cyfrowej, kompetencji i działań systemowych w UE.', '2', 'https://education.ec.europa.eu/focus-topics/digital-education/action-plan')}
-    ${bib('Guidance for generative AI in education and research', '2023', 'UNESCO', 'Praktyczne wskazówki dotyczące wdrażania generatywnej AI w edukacji i badaniach.', '2', 'https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research')}
-    ${bib('AI in Education', '2024', 'European School Education Platform', 'Kurs i zasoby dla osób pracujących w edukacji, pokazujące praktyczne scenariusze użycia AI.', '2', 'https://school-education.ec.europa.eu/en/learn/courses/ai-education')}
-    ${bib('Gemini for Education', '2025', 'Google for Education', 'Oficjalny opis narzędzia edukacyjnego i jego ograniczeń oraz zabezpieczeń.', '3', 'https://edu.google.com/ai/gemini-for-education/')}
-    ${bib('Energy and AI', '2025', 'International Energy Agency', 'Oficjalny raport o energii, centrach danych i wpływie rozwoju AI na zapotrzebowanie energetyczne.', '2', 'https://www.iea.org/reports/energy-and-ai')}
-    ${bib('Making AI Less "Thirsty": Uncovering and Addressing the Secret Water Footprint of AI Models', '2025', 'Li et al.', 'Badanie o śladzie wodnym modeli AI, wykorzystywane w module o zrównoważonym AI.', '2', 'https://arxiv.org/abs/2304.03271')}
-    ${bib('Estimating the Carbon Footprint of BLOOM, a 176B Parameter Language Model', '2022', 'Luccioni et al.', 'Opracowanie porównawcze dotyczące śladu węglowego dużych modeli językowych.', '2', 'https://www.jmlr.org/papers/v24/23-0069.html')}
+    ${BIB_SOURCES.map(source => bib(source)).join('')}
   </div>
 `;
 
-function bib(title, year, org, note, prio, url) {
+function bib(source) {
+  const { id, title, year, org, note, prio, url } = source;
   const prioLabel = { 1: 'Kluczowe źródło', 2: 'Uzupełniające', 3: 'Zasoby dodatkowe' };
   const prioCls = { 1: 'bib-1', 2: 'bib-2', 3: 'bib-3' };
-  return `<div class="bib-entry">
+  return `<div class="bib-entry" id="${id}">
     <span class="bib-badge ${prioCls[prio]}">${prioLabel[prio]}</span>
     <div class="bib-title">${title}</div>
     <div class="bib-detail">${org} · ${year}</div>
@@ -1423,6 +1525,72 @@ function bib(title, year, org, note, prio, url) {
     ${url ? `<div class="bib-link-row"><a class="bib-link" href="${url}" target="_blank" rel="noopener noreferrer">Otwórz źródło ↗</a></div>` : ''}
   </div>`;
 }
+
+function stripHtml(html) {
+  return html
+    .replace(/<br\s*\/?>/gi, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function extendSearchIndex() {
+  if (extendSearchIndex.done || typeof IDX === 'undefined') return;
+  const existing = new Set(IDX.map(item => `${item.p}|${item.a}|${item.t}`));
+  const extras = [];
+
+  Object.entries(SLIDE_SETS).forEach(([setKey, set]) => {
+    set.slides.forEach((slide, index) => {
+      const anchor = `${setKey}:s${index + 1}`;
+      const title = `Slajd ${index + 1}: ${slide.title}`;
+      const tags = [
+        'slajd',
+        set.title,
+        `moduł ${setKey.slice(1)}`,
+        slide.tag.replace(/[^\p{L}\p{N}\s]/gu, '').trim()
+      ].filter(Boolean);
+      extras.push({
+        t: title,
+        p: 'slides',
+        a: anchor,
+        tags,
+        c: stripHtml(slide.body).slice(0, 180)
+      });
+    });
+  });
+
+  BIB_SOURCES.forEach(source => {
+    extras.push({
+      t: `Źródło: ${source.title}`,
+      p: 'bibliography',
+      a: source.id,
+      tags: ['źródło', 'bibliografia', source.org, source.year],
+      c: source.note
+    });
+  });
+
+  INFOGRAPHICS.forEach(info => {
+    extras.push({
+      t: `Infografika: ${info.title}`,
+      p: 'infographics',
+      a: info.id,
+      tags: ['infografika', 'infografiki', info.moduleLabel, 'materiały'],
+      c: info.desc
+    });
+  });
+
+  extras.forEach(item => {
+    const key = `${item.p}|${item.a}|${item.t}`;
+    if (!existing.has(key)) {
+      IDX.push(item);
+      existing.add(key);
+    }
+  });
+
+  extendSearchIndex.done = true;
+}
+
+extendSearchIndex();
 
 /* ══════════════════════════════════════
    KEYBOARD NAVIGATION FOR SLIDES

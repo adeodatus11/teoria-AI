@@ -70,7 +70,7 @@ PAGES.module1 = () => `
         </div>
       </div>
       <div class="try-it">
-        <div class="try-label">🧪 Przetestuj – wykrywanie halucynacji</div>
+        <div class="try-label">🧪 Ćwiczenie własne – wykryj halucynację</div>
         <p>Wpisz do dowolnego narzędzia AI poniższy prompt (celowo dotyczy nieistniejącego zapisu):</p>
         <div class="prompt-box" style="position:relative">
           <button class="prompt-copy-btn" onclick="copyPrompt(this)">Kopiuj</button>
@@ -125,7 +125,7 @@ PAGES.module1 = () => `
         </div>
       </div>
       <div class="try-it" id="first-prompt-exercise">
-        <div class="try-label">🧪 Twoje pierwsze ćwiczenie – Zrób to teraz</div>
+        <div class="try-label">🧪 Ćwiczenie własne – pierwszy prompt</div>
         <p><strong>Krok 1:</strong> Otwórz narzędzie AI w nowej karcie przeglądarki.</p>
         <p><strong>Krok 2:</strong> Pomyśl o jednym zadaniu zawodowym, które regularnie zajmuje Ci dużo czasu.</p>
         <p><strong>Krok 3:</strong> Wpisz je do AI tak, jak napisałbyś/napisałabyś do kolegi proszącego o pomoc.</p>
@@ -225,10 +225,14 @@ Format: tabela Czas | Aktywność | Materiały | Uwagi</pre>
       </div>
 
       <div class="try-it">
-        <div class="try-label">🧪 Zrób to sam/a teraz</div>
+        <div class="try-label">🧪 Ćwiczenie własne – popraw prompt</div>
         <p><strong>Wróć do swojego pierwszego promptu z Modułu 1</strong> i przepisz go według <span translate="no" class="notranslate">PARTS</span>.</p>
         <p>Wpisz <em>do AI</em> obie wersje – oryginalną i ulepszoną. Porównaj wyniki.</p>
         <p>Zapytaj siebie: jak duża jest różnica? Który byś użył/a w pracy jutro?</p>
+      </div>
+
+      <div class="tip-box" style="margin-top:14px">
+        <strong>Materiał pomocniczy:</strong> otwórz <a href="#" onclick="showPage('infographics','inf-parts')" style="color:var(--clr-primary)">infografikę PARTS</a>, jeśli chcesz mieć skróconą ściągę do pracy własnej albo warsztatu.
       </div>
     </div>
 
@@ -273,7 +277,7 @@ Format: tabela Czas | Aktywność | Materiały | Uwagi</pre>
       </div>
 
       <div class="try-it">
-        <div class="try-label">🧪 Ćwiczenie – Ulepsz słaby prompt</div>
+        <div class="try-label">🧪 Krótki test – popraw słaby prompt</div>
         <p>Poniżej masz trzy słabe prompty. Wybierz jeden i popraw go według PARTS, wpisz oba do AI i porównaj:</p>
         <div class="prompt-box">
           <pre>PROMPT A: „Napisz lekcję o wojnie."
@@ -298,8 +302,8 @@ PROMPT C: „Opisz projekt."</pre>
       </table>
 
       <div class="try-it">
-        <div class="try-label">🧪 Pracujcie w zespole 2–3 osoby</div>
-        <p><strong>Sytuacja:</strong> wybierzcie jedno realne zadanie: mail, streszczenie dokumentu, plan lekcji, opis działania albo analizę krótkiej ankiety.</p>
+        <div class="try-label">🧪 Ćwiczenie zespołowe – prompt w trzech wersjach</div>
+        <p><strong>Sytuacja wyjściowa:</strong> wybierzcie jedno realne zadanie: mail, streszczenie dokumentu, plan lekcji, opis działania albo analizę krótkiej ankiety.</p>
         <ol>
           <li>Ustalcie, jaki ma być efekt końcowy i po czym poznacie, że wynik jest dobry.</li>
           <li>Przygotujcie trzy wersje promptu: prostą, doprecyzowaną i ekspercką.</li>
@@ -307,12 +311,12 @@ PROMPT C: „Opisz projekt."</pre>
           <li>Zapiszcie, które elementy najbardziej poprawiły wynik: rola, kontekst, format, kryteria jakości czy prośba o weryfikację.</li>
           <li>Na końcu zbudujcie jedną wspólną wersję promptu, którą można wykorzystać ponownie.</li>
         </ol>
-        <p><strong>Produkt końcowy:</strong> tabela porównawcza 3 promptów i 1 finalny prompt zespołu.</p>
-        <p>Pełną wersję tego zadania znajdziesz w <a href="#" onclick="showPage('exercises','ex16')" style="color:var(--clr-primary)">Ćwiczeniu #16 – Prompt w trzech wersjach</a>.</p>
+        <p><strong>Efekt końcowy:</strong> tabela porównawcza 3 promptów i 1 finalny prompt zespołu.</p>
+        <p><strong>Pełna instrukcja:</strong> <a href="#" onclick="showPage('exercises','ex16')" style="color:var(--clr-primary)">Ćwiczenie #16 – Prompt w trzech wersjach</a>.</p>
       </div>
 
       <div class="reflection-box">
-        <div class="rb-label">Refleksja po zadaniu</div>
+        <div class="rb-label">Po zadaniu</div>
         <ul>
           <li>Co najbardziej poprawiło wynik: doprecyzowanie celu czy dopiero dodanie formatu i kryteriów jakości?</li>
           <li>Który element promptu najłatwiej pominąć, mimo że ma duży wpływ na odpowiedź?</li>
@@ -380,7 +384,7 @@ PAGES.module3 = () => `
       </div>
 
       <div class="try-it">
-        <div class="try-label">🧪 Zrób to teraz – konspekt lekcji</div>
+        <div class="try-label">🧪 Ćwiczenie własne – konspekt lekcji</div>
         <p>Wpisz do AI poniższy prompt, zastępując nawiasy kwadratowe swoimi danymi:</p>
         <div class="prompt-box" style="position:relative">
           <button class="prompt-copy-btn" onclick="copyPrompt(this)">Kopiuj</button>
@@ -425,7 +429,7 @@ Format: tabela | Czas | Aktywność | Opis | Materiały</pre>
       </div>
 
       <div class="try-it">
-        <div class="try-label">🧪 Zrób to teraz – 3 zadania do wyboru</div>
+        <div class="try-label">🧪 Ćwiczenie własne – wybierz 1 z 3 zadań</div>
         <p>Wybierz <strong>jedno</strong> zadanie, które jest najbliższe Twojej pracy:</p>
 
         <p><strong>Opcja A – Mail do rodziców (z notatek):</strong></p>
@@ -527,7 +531,7 @@ PAGES.module4 = () => `
       </div>
 
       <div class="try-it">
-        <div class="try-label">🧪 Zrób to teraz – uporządkuj długi wątek</div>
+        <div class="try-label">🧪 Ćwiczenie własne – uporządkuj długi wątek</div>
         <p>Użyj poniższego promptu do długiego maila, protokołu, komunikacji projektowej albo pisma z wieloma wątkami:</p>
         <div class="prompt-box" style="position:relative">
           <button class="prompt-copy-btn" onclick="copyPrompt(this)">Kopiuj</button>
@@ -578,7 +582,7 @@ Tekst: [WKLEJ]</pre>
       <h3><span class="ls-icon">🔍</span> Zestawianie sprzeczności i luk między dokumentami</h3>
       <p>AI dobrze sprawdza się wtedy, gdy porównujesz dwa teksty: procedurę i praktykę, wytyczne i roboczy szkic, plan i raport. Zamiast czytać oba materiały liniowo, możesz od razu poprosić o listę rozbieżności.</p>
       <div class="try-it">
-        <div class="try-label">🧪 Zrób to teraz – porównaj dwa dokumenty</div>
+        <div class="try-label">🧪 Ćwiczenie własne – porównaj dwa dokumenty</div>
         <div class="prompt-box" style="position:relative">
           <button class="prompt-copy-btn" onclick="copyPrompt(this)">Kopiuj</button>
           <button class="prompt-save-btn" onclick="savePromptFromBox(this)">⭐ Zapisz</button>
@@ -608,8 +612,8 @@ Obszar | Na czym polega rozbieżność | Co trzeba doprecyzować</pre>
       </table>
 
       <div class="try-it">
-        <div class="try-label">🧪 Pracujcie na zanonimizowanych danych</div>
-        <p><strong>Sytuacja:</strong> macie krótkie odpowiedzi z ankiety po szkoleniu, wydarzeniu, projekcie albo działaniu szkolnym i chcecie przygotować z nich uporządkowane wnioski.</p>
+        <div class="try-label">🧪 Ćwiczenie zespołowe – analiza ankiety</div>
+        <p><strong>Sytuacja wyjściowa:</strong> macie krótkie odpowiedzi z ankiety po szkoleniu, wydarzeniu, projekcie albo działaniu szkolnym i chcecie przygotować z nich uporządkowane wnioski.</p>
         <ol>
           <li>Ustalcie cel analizy: co chcecie wiedzieć po lekturze odpowiedzi?</li>
           <li>Sprawdźcie, czego nie wolno wklejać do publicznego narzędzia AI.</li>
@@ -617,8 +621,8 @@ Obszar | Na czym polega rozbieżność | Co trzeba doprecyzować</pre>
           <li>Przetestujcie prompty na krótkiej próbce danych.</li>
           <li>Na końcu przygotujcie 1 stronę roboczą: główne kategorie, 3 wnioski i 2 rekomendacje.</li>
         </ol>
-        <p><strong>Produkt końcowy:</strong> plan analizy, zestaw promptów i szkic mini-raportu.</p>
-        <p>Pełną instrukcję znajdziesz w <a href="#" onclick="showPage('exercises','ex17')" style="color:var(--clr-primary)">Ćwiczeniu #17 – Mini-laboratorium analizy ankiety</a>.</p>
+        <p><strong>Efekt końcowy:</strong> plan analizy, zestaw promptów i szkic mini-raportu.</p>
+        <p><strong>Pełna instrukcja:</strong> <a href="#" onclick="showPage('exercises','ex17')" style="color:var(--clr-primary)">Ćwiczenie #17 – Mini-laboratorium analizy ankiety</a>.</p>
       </div>
 
       <div class="alert-box">
@@ -636,6 +640,9 @@ Obszar | Na czym polega rozbieżność | Co trzeba doprecyzować</pre>
       </div>
       <p><strong>Prosta zasada:</strong> Jeśli dokumentu nie możesz bezpiecznie udostępnić poza organizacją, nie wklejaj go bezpośrednio do publicznej AI.</p>
       <p><strong>Jak anonimizować?</strong> Zastąp imiona rolami lub kodami, usuń adresy mailowe, numery telefonów i wszystkie dane pozwalające rozpoznać konkretną osobę.</p>
+      <div class="tip-box" style="margin-top:14px">
+        <strong>Materiał pomocniczy:</strong> zobacz <a href="#" onclick="showPage('infographics','inf-rodo')" style="color:var(--clr-primary)">infografikę RODO + AI</a>, jeśli chcesz szybko przypomnieć zespołowi podział na treści zakazane, wymagające anonimizacji i zwykle bezpieczne.
+      </div>
     </div>
 
     <div class="lesson-nav">
@@ -709,7 +716,7 @@ PAGES.module5 = () => `
       <h3><span class="ls-icon">📝</span> Opis działania do raportu lub sprawozdania</h3>
       <p>Jednym z najczęstszych zastosowań AI w pracy projektowej jest przygotowanie pierwszej wersji opisu działania. Najlepiej działa tu model, który dostaje fakty, zakres działania i jasny limit długości. Wszystkie brakujące dane warto oznaczać jako pola do uzupełnienia.</p>
       <div class="try-it">
-        <div class="try-label">🧪 Zrób to teraz – opis działania projektowego</div>
+        <div class="try-label">🧪 Ćwiczenie własne – opis działania</div>
         <div class="prompt-box" style="position:relative">
           <button class="prompt-copy-btn" onclick="copyPrompt(this)">Kopiuj</button>
           <button class="prompt-save-btn" onclick="savePromptFromBox(this)">⭐ Zapisz</button>
@@ -731,7 +738,7 @@ Zaznacz [UZUPEŁNIJ], jeśli brakuje danych liczbowych lub faktów.</pre>
       <h3><span class="ls-icon">📧</span> Korespondencja z partnerami i interesariuszami</h3>
       <p>AI dobrze wspiera pisanie roboczych maili: zmian terminu, potwierdzeń, próśb o informację lub podsumowań ustaleń. To szczególnie przydatne, gdy komunikacja odbywa się po angielsku lub gdy trzeba zachować profesjonalny, ale prosty styl.</p>
       <div class="try-it">
-        <div class="try-label">🧪 Zrób to teraz – mail do partnera projektu</div>
+        <div class="try-label">🧪 Ćwiczenie własne – mail do partnera</div>
         <div class="prompt-box" style="position:relative">
           <button class="prompt-copy-btn" onclick="copyPrompt(this)">Kopiuj</button>
           <button class="prompt-save-btn" onclick="savePromptFromBox(this)">⭐ Zapisz</button>
@@ -755,7 +762,7 @@ Ton: profesjonalny, uprzejmy, prosty dla nienatywnych użytkowników języka.</p
       <h3><span class="ls-icon">📣</span> Treści promocyjne i informacyjne</h3>
       <p>Po wydarzeniu projektowym AI może pomóc szybko przygotować krótkie podsumowanie na stronę szkoły, media społecznościowe lub mail informacyjny. Warunkiem jest podanie faktów i jasne rozdzielenie tego, co już się wydarzyło, od tego, co jest planowane.</p>
       <div class="try-it">
-        <div class="try-label">🧪 Zrób to teraz – krótka komunikacja o projekcie</div>
+        <div class="try-label">🧪 Ćwiczenie własne – komunikacja o projekcie</div>
         <div class="prompt-box" style="position:relative">
           <button class="prompt-copy-btn" onclick="copyPrompt(this)">Kopiuj</button>
           <button class="prompt-save-btn" onclick="savePromptFromBox(this)">⭐ Zapisz</button>
@@ -891,6 +898,10 @@ PAGES.module6 = () => `
       <div class="alert-box" style="margin-top:20px">
         <strong>Wniosek praktyczny:</strong> zrównoważone użycie AI polega na wybieraniu takich zastosowań, w których narzędzie daje wyraźny zysk merytoryczny, organizacyjny lub dostępnościowy. Nie chodzi o zakaz, tylko o lepszą decyzję, kiedy warto po nie sięgnąć.
       </div>
+
+      <div class="tip-box" style="margin-top:14px">
+        <strong>Materiał pomocniczy:</strong> otwórz <a href="#" onclick="showPage('infographics','inf-proporcja')" style="color:var(--clr-primary)">infografikę Zasada proporcji</a>, jeśli chcesz przełożyć ten moduł na krótką dyskusję lub decyzję zespołową.
+      </div>
     </div>
 
     <div class="lesson-section" id="mini-codeks">
@@ -907,8 +918,8 @@ PAGES.module6 = () => `
       </table>
 
       <div class="try-it">
-        <div class="try-label">🧪 Zbudujcie kodeks na 1 stronę</div>
-        <p><strong>Sytuacja:</strong> Wasz zespół chce korzystać z AI, ale potrzebuje prostych zasad, które da się zastosować od jutra w codziennej pracy.</p>
+        <div class="try-label">🧪 Ćwiczenie zespołowe – mini-kodeks AI</div>
+        <p><strong>Sytuacja wyjściowa:</strong> Wasz zespół chce korzystać z AI, ale potrzebuje prostych zasad, które da się zastosować od jutra w codziennej pracy.</p>
         <ol>
           <li>Wybierzcie jeden kontekst: szkoła, dział administracyjny, projekt UE, zespół nauczycieli albo organizacja.</li>
           <li>Wypiszcie 5–7 sytuacji, w których ktoś może chcieć użyć AI.</li>
@@ -916,8 +927,8 @@ PAGES.module6 = () => `
           <li>Ustalcie obowiązkowe zabezpieczenia: anonimizacja, weryfikacja faktów, oznaczanie użycia AI, odpowiedzialność człowieka.</li>
           <li>Na końcu przygotujcie mini-kodeks, który zmieści się na jednej stronie.</li>
         </ol>
-        <p><strong>Produkt końcowy:</strong> praktyczny mini-kodeks odpowiedzialnego używania AI dla wybranego zespołu.</p>
-        <p>Pełna wersja zadania jest w <a href="#" onclick="showPage('exercises','ex18')" style="color:var(--clr-primary)">Ćwiczeniu #18 – Mini-kodeks odpowiedzialnego używania AI</a>.</p>
+        <p><strong>Efekt końcowy:</strong> praktyczny mini-kodeks odpowiedzialnego używania AI dla wybranego zespołu.</p>
+        <p><strong>Pełna instrukcja:</strong> <a href="#" onclick="showPage('exercises','ex18')" style="color:var(--clr-primary)">Ćwiczenie #18 – Mini-kodeks odpowiedzialnego używania AI</a>.</p>
       </div>
 
       <div class="reflection-box">

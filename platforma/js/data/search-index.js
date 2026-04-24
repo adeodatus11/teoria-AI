@@ -66,6 +66,7 @@ const IDX = [
   { t: 'Checklista bezpieczeństwa RODO', p: 'checklists', a: 'chk-rodo', tags: ['checklista', 'RODO', 'anonimizacja'], c: 'Zasady bezpieczeństwa przed wklejeniem danych.' },
   { t: 'Mini-test wiedzy po kursie', p: 'checklists', a: 'chk-selftest', tags: ['checklista', 'self-test', 'powtórka'], c: 'Krótka autodiagnoza po zakończeniu kursu.' },
 
+  { t: 'Infografiki', p: 'infographics', a: '', tags: ['infografiki', 'PARTS', 'RODO', 'proporcja'], c: 'Trzy materiały wizualne do pracy z modułami 2, 4 i 6.' },
   { t: 'Mój plan wdrożenia AI', p: 'myplan', a: '', tags: ['wdrożenie', 'plan', 'kroki'], c: 'Plan pierwszych działań po ukończeniu kursu.' },
   { t: 'Źródła i literatura', p: 'bibliography', a: '', tags: ['źródła', 'bibliografia', 'literatura'], c: 'Klikalne źródła użyte w kursie.' },
   { t: 'Prezentacja: Moduł 1 – Czym jest AI', p: 'slides', a: 'm1', tags: ['slajdy', 'prezentacja', 'moduł 1'], c: 'Zestaw slajdów do modułu 1.' },
