@@ -1,14 +1,14 @@
 PAGES.module1 = () => `
   <div class="lesson-header">
     <div class="breadcrumb"><a href="#" onclick="showPage('home')">🏠 Start</a> <span class="bc-sep">›</span> Moduł 1</div>
-    <div class="lesson-number">Moduł 1 z 4</div>
-    <h2>Czym jest AI i co zmienia w Twojej pracy?</h2>
+    <div class="lesson-number">Moduł 1 z 6</div>
+    <h2>Czym jest AI</h2>
     <div class="lesson-meta">
       <span class="meta-badge">⏱ ok. 30 minut</span>
       <span class="meta-badge">🎯 Podstawy AI · Halucynacje · Pierwsze użycie</span>
       <span class="meta-badge">📈 Poziom: podstawowy</span>
     </div>
-    <p class="lesson-intro">W tym module dowiesz się, czym naprawdę jest AI językowa i dlaczego może się mylić. Otworzysz narzędzie i wygenerujesz swój pierwszy wynik – zanim przejdziesz do nauki promptowania.</p>
+    <p class="lesson-intro">W tym module poznasz podstawy działania AI językowej, zrozumiesz skąd biorą się jej błędy i wykonasz pierwsze proste zadanie. To teoria potrzebna do świadomego korzystania z narzędzi AI w dalszej części kursu.</p>
     <button id="doneBtn_module1" class="mark-done-btn" onclick="markDone('module1')">✓ Oznacz jako ukończony</button>
   </div>
 
@@ -25,30 +25,30 @@ PAGES.module1 = () => `
 
     <div class="lesson-section">
       <h3><span class="ls-icon">🤖</span> Co to jest AI językowa?</h3>
-      <p>Narzędzia AI, z których korzystamy w tej platformie (<span translate="no" class="notranslate">ChatGPT</span>, <span translate="no" class="notranslate">Gemini</span>, <span translate="no" class="notranslate">Claude</span>), to tzw. <strong>duże modele językowe</strong> (<span translate="no" class="notranslate">Large Language Models, LLM</span>). Działają według prostej zasady:</p>
+      <p>Narzędzia AI, z których korzystamy w tej platformie (<span translate="no" class="notranslate">ChatGPT</span>, <span translate="no" class="notranslate">Gemini</span>, <span translate="no" class="notranslate">Claude</span>), to tzw. <strong>duże modele językowe</strong> (<span translate="no" class="notranslate">Large Language Models, LLM</span>). Generują odpowiedzi na podstawie wzorców językowych poznanych podczas trenowania na bardzo dużych zbiorach tekstu.</p>
       <div class="key-insight">
-        <strong>Kluczowa zasada:</strong> AI nie wie co jest prawdą. Ona <em>przewiduje</em>, jakie słowo powinno pojawić się po poprzednim. Jest jak bardzo zaawansowane autouzupełnianie – trenowane na miliardach tekstów z internetu.
+        <strong>Kluczowa zasada:</strong> AI nie sprawdza prawdy tak jak wyszukiwarka, baza wiedzy lub ekspert. Buduje odpowiedź, przewidując najbardziej prawdopodobny ciąg słów na podstawie kontekstu rozmowy.
       </div>
       <div class="key-insight">
-        <strong>Pułapka okna kontekstowego (<span translate="no" class="notranslate">Context Window</span>):</strong> Wklejając raport liczący 10 tys. słów, wrzucasz go do pamięci roboczej modelu – tzw. okna kontekstowego. Kiedy to okno się przepełnia, mechanizm tzw. <em><span translate="no" class="notranslate">Attention</span></em> zaczyna „zapominać” to co było w środku dokumentu, skupiając się tylko na początku (nagłówek) i końcu (ostatnie pytania). Do skontrowania tego zjawiska w projektach używamy piaskownic <span translate="no" class="notranslate">RAG</span>.
+        <strong>Pułapka okna kontekstowego (<span translate="no" class="notranslate">Context Window</span>):</strong> Model pracuje tylko na ograniczonej porcji tekstu, którą „widzi” w danym momencie. Gdy materiał jest bardzo długi, część informacji może zostać pominięta albo słabiej uwzględniona. Dlatego przy obszernych dokumentach warto pracować etapami albo korzystać z rozwiązań typu <span translate="no" class="notranslate">RAG</span>.
       </div>
-      <p>AI nie posiada "bazy wiedzy" ani "wyszukiwarki faktów". To matematyczny model języka.</p>
+      <p>W praktyce oznacza to, że AI dobrze radzi sobie z redagowaniem, streszczaniem i porządkowaniem treści, ale przy faktach, prawie i liczbach wymaga weryfikacji.</p>
       
       <div class="info-grid">
         <div class="info-card">
           <h4>🧩 Tokeny zamiast liter</h4>
-          <p>Model (np. <span translate="no" class="notranslate">ChatGPT</span>, <span translate="no" class="notranslate">Gemini</span>) „nie czyta” liter. Tekst jest dzielony na skrawki zwane <strong>Tokenami</strong> (ok. 3-4 litery to jeden token). Model przetwarza wektory powiązań między nimi (tzw. <em><span translate="no" class="notranslate">embeddings</span></em>). Rozumie, że token [KING] ma podobną odległość do [MAN], jak [QUEEN] do [WOMAN]. Dlatego AI jest wybitna w sprytnym parafrazowaniu, ale nie w podawaniu twardych statystyk.</p>
+          <p>Model nie pracuje na pojedynczych literach, tylko na mniejszych fragmentach tekstu zwanych <strong>tokenami</strong>. Dzięki temu potrafi rozpoznawać podobieństwa znaczeniowe i styl wypowiedzi, co dobrze widać przy parafrazach, streszczeniach i dopasowywaniu tonu odpowiedzi.</p>
         </div>
         <div class="info-card">
           <h4>🌡️ Temperatura (<span translate="no" class="notranslate">Temperature</span>)</h4>
-          <p>Pod spodem AI używa <strong>parametru Temperatury</strong> (zwykle od 0.0 do 1.0), decydującego jak "kreatywnie" ma wybierać kolejny token. Jeśli powiesz "Kawa jest...", przy niskiej temperaturze zawsze powie "...gorąca". Przy wysokiej może powiedzieć "...magicznym napojem". Systemy publiczne mają ustawioną umiarkowaną temperaturę – wystarczającą by brzmieć zgrabnie, ale niebezpieczną gdy szukasz bezwzględnych faktów (wymagających Temp = 0).</p>
+          <p><strong>Temperatura</strong> wpływa na to, jak przewidywalna albo kreatywna będzie odpowiedź modelu. Niższa sprzyja większej powtarzalności, wyższa daje więcej różnorodności. Dla użytkownika oznacza to tyle, że AI może czasem pisać bardzo zachowawczo, a czasem bardziej swobodnie.</p>
         </div>
       </div>
     </div>
 
     <div class="lesson-section" id="halucynacje">
       <h3><span class="ls-icon">⚠️</span> Halucynacje – kiedy AI generuje fikcję</h3>
-      <p>Gdy AI generuje nieprawdziwe informacje (np. nieistniejące fakty, błędne daty, zmyślone przepisy prawne), mówimy o <strong>halucynacjach</strong>. Model może wygenerować fikcyjne informacje – nie rozumie faktów i nie potrafi powiedzieć „nie wiem”.</p>
+      <p>Gdy AI generuje nieprawdziwe informacje, mylne daty, nieistniejące cytaty albo zmyślone przepisy prawne, mówimy o <strong>halucynacjach</strong>. Odpowiedź może brzmieć bardzo pewnie, nawet jeśli jest niepełna albo błędna.</p>
       <div class="info-grid">
         <div class="info-card">
           <h4>Kiedy AI może halucynować?</h4>
@@ -56,7 +56,7 @@ PAGES.module1 = () => `
             <li>Gdy pytasz o konkretne fakty, daty, liczby</li>
             <li>Gdy prosisz o cytaty z dokumentów lub prawa</li>
             <li>Gdy piszesz o specyficznych, lokalnych wydarzeniach</li>
-            <li>Gdy AI nie ma w swojej bazie odpowiedniej wiedzy</li>
+            <li>Gdy pytanie nie daje modelowi wystarczającego kontekstu</li>
           </ul>
         </div>
         <div class="info-card">
@@ -76,8 +76,8 @@ PAGES.module1 = () => `
           <button class="prompt-copy-btn" onclick="copyPrompt(this)">Kopiuj</button>
           <pre>Zacytuj dokładnie artykuł 43b Europejskiego Aktu o Sztucznej Inteligencji (EU AI Act) dotyczący dopuszczalności stosowania AI wobec uczniów w szkołach podstawowych.</pre>
         </div>
-        <p><strong>Co zaobserwujesz:</strong> AI najprawdopodobniej wygeneruje przekonująco brzmiący, bardzo prawniczy cytat przepisu, który… absolutnie nie istnieje. Sprawdź go w europejskiej bazie prawa <strong>EUR-Lex</strong> (eur-lex.europa.eu). Nie znajdziesz go tam. To jest halucynacja (model "zgadł" brzmienie prawne bez dostępu do bazy).</p>
-        <div class="tip-box" style="margin-top:12px"><strong>Wniosek:</strong> Wyjaśnione wcześniej zjawisko "prawdopodobieństwa tokenów" powoduje, że model potrafi wytworzyć bardzo wiarygodną fikcję literacką, łudząco przypominającą akt prawny. Weryfikuj wszystko w bazach nadrzędnych.</div>
+        <p><strong>Co zaobserwujesz:</strong> AI najprawdopodobniej wygeneruje wiarygodnie brzmiący cytat przepisu, którego nie znajdziesz w oficjalnej bazie prawa <strong>EUR-Lex</strong>. To właśnie przykład halucynacji: odpowiedź wygląda profesjonalnie, ale nie ma potwierdzenia w źródle. Sprawdź: <a href="https://eur-lex.europa.eu/" target="_blank" rel="noopener noreferrer">eur-lex.europa.eu ↗</a>.</p>
+        <div class="tip-box" style="margin-top:12px"><strong>Wniosek:</strong> Model potrafi bardzo dobrze naśladować styl dokumentu prawnego, ale to nie oznacza, że przywołany przepis istnieje. Fakty, cytaty i podstawy prawne zawsze sprawdzaj w źródle nadrzędnym.</div>
       </div>
     </div>
 
@@ -88,27 +88,39 @@ PAGES.module1 = () => `
         <div class="stat-item"><div class="stat-num">29%</div><div class="stat-label">nauczycieli zgłasza potrzebę szkoleń z AI (OECD TALIS 2024)</div></div>
         <div class="stat-item"><div class="stat-num">74%</div><div class="stat-label">nauczycieli uważa, że AI poprawiła jakość pracy administracyjnej (European School Education Platform 2024)</div></div>
       </div>
-      <p>Nauczyciele, którzy regularnie korzystają z AI, oszczędzają prawie godzinę dziennie. Nie dlatego, że AI robi za nich wszystko – ale dlatego, że skraca czas wykonywania zadań powtarzalnych: pisania maili, tworzenia checklisty, redagowania tekstów. Dane o oszczędności czasu pochodzą z raportu Gallup / Walton Family Foundation (2025).</p>
+      <p>Nauczyciele, którzy regularnie korzystają z AI, oszczędzają prawie godzinę dziennie. Nie dlatego, że AI robi wszystko za nich, ale dlatego, że skraca czas wykonywania zadań powtarzalnych: pisania maili, tworzenia checklist i redagowania tekstów.</p>
+      <p style="font-size:12.5px;color:var(--clr-text-muted)">Źródła: Gallup / Walton Family Foundation (2025), OECD TALIS (2024), European School Education Platform (2024).</p>
     </div>
 
-    <div class="lesson-section">
+    <div class="lesson-section" id="tools">
       <h3><span class="ls-icon">⌨️</span> Otwórz narzędzie AI – teraz</h3>
-      <p>Zanim przejdziesz do nauki promptowania, otwórz jedno z poniższych narzędzi. Wszystkie mają bezpłatny plan dostępny bez karty kredytowej:</p>
+      <p>Zanim przejdziesz do nauki promptowania, wybierz jedno narzędzie AI dostępne w przeglądarce. Do ćwiczeń z kursu wystarczy podstawowy dostęp do konta.</p>
       <div class="info-grid">
         <div class="info-card">
-          <h4>ChatGPT – openai.com</h4>
+          <h4>ChatGPT</h4>
           <ul>
             <li>Rejestracja emailem lub kontem Google</li>
-            <li>Darmowy plan: GPT-4o mini (wystarczy do kursu)</li>
-            <li>👉 chat.openai.com</li>
+            <li>Dobre do: pisania, streszczeń i porządkowania treści</li>
+            <li>Wersja w przeglądarce wystarczy do ćwiczeń</li>
+            <li><a href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">Otwórz ChatGPT ↗</a></li>
           </ul>
         </div>
         <div class="info-card">
-          <h4>Gemini – google.com</h4>
+          <h4>Gemini</h4>
           <ul>
-            <li>Wymagane konto Google (pewnie już masz)</li>
-            <li>Darmowy plan: Gemini 1.5 Flash</li>
-            <li>👉 gemini.google.com</li>
+            <li>Wymagane konto Google</li>
+            <li>Dobre do: pracy z tekstem i dokumentami Google</li>
+            <li>Wersja w przeglądarce wystarczy do ćwiczeń</li>
+            <li><a href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer">Otwórz Gemini ↗</a></li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <h4>Claude</h4>
+          <ul>
+            <li>Logowanie przez konto użytkownika w przeglądarce</li>
+            <li>Dobre do: dłuższych odpowiedzi i redagowania treści</li>
+            <li>Wersja w przeglądarce wystarczy do ćwiczeń</li>
+            <li><a href="https://claude.ai/" target="_blank" rel="noopener noreferrer">Otwórz Claude ↗</a></li>
           </ul>
         </div>
       </div>
@@ -142,7 +154,7 @@ PAGES.module1 = () => `
       <button class="btn-secondary" onclick="showPage('home')">← Strona główna</button>
       <div style="display:flex;gap:12px;align-items:center">
         <button id="doneBtn_module1" class="btn-done" onclick="markDone('module1')">✓ Ukończono moduł 1</button>
-        <button class="btn-primary" onclick="showPage('module2')">Moduł 2: Prompting PARTS →</button>
+        <button class="btn-primary" onclick="showPage('module2')">Moduł 2: Prompting →</button>
       </div>
     </div>
   </div>
@@ -154,8 +166,8 @@ PAGES.module1 = () => `
 PAGES.module2 = () => `
   <div class="lesson-header">
     <div class="breadcrumb"><a href="#" onclick="showPage('home')">🏠 Start</a> <span class="bc-sep">›</span> Moduł 2</div>
-    <div class="lesson-number">Moduł 2 z 4</div>
-    <h2>Prompting – jak pisać do AI, żeby dostawać dobre wyniki</h2>
+    <div class="lesson-number">Moduł 2 z 6</div>
+    <h2>Prompting</h2>
     <div class="lesson-meta">
       <span class="meta-badge">⏱ ok. 35 minut</span>
       <span class="meta-badge">🎯 Framework <span translate="no" class="notranslate">PARTS</span> · Ćwiczenia poprawy promptów</span>
@@ -242,7 +254,7 @@ Format: tabela Czas | Aktywność | Materiały | Uwagi</pre>
         <div class="info-card">
           <h4>Przykład iteracji – konspekt lekcji</h4>
           <ul>
-            <li>Prompt 1: Wygeneruj konspekt lekcji o fotosyntzie (klasa 7)</li>
+            <li>Prompt 1: Wygeneruj konspekt lekcji o fotosyntezie (klasa 7)</li>
             <li>Prompt 2: Uprość sekcję „Faza ciemna" – to za trudne dla tej klasy</li>
             <li>Prompt 3: Dodaj zadanie grupowe na 10 minut w połowie lekcji</li>
             <li>Prompt 4: Przeformułuj podsumowanie jako pytania do uczniów</li>
@@ -288,8 +300,8 @@ PROMPT C: „Opisz projekt."</pre>
 PAGES.module3 = () => `
   <div class="lesson-header">
     <div class="breadcrumb"><a href="#" onclick="showPage('home')">🏠 Start</a> <span class="bc-sep">›</span> Moduł 3</div>
-    <div class="lesson-number">Moduł 3 z 4</div>
-    <h2>AI w codziennej pracy nauczyciela</h2>
+    <div class="lesson-number">Moduł 3 z 6</div>
+    <h2>AI w dydaktyce</h2>
     <div class="lesson-meta">
       <span class="meta-badge">⏱ ok. 40 minut</span>
       <span class="meta-badge">🎯 Dydaktyka · Administracja · Komunikacja</span>
@@ -343,7 +355,7 @@ Wymagania: angażujące wprowadzenie (max 5 min), praca grupowa,
 podsumowanie z pytaniami sprawdzającymi.
 Format: tabela | Czas | Aktywność | Opis | Materiały</pre>
         </div>
-        <p>Po otrzymaniu wynikub napisz kolejny prompt: <em>„Teraz napisz wersję fragmentu [X] dostosowaną dla ucznia z dysleksją lub trudnościami w nauce."</em></p>
+        <p>Po otrzymaniu wyniku napisz kolejny prompt: <em>„Teraz napisz wersję fragmentu [X] dostosowaną dla ucznia z dysleksją lub trudnościami w nauce."</em></p>
         <p>Porównaj obie wersje – co AI zmieniła? Czy to wystarczające? Co byś jeszcze poprawił/a?</p>
       </div>
     </div>
@@ -413,51 +425,6 @@ dzień przed / w dniu wydarzenia / po wydarzeniu</pre>
       </div>
     </div>
 
-    <div class="lesson-section" id="overload">
-      <h3><span class="ls-icon">🧠</span> Zarządzanie przeciążeniem informacyjnym</h3>
-      <p>Osoby pracujące projektowo lub na styku wielu działów (kadra kierownicza, koordynatorzy, pedagodzy) często toną w szumie informacyjnym – długich mailach, wielowątkowych konwersacjach w komunikatorach i wielostronicowych załącznikach.</p>
-
-      <div class="info-grid">
-        <div class="info-card">
-          <h4>Tradycyjnie (Czytanie liniowe)</h4>
-          <ul>
-            <li>Czytasz wszystkie maile po kolei</li>
-            <li>Szukasz w tekście, co tyczy się Ciebie</li>
-            <li>Ręcznie budujesz listę zadań na kartce</li>
-            <li>Irytujesz się na brak konkretów</li>
-          </ul>
-        </div>
-        <div class="info-card">
-          <h4>Podejście z AI (Separacja sygnału z szumu)</h4>
-          <ul>
-            <li>Kopiujesz cały długi wątek bez czytania</li>
-            <li>Wklejasz do AI (bez danych osobowych!)</li>
-            <li>AI wyciąga tylko decyzje i zadania dla Ciebie</li>
-            <li>Oszczędzasz min. 10 minut na każdym wątku</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="key-insight">
-        <strong>Metoda 3 pytań (Uporządkuj długi wątek):</strong> Zamiast "streść ten tekst", pytaj zawsze o wyciągnięcie gotowych danych. Zapytaj: 1) O czym to jest w 3 zdaniach? 2) Co ja muszę z tym zrobić i na kiedy? 3) Jakie ważne decyzje tu zapadły? (SPE = specjalne potrzeby edukacyjne).
-      </div>
-      
-      <div class="try-it">
-        <div class="try-label">🧪 Zrób to teraz – "Uporządkuj długi wątek"</div>
-        <p>Wklej do AI poniższy prompt (najlepiej podpinając pod niego faktycznie długą, zagmatwaną konwersację mailową, pismo z urzędu lub protokół z posiedzenia):</p>
-        <div class="prompt-box" style="position:relative">
-          <button class="prompt-copy-btn" onclick="copyPrompt(this)">Kopiuj</button>
-          <button class="prompt-save-btn" onclick="savePromptFromBox(this)">⭐ Zapisz</button>
-          <pre>Przeanalizuj poniższy chaotyczny tekst/wątek.
-Oddziel szum informacyjny od konkretów. Daj mi:
-1. Zbiór ustalonych DECYZJI (lista)
-2. Zbiór ZADAŃ DO WYKONANIA wraz z osobą przypisaną (tabela)
-3. Główny problem do rozwiązania, wokół którego toczy się wymiana zdań
-Tekst: [WKLEJ]</pre>
-        </div>
-      </div>
-    </div>
-
     <div class="lesson-nav">
       <button class="btn-secondary" onclick="showPage('module2')">← Moduł 2</button>
       <div style="display:flex;gap:12px;align-items:center">
@@ -474,13 +441,13 @@ Tekst: [WKLEJ]</pre>
 PAGES.module4 = () => `
   <div class="lesson-header">
     <div class="breadcrumb"><a href="#" onclick="showPage('home')">🏠 Start</a> <span class="bc-sep">›</span> Moduł 4</div>
-    <div class="lesson-number">Moduł 4 z 4</div>
-    <h2>AI w projektach UE i etyczne granice</h2>
+    <div class="lesson-number">Moduł 4 z 6</div>
+    <h2>Projekty i analityka</h2>
     <div class="lesson-meta">
       <span class="meta-badge">⏱ ok. 35 minut</span>
-      <span class="meta-badge">🎯 Erasmus+ · RODO · Zasady etyczne · Plan wdrożenia</span>
+      <span class="meta-badge">🎯 Dokumenty · analiza · RAG · bezpieczeństwo</span>
     </div>
-    <p class="lesson-intro">Ostatni moduł kursu. Dowiesz się, jak bezpiecznie używać AI przy projektach unijnych, jakich błędów unikać i jak zbudować własny plan wdrożenia AI w codziennej pracy.</p>
+    <p class="lesson-intro">W tym module skupiasz się na pracy z informacją: długimi dokumentami, wielowątkowymi wiadomościami i dużymi plikami. Celem jest szybkie oddzielanie decyzji i zadań od szumu oraz wybór właściwego narzędzia do analizy.</p>
     <button id="doneBtn_module4" class="mark-done-btn" onclick="markDone('module4')">✓ Oznacz jako ukończony</button>
   </div>
 
@@ -488,189 +455,142 @@ PAGES.module4 = () => `
     <div class="learning-goals">
       <h3>📌 Po tym module będziesz umieć:</h3>
       <ul class="lg-list">
-        <li>wskazać, do czego możesz, a do czego nie powinieneś/powinnaś używać AI w projektach UE</li>
-        <li>rozumieć różnicę między publicznym <span translate="no" class="notranslate">LLM</span> (np. <span translate="no" class="notranslate">ChatGPT</span>) a "zamkniętą piaskownicą" (np. <span translate="no" class="notranslate">NotebookLM</span>)</li>
-        <li>stosować zasadę transparentności wymaganą przez Komisję Europejską</li>
-        <li>unikać naruszeń RODO i wycieku know-how z projektów</li>
-        <li>stworzyć swój osobisty plan wdrożenia AI</li>
+        <li>wyciągać decyzje, zadania i terminy z długich dokumentów oraz wątków</li>
+        <li>porównywać dwa teksty i wykrywać sprzeczności lub luki</li>
+        <li>rozumieć różnicę między publicznym <span translate="no" class="notranslate">LLM</span> a rozwiązaniem typu <span translate="no" class="notranslate">RAG</span></li>
+        <li>wybrać bezpieczniejszy sposób analizy dużych plików</li>
+        <li>stosować podstawowe zasady ochrony danych przy pracy analitycznej</li>
       </ul>
     </div>
 
-    <div class="lesson-section" id="projekty">
-      <h3><span class="ls-icon">🌍</span> AI w projektach Erasmus+ i WIN4SMEs</h3>
-      <p>AI jest świetnym narzędziem do redagowania tekstów projektowych – ale ma wyraźne granice, których przekraczanie może skutkować problemami z grantem.</p>
+    <div class="lesson-section" id="documents">
+      <h3><span class="ls-icon">📄</span> AI w analizie dokumentów i przepływu informacji</h3>
+      <p>Gdy masz do przeczytania protokół, procedurę, pismo lub długi wątek mailowy, AI może bardzo szybko oddzielić informacje ważne od drugorzędnych. Najlepiej sprawdza się wtedy, gdy prosisz ją o konkretne dane wyjściowe: decyzje, zadania, terminy i pytania otwarte.</p>
 
       <div class="info-grid">
         <div class="info-card">
-          <h4>✅ AI może pomóc Ci w:</h4>
+          <h4>✅ AI pomoże Ci szybko:</h4>
           <ul>
-            <li>Szkicowaniu opisów działań do raportów narracyjnych</li>
-            <li>Streszczaniu raportów od partnerów</li>
-            <li>Tłumaczeniu korespondencji</li>
-            <li>Przygotowaniu agendy spotkania partnerskiego</li>
-            <li>Newsletterach i komunikatach projektowych</li>
-            <li>Redagowaniu korespondencji w języku angielskim</li>
+            <li>streścić dokument do kilku zdań</li>
+            <li>wyciągnąć listę zadań i terminów</li>
+            <li>zebrać ustalone decyzje z długiej dyskusji</li>
+            <li>uporządkować materiał przed spotkaniem</li>
           </ul>
         </div>
         <div class="info-card">
-          <h4>❌ AI NIE zastąpi Twojej:</h4>
+          <h4>🧠 Nadal potrzebujesz własnej oceny:</h4>
           <ul>
-            <li>Odpowiedzialności za raport (podpisujesz Ty)</li>
-            <li>Wiedzy o konkretnych danych projektu</li>
-            <li>Weryfikacji wymagań formalnych grantu</li>
-            <li>Znajomości faktycznych wydarzeń i wyników</li>
-            <li>Decyzji merytorycznych o kształcie sprawozdania</li>
+            <li>czy AI niczego nie pominęła</li>
+            <li>czy zadania są dobrze przypisane</li>
+            <li>czy wnioski pasują do realnej sytuacji</li>
+            <li>czy w tekście nie ma danych, których nie wolno wklejać</li>
           </ul>
         </div>
       </div>
 
-      <div class="key-insight">
-        <strong>Zasada transparentności KE:</strong> Komisja Europejska i instytucje grantowe (FRSE) wymagają, aby użycie AI w dokumentach projektowych było zaznaczone i wyjaśnione (Wytyczne KE 2024). Zaznaczaj zawsze, gdzie AI pomagała – zostajesz w pełni odpowiedzialny/a za treść.
-      </div>
-
       <div class="try-it">
-        <div class="try-label">🧪 Ćwiczenie – szkic opisu działania projektowego</div>
-        <p>Wpisz poniższy prompt (zastępując nawiasy danymi Twojego projektu lub wymieś fikcyjny Erasmus+):</p>
+        <div class="try-label">🧪 Zrób to teraz – uporządkuj długi wątek</div>
+        <p>Użyj poniższego promptu do długiego maila, protokołu, komunikacji projektowej albo pisma z wieloma wątkami:</p>
         <div class="prompt-box" style="position:relative">
           <button class="prompt-copy-btn" onclick="copyPrompt(this)">Kopiuj</button>
           <button class="prompt-save-btn" onclick="savePromptFromBox(this)">⭐ Zapisz</button>
-          <pre>Jestem koordynatorem/ką projektu [TYP: Erasmus+/WIN4SMEs]
-pt. "[TYTUŁ]", realizowanego z partnerami z [KRAJE].
-W [MIESIĄC ROK] odbyło się [DZIAŁANIE: szkolenie/mobilność/warsztaty]
-z udziałem [OPIS: X nauczycieli z X krajów].
-Tematyka: [TEMAT DZIAŁANIA].
-
-Napisz opis działania (180–220 słów) do sekcji narracyjnej raportu.
-Styl: rzeczowy, profesjonalny, podkreślający wartość dodaną.
-Zaznacz [UZUPEŁNIJ] wszędzie, gdzie potrzebne są konkretne dane.</pre>
+          <pre>Przeanalizuj poniższy tekst lub wątek.
+Oddziel szum informacyjny od konkretów i przygotuj:
+1. Krótkie streszczenie (maks. 4 zdania)
+2. Tabelę z zadaniami: Zadanie | Osoba | Termin
+3. Listę decyzji, które już zapadły
+4. Listę spraw otwartych lub niejasnych
+Tekst: [WKLEJ]</pre>
         </div>
-        <p><strong>Po otrzymaniu wyniku sprawdź:</strong> Co AI „zmyśliła lub przesadziła"? Ile miejsc oznacza [UZUPEŁNIJ]? Czy ton pasuje do raportów UE?</p>
-        <div class="tip-box" style="margin-top:10px">Uczestnik projektu WIN4SMEs może użyć faktycznych danych tego szkolenia jako podstawy.</div>
+        <p><strong>Sprawdź po analizie:</strong> czy AI nie pominęła decyzji, czy terminy są poprawne i czy nigdzie nie zostały dopowiedziane informacje, których nie było w tekście.</p>
       </div>
     </div>
 
     <div class="lesson-section" id="sandbox">
-      <h3><span class="ls-icon">📦</span> Zamknięte piaskownice – eliminacja halucynacji (NotebookLM)</h3>
-      <p>Kiedy pracujesz z długimi dokumentami projektowymi (np. przewodnik po programie Erasmus+ liczący 300 stron, procedury, zasady ewaluacji), <strong>otwarte modele jak ChatGPT często gubią informacje</strong> lub zmyślają klauzule, których nie było w tekście.</p>
+      <h3><span class="ls-icon">📦</span> Zamknięte piaskownice – kiedy wybrać rozwiązanie typu RAG?</h3>
+      <p>Przy bardzo długich plikach, wielu załącznikach i materiałach, które muszą być analizowane dokładnie, zwykły czat może okazać się niewystarczający. Wtedy lepiej działa rozwiązanie typu <span translate="no" class="notranslate">RAG</span>, czyli narzędzie odpowiadające na podstawie wskazanych przez Ciebie źródeł.</p>
 
       <div class="info-grid">
         <div class="info-card">
           <h4>Klasyczne AI (ChatGPT)</h4>
           <ul>
-            <li>Wgrywasz plik do wspólnego kontekstu</li>
-            <li>Gdy dokument jest za długi, "zapomina" środek</li>
-            <li>Miesza treść dokumentu z własną wiedzą z internetu</li>
-            <li>Halucynuje ("zmyśla") przepisy i zapisy</li>
+            <li>Wgrywasz plik do wspólnego kontekstu rozmowy</li>
+            <li>Przy długim dokumencie może pominąć część treści</li>
+            <li>Łączy informacje z pliku z ogólną wiedzą modelu</li>
+            <li>Wymaga silniejszej weryfikacji odpowiedzi</li>
           </ul>
         </div>
         <div class="info-card">
           <h4>Piaskownice RAG (np. NotebookLM)</h4>
           <ul>
-            <li>Budujesz lokalną bazę z max. 50 dokumentów</li>
-            <li>AI ma "zakaz" korzystania z wiedzy z internetu</li>
-            <li>Odpowiada <strong>tylko</strong> na podstawie Twoich plików</li>
-            <li>Do każdej odpowiedzi dodaje <strong>przypis (strona pliku)</strong></li>
+            <li>Budujesz bazę z własnych dokumentów</li>
+            <li>Model odpowiada na podstawie wskazanych źródeł</li>
+            <li>Łatwiej sprawdzić, z czego wynika odpowiedź</li>
+            <li>Lepsze do pracy na większych zestawach plików</li>
           </ul>
         </div>
       </div>
 
       <div class="key-insight">
-        <strong>NotebookLM by Google (notebooklm.google):</strong> To darmowe narzędzie klasy RAG (Retrieval-Augmented Generation). Idealne dla Project Managerów. Ładujesz tam PDFy, wnioski, notatki, a ono staje się "ekspertem od tego konkretnego projektu". Szanse na halucynacje są bliskie zera.
+        <strong>Praktyczna zasada:</strong> im dłuższy dokument i im większa odpowiedzialność za poprawność odpowiedzi, tym bardziej opłaca się pracować na narzędziu, które pokazuje źródło i nie opiera się wyłącznie na pamięci rozmowy.
+      </div>
+    </div>
+
+    <div class="lesson-section" id="compare">
+      <h3><span class="ls-icon">🔍</span> Zestawianie sprzeczności i luk między dokumentami</h3>
+      <p>AI dobrze sprawdza się wtedy, gdy porównujesz dwa teksty: procedurę i praktykę, wytyczne i roboczy szkic, plan i raport. Zamiast czytać oba materiały liniowo, możesz od razu poprosić o listę rozbieżności.</p>
+      <div class="try-it">
+        <div class="try-label">🧪 Zrób to teraz – porównaj dwa dokumenty</div>
+        <div class="prompt-box" style="position:relative">
+          <button class="prompt-copy-btn" onclick="copyPrompt(this)">Kopiuj</button>
+          <button class="prompt-save-btn" onclick="savePromptFromBox(this)">⭐ Zapisz</button>
+          <pre>Porównaj dwa teksty dotyczące tej samej sprawy.
+Pokaż tylko różnice, sprzeczności i braki.
+
+Tekst A: [WKLEJ]
+Tekst B: [WKLEJ]
+
+Zwróć wynik w tabeli:
+Obszar | Na czym polega rozbieżność | Co trzeba doprecyzować</pre>
+        </div>
       </div>
     </div>
 
     <div class="lesson-section" id="rodo">
-      <h3><span class="ls-icon">🔒</span> RODO i ochrona danych – trzy zasady absolutne</h3>
+      <h3><span class="ls-icon">🔒</span> Bezpieczeństwo danych w pracy analitycznej</h3>
       <div class="alert-box">
-        <strong>🔴 Trzy absolutne zakazy:</strong><br>
-        1. Żadnych imion i nazwisk uczniów ani pracowników w publicznej AI<br>
-        2. Żadnych danych wrażliwych (oceny, zdrowie, sytuacja rodzinna) bez anonimizacji<br>
-        3. Żadnych poufnych dokumentów szkoły lub projektu bez sprawdzenia polityki narzędzia
+        <strong>🔴 Trzy zasady przed wklejeniem dokumentu:</strong><br>
+        1. Usuń dane osobowe uczniów, pracowników i partnerów<br>
+        2. Nie wklejaj danych wrażliwych bez anonimizacji<br>
+        3. Nie wklejaj poufnych dokumentów bez sprawdzenia zasad narzędzia
       </div>
-      <p><strong>Prosta zasada:</strong> Jeśli dokumentu nie możesz opublikować na stronie szkoły – nie wklejaj go do publicznej AI.</p>
-      <p><strong>Jak anonimizować?</strong> Zamiast „Jan Kowalski, uczeń klasy 7b" napisz „Uczeń A, klasa 7". Zamiast ocen konkretnych uczniów – „rozkład procentowy klasy".</p>
-    </div>
-
-    <div class="lesson-section">
-      <h3><span class="ls-icon">🧩</span> Przeanalizuj te sytuacje – co jest nie tak?</h3>
-      <p>Kliknij każdy scenariusz, żeby zobaczyć analizę.</p>
-
-      <div class="scenario-card" onclick="toggleScenario(this)">
-        <div class="scenario-hdr">
-          <h4>⚠️ Scenariusz 1 – RODO i AI</h4>
-          <span class="scenario-arrow">▾</span>
-        </div>
-        <div class="scenario-body">
-          <p><em>„Nauczyciel wkleił do ChatGPT imiona i oceny 30 uczniów z wynikami sprawdzianu i poprosił o analizę postępów klasy."</em></p>
-          <p><strong>Co jest nie tak?</strong> Imiona + oceny = dane osobowe dzieci. ChatGPT to zewnętrzny serwer, potencjalnie poza UE. Brak zgody rodziców na przetwarzanie przez trzecią stronę. Naruszenie RODO – odpowiedzialność spoczywa na nauczycielu i szkole.</p>
-          <div class="tip-box"><strong>Jak powinno być:</strong> Wklej anonimowe dane statystyczne – np. „25% uczniów poniżej 50%, 40% w przedziale 50–75%, 35% powyżej 75%".</div>
-        </div>
-      </div>
-
-      <div class="scenario-card" onclick="toggleScenario(this)">
-        <div class="scenario-hdr">
-          <h4>⚠️ Scenariusz 2 – Cytat przepisu prawnego od AI</h4>
-          <span class="scenario-arrow">▾</span>
-        </div>
-        <div class="scenario-body">
-          <p><em>„AI podała wytyczne Komisji Europejskiej zakazujące określonej formy przetwarzania danych ucznia. Nauczyciel wrzucił to bezpośrednio w odpowiedź do partnera zagranicznego."</em></p>
-          <p><strong>Co jest nie tak?</strong> AI mogła zmyślić ten przepis (halucynacja). Tekst pisma brzmiał wiarygodnie, ale nie istniał. Prowadzący nie sprawdził w EUR-lex ani w oficjalnych dokumentach.</p>
-          <div class="tip-box"><strong>Zasada:</strong> Fakty, daty, przepisy, cytaty → zawsze weryfikuj w oficjalnych źródłach. AI jest asystentem stylistycznym, nie bazą prawa.</div>
-        </div>
-      </div>
-
-      <div class="scenario-card" onclick="toggleScenario(this)">
-        <div class="scenario-hdr">
-          <h4>⚠️ Scenariusz 3 – Poufny raport audytu</h4>
-          <span class="scenario-arrow">▾</span>
-        </div>
-        <div class="scenario-body">
-          <p><em>„Koordynatorka projektu wkleiła do AI treść poufnego raportu z audytu partnera projektu, żeby stworzyć streszczenie na spotkanie."</em></p>
-          <p><strong>Co jest nie tak?</strong> Naruszenie klauzuli poufności umowy partnerskiej. Dane komercyjne partnera wysłane na zewnętrzny serwer bez jego zgody. Potencjalne konsekwencje prawne i ryzyko utraty zaufania partnerów.</p>
-          <div class="tip-box"><strong>Zasada:</strong> Dokumenty oznaczone jako poufne – nie trafiają do publicznej AI. Możesz zapytać AI o strukturę streszczenia, a poufne dane uzupełnić ręcznie.</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="lesson-section" id="zasady10">
-      <h3><span class="ls-icon">⚖️</span> 10 zasad odpowiedzialnego użycia AI w szkole</h3>
-      <ol class="rules-list">
-        <li><div><strong>AI to narzędzie, nie wyrocznia.</strong> Każdy wynik traktuj jako szkic do weryfikacji, nie gotowy dokument.</div></li>
-        <li><div><strong>Odpowiadasz Ty – zawsze.</strong> Niezależnie od tego, czy AI pisała 10% czy 90% tekstu.</div></li>
-        <li><div><strong>Dane uczniów zostają w szkole.</strong> Żadnych imion, ocen, danych wrażliwych w narzędziach zewnętrznych.</div></li>
-        <li><div><strong>Fakty, przepisy, daty – sprawdzaj.</strong> AI pisze płynnie i pewnie nawet gdy kłamie.</div></li>
-        <li><div><strong>Bądź transparentny/a wobec uczniów.</strong> Kiedy AI pomaga w tworzeniu materiałów – powiedz o tym uczniom.</div></li>
-        <li><div><strong>Zaznaczaj AI w dokumentach projektowych.</strong> KE i FRSE wymagają przejrzystości w tej kwestii.</div></li>
-        <li><div><strong>Ocena i wychowanie – to Twoja rola.</strong> AI nie zna Twoich uczniów i nie może podejmować decyzji pedagogicznych.</div></li>
-        <li><div><strong>Buduj własne kompetencje.</strong> AI nie zastąpi Twojej wiedzy przedmiotowej – używaj jej do pracy rutynowej.</div></li>
-        <li><div><strong>Iteruj, nie kopiuj.</strong> Pracuj z AI w dialogu – poprawiaj wyniki, zamiast używać pierwszej odpowiedzi wprost.</div></li>
-        <li><div><strong>Gdy wątpliwości – pytaj.</strong> Dyrekcja, IOD, polityka szkoły – wspólne zasady chronią wszystkich.</div></li>
-      </ol>
+      <p><strong>Prosta zasada:</strong> Jeśli dokumentu nie możesz bezpiecznie udostępnić poza organizacją, nie wklejaj go bezpośrednio do publicznej AI.</p>
+      <p><strong>Jak anonimizować?</strong> Zastąp imiona rolami lub kodami, usuń adresy mailowe, numery telefonów i wszystkie dane pozwalające rozpoznać konkretną osobę.</p>
     </div>
 
     <div class="lesson-nav">
       <button class="btn-secondary" onclick="showPage('module3')">← Moduł 3</button>
       <div style="display:flex;gap:12px;align-items:center">
         <button id="doneBtn_module4" class="btn-done" onclick="markDone('module4')">✓ Ukończono moduł 4</button>
-        <button class="btn-primary" onclick="showPage('module5')">Moduł 5 →</button>
+        <button class="btn-primary" onclick="showPage('module5')">Moduł 5: Praca projektowa z AI →</button>
       </div>
     </div>
   </div>
 `;
 
 /* ══════════════════════════════════════
-   PAGE: MODULE 5 (ŚLAD WĘGLOWY I WODNY)
+   PAGE: MODULE 5
 ══════════════════════════════════════ */
 PAGES.module5 = () => `
   <div class="lesson-header">
     <div class="breadcrumb"><a href="#" onclick="showPage('home')">🏠 Start</a> <span class="bc-sep">›</span> Moduł 5</div>
-    <div class="lesson-number">Moduł 5 z 5</div>
-    <h2>Zrównoważone Zarządzanie AI (Ekologia)</h2>
+    <div class="lesson-number">Moduł 5 z 6</div>
+    <h2>Praca projektowa z AI</h2>
     <div class="lesson-meta">
-      <span class="meta-badge">⏱ ok. 15 minut</span>
-      <span class="meta-badge">🌱 Ślad węglowy · Ślad wodny · Etyka kosztów</span>
+      <span class="meta-badge">⏱ ok. 30 minut</span>
+      <span class="meta-badge">🤝 Raporty · partnerzy · komunikacja · granty</span>
     </div>
-    <p class="lesson-intro">Ten krótki i w pełni teoretyczny moduł uświadamia nam, że działanie potężnych algorytmów ma swoją mierzalną, fizyczną cenę w realnym świecie.</p>
+    <p class="lesson-intro">W tym module skupiasz się na zadaniach typowo projektowych: opisach działań, korespondencji z partnerami, materiałach promocyjnych i odpowiedzialnym użyciu AI w dokumentacji grantowej.</p>
     <button id="doneBtn_module5" class="mark-done-btn" onclick="markDone('module5')">✓ Oznacz jako ukończony</button>
   </div>
 
@@ -678,56 +598,233 @@ PAGES.module5 = () => `
     <div class="learning-goals">
       <h3>📌 Po tym module będziesz wiedzieć:</h3>
       <ul class="lg-list">
-        <li>jak potężny ślad wodny i węglowy zostawia trenowanie komputerów z AI</li>
-        <li>dlaczego "wygenerowanie dla zabawy śmiesznego kotka" nie jest bezkosztowe dla planety</li>
-        <li>jak stosować zasadę racjonalności w pracy dydaktycznej</li>
+        <li>do czego AI może realnie pomóc w pracy projektowej, a czego nie powinna zastępować</li>
+        <li>przygotować szkic opisu działania do raportu lub sprawozdania</li>
+        <li>napisać roboczy mail do partnera projektu</li>
+        <li>stworzyć krótkie treści promocyjne o działaniach i rezultatach</li>
+        <li>stosować zasadę transparentności i odpowiedzialności za treść</li>
       </ul>
     </div>
 
-    <div class="lesson-section">
-      <h3><span class="ls-icon">💧</span> Gdzie Sztuczna Inteligencja "wypija" nam wodę?</h3>
-      <p>Sieci neuronowe pracują na sprzęcie komputerowym (układach GPU) emitującym niezwykle wysoką temperaturę. Ich praca, by mogła trwać 24 godziny na dobę, wymaga potężnego natężenia chłodzenia generowanego z wyparowywania milionów hektolitrów wody rocznie.</p>
-
+    <div class="lesson-section" id="projekty">
+      <h3><span class="ls-icon">🤝</span> AI w pracy projektowej – co może, a czego nie zastąpi</h3>
+      <p>AI dobrze sprawdza się jako asystent redakcyjny i organizacyjny. Pomaga uporządkować informacje, skrócić czas pisania i przygotować pierwszą wersję tekstu. Nie zastępuje jednak wiedzy o faktycznym przebiegu działań, wymaganiach instytucji finansującej ani odpowiedzialności autora dokumentu.</p>
       <div class="info-grid">
         <div class="info-card">
-          <h4>Trening jednego modelu</h4>
-          <p>Samo ubiegłoroczne stworzenie i zasilanie maszyny "GPT-3" zużyło udokumentowane <strong>700 000 litrów słodkiej wody</strong> dla procesów chłodzenia elektroniki. Nowsze modele na ten sam proces potrzebują w wariancie krytycznym setek milionów galonów.</p>
+          <h4>✅ AI może pomóc Ci w:</h4>
+          <ul>
+            <li>szkicowaniu opisów działań i rezultatów</li>
+            <li>porządkowaniu ustaleń po spotkaniu</li>
+            <li>pisaniu roboczej korespondencji z partnerami</li>
+            <li>tworzeniu treści promocyjnych i podsumowań</li>
+          </ul>
         </div>
         <div class="info-card">
-          <h4>Codzienna rozmowa</h4>
-          <p>Analitycy rynkowi MIT wskazują, że standardowa, wnikliwa burza mózgów z czatem nauczyciela (zestaw od 10 do 50 dłuższych analiz), potrafi obciążyć lokalne rezerwuary o kolejne, parujące <strong>0,5 litra świeżej wody</strong> (porcja wielkości standardowej butelki napoju per chat).</p>
+          <h4>❌ AI nie zastąpi Twojej:</h4>
+          <ul>
+            <li>odpowiedzialności za treść raportu lub maila</li>
+            <li>wiedzy o konkretnych danych projektu</li>
+            <li>weryfikacji formalnych wymagań programu</li>
+            <li>kontroli nad poufnymi informacjami</li>
+          </ul>
         </div>
       </div>
-    </div>
-    
-    <div class="lesson-section">
-      <h3><span class="ls-icon">⚡</span> Emisja gazów cieplarnianych (Ślad Węglowy)</h3>
-      <p>Skonstruowanie takiego modelu do stanu gotowości, by umiał odpowiadać sensownie, pociągnęło za sobą wygenerowanie w samym tylko GPT-3 śladu bliskiego <strong>550 ton emisji CO₂</strong>. To ubytek nieodwracalny, a nowe środowiska skalowane logarytmicznie żądają setek tysięcy megawatogodzin (MWh). Dane o zużyciu wody (0,5 l na sesję) pochodzą z badań University of California Riverside (2023).</p>
       <div class="key-insight">
-        Z raportów środowiskowych wyłania się czarny scenariusz: do końca dekady chmura obliczeniowa AI najprawdopodobniej podniesie tak samo globalne słupki zanieczyszczeń jakbyśmy jako cywilizacja dołączyli do siatki <strong>dodatkowe dwa państwa wielkości Holandii</strong>.
+        <strong>Zasada pracy projektowej:</strong> AI przygotowuje wersję roboczą, a Ty odpowiadasz za dane, ton, zgodność z wymaganiami i finalną decyzję o użyciu tekstu.
       </div>
     </div>
 
-    <div class="lesson-section">
-      <h3><span class="ls-icon">⚖️</span> Rachunek Etycznego Zysku – Zasada Proporcji</h3>
-      <p>System ten istnieje po to by pożerać wady w Twojej pracy. Znając te dramatyczne wyliczenia środowiskowe, powinieneś unikać używania go jako głupiej, taniej zabawki. Spójrz na dwa światy:</p>
-      
-      <div class="slide-two-col" style="margin-top:20px;">
-        <div class="slide-col-card sc-green">
-          <h4>Skoncentrowana Etyka (Korzystna transakcja)</h4>
-          <p style="font-size:14px">Wydajesz prompt PARTS i polecasz przygotowanie tabeli do RODO i dostosowanie jej do wymogów autyzmu Twojego ucznia. Model spala Twoje pół litra wody, ale... <strong>zyskuje Ci Twoje prawdziwe, ludzkie 3-4 godziny życia</strong>. Ten model ratuje Ci zdrowie w słusznym celu środowiska wymiany za zyski Twojego czasu.</p>
+    <div class="lesson-section" id="reporting">
+      <h3><span class="ls-icon">📝</span> Opis działania do raportu lub sprawozdania</h3>
+      <p>Jednym z najczęstszych zastosowań AI w pracy projektowej jest przygotowanie pierwszej wersji opisu działania. Najlepiej działa tu model, który dostaje fakty, zakres działania i jasny limit długości. Wszystkie brakujące dane warto oznaczać jako pola do uzupełnienia.</p>
+      <div class="try-it">
+        <div class="try-label">🧪 Zrób to teraz – opis działania projektowego</div>
+        <div class="prompt-box" style="position:relative">
+          <button class="prompt-copy-btn" onclick="copyPrompt(this)">Kopiuj</button>
+          <button class="prompt-save-btn" onclick="savePromptFromBox(this)">⭐ Zapisz</button>
+          <pre>Jestem koordynatorem/ką projektu [TYP PROJEKTU]
+pt. "[TYTUŁ]", realizowanego z partnerami z [KRAJE].
+W [MIESIĄC ROK] odbyło się [DZIAŁANIE]
+z udziałem [OPIS UCZESTNIKÓW].
+Tematyka: [TEMAT DZIAŁANIA].
+
+Napisz opis działania (180–220 słów) do sekcji narracyjnej raportu.
+Styl: rzeczowy i profesjonalny.
+Zaznacz [UZUPEŁNIJ], jeśli brakuje danych liczbowych lub faktów.</pre>
         </div>
-        <div class="slide-col-card sc-red">
-          <h4>Nieracjonalne użycie (Zbyteczna emisja)</h4>
-          <p style="font-size:14px">Zlecasz trzykrotne przebudowanie zaawansowanej grafiki "góry lodowej na pustyni" tylko dla rozrywki. Modele obrazowe są skrajnie energochłonne. Używasz potężnej chmury obliczeniowej dla nieistotnego mema, co generuje mierzalny koszt ekologiczny przy minimalnym zysku merytorycznym.</p>
+        <p><strong>Sprawdź po wygenerowaniu:</strong> czy tekst nie dopowiada nieistniejących efektów, czy długość pasuje do dokumentu i czy wszystkie pola [UZUPEŁNIJ] zostały przez Ciebie uzupełnione ręcznie.</p>
+      </div>
+    </div>
+
+    <div class="lesson-section" id="partnerzy">
+      <h3><span class="ls-icon">📧</span> Korespondencja z partnerami i interesariuszami</h3>
+      <p>AI dobrze wspiera pisanie roboczych maili: zmian terminu, potwierdzeń, próśb o informację lub podsumowań ustaleń. To szczególnie przydatne, gdy komunikacja odbywa się po angielsku lub gdy trzeba zachować profesjonalny, ale prosty styl.</p>
+      <div class="try-it">
+        <div class="try-label">🧪 Zrób to teraz – mail do partnera projektu</div>
+        <div class="prompt-box" style="position:relative">
+          <button class="prompt-copy-btn" onclick="copyPrompt(this)">Kopiuj</button>
+          <button class="prompt-save-btn" onclick="savePromptFromBox(this)">⭐ Zapisz</button>
+          <pre>Działaj jako koordynator projektu piszący do zagranicznego partnera.
+Projekt: [NAZWA]
+Partner: [KRAJ / INSTYTUCJA]
+Temat wiadomości: [NP. zmiana terminu spotkania]
+Kluczowe informacje:
+- [PUNKT 1]
+- [PUNKT 2]
+- [PUNKT 3]
+
+Przygotuj mail po angielsku:
+Subject + Greeting + Body (maks. 110 słów) + Closing.
+Ton: profesjonalny, uprzejmy, prosty dla nienatywnych użytkowników języka.</pre>
         </div>
       </div>
+    </div>
+
+    <div class="lesson-section" id="promocja">
+      <h3><span class="ls-icon">📣</span> Treści promocyjne i informacyjne</h3>
+      <p>Po wydarzeniu projektowym AI może pomóc szybko przygotować krótkie podsumowanie na stronę szkoły, media społecznościowe lub mail informacyjny. Warunkiem jest podanie faktów i jasne rozdzielenie tego, co już się wydarzyło, od tego, co jest planowane.</p>
+      <div class="try-it">
+        <div class="try-label">🧪 Zrób to teraz – krótka komunikacja o projekcie</div>
+        <div class="prompt-box" style="position:relative">
+          <button class="prompt-copy-btn" onclick="copyPrompt(this)">Kopiuj</button>
+          <button class="prompt-save-btn" onclick="savePromptFromBox(this)">⭐ Zapisz</button>
+          <pre>Działaj jako osoba odpowiedzialna za komunikację projektu edukacyjnego.
+Projekt: [NAZWA]
+Ostatnie działanie: [OPIS WYDARZENIA]
+Najważniejsze fakty: [DATA / MIEJSCE / LICZBA UCZESTNIKÓW / EFEKT]
+
+Przygotuj:
+1. Post na Facebook lub Instagram szkoły (maks. 80 słów)
+2. Krótki akapit na stronę szkoły (maks. 100 słów)
+3. Trzy propozycje tematu maila informacyjnego</pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="lesson-section" id="transparentnosc">
+      <h3><span class="ls-icon">⚖️</span> Transparentność i odpowiedzialność w dokumentach projektowych</h3>
+      <div class="alert-box">
+        <strong>Najważniejsza zasada:</strong> AI może pomóc w przygotowaniu wersji roboczej, ale odpowiedzialność za finalny dokument zawsze ponosi człowiek podpisujący lub wysyłający materiał.
+      </div>
+      <ol class="rules-list">
+        <li><div><strong>Oznaczaj brakujące dane.</strong> Używaj pól typu [UZUPEŁNIJ], zamiast pozwalać AI dopowiadać liczby.</div></li>
+        <li><div><strong>Weryfikuj zgodność z wymaganiami programu.</strong> AI nie zastąpi wytycznych instytucji finansującej.</div></li>
+        <li><div><strong>Nie wklejaj poufnych załączników do publicznej AI.</strong> Dotyczy to także raportów, budżetów i ocen partnerów.</div></li>
+        <li><div><strong>Zachowuj wersję źródłową.</strong> Przed użyciem porównaj tekst AI z notatkami, dokumentem lub ustaleniami zespołu.</div></li>
+        <li><div><strong>Traktuj AI jako wsparcie redakcyjne.</strong> Nie jako autora faktów, decyzji i wyników projektu.</div></li>
+      </ol>
     </div>
 
     <div class="lesson-nav">
       <button class="btn-secondary" onclick="showPage('module4')">← Moduł 4</button>
       <div style="display:flex;gap:12px;align-items:center">
         <button id="doneBtn_module5" class="btn-done" onclick="markDone('module5')">✓ Ukończono moduł 5</button>
+        <button class="btn-primary" onclick="showPage('module6')">Moduł 6: Zrównoważone AI →</button>
+      </div>
+    </div>
+  </div>
+`;
+
+/* ══════════════════════════════════════
+   PAGE: MODULE 6
+══════════════════════════════════════ */
+PAGES.module6 = () => `
+  <div class="lesson-header">
+    <div class="breadcrumb"><a href="#" onclick="showPage('home')">🏠 Start</a> <span class="bc-sep">›</span> Moduł 6</div>
+    <div class="lesson-number">Moduł 6 z 6</div>
+    <h2>Zrównoważone AI</h2>
+    <div class="lesson-meta">
+      <span class="meta-badge">⏱ ok. 15 minut</span>
+      <span class="meta-badge">🌱 Energia · woda · infrastruktura · proporcja użycia</span>
+    </div>
+    <p class="lesson-intro">Ten krótki moduł pokazuje, że AI nie działa w abstrakcyjnej "chmurze", tylko na fizycznej infrastrukturze: serwerach, energii elektrycznej i systemach chłodzenia. Celem nie jest zniechęcanie do używania AI, ale bardziej świadome wybieranie sytuacji, w których daje realną wartość.</p>
+    <button id="doneBtn_module6" class="mark-done-btn" onclick="markDone('module6')">✓ Oznacz jako ukończony</button>
+  </div>
+
+  <div class="lesson-body">
+    <div class="learning-goals">
+      <h3>📌 Po tym module będziesz wiedzieć:</h3>
+      <ul class="lg-list">
+        <li>dlaczego działanie AI wiąże się z zużyciem energii i zasobów chłodzenia</li>
+        <li>jak czytać liczby dotyczące śladu AI bez nadmiernych uproszczeń</li>
+        <li>jak stosować zasadę proporcji: używać AI tam, gdzie daje realny zysk jakości, czasu lub dostępności</li>
+      </ul>
+    </div>
+
+    <div class="lesson-section" id="infrastruktura">
+      <h3><span class="ls-icon">🏗️</span> AI to także infrastruktura</h3>
+      <p>Modele AI są trenowane i uruchamiane głównie w centrach danych. To oznacza zużycie energii elektrycznej przez serwery oraz dodatkowe zużycie zasobów przez chłodzenie, sieć i pozostałą infrastrukturę techniczną.</p>
+
+      <div class="info-grid">
+        <div class="info-card">
+          <h4>⚡ Energia i emisje</h4>
+          <p>Według <strong>IEA (2025)</strong> centra danych zużyły ok. <strong>415 TWh</strong> energii elektrycznej w 2024 r., a w scenariuszu bazowym mogą dojść do ok. <strong>945 TWh</strong> w 2030 r. Jednym z powodów wzrostu jest szybsze wdrażanie serwerów przyspieszonych przez AI.</p>
+          <p style="margin-top:8px">W opracowaniu porównawczym dla dużych modeli oszacowano też trening <strong>GPT-3</strong> na ok. <strong>552 tCO2e</strong> przy uwzględnieniu narzutu centrum danych (<span translate="no" class="notranslate">PUE</span>). To przykład pokazujący skalę, nie uniwersalny wynik dla każdego modelu.</p>
+        </div>
+        <div class="info-card">
+          <h4>💧 Woda i chłodzenie</h4>
+          <p>Badanie <strong>Li et al.</strong> dotyczące śladu wodnego AI szacuje, że trening <strong>GPT-3</strong> mógł zużyć ok. <strong>700 000 litrów</strong> wody na miejscu w centrum danych, a łącznie ok. <strong>5,4 mln litrów</strong>, jeśli doliczyć także wodę zużytą pośrednio przy produkcji energii.</p>
+          <p style="margin-top:8px">Autorzy podają też ilustracyjny szacunek: ok. <strong>500 ml wody</strong> na mniej więcej <strong>10-50 odpowiedzi</strong>, zależnie od miejsca i czasu działania modelu. To przybliżenie z konkretnego badania, a nie stały licznik dla każdego czatu.</p>
+        </div>
+      </div>
+
+      <div class="key-insight">
+        <strong>Najważniejsze doprecyzowanie:</strong> ślad środowiskowy AI nie jest jedną stałą liczbą. Zależy od modelu, długości promptu i odpowiedzi, liczby iteracji, miksu energetycznego, lokalizacji centrum danych i sposobu chłodzenia.
+      </div>
+    </div>
+    
+    <div class="lesson-section" id="metryki">
+      <h3><span class="ls-icon">📏</span> Jak czytać te liczby bez uproszczeń?</h3>
+      <p>Największy błąd w rozmowie o zrównoważonym AI polega na traktowaniu jednego wyniku jako uniwersalnej normy. W praktyce różnica między użyciem krótkiego modelu tekstowego a wielokrotnym generowaniem obrazów lub analizą bardzo dużych plików może być znacząca.</p>
+
+      <div class="info-grid">
+        <div class="info-card">
+          <h4>Co zwykle zwiększa ślad?</h4>
+          <ul>
+            <li>większy model i dłuższa odpowiedź</li>
+            <li>wiele kolejnych iteracji bez wyraźnego celu</li>
+            <li>bardziej złożone zadanie wymagające większej liczby obliczeń</li>
+            <li>infrastruktura oparta na bardziej emisyjnym miksie energii</li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <h4>Co warto z tego wyciągnąć praktycznie?</h4>
+          <ul>
+            <li>zacznij od prostszego narzędzia i krótszego polecenia</li>
+            <li>łącz poprawki w jedną sensowną iterację zamiast wielu drobnych</li>
+            <li>używaj AI wtedy, gdy faktycznie skraca pracę lub podnosi jakość</li>
+            <li>przy ważnych materiałach planuj pracę tak, by nie generować wielu zbędnych wersji</li>
+          </ul>
+        </div>
+      </div>
+
+      <p style="font-size:12.5px;color:var(--clr-text-muted)">Źródła dla tej sekcji: IEA, <em>Energy and AI</em> (2025); Li et al., <em>Making AI Less "Thirsty"</em> (wersja z 2025 r.); Luccioni et al., <em>Estimating the Carbon Footprint of BLOOM</em> (2022).</p>
+    </div>
+
+    <div class="lesson-section" id="proporcja">
+      <h3><span class="ls-icon">⚖️</span> Zasada proporcji w codziennej pracy</h3>
+      <p>Z perspektywy użytkownika najrozsądniejsze pytanie brzmi nie "czy używać AI w ogóle?", ale <strong>kiedy użycie AI jest uzasadnione</strong>. Jeśli narzędzie oszczędza realny czas, poprawia dostępność materiałów albo podnosi jakość pracy, jego użycie ma większy sens niż wtedy, gdy generuje kolejne wersje bez wyraźnej potrzeby.</p>
+      
+      <div class="slide-two-col" style="margin-top:20px;">
+        <div class="slide-col-card sc-green">
+          <h4>Użycie o wyraźnej wartości</h4>
+          <p style="font-size:14px">Przygotowujesz wariant materiału bardziej dostępny dla ucznia, porządkujesz długi protokół, skracasz czas pisania raportu albo tworzysz roboczą odpowiedź do partnera projektu. AI pomaga osiągnąć konkretny efekt w krótszym czasie.</p>
+        </div>
+        <div class="slide-col-card sc-red">
+          <h4>Użycie o niskiej wartości</h4>
+          <p style="font-size:14px">Tworzysz wiele niemal identycznych wersji tylko po to, by "jeszcze coś sprawdzić", generujesz kolejne obrazy bez celu albo zlecasz AI zadanie, które szybciej wykonał(a)byś ręcznie prostą edycją już gotowego tekstu.</p>
+        </div>
+      </div>
+
+      <div class="alert-box" style="margin-top:20px">
+        <strong>Wniosek praktyczny:</strong> zrównoważone użycie AI polega na wybieraniu takich zastosowań, w których narzędzie daje wyraźny zysk merytoryczny, organizacyjny lub dostępnościowy. Nie chodzi o zakaz, tylko o lepszą decyzję, kiedy warto po nie sięgnąć.
+      </div>
+    </div>
+
+    <div class="lesson-nav">
+      <button class="btn-secondary" onclick="showPage('module5')">← Moduł 5</button>
+      <div style="display:flex;gap:12px;align-items:center">
+        <button id="doneBtn_module6" class="btn-done" onclick="markDone('module6')">✓ Ukończono moduł 6</button>
         <button class="btn-primary" onclick="showPage('myplan')">Mój plan wdrożenia →</button>
       </div>
     </div>

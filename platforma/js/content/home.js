@@ -2,8 +2,9 @@ PAGES.home = () => {
   const s = gs();
   const hasProgress = s.lastPage && s.lastPage !== 'home' && PAGES[s.lastPage];
   const NAMES = {
-    module1: 'Moduł 1 – Czym jest AI?', module2: 'Moduł 2 – Prompting PARTS',
+    module1: 'Moduł 1 – Czym jest AI', module2: 'Moduł 2 – Prompting',
     module3: 'Moduł 3 – AI w dydaktyce', module4: 'Moduł 4 – Projekty i analityka',
+    module5: 'Moduł 5 – Praca projektowa z AI', module6: 'Moduł 6 – Zrównoważone AI',
     exercises: 'Ćwiczenia', prompts: 'Promptownik', checklists: 'Checklisty',
     myplan: 'Mój plan wdrożenia', slides: 'Slajdy', bibliography: 'Źródła',
   };
@@ -12,11 +13,11 @@ PAGES.home = () => {
   return `
   <div class="hero">
     <div class="hero-inner">
-      <div class="hero-badge">🎓 Kurs self-learning · WIN4SMEs · COVE Network · International Consortium</div>
-      <h1>AI w pracy nauczyciela i szkoły<br><em>Samodzielny kurs online</em></h1>
-      <p class="hero-subtitle">Ucz się we własnym tempie. Przejdź moduły, wykonuj ćwiczenia i korzystaj z gotowych promptów bez logowania i bez prowadzącego. Wszystko jest zapisywane lokalnie w Twojej przeglądarce.</p>
+      <div class="hero-badge">🎓 Kurs self-learning · edukacja · organizacja · projekty</div>
+      <h1>AI w edukacji, organizacji i projektach<br><em>Samodzielny kurs online</em></h1>
+      <p class="hero-subtitle">Kurs dla nauczycieli oraz innych osób pracujących w edukacji, organizacji i działaniach projektowych. Przechodź moduły, wykonuj ćwiczenia i korzystaj z gotowych promptów we własnym tempie. Postęp, notatki i zapisane prompty są przechowywane lokalnie w Twojej przeglądarce.</p>
       <div class="hero-stats">
-        <div class="hero-stat"><div class="sn">4</div><div class="sl">moduły samodzielnej nauki</div></div>
+        <div class="hero-stat"><div class="sn">6</div><div class="sl">modułów samodzielnej nauki</div></div>
         <div class="hero-stat"><div class="sn">30+</div><div class="sl">gotowych promptów do skopiowania</div></div>
         <div class="hero-stat"><div class="sn">15</div><div class="sl">ćwiczeń z instrukcjami</div></div>
         <div class="hero-stat"><div class="sn">5,9h</div><div class="sl">oszczędności / tydzień (Gallup 2025)<sup>*</sup></div></div>
@@ -38,13 +39,13 @@ PAGES.home = () => {
 
     <div class="section-label">GDZIE CHCESZ ZACZĄĆ?</div>
     <div class="section-title">Wybierz swoją ścieżkę</div>
-    <div class="section-subtitle">Możesz przejść cały kurs lub od razu skoczyć do konkretnego tematu.</div>
+    <div class="section-subtitle">Możesz przejść cały kurs albo od razu wejść w temat najbliższy Twojej pracy.</div>
     <div class="entry-grid" style="margin-bottom:40px">
       <div class="entry-card featured" onclick="showPage('module1')">
         <div class="ec-icon">🚀</div>
         <div class="ec-text">
-          <div class="ec-title">Pełny kurs – 4 moduły</div>
-          <div class="ec-desc">Przejdź kurs od podstaw AI po projekty unijne. Każdy moduł to lekcja z ćwiczeniami.</div>
+          <div class="ec-title">Pełny kurs – 6 modułów</div>
+          <div class="ec-desc">Przejdź kurs od podstaw AI po dydaktykę, analitykę, pracę projektową i zrównoważone użycie narzędzi.</div>
           <span class="ec-tag">⭐ Polecamy dla początkujących</span>
         </div>
       </div>
@@ -66,11 +67,19 @@ PAGES.home = () => {
       </div>
       <div class="entry-card" onclick="showPage('module4','sandbox')">
         <div class="ec-icon">🌍</div>
-        <div class="ec-text"><div class="ec-title">Praca na dokumentach</div><div class="ec-desc">AI w projektach (Erasmus+), narzędzia sandboxowe (NotebookLM).</div><span class="ec-tag">PM i Projekty</span></div>
+        <div class="ec-text"><div class="ec-title">Projekty i analityka</div><div class="ec-desc">Analiza dokumentów, porządkowanie informacji i praca na dużych plikach.</div><span class="ec-tag">Analityka</span></div>
+      </div>
+      <div class="entry-card" onclick="showPage('module5')">
+        <div class="ec-icon">🤝</div>
+        <div class="ec-text"><div class="ec-title">Praca projektowa z AI</div><div class="ec-desc">Raporty, partnerzy, komunikacja projektowa i zadania grantowe.</div><span class="ec-tag">Projekty</span></div>
       </div>
       <div class="entry-card" onclick="showPage('checklists')">
         <div class="ec-icon">✅</div>
         <div class="ec-text"><div class="ec-title">Checklisty</div><div class="ec-desc">Prompt, weryfikacja AI, RODO, mini-test wiedzy.</div><span class="ec-tag">Bezpieczeństwo</span></div>
+      </div>
+      <div class="entry-card" onclick="showPage('module6')">
+        <div class="ec-icon">🌱</div>
+        <div class="ec-text"><div class="ec-title">Zrównoważone AI</div><div class="ec-desc">Koszty środowiskowe, proporcja użycia i odpowiedzialne decyzje.</div><span class="ec-tag">Świadomość</span></div>
       </div>
       <div class="entry-card" onclick="showPage('slides')">
         <div class="ec-icon">📊</div>

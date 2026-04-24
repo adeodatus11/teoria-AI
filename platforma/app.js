@@ -14,6 +14,20 @@ function gs() { try { return JSON.parse(localStorage.getItem(STORE)) || {}; } ca
 function ss(state) { localStorage.setItem(STORE, JSON.stringify(state)); }
 function us(patch) { const s = gs(); Object.assign(s, patch); ss(s); }
 
+function migrateCourseState() {
+  const s = gs();
+  if (s.courseStructureVersion === 2) return s;
+
+  if (Array.isArray(s.done)) {
+    s.done = s.done.map(id => id === 'module5' ? 'module6' : id);
+    s.done = [...new Set(s.done)];
+  }
+  if (s.lastPage === 'module5') s.lastPage = 'module6';
+  s.courseStructureVersion = 2;
+  ss(s);
+  return s;
+}
+
 /* ══════════════════════════════════════
    ROUTER
 ══════════════════════════════════════ */
@@ -84,7 +98,7 @@ function markDone(id) {
 }
 
 function updateProgress() {
-  const tracked = ['module1', 'module2', 'module3', 'module4', 'exercises', 'prompts', 'checklists', 'myplan'];
+  const tracked = ['module1', 'module2', 'module3', 'module4', 'module5', 'module6', 'exercises', 'prompts', 'checklists', 'myplan'];
   const s = gs();
   const done = (s.done || []).filter(m => tracked.includes(m));
   const pct = Math.round((done.length / tracked.length) * 100);
@@ -93,7 +107,7 @@ function updateProgress() {
   const txt = document.getElementById('sidebarProgressText');
   if (fill) fill.style.width = pct + '%';
   if (pctEl) pctEl.textContent = pct + '%';
-  if (txt) txt.textContent = done.length + ' / ' + tracked.length + ' modułów ukończonych';
+  if (txt) txt.textContent = done.length + ' / ' + tracked.length + ' elementów ukończonych';
 }
 
 function updateContinueBtn() {
@@ -109,7 +123,7 @@ function updateContinueBtn() {
 
 function continueLearning() {
   const s = gs();
-  const order = ['module1', 'module2', 'module3', 'module4'];
+  const order = ['module1', 'module2', 'module3', 'module4', 'module5', 'module6'];
   const done = s.done || [];
   // find first incomplete module
   const next = order.find(m => !done.includes(m));
@@ -312,8 +326,10 @@ function modulePills() {
   const ms = [
     { id: 'module1', emoji: '📘', label: 'Moduł 1 – Czym jest AI?' },
     { id: 'module2', emoji: '✍️', label: 'Moduł 2 – Prompting' },
-    { id: 'module3', emoji: '🎓', label: 'Moduł 3 – Dydaktyka' },
+    { id: 'module3', emoji: '🎓', label: 'Moduł 3 – AI w dydaktyce' },
     { id: 'module4', emoji: '🌍', label: 'Moduł 4 – Projekty i analityka' },
+    { id: 'module5', emoji: '🤝', label: 'Moduł 5 – Praca projektowa z AI' },
+    { id: 'module6', emoji: '🌱', label: 'Moduł 6 – Zrównoważone AI' },
     { id: 'exercises', emoji: '🧩', label: 'Ćwiczenia' },
     { id: 'prompts', emoji: '💡', label: 'Promptownik' },
     { id: 'checklists', emoji: '✅', label: 'Checklisty' },
@@ -599,7 +615,7 @@ Dane wejściowe:
     ${ex('ex15', '15', 'Odwrócona inżynieria (Reverse Prompting)', 'med', '15 min',
   'Metapoznanie: myślenie kategoriami modelu językowego zamiast pisarza.',
   `<ol>
-        <li>Znajdź w internecie absolutnie wybitny konspekt lekcji lub oficjalne ogłoszenie z urzędu.</li>
+        <li>Znajdź w internecie bardzo dobry konspekt lekcji lub oficjalne ogłoszenie z urzędu.</li>
         <li>Wklej cały jego tekst do okna AI wraz z komendą inżynierii wstecznej:</li>
       </ol>
       <div class="prompt-box" style="position:relative">
@@ -654,7 +670,7 @@ PAGES.prompts = () => `
   <div class="page-header">
     <div class="breadcrumb"><a href="#" onclick="showPage('home')">🏠 Start</a> <span class="bc-sep">›</span> Promptownik</div>
     <h2>💡 Promptownik – gotowe prompty do użycia</h2>
-    <p>Skopiuj, wklej do AI i dostosuj do swojej sytuacji. Kliknij ⭐ Zapisz, żeby dodać prompt do swojej listy w panelu notatek.</p>
+    <p>Skopiuj, wklej do AI i dostosuj do swojej sytuacji. Każda karta pokazuje też, <strong>kiedy używać</strong> promptu i <strong>na co uważać</strong>. Kliknij ⭐ Zapisz, żeby dodać prompt do swojej listy w panelu notatek.</p>
     <button id="doneBtn_prompts" class="mark-done-btn" onclick="markDone('prompts')">✓ Oznacz jako ukończony</button>
   </div>
 
@@ -764,7 +780,7 @@ Format: Temat maila + Treść + Zaproszenie do kontaktu`)}
 
     ${pc('pC2', 'C', 'C2 – Ogłoszenie szkolne / post szkolny',
               'Gdy potrzebujesz szybko napisać ogłoszenie dla uczniów, rodziców lub post na stronę szkoły.',
-              '',
+              '⚠️ Sprawdź daty, miejsce, odbiorcę i ton komunikatu; nie publikuj danych osobowych ani informacji, które nie powinny trafić do szerokiego obiegu.',
               `Napisz ogłoszenie szkolne o [TEMAT].
 Dla: [uczniowie / rodzice / społeczność szkolna]. Max 60 słów.`,
               `Działaj jako specjalista ds. komunikacji szkoły.
@@ -811,7 +827,7 @@ Format: Subject: + Greeting + Body (max 110 słów) + Closing + Signature`)}
 
     ${pc('pD3', 'D', 'D3 – Treści promocyjne o projekcie',
                     'Gdy chcesz opowiedzieć o projekcie szkołom, rodzicom lub mediom.',
-                    '',
+                    '⚠️ Sprawdź fakty, liczby, daty i zgodność z zasadami komunikacji projektu; nie dopisuj rezultatów, których nie ma w dokumentacji.',
                     `Przygotuj krótkie treści o projekcie [NAZWA] dotyczącego [TEMAT]:
 1. Post na FB/IG szkoły (80 słów, hashtagi)
 2. Akapit na stronę szkoły (100 słów)`,
@@ -834,16 +850,16 @@ Napisz 3 główne scenariusze dlaczego tak się stało i zaproponuj środki zara
                       `Działaj jako Analityk Ryzyka i Senior Project Manager.
 Oto plan mojego nowego przedsięwzięcia: [WKLEJ PLAN/ZŁOŻENIA]
 
-Wykonaj analizę typu "Pre-mortem". Pokaż scenariusze porażki. Załóżmy, że jesteśmy pół roku w przyszłości i to przedsięwzięcie okazało się wielką katastrofą.
+Wykonaj analizę typu "Pre-mortem". Pokaż scenariusze porażki. Załóżmy, że jesteśmy pół roku w przyszłości i to przedsięwzięcie nie przyniosło oczekiwanych rezultatów.
 1. Zidentyfikuj 3 najbardziej prawdopodobne punkty krytyczne (bottlenecks/ryzyka) na których projekt się wywrócił.
 2. Spróbuj wskazać błędy w komunikacji ludzkiej i niedoszacowania zasobów.
-3. Przedstaw do każdego punktu twardą tabelkę ze środkami zapobiegawczymi (Co zrobić już dziś, by tego uniknąć).`)}
+3. Przedstaw do każdego punktu konkretną tabelę ze środkami zapobiegawczymi (Co zrobić już dziś, by tego uniknąć).`)}
 
     ${pc('pE2', 'E', 'E2 – Zestawianie sprzeczności',
                         'Gdy dokumenty robocze lub ustalenia nie spinają się ze sobą.',
                         '⚠️ Sprawdź czy piaskownica/AI na pewno odczytała najnowszą wersję.',
                         `Zestaw raport A [WKLEJ] z wytycznymi B [WKLEJ].
-Oznacz czerwoną flagą miejsca w których obydwa teksty są ze sobą sprzeczne.`,
+Oznacz czerwoną flagą miejsca, w których oba teksty są ze sobą sprzeczne.`,
                         `Wciel się w rygorystycznego weryfikatora dokumentacji (Audytor QA).
 Załączam dwa teksty dotyczące tej samej sprawy (np. regulamin i mail od wicedyrektora lub wytyczne KE i zarys raportu):
 Tekst A (Procedura domyślna): [WKLEJ TEKST A]
@@ -852,23 +868,23 @@ Tekst B (Stan faktyczny): [WKLEJ TEKST B]
 Twoje zadanie: Pomiń powielenia i skup się WYŁĄCZNIE na tym, gdzie Tekst B zaprzecza Tekstowi A, albo łamie podane wytyczne.
 Generuj listę "Red Flags" (Czerwone flagi) - punkt, na czym polega sprzeczność i kto musi podjąć decyzję arbitrażową.`)}
 
-    ${pc('pE3', 'E', 'E3 – Odmulacz przebodźcowania',
+    ${pc('pE3', 'E', 'E3 – Porządkowanie przeciążenia informacyjnego',
                           'Gdy masz długi wątek z wieloma odpowiedziami i nie wiesz na czym stoisz.',
-                          '⚠️ Skasuj ze skopiowanego wątku wszelkie loginy, imiona uczniów przed wklejeniem.',
-                          `Zrobił się straszny chaos. Wklejam cały długaśny wątek mailowy: [WKLEJ].
-Kto co ma zrobić i do kiedy? Podaj w sprytnej tabeli.`,
+                          '⚠️ Usuń ze skopiowanego wątku loginy, imiona uczniów i inne dane osobowe przed wklejeniem.',
+                          `Wklejam długi wątek mailowy lub komunikacyjny: [WKLEJ].
+Uporządkuj go i pokaż, kto co ma zrobić oraz do kiedy.`,
                           `Działaj jako mój asystent do dekompozycji szumu informacyjnego.
-Zrobił się koszmarny chaos komunikacyjny, a ja mam tylko 5 minut przed wejściem na spotkanie. Poniżej wklejam długi, sklejony wątek z maili i komunikatora:
+Mam tylko kilka minut przed spotkaniem. Poniżej wklejam długi, sklejony wątek z maili i komunikatora:
 [WKLEJ CAŁOŚĆ WĄTKU (bez danych osobowych)]
 
 Twoje zadanie to wyłuskać wyłącznie "sygnał" i ukryć "szum":
-1. W jednym zdaniu - o czym w ogóle jest ta awantura/dyskusja.
+1. W jednym zdaniu - o czym jest ten wątek lub dyskusja.
 2. Tabela: [Kto musi to zrobić] | [Konkretne zadanie przypisane u] | [Deadline]
-3. Oznacz "Na Cito" czy jest tam jakaś tykająca bomba lub pytanie, które jest bez odpowiedzi od dwóch dni.`)}
+3. Oznacz pilne sprawy lub pytania, które pozostają bez odpowiedzi od dwóch dni.`)}
 
     ${pc('pH1', 'H', 'H1 – Weryfikacja i krytyczna analiza odpowiedzi AI',
                             'Użyj <em>zawsze</em> po otrzymaniu ważnej odpowiedzi AI – szczególnie w kwestiach faktycznych, prawnych lub projektowych.',
-                            '',
+                            '⚠️ Ten prompt pomaga wychwycić ryzyka, ale nie zastępuje sprawdzenia aktualności danych i weryfikacji w oficjalnych źródłach.',
                             `Oceń krytycznie swoją poprzednią odpowiedź.
 Wskaż: fakty do weryfikacji, potencjalne halucynacje,
 założenia, które mogą być błędne.`,
@@ -885,10 +901,12 @@ Podaj konkretne wskazania – nie ogólniki.`)}
   </div>
 `;
 
+const defaultPromptCards = new Set(['pA1', 'pB1', 'pD1']);
+
 function pc(anchor, cat, title, when, warn, basic, advanced) {
-  const catLabel = { A: 'Dydaktyka', B: 'Dokumenty i org.', C: 'Komunikacja', D: 'Projekty UE', H: 'Weryfikacja AI' }[cat];
+  const catLabel = { A: 'Dydaktyka', B: 'Dokumenty i org.', C: 'Komunikacja', D: 'Projekty UE', E: 'Zarządzanie i PM', H: 'Weryfikacja AI' }[cat];
   return `
-  <div class="prompt-card" id="${anchor}" data-cat="${cat}">
+  <div class="prompt-card ${defaultPromptCards.has(anchor) ? 'open' : ''}" id="${anchor}" data-cat="${cat}">
     <div class="prompt-card-hdr" onclick="togglePromptCard(this)">
       <div>
         <div class="prompt-cat-label">${catLabel}</div>
@@ -1086,7 +1104,7 @@ PAGES.slides = () => `
   <div class="page-header">
     <div class="breadcrumb"><a href="#" onclick="showPage('home')">🏠 Start</a> <span class="bc-sep">›</span> Prezentacje</div>
     <h2>📊 Prezentacje – slajdy kursu</h2>
-    <p>Zestaw interaktywnych slajdów wprowadzających do platformy (wersja dla Prelegenta). Rekomendujemy ich wykorzystanie w trybie pełnoekranowym na rzutniku, jako angażującą "zagajkę" otwierającą poszczególne etapy szkoleniowe na sali. Do nawigacji możesz używać strzałek na klawiaturze.</p>
+    <p>Zestaw interaktywnych slajdów wprowadzających do platformy (wersja dla prowadzącego). Rekomendujemy ich wykorzystanie w trybie pełnoekranowym na rzutniku, jako krótkie wprowadzenie do kolejnych etapów szkolenia. Do nawigacji możesz używać strzałek na klawiaturze.</p>
   </div>
   <div class="slide-viewer-wrap">
     <div class="slide-set-nav">
@@ -1182,23 +1200,25 @@ PAGES.bibliography = () => `
   <div class="page-header">
     <div class="breadcrumb"><a href="#" onclick="showPage('home')">🏠 Start</a> <span class="bc-sep">›</span> Źródła</div>
     <h2>📚 Źródła i literatura</h2>
-    <p>Badania, raporty i dokumenty instytucjonalne, na których oparty jest kurs. Otwórz w przeglądarce i zgłęb temat.</p>
+    <p>Badania, raporty i dokumenty instytucjonalne, na których oparty jest kurs. Każdy wpis zawiera link do źródła, które możesz otworzyć w przeglądarce.</p>
   </div>
   <div class="bib-page">
-    ${bib('UNESCO AI Competency Framework for Teachers (AI CFT)', '2024', 'UNESCO – Organizacja Narodów Zjednoczonych ds. Oświaty, Nauki i Kultury', 'Definiuje 5 kompetencji AI dla nauczycieli. Fundament całego kursu.', '1')}
-    ${bib('OECD TALIS 2024 – Teaching and Learning International Survey', '2024', 'OECD – Organizacja Współpracy Gospodarczej', '29% nauczycieli zgłasza potrzebę szkoleń z AI. Kluczowe dane o lukach kompetencyjnych.', '1')}
-    ${bib('Gallup / Walton Family Foundation – AI in Education (2025)', '2025', 'Gallup Inc.', 'Badanie produktywności: 5,9h oszczędności tygodniowo dla regularnych użytkowników AI.', '1')}
-    ${bib('Komisja Europejska – Wytyczne etyczne AI dla edukacji', '2024', 'Komisja Europejska – DG EAC', 'Zasady transparentności i etycznego użycia AI w instytucjach UE i projektach finansowanych ze środków KE.', '1')}
-    ${bib('DigCompEdu – European Framework for the Digital Competence of Educators', '2017', 'Komisja Europejska (JRC)', '22 kompetencje cyfrowe nauczycieli w 6 obszarach. Zawiera AI Pioneers Supplement (2024).', '1')}
-    ${bib('Digital Education Action Plan 2021–2027', '2021', 'Komisja Europejska', 'Plan działania UE ws. edukacji cyfrowej – kompetencje, narzędzia, ekosystem. Baza dla projektów Erasmus+.', '2')}
-    ${bib('Knowles, Malcolm et al. – The Adult Learner (8th ed.)', '2015', 'Routledge / Taylor & Francis', 'Klasyk andragogiki. Model autodyrektywnego uczenia dorosłych. Zasada uczenia przez działanie.', '2')}
-    ${bib('UNESCO AI Literacy Framework', '2023', 'UNESCO', 'Globalne ramy kompetencji AI-literacy dla wszystkich poziomów edukacji.', '2')}
-    ${bib('European School Education Platform – AI Resources', '2024', 'Komisja Europejska (EACEA)', 'Zasoby do nauki z AI dostępne bezpłatnie dla nauczycieli UE. esep.eu/ai', '3')}
-    ${bib('AI for Education – Google for Education', '2024', 'Google LLC', 'Praktyczne materiały i kursy z AI dla nauczycieli. grow.google/for-educators', '3')}
+    ${bib('UNESCO AI Competency Framework for Teachers', '2024', 'UNESCO', 'Definiuje kompetencje AI dla nauczycieli i porządkuje rozwój zawodowy wokół użycia AI w edukacji.', '1', 'https://www.unesco.org/en/articles/ai-competency-framework-teachers')}
+    ${bib('Results from TALIS 2024', '2024', 'OECD', 'Oficjalny raport TALIS z danymi o pracy nauczycieli, lukach kompetencyjnych i potrzebie rozwoju zawodowego.', '1', 'https://www.oecd.org/en/publications/results-from-talis-2024_90df6235-en.html')}
+    ${bib('Three in 10 Teachers Are Saving Weeks of Time With AI', '2025', 'Gallup', 'Źródło danych o oszczędności czasu przy regularnym używaniu AI w pracy nauczycieli.', '1', 'https://news.gallup.com/poll/691967/three-teachers-weekly-saving-six-weeks-year.aspx')}
+    ${bib('Ethical guidelines on the use of artificial intelligence and data in teaching and learning for educators', '2024', 'Komisja Europejska', 'Wytyczne dotyczące etycznego i odpowiedzialnego użycia AI oraz danych w edukacji.', '1', 'https://education.ec.europa.eu/news/ethical-guidelines-on-the-use-of-artificial-intelligence-and-data-in-teaching-and-learning-for-educators')}
+    ${bib('DigCompEdu', '2017', 'Joint Research Centre, Komisja Europejska', 'Europejskie ramy kompetencji cyfrowych edukatorów. Ważny punkt odniesienia dla wdrożeń AI w edukacji.', '1', 'https://joint-research-centre.ec.europa.eu/digcompedu_en')}
+    ${bib('Digital Education Action Plan 2021–2027', '2021', 'Komisja Europejska', 'Strategiczny kontekst dla edukacji cyfrowej, kompetencji i działań systemowych w UE.', '2', 'https://education.ec.europa.eu/focus-topics/digital-education/action-plan')}
+    ${bib('Guidance for generative AI in education and research', '2023', 'UNESCO', 'Praktyczne wskazówki dotyczące wdrażania generatywnej AI w edukacji i badaniach.', '2', 'https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research')}
+    ${bib('AI in Education', '2024', 'European School Education Platform', 'Kurs i zasoby dla osób pracujących w edukacji, pokazujące praktyczne scenariusze użycia AI.', '2', 'https://school-education.ec.europa.eu/en/learn/courses/ai-education')}
+    ${bib('Gemini for Education', '2025', 'Google for Education', 'Oficjalny opis narzędzia edukacyjnego i jego ograniczeń oraz zabezpieczeń.', '3', 'https://edu.google.com/ai/gemini-for-education/')}
+    ${bib('Energy and AI', '2025', 'International Energy Agency', 'Oficjalny raport o energii, centrach danych i wpływie rozwoju AI na zapotrzebowanie energetyczne.', '2', 'https://www.iea.org/reports/energy-and-ai')}
+    ${bib('Making AI Less "Thirsty": Uncovering and Addressing the Secret Water Footprint of AI Models', '2025', 'Li et al.', 'Badanie o śladzie wodnym modeli AI, wykorzystywane w module o zrównoważonym AI.', '2', 'https://arxiv.org/abs/2304.03271')}
+    ${bib('Estimating the Carbon Footprint of BLOOM, a 176B Parameter Language Model', '2022', 'Luccioni et al.', 'Opracowanie porównawcze dotyczące śladu węglowego dużych modeli językowych.', '2', 'https://www.jmlr.org/papers/v24/23-0069.html')}
   </div>
 `;
 
-function bib(title, year, org, note, prio) {
+function bib(title, year, org, note, prio, url) {
   const prioLabel = { 1: 'Kluczowe źródło', 2: 'Uzupełniające', 3: 'Zasoby dodatkowe' };
   const prioCls = { 1: 'bib-1', 2: 'bib-2', 3: 'bib-3' };
   return `<div class="bib-entry">
@@ -1206,6 +1226,7 @@ function bib(title, year, org, note, prio) {
     <div class="bib-title">${title}</div>
     <div class="bib-detail">${org} · ${year}</div>
     <div class="bib-note">${note}</div>
+    ${url ? `<div class="bib-link-row"><a class="bib-link" href="${url}" target="_blank" rel="noopener noreferrer">Otwórz źródło ↗</a></div>` : ''}
   </div>`;
 }
 
@@ -1228,7 +1249,7 @@ document.addEventListener('keydown', e => {
    INIT
 ══════════════════════════════════════ */
 document.addEventListener('DOMContentLoaded', () => {
-  const s = gs();
+  const s = migrateCourseState();
   const startPage = (s.lastPage && PAGES[s.lastPage]) ? s.lastPage : 'home';
   showPage(startPage);
   updateContinueBtn();
