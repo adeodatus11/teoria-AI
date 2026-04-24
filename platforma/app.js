@@ -864,7 +864,7 @@ PAGES.prompts = () => `
   <div class="page-header">
     <div class="breadcrumb"><a href="#" onclick="showPage('home')">🏠 Start</a> <span class="bc-sep">›</span> Promptownik</div>
     <h2>💡 Promptownik – gotowe prompty do użycia</h2>
-    <p>Skopiuj, wklej do AI i dostosuj do swojej sytuacji. Każda karta pokazuje też, <strong>kiedy używać</strong> promptu i <strong>na co uważać</strong>. Kliknij ⭐ Zapisz, żeby dodać prompt do swojej listy w panelu notatek.</p>
+    <p>Znajdziesz tu <strong>14 kart i 28 wariantów promptów</strong>. Skopiuj, wklej do AI i dostosuj do swojej sytuacji. Każda karta pokazuje też, <strong>kiedy używać</strong> promptu i <strong>na co uważać</strong>. Kliknij ⭐ Zapisz, żeby dodać prompt do swojej listy w panelu notatek.</p>
     <button id="doneBtn_prompts" class="mark-done-btn" onclick="markDone('prompts')">✓ Oznacz jako ukończony</button>
   </div>
 

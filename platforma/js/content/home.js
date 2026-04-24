@@ -18,7 +18,7 @@ PAGES.home = () => {
       <p class="hero-subtitle">Kurs dla nauczycieli oraz innych osób pracujących w edukacji, organizacji i działaniach projektowych. Przechodź moduły, wykonuj ćwiczenia i korzystaj z gotowych promptów we własnym tempie. Postęp, notatki i zapisane prompty są przechowywane lokalnie w Twojej przeglądarce.</p>
       <div class="hero-stats">
         <div class="hero-stat"><div class="sn">6</div><div class="sl">modułów samodzielnej nauki</div></div>
-        <div class="hero-stat"><div class="sn">30+</div><div class="sl">gotowych promptów do skopiowania</div></div>
+        <div class="hero-stat"><div class="sn">28</div><div class="sl">wariantów promptów do skopiowania</div></div>
         <div class="hero-stat"><div class="sn">18</div><div class="sl">ćwiczeń z instrukcjami</div></div>
         <div class="hero-stat"><div class="sn">5,9h</div><div class="sl">oszczędności / tydzień (Gallup 2025)<sup>*</sup></div></div>
       </div>
@@ -55,7 +55,7 @@ PAGES.home = () => {
       </div>
       <div class="entry-card" onclick="showPage('prompts')">
         <div class="ec-icon">💡</div>
-        <div class="ec-text"><div class="ec-title">Tylko prompty</div><div class="ec-desc">30+ gotowych promptów do skopiowania i użycia od razu.</div><span class="ec-tag">Narzędzia</span></div>
+        <div class="ec-text"><div class="ec-title">Tylko prompty</div><div class="ec-desc">14 kart i 28 wariantów promptów gotowych do skopiowania i użycia od razu.</div><span class="ec-tag">Narzędzia</span></div>
       </div>
       <div class="entry-card" onclick="showPage('module3','dydaktyka')">
         <div class="ec-icon">🎓</div>
@@ -91,14 +91,14 @@ PAGES.home = () => {
     <div class="section-title">Najczęściej wybierane</div>
     <div class="section-subtitle">Kliknij i zacznij – nie wymaga przerabiania całego kursu.</div>
     <div class="quick-grid">
-      <div class="quick-card" onclick="showPage('prompts','pA1')"><div class="qc-icon">📝</div><div class="qc-title">Prompt: Konspekt lekcji</div><div class="qc-sub">Skopiuj i wklej do AI</div></div>
-      <div class="quick-card" onclick="showPage('prompts','pC1')"><div class="qc-icon">📧</div><div class="qc-title">Prompt: Mail do rodziców</div><div class="qc-sub">Gotowy w 30 sekund</div></div>
-      <div class="quick-card" onclick="showPage('prompts','pB1')"><div class="qc-icon">📄</div><div class="qc-title">Prompt: Streszczenie doc.</div><div class="qc-sub">Lista zadań + terminy</div></div>
-      <div class="quick-card" onclick="showPage('prompts','pD1')"><div class="qc-icon">🌍</div><div class="qc-title">Prompt: Projekt EU</div><div class="qc-sub">Opis działania do raportu</div></div>
-      <div class="quick-card" onclick="showPage('checklists','chk-verify')"><div class="qc-icon">🔍</div><div class="qc-title">Prompt: Weryfikacja AI</div><div class="qc-sub">5 pytań przed użyciem</div></div>
-      <div class="quick-card" onclick="showPage('module2','parts')"><div class="qc-icon">🧠</div><div class="qc-title">Prompt: PARTS – ściąga</div><div class="qc-sub">Struktura dobrego promptu</div></div>
-      <div class="quick-card" onclick="showPage('module4','rodo')"><div class="qc-icon">🔒</div><div class="qc-title">Prompt: RODO i AI</div><div class="qc-sub">Czego NIE wklejać do AI</div></div>
-      <div class="quick-card" onclick="showPage('myplan')"><div class="qc-icon">🎯</div><div class="qc-title">Prompt: Mój plan wdrożenia</div><div class="qc-sub">7 zadań na pierwszy tydzień</div></div>
+      <div class="quick-card" onclick="showPage('prompts','pA1')"><div class="qc-icon">📝</div><div class="qc-title">Konspekt lekcji</div><div class="qc-sub">Gotowy prompt do skopiowania</div></div>
+      <div class="quick-card" onclick="showPage('prompts','pC1')"><div class="qc-icon">📧</div><div class="qc-title">Mail do rodziców</div><div class="qc-sub">Szybki komunikat do dopracowania</div></div>
+      <div class="quick-card" onclick="showPage('prompts','pB1')"><div class="qc-icon">📄</div><div class="qc-title">Streszczenie dokumentu</div><div class="qc-sub">Lista zadań i terminów</div></div>
+      <div class="quick-card" onclick="showPage('prompts','pD1')"><div class="qc-icon">🌍</div><div class="qc-title">Projekt UE – opis działania</div><div class="qc-sub">Szkic do raportu lub sprawozdania</div></div>
+      <div class="quick-card" onclick="showPage('checklists','chk-verify')"><div class="qc-icon">🔍</div><div class="qc-title">Checklista: Weryfikacja AI</div><div class="qc-sub">5 pytań przed użyciem odpowiedzi</div></div>
+      <div class="quick-card" onclick="showPage('module2','parts')"><div class="qc-icon">🧠</div><div class="qc-title">Ściąga: PARTS</div><div class="qc-sub">Struktura dobrego promptu</div></div>
+      <div class="quick-card" onclick="showPage('module4','rodo')"><div class="qc-icon">🔒</div><div class="qc-title">Sekcja: RODO i AI</div><div class="qc-sub">Czego nie wklejać do narzędzi</div></div>
+      <div class="quick-card" onclick="showPage('myplan')"><div class="qc-icon">🎯</div><div class="qc-title">Plan wdrożenia</div><div class="qc-sub">7 zadań na pierwszy tydzień</div></div>
     </div>
   </div>`;
 };
