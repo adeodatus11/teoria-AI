@@ -15,7 +15,7 @@ PAGES.home = () => {
     <div class="hero-inner">
       <div class="hero-badge">🎓 Kurs self-learning · edukacja · organizacja · projekty</div>
       <h1>AI w edukacji, organizacji i projektach<br><em>Samodzielny kurs online</em></h1>
-      <p class="hero-subtitle">Kurs dla nauczycieli oraz innych osób pracujących w edukacji, organizacji i działaniach projektowych. Przechodź moduły, wykonuj ćwiczenia i korzystaj z gotowych promptów we własnym tempie. Postęp, notatki i zapisane prompty są przechowywane lokalnie w Twojej przeglądarce.</p>
+      <p class="hero-subtitle">Kurs self-learning dla nauczycieli oraz innych osób pracujących w edukacji, organizacji i projektach. Przechodź moduły, rozwiązuj ćwiczenia i korzystaj z gotowych promptów we własnym tempie. Postęp i zapisane materiały są przechowywane lokalnie w Twojej przeglądarce.</p>
       <div class="hero-stats">
         <div class="hero-stat"><div class="sn">6</div><div class="sl">modułów samodzielnej nauki</div></div>
         <div class="hero-stat"><div class="sn">28</div><div class="sl">wariantów promptów do skopiowania</div></div>
@@ -38,8 +38,8 @@ PAGES.home = () => {
     ${modulePills()}
 
     <div class="section-label">GDZIE CHCESZ ZACZĄĆ?</div>
-    <div class="section-title">Wybierz swoją ścieżkę</div>
-    <div class="section-subtitle">Możesz przejść cały kurs albo od razu wejść w temat najbliższy Twojej pracy.</div>
+    <div class="section-title">Wybierz, od czego zacząć</div>
+    <div class="section-subtitle">Możesz przejść cały kurs albo od razu otworzyć obszar najbliższy Twojej pracy.</div>
     <div class="entry-grid" style="margin-bottom:40px">
       <div class="entry-card featured" onclick="showPage('module1')">
         <div class="ec-icon">🚀</div>
@@ -51,11 +51,11 @@ PAGES.home = () => {
       </div>
       <div class="entry-card" onclick="showPage('exercises')">
         <div class="ec-icon">🧩</div>
-        <div class="ec-text"><div class="ec-title">Tylko ćwiczenia</div><div class="ec-desc">18 praktycznych zadań z instrukcjami krok po kroku.</div><span class="ec-tag">Praktyka</span></div>
+        <div class="ec-text"><div class="ec-title">Ćwiczenia praktyczne</div><div class="ec-desc">18 zadań z instrukcjami krok po kroku.</div><span class="ec-tag">Praktyka</span></div>
       </div>
       <div class="entry-card" onclick="showPage('prompts')">
         <div class="ec-icon">💡</div>
-        <div class="ec-text"><div class="ec-title">Tylko prompty</div><div class="ec-desc">14 kart i 28 wariantów promptów gotowych do skopiowania i użycia od razu.</div><span class="ec-tag">Narzędzia</span></div>
+        <div class="ec-text"><div class="ec-title">Promptownik</div><div class="ec-desc">14 kart i 28 wariantów promptów gotowych do użycia.</div><span class="ec-tag">Narzędzia</span></div>
       </div>
       <div class="entry-card" onclick="showPage('module3','dydaktyka')">
         <div class="ec-icon">🎓</div>
@@ -83,7 +83,7 @@ PAGES.home = () => {
       </div>
       <div class="entry-card" onclick="showPage('slides')">
         <div class="ec-icon">📊</div>
-        <div class="ec-text"><div class="ec-title">Prezentacje</div><div class="ec-desc">Przeglądaj slajdy jak w prawdziwym deck'u.</div><span class="ec-tag">Slajdy</span></div>
+        <div class="ec-text"><div class="ec-title">Prezentacje</div><div class="ec-desc">Slajdy do każdego modułu w jednym miejscu.</div><span class="ec-tag">Slajdy</span></div>
       </div>
     </div>
 

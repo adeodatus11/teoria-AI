@@ -8,7 +8,7 @@ PAGES.module1 = () => `
       <span class="meta-badge">🎯 Podstawy AI · Halucynacje · Pierwsze użycie</span>
       <span class="meta-badge">📈 Poziom: podstawowy</span>
     </div>
-    <p class="lesson-intro">W tym module poznasz podstawy działania AI językowej, zrozumiesz skąd biorą się jej błędy i wykonasz pierwsze proste zadanie. To teoria potrzebna do świadomego korzystania z narzędzi AI w dalszej części kursu.</p>
+    <p class="lesson-intro">W tym module poznasz podstawy działania AI językowej, zrozumiesz źródła typowych błędów i wykonasz pierwsze proste zadanie. To fundament potrzebny do świadomej pracy z narzędziami AI w dalszej części kursu.</p>
     <button id="doneBtn_module1" class="mark-done-btn" onclick="markDone('module1')">✓ Oznacz jako ukończony</button>
   </div>
 
@@ -173,7 +173,7 @@ PAGES.module2 = () => `
       <span class="meta-badge">🎯 Framework <span translate="no" class="notranslate">PARTS</span> · Ćwiczenia poprawy promptów</span>
       <span class="meta-badge">📝 3 ćwiczenia praktyczne</span>
     </div>
-    <p class="lesson-intro">Jakość wyniku AI zależy bezpośrednio od jakości pytania. W tym module nauczysz się pisać prompty według struktury <span translate="no" class="notranslate">PARTS</span> – i od razu przetestujesz różnicę.</p>
+    <p class="lesson-intro">Jakość odpowiedzi AI zależy od jakości polecenia. W tym module poznasz strukturę <span translate="no" class="notranslate">PARTS</span> i od razu sprawdzisz, jak doprecyzowanie promptu zmienia wynik.</p>
     <button id="doneBtn_module2" class="mark-done-btn" onclick="markDone('module2')">✓ Oznacz jako ukończony</button>
   </div>
 
@@ -344,7 +344,7 @@ PAGES.module3 = () => `
       <span class="meta-badge">🎯 Dydaktyka · Administracja · Komunikacja</span>
       <span class="meta-badge">🧩 2 ćwiczenia praktyczne</span>
     </div>
-    <p class="lesson-intro">W tym module przechodzisz do aktywnej pracy. Nauczysz się używać AI do tworzenia materiałów dydaktycznych, dokumentów szkolnych i komunikacji z rodzicami. Każdy podrozdział zawiera gotowy prompt do wykonania.</p>
+    <p class="lesson-intro">W tym module przechodzisz do codziennych zastosowań. Użyjesz AI do materiałów dydaktycznych, dokumentów szkolnych i komunikacji z rodzicami. Każdy podrozdział zawiera gotowy prompt do przetestowania.</p>
     <button id="doneBtn_module3" class="mark-done-btn" onclick="markDone('module3')">✓ Oznacz jako ukończony</button>
   </div>
 
@@ -482,10 +482,10 @@ PAGES.module4 = () => `
     <h2>Projekty i analityka</h2>
     <div class="lesson-meta">
       <span class="meta-badge">⏱ ok. 35 minut</span>
-      <span class="meta-badge">🎯 Dokumenty · analiza · RAG · bezpieczeństwo</span>
+      <span class="meta-badge">🎯 Dokumenty · Analiza · RAG · Bezpieczeństwo</span>
       <span class="meta-badge">🤝 1 ćwiczenie grupowe</span>
     </div>
-    <p class="lesson-intro">W tym module skupiasz się na pracy z informacją: długimi dokumentami, wielowątkowymi wiadomościami i dużymi plikami. Celem jest szybkie oddzielanie decyzji i zadań od szumu oraz wybór właściwego narzędzia do analizy.</p>
+    <p class="lesson-intro">W tym module pracujesz z informacją: długimi dokumentami, wielowątkowymi wiadomościami i większymi plikami. Celem jest szybkie oddzielanie decyzji i zadań od szumu oraz wybór właściwego narzędzia do analizy.</p>
     <button id="doneBtn_module4" class="mark-done-btn" onclick="markDone('module4')">✓ Oznacz jako ukończony</button>
   </div>
 
@@ -658,15 +658,16 @@ PAGES.module5 = () => `
     <h2>Praca projektowa z AI</h2>
     <div class="lesson-meta">
       <span class="meta-badge">⏱ ok. 30 minut</span>
-      <span class="meta-badge">🤝 Raporty · partnerzy · komunikacja · granty</span>
+      <span class="meta-badge">🎯 Raporty · Partnerzy · Komunikacja projektowa</span>
+      <span class="meta-badge">🧩 3 zastosowania praktyczne</span>
     </div>
-    <p class="lesson-intro">W tym module skupiasz się na zadaniach typowo projektowych: opisach działań, korespondencji z partnerami, materiałach promocyjnych i odpowiedzialnym użyciu AI w dokumentacji grantowej.</p>
+    <p class="lesson-intro">W tym module pracujesz na zadaniach projektowych: opisach działań, korespondencji z partnerami, materiałach promocyjnych i dokumentacji grantowej. Celem jest szybsza redakcja bez utraty kontroli nad faktami i wymaganiami programu.</p>
     <button id="doneBtn_module5" class="mark-done-btn" onclick="markDone('module5')">✓ Oznacz jako ukończony</button>
   </div>
 
   <div class="lesson-body">
     <div class="learning-goals">
-      <h3>📌 Po tym module będziesz wiedzieć:</h3>
+      <h3>📌 Po tym module będziesz rozumieć i umieć:</h3>
       <ul class="lg-list">
         <li>do czego AI może realnie pomóc w pracy projektowej, a czego nie powinna zastępować</li>
         <li>przygotować szkic opisu działania do raportu lub sprawozdania</li>
@@ -805,16 +806,16 @@ PAGES.module6 = () => `
     <h2>Zrównoważone AI</h2>
     <div class="lesson-meta">
       <span class="meta-badge">⏱ ok. 15 minut</span>
-      <span class="meta-badge">🌱 Energia · woda · infrastruktura · proporcja użycia</span>
+      <span class="meta-badge">🌱 Energia · Woda · Infrastruktura · Proporcja użycia</span>
       <span class="meta-badge">🤝 1 ćwiczenie grupowe</span>
     </div>
-    <p class="lesson-intro">Ten krótki moduł pokazuje, że AI nie działa w abstrakcyjnej "chmurze", tylko na fizycznej infrastrukturze: serwerach, energii elektrycznej i systemach chłodzenia. Celem nie jest zniechęcanie do używania AI, ale bardziej świadome wybieranie sytuacji, w których daje realną wartość.</p>
+    <p class="lesson-intro">Ten moduł pokazuje, że AI nie działa w abstrakcyjnej „chmurze”, tylko na fizycznej infrastrukturze: serwerach, energii i systemach chłodzenia. Celem nie jest zniechęcanie do AI, tylko bardziej świadome wybieranie sytuacji, w których daje realną wartość.</p>
     <button id="doneBtn_module6" class="mark-done-btn" onclick="markDone('module6')">✓ Oznacz jako ukończony</button>
   </div>
 
   <div class="lesson-body">
     <div class="learning-goals">
-      <h3>📌 Po tym module będziesz wiedzieć:</h3>
+      <h3>📌 Po tym module będziesz rozumieć i umieć:</h3>
       <ul class="lg-list">
         <li>dlaczego działanie AI wiąże się z zużyciem energii i zasobów chłodzenia</li>
         <li>jak czytać liczby dotyczące śladu AI bez nadmiernych uproszczeń</li>
