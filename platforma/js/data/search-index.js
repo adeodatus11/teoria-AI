@@ -37,6 +37,8 @@ const IDX = [
   { t: 'Ćwiczenie 8 – Dostosowanie materiału SPE', p: 'exercises', a: 'ex8', tags: ['ćwiczenie', 'SPE', 'różnicowanie'], c: 'Adaptacja materiału do potrzeb ucznia.' },
   { t: 'Ćwiczenie 9 – Podsumowanie spotkania', p: 'exercises', a: 'ex9', tags: ['ćwiczenie', 'spotkanie', 'protokół'], c: 'Zamiana notatek w uporządkowane podsumowanie.' },
   { t: 'Ćwiczenie 10 – Treści promocyjne projektu', p: 'exercises', a: 'ex10', tags: ['ćwiczenie', 'promocja', 'projekt'], c: 'Komunikacja o projekcie w krótszych formatach.' },
+  { t: 'Ćwiczenie 11 – 10 Zasad AI – Ranking Postaw', p: 'exercises', a: 'ex11', tags: ['ćwiczenie', 'zasady', 'etyka'], c: 'Zespół ustala najważniejsze zasady odpowiedzialnego używania AI.' },
+  { t: 'Ćwiczenie 12 – Checklista bezpieczeństwa', p: 'exercises', a: 'ex12', tags: ['ćwiczenie', 'bezpieczeństwo', 'RODO'], c: 'Szybka autokontrola przed bezpiecznym używaniem AI w pracy.' },
   { t: 'Ćwiczenie 13 – Trening rezyliencji', p: 'exercises', a: 'ex13', tags: ['ćwiczenie', 'komunikacja', 'symulacja'], c: 'AI jako trudny rozmówca do ćwiczenia komunikacji.' },
   { t: 'Ćwiczenie 14 – Ujarzmienie ankiet', p: 'exercises', a: 'ex14', tags: ['ćwiczenie', 'ankiety', 'analiza'], c: 'Porządkowanie danych opisowych i odpowiedzi.' },
   { t: 'Ćwiczenie 15 – Odwrócona inżynieria promptu', p: 'exercises', a: 'ex15', tags: ['ćwiczenie', 'prompt', 'reverse engineering'], c: 'Odtwarzanie logiki promptu na podstawie gotowego wyniku.' },
@@ -46,7 +48,9 @@ const IDX = [
 
   { t: 'Prompt: Konspekt lekcji', p: 'prompts', a: 'pA1', tags: ['prompt', 'lekcja', 'dydaktyka'], c: 'Gotowy prompt do planowania lekcji.' },
   { t: 'Prompt: Różnicowanie materiału', p: 'prompts', a: 'pA2', tags: ['prompt', 'różnicowanie', 'SPE'], c: 'Wersje materiału dla różnych potrzeb uczniów.' },
+  { t: 'Prompt: Pytania sprawdzające (Bloom)', p: 'prompts', a: 'pA3', tags: ['prompt', 'Bloom', 'quiz'], c: 'Zestaw pytań sprawdzających na różnych poziomach trudności.' },
   { t: 'Prompt: Streszczenie dokumentu i lista zadań', p: 'prompts', a: 'pB1', tags: ['prompt', 'dokument', 'zadania'], c: 'Wyciąganie streszczenia i checklisty z tekstu.' },
+  { t: 'Prompt: Protokół ze spotkania', p: 'prompts', a: 'pB2', tags: ['prompt', 'protokół', 'spotkanie'], c: 'Zamiana luźnych notatek w uporządkowany protokół.' },
   { t: 'Prompt: Mail do rodziców', p: 'prompts', a: 'pC1', tags: ['prompt', 'mail', 'rodzice'], c: 'Profesjonalna wiadomość do rodziców.' },
   { t: 'Prompt: Ogłoszenie szkolne / post szkolny', p: 'prompts', a: 'pC2', tags: ['prompt', 'ogłoszenie', 'komunikacja'], c: 'Krótki komunikat dla uczniów, rodziców lub społeczności.' },
   { t: 'Prompt: Opis działania projektowego', p: 'prompts', a: 'pD1', tags: ['prompt', 'projekt', 'raport'], c: 'Narracyjny opis działania do raportu.' },
@@ -60,9 +64,14 @@ const IDX = [
   { t: 'Checklista dobrego promptu', p: 'checklists', a: 'chk-prompt', tags: ['checklista', 'prompt', 'PARTS'], c: 'Szybkie pytania kontrolne przed wysłaniem promptu.' },
   { t: 'Checklista weryfikacji odpowiedzi AI', p: 'checklists', a: 'chk-verify', tags: ['checklista', 'weryfikacja', 'fakty'], c: 'Jak sprawdzić odpowiedź AI przed użyciem.' },
   { t: 'Checklista bezpieczeństwa RODO', p: 'checklists', a: 'chk-rodo', tags: ['checklista', 'RODO', 'anonimizacja'], c: 'Zasady bezpieczeństwa przed wklejeniem danych.' },
+  { t: 'Mini-test wiedzy po kursie', p: 'checklists', a: 'chk-selftest', tags: ['checklista', 'self-test', 'powtórka'], c: 'Krótka autodiagnoza po zakończeniu kursu.' },
 
   { t: 'Mój plan wdrożenia AI', p: 'myplan', a: '', tags: ['wdrożenie', 'plan', 'kroki'], c: 'Plan pierwszych działań po ukończeniu kursu.' },
   { t: 'Źródła i literatura', p: 'bibliography', a: '', tags: ['źródła', 'bibliografia', 'literatura'], c: 'Klikalne źródła użyte w kursie.' },
   { t: 'Prezentacja: Moduł 1 – Czym jest AI', p: 'slides', a: 'm1', tags: ['slajdy', 'prezentacja', 'moduł 1'], c: 'Zestaw slajdów do modułu 1.' },
+  { t: 'Prezentacja: Moduł 2 – Prompting', p: 'slides', a: 'm2', tags: ['slajdy', 'prezentacja', 'moduł 2'], c: 'Zestaw slajdów do modułu 2.' },
+  { t: 'Prezentacja: Moduł 3 – AI w dydaktyce', p: 'slides', a: 'm3', tags: ['slajdy', 'prezentacja', 'moduł 3'], c: 'Zestaw slajdów do modułu 3.' },
+  { t: 'Prezentacja: Moduł 4 – Projekty i analityka', p: 'slides', a: 'm4', tags: ['slajdy', 'prezentacja', 'moduł 4'], c: 'Zestaw slajdów do modułu 4.' },
+  { t: 'Prezentacja: Moduł 5 – Praca projektowa z AI', p: 'slides', a: 'm5', tags: ['slajdy', 'prezentacja', 'moduł 5'], c: 'Zestaw slajdów do modułu 5.' },
   { t: 'Prezentacja: Moduł 6 – Zrównoważone AI', p: 'slides', a: 'm6', tags: ['slajdy', 'prezentacja', 'moduł 6'], c: 'Zestaw slajdów do modułu 6.' }
 ];

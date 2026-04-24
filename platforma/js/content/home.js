@@ -19,7 +19,7 @@ PAGES.home = () => {
       <div class="hero-stats">
         <div class="hero-stat"><div class="sn">6</div><div class="sl">modułów samodzielnej nauki</div></div>
         <div class="hero-stat"><div class="sn">30+</div><div class="sl">gotowych promptów do skopiowania</div></div>
-        <div class="hero-stat"><div class="sn">15</div><div class="sl">ćwiczeń z instrukcjami</div></div>
+        <div class="hero-stat"><div class="sn">18</div><div class="sl">ćwiczeń z instrukcjami</div></div>
         <div class="hero-stat"><div class="sn">5,9h</div><div class="sl">oszczędności / tydzień (Gallup 2025)<sup>*</sup></div></div>
       </div>
       <div class="hero-cta">
@@ -51,7 +51,7 @@ PAGES.home = () => {
       </div>
       <div class="entry-card" onclick="showPage('exercises')">
         <div class="ec-icon">🧩</div>
-        <div class="ec-text"><div class="ec-title">Tylko ćwiczenia</div><div class="ec-desc">15 praktycznych zadań z instrukcjami krok po kroku.</div><span class="ec-tag">Praktyka</span></div>
+        <div class="ec-text"><div class="ec-title">Tylko ćwiczenia</div><div class="ec-desc">18 praktycznych zadań z instrukcjami krok po kroku.</div><span class="ec-tag">Praktyka</span></div>
       </div>
       <div class="entry-card" onclick="showPage('prompts')">
         <div class="ec-icon">💡</div>

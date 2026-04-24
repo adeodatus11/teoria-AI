@@ -324,7 +324,7 @@ function runSearch(q) {
 function modulePills() {
   const s = gs(); const done = s.done || [];
   const ms = [
-    { id: 'module1', emoji: '📘', label: 'Moduł 1 – Czym jest AI?' },
+    { id: 'module1', emoji: '📘', label: 'Moduł 1 – Czym jest AI' },
     { id: 'module2', emoji: '✍️', label: 'Moduł 2 – Prompting' },
     { id: 'module3', emoji: '🎓', label: 'Moduł 3 – AI w dydaktyce' },
     { id: 'module4', emoji: '🌍', label: 'Moduł 4 – Projekty i analityka' },
@@ -467,7 +467,7 @@ Zaznacz [UZUPEŁNIJ] gdzie potrzebne konkretne dane.</pre>
       </div>
       <div class="alert-box"><strong>Po otrzymaniu wyniku sprawdź krytycznie:</strong><br>
       Ile miejsc [UZUPEŁNIJ] jest w tekście? Co AI „zmyśliła" lub przesadziła? Czy ton pasuje do dokumentów UE? Czy możesz ten tekst podpisać i wysłać?</div>
-      <div class="tip-box" style="margin-top:10px"><strong>Ważne:</strong> Wynik AI to zawsze punkt wyjścia, nigdy gotowy raport. Bierzesz pełną odpowiedzialność za to, co wyśleszz do instytucji grantowej.</div>`,
+      <div class="tip-box" style="margin-top:10px"><strong>Ważne:</strong> Wynik AI to zawsze punkt wyjścia, nigdy gotowy raport. Bierzesz pełną odpowiedzialność za to, co wyślesz do instytucji grantowej.</div>`,
   `<ul><li>Masz szkic opisu działania</li><li>Wskazałeś/aś min. 2 miejsca do weryfikacji</li><li>Wiesz, czego AI nie mogła wiedzieć o Twoim projekcie</li></ul>`
 )}
     ${ex('ex6', '6', 'Analiza obszernego dokumentu', 'med', '20 min',

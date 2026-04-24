@@ -1,229 +1,387 @@
-# ETAP 6. MATERIAŁY DLA PROWADZĄCEGO
-## Kompletny przewodnik trenera
+# PRZEWODNIK PROWADZĄCEGO
+## AI w edukacji, organizacji i projektach
+
+Ten dokument jest roboczym przewodnikiem dla osoby prowadzącej szkolenie lub warsztat z użyciem platformy:
+`AI w edukacji, organizacji i projektach – samodzielny kurs online`.
+
+Platforma ma charakter self-learningowy, ale może być też wykorzystywana podczas:
+- szkolenia rady pedagogicznej,
+- warsztatu dla nauczycieli i edukatorów,
+- spotkania dla koordynatorów projektów,
+- krótkiego szkolenia dla pracowników szkoły lub organizacji,
+- sesji wdrożeniowej dla zespołu administracyjnego lub projektowego.
 
 ---
 
-## 1. SCENARIUSZ PROWADZENIA MINUTA PO MINUCIE
+## 1. Cel szkolenia
 
-### Blok 1 (0:00–1:00)
+Celem szkolenia nie jest pokazanie jak największej liczby narzędzi AI, tylko zbudowanie podstawowej sprawności:
+- rozumienia, czym AI pomaga, a czego nie robi dobrze,
+- pisania skutecznych promptów,
+- korzystania z AI w dydaktyce, dokumentach i projektach,
+- weryfikowania odpowiedzi,
+- bezpiecznego i odpowiedzialnego używania narzędzi.
 
-| Minuta | Co robi prowadzący | Co robią uczestnicy | Uwagi |
-|--------|-------------------|---------------------|-------|
-| 0:00 | Przywitanie; krótkie przedstawienie siebie (30 sek.); wyjaśnienie struktury dnia | Słuchają; dostają karty pracy | Sprawdź Wi-Fi przed startem |
-| 0:03 | Rozdanie / wyświetlenie ankiety wejściowej; prośba o wypełnienie | Wypełniają ankietę wejściową (papier lub link) | Max 5 min na wypełnienie |
-| 0:08 | "Zanim zaczniemy – co to jest AI i dlaczego zmieniła zasady gry" | Słuchają | Max 12 min wykładu – timer widoczny |
-| 0:10 | Mini-wykład: mechanizm LLM; halucynacje; dane OECD/Gallup | Notatki opcjonalne | Używaj analogii: "autouzupełnianie na sterydach" |
-| 0:22 | Demonstracja na projektorze: otwierasz ChatGPT, wpisujesz pierwszy prompt | Obserwują | Wybierz coś konkretnego, szkolnego |
-| 0:28 | Zaproszenie do logowania: "Teraz Wy" | Logują się lub obserwują | Chodź po sali; pomáhaj technicznie |
-| 0:35 | Ćwiczenie #1: każdy wpisuje swój pierwszy prompt | Piszą i czytają wynik | Pilnuj, że NIE koregujesz promptów – to materiał do analizy |
-| 0:45 | Prośba o pokazanie wyników: 3–4 osoby czytają/pokazują | Dzielą się wynikami | Nie oceniaj jakości – pytaj: "co poszło dobrze? co nie?" |
-| 0:50 | Krótkie omówienie: dlaczego ogólne prompty dają ogólne wyniki | Dyskusja | Kluczowy punkt: "Jakość promptu = jakość wyniku" |
-| 0:58 | Zapowiedź Modułu 2 | Gotowość | Bridge: "To teraz nauczymy się pisać dobre prompty" |
-
----
-
-### Blok 2 (1:00–1:50)
-
-| Minuta | Co robi prowadzący | Co robią uczestnicy | Uwagi |
-|--------|-------------------|---------------------|-------|
-| 1:00 | Prezentacja frameworku PARTS (slajd) | Notują PARTS na kartach pracy | Slajd musi być prosty: 5 liter, 5 opisów |
-| 1:05 | Demonstracja na żywo: słaby prompt → mocny prompt (Bloom's lub lekcja) | Obserwują | Pokaż wyniki obu na ekranie |
-| 1:10 | Ćwiczenie #2: Ulepsz słaby prompt | Pracują indywidualnie lub w parach | Chodź i sprawdzaj, czy stosują PARTS |
-| 1:25 | Zbieranie wyników: 2–3 osoby czytają swoje prompty i wyniki | Słuchają / komentują | Pytaj: "Co dodałeś/łaś? Który element PARTS był kluczowy?" |
-| 1:32 | Prezentacja "5 Złotych Zasad Promptingu" | Notują | Slajd z 5 zasadami – prosty, bez nadmiaru tekstu |
-| 1:40 | Otwarta dyskusja: "Jakie zadanie w Waszej pracy AI mogłoby skrócić o połowę?" | Uczestniczą w dyskusji | Notuj odpowiedzi na tablicy – będą przydatne w Module 3 |
-| 1:50 | Zapowiedź przerwy + Modułu 3 | Gotowi na przerwę | |
+Po szkoleniu uczestnik powinien:
+- umieć wykonać proste zadanie zawodowe z pomocą AI,
+- znać framework PARTS,
+- rozumieć ryzyka: halucynacje, RODO, nadmierne poleganie na AI,
+- mieć zapisany co najmniej jeden własny prompt do użycia w pracy,
+- umieć nazwać jedno konkretne wdrożenie na kolejny tydzień.
 
 ---
 
-### Przerwa (1:50–2:00) – 10 MINUT
+## 2. Dla kogo jest ten przewodnik
 
-Prowadzący sprawdza, czy technicznie wszystko działa na kolejne ćwiczenia, uzupełnia notatki.
+Przewodnik zakłada grupę początkującą lub mieszaną:
+- nauczyciele,
+- wychowawcy,
+- edukatorzy,
+- pracownicy administracji szkolnej,
+- koordynatorzy projektów,
+- osoby pracujące z dokumentami, komunikacją i raportowaniem.
 
----
-
-### Blok 3 (2:00–3:00)
-
-| Minuta | Co robi prowadzący | Co robią uczestnicy | Uwagi |
-|--------|-------------------|---------------------|-------|
-| 2:00 | Demonstracja: generowanie konspektu lekcji (5 min) | Obserwują | Pokaż realistyczny przykład – nie abstrakcyjny |
-| 2:05 | Demonstracja: natychmiastowe różnicowanie (2 min) | Obserwują | Jeden dodatkowy prompt: "teraz wersja dla słabszych uczniów" |
-| 2:07 | Ćwiczenie #3: konspekt + różnicowanie | Pracują samodzielnie | 20 min – chodź po sali; zachęcaj do używania własnego przedmiotu |
-| 2:27 | Omówienie: 2–3 osoby pokazują wynik | Dzielą się | Pytaj: "Co AI zrobiła dobrze? Co musiałbyś/musiałabyś zmienić?" |
-| 2:35 | Most: "Przejdźmy teraz do administracji" – mini-demonstracja (5 min) | Obserwują | Pokaż streszczenie dokumentu lub mail |
-| 2:40 | Ćwiczenie #4: każdy wybiera swoją opcję (A/B/C) | Pracują samodzielnie | 15 min – zachęcaj do użycia dokumentów z własnej pracy |
-| 2:55 | Szybkie omówienie: co wybrałeś/łaś i co dostałeś/łaś? | 2–3 osoby odpowiadają | Podkreśl: "To możesz użyć jutro w pracy" |
-| 3:00 | Wprowadzenie do Modułu 4 | Gotowi | |
+Treści można prowadzić zarówno w kontekście szkoły, jak i szerzej: organizacji, projektu, zespołu administracyjnego lub jednostki szkoleniowej.
 
 ---
 
-### Blok 4 (3:00–4:00)
+## 3. Aktualna struktura platformy
 
-| Minuta | Co robi prowadzący | Co robią uczestnicy | Uwagi |
-|--------|-------------------|---------------------|-------|
-| 3:00 | Mini-wykład (5 min): AI w projektach UE; możliwości i zasady transparentności | Słuchają | Kluczowe: AI = asystent redakcyjny, nie autor |
-| 3:05 | Ćwiczenie #5: opis działania projektowego | Pracują | 10 min; jeśli ktoś nie jest w projekcie – fikcyjny projekt |
-| 3:15 | Krótkie omówienie: co AI napisała? Gdzie są [UZUPEŁNIJ]? | Dzielą się | Pokazuj na projektorze przykłady z grupy |
-| 3:20 | STOP-KLATKA: ryzyka, etyka, RODO | Słuchają + dyskusja | 3 scenariusze (RODO, halucynacje, cognitive offloading) |
-| 3:35 | Dyskusja: "Jakie zasady chcielibyście mieć w swojej szkole?" | Aktywna dyskusja | Notuj propozycje na tablicy |
-| 3:42 | Karta wdrożenia: wypełniają indywidualnie | Pracują samodzielnie | Daj 8 min spokoju; nie przerywaj |
-| 3:50 | Podsumowanie prowadzącego (5 min): 5 kluczowych wniosków | Słuchają | Nie powtarzaj całego dnia – skróć to, co kluczowe |
-| 3:55 | Ankieta wyjściowa | Wypełniają | Może być link online (QR kod) lub papier |
-| 3:58 | Zamknięcie: pożegnanie, zaproszenie do kontaktu | | |
+Platforma obejmuje:
+- `6 modułów`,
+- `18 ćwiczeń`,
+- `Promptownik`,
+- `Checklisty`,
+- `Mój plan wdrożenia`,
+- `Prezentacje do modułów`,
+- `Źródła i literatura`.
 
----
-
-## 2. LISTA PYTAŃ OTWIERAJĄCYCH
-
-*(Używaj na początku lub w ramach dyskusji, aby uruchomić grupę)*
-
-1. "Kto z Państwa używał już jakiegokolwiek narzędzia AI w pracy lub prywatnie? Proszę podnieść rękę."
-2. "Co was najbardziej intryguje / niepokoi w temacie AI? Powiedzcie jednym słowem."
-3. "Gdybyście mieli zyskać 2 godziny tygodniowo, co byście z nimi zrobili?"
-4. "Jakie zadanie w Waszej pracy jest najbardziej czasochłonne i powtarzalne?"
-5. "Czy spotkaliście się z sytuacją, gdzie ktoś używał AI w pracy – niekoniecznie w szkole?"
+Moduły:
+1. `Czym jest AI`
+2. `Prompting`
+3. `AI w dydaktyce`
+4. `Projekty i analityka`
+5. `Praca projektowa z AI`
+6. `Zrównoważone AI`
 
 ---
 
-## 3. LISTA PYTAŃ DO DYSKUSJI (GRUPOWYCH)
+## 4. Co przygotować przed szkoleniem
 
-### Pytania po Module 1 (co to jest AI):
-- "Jak to, że AI nie 'wie' – tylko 'przewiduje' – zmienia Wasz stosunek do jej odpowiedzi?"
-- "Kiedy byście zaufali AI, a kiedy nie? Co by musiało się stać?"
-- "Co Was zaskoczyło w pierwszym kontakcie z narzędziem?"
+### Minimum techniczne
+- stabilny internet,
+- komputer prowadzącego z dostępem do platformy,
+- projektor lub duży ekran,
+- jedno aktywne konto w narzędziu AI do demonstracji,
+- plan awaryjny na wypadek problemów z logowaniem.
 
-### Pytania po Module 2 (prompting):
-- "Który element PARTS najtrudniej Wam było zastosować?"
-- "Dla jakich zadań chcielibyście zbudować swoje 'gotowe prompty'?"
-- "Czy myślicie, że warto uczyć uczniów pisania promptów? Dlaczego / dlaczego nie?"
+### Minimum organizacyjne
+- ustalony czas spotkania,
+- informacja dla uczestników, czy pracują na własnych laptopach lub telefonach,
+- decyzja, czy uczestnicy logują się do własnych narzędzi AI,
+- decyzja, czy ćwiczenia wykonują indywidualnie, czy w parach / trójkach,
+- przygotowana lista 2–3 bezpiecznych przykładów do demonstracji.
 
-### Pytania po Module 3 (dydaktyka i administracja):
-- "Co by musiało się wydarzyć, żebyście zaczęli używać AI do planowania lekcji regularnie?"
-- "Jakie zadanie administracyjne najbardziej chcielibyście oddać AI?"
-- "Czy coś Was zaskoczyło w jakości odpowiedzi AI w tym ćwiczeniu?"
-
-### Pytania po Module 4 (ryzyka i projekty):
-- "Jak zareagujecie, gdy uczeń poda Wam pracę napisaną przez AI?"
-- "Jakie zasady użycia AI chcielibyście mieć w swojej szkole?"
-- "Co by przekonało Waszą dyrekcję do wsparcia AI w szkole?"
-
----
-
-## 4. PRZYKŁADOWE ODPOWIEDZI UCZESTNIKÓW (i jak reagować)
-
-### "AI mnie zastąpi"
-→ Odpowiedź prowadzącego: "Badania OECD wskazują co innego: AI nie zastępuje nauczyciela – jest 'akceleratorem' dobrych praktyk. Nikt nie zastąpi Waszej wiedzy o Waszych uczniach, Waszej empatii, Waszego doświadczenia. AI może zrobić za Was nudne pisanie – wy możecie robić to, co ważne."
-
-### "To jest zbyt skomplikowane"
-→ "Zaraz zobaczycie, że to prostsze niż napisanie SMSa. Zalogujemy się razem."
-
-### "A co z RODO?"
-→ "Bardzo dobre pytanie – to jeden z kluczowych tematów dzisiaj. Krótka zasada: żadnych danych osobowych uczniów. Anonimizujcie dane. Za chwilę omówimy to szczegółowo."
-
-### "AI napisała coś absurdalnego"
-→ "Świetnie! To jest dokładnie to, o czym będziemy rozmawiać. Pokażcie to grupie – to najlepszy przykład, żeby wyjaśnić halucynacje."
-
-### "Nie mogę się zalogować"
-→ Miej przygotowaną alternatywę: (1) uczestnik pracuje w parze, (2) obserwuje Twoją demonstrację na projektorze, (3) używasz trybu gościa na swoim komputerze.
-
-### "Mam już konto i używam AI regularnie"
-→ "Świetnie! Proszę polóż się w roli obserwatora/asystenta w ćwiczeniach i pomóż sąsiadom." Alternatywnie: daj im ćwiczenie z puli rezerwowej (np. #6 – wykrywanie halucynacji).
+### Czego nie robić przed szkoleniem
+- nie zakładaj, że wszyscy mają konta i potrafią się zalogować,
+- nie opieraj warsztatu na jednym tylko narzędziu lub jednej firmie,
+- nie pokazuj przykładów zawierających dane osobowe uczniów, pracowników lub partnerów.
 
 ---
 
-## 5. STOP-KLATKI – GDZIE KONIECZNIE SIĘ ZATRZYMAĆ
+## 5. Pytania otwierające
 
-**STOP-KLATKA 1: Po pierwszym ćwiczeniu (segment 1.4)**
-Temat: Dlaczego ogólne prompty dają ogólne wyniki?
-Czas: 5–7 minut
-Jak to zrobić: Poproś o pokazanie najsłabszego i najlepszego wyniku z grupy. Anal izuj na żywo.
+Użyj 2–3 pytań, nie więcej. Chodzi o uruchomienie myślenia, nie długą dyskusję.
 
-**STOP-KLATKA 2: Po ćwiczeniu #2 (segment 2.3)**
-Temat: "5 Złotych Zasad" + moment refleksji
-Czas: 8 minut
-Jak to zrobić: Zatrzymaj się, podsumuj PARTS, zapytaj: "Które ćwiczenie Was zaskoczyło najbardziej?"
-
-**STOP-KLATKA 3: Po ćwiczeniu #3 (segment 3.1)**
-Temat: Co AI zrobiła dobrze? Co byś nie użył/a bez korekty?
-Czas: 5 minut
-Jak to zrobić: Wybierz dwa przykłady z grupy – jeden udany, jeden wymagający poprawy.
-
-**STOP-KLATKA 4: Segment 4.2 – RODO i ryzyka (bardzo ważna)**
-Temat: Etyka, RODO, halucynacje, odpowiedzialność
-Czas: 15 minut
-Jak to zrobić: 3 scenariusze (patrz treści w Etapie 3). Nie strasz – edukuj. Konkretne zasady.
-
-**STOP-KLATKA 5: Karta wdrożenia (segment 4.3)**
-Temat: Co zabieram ze szkolenia? Co zrobię jutro?
-Czas: 8 minut ciszy na indywidualne wypełnienie
-Jak to zrobić: "Teraz jest czas tylko dla Was. Wypełnijcie kartę. Nie musicie się dzielić."
+Propozycje:
+- `Jakie zadanie w Twojej pracy najczęściej zabiera czas, a ma powtarzalny charakter?`
+- `Do czego już próbowałeś lub próbowałaś użyć AI?`
+- `Co bardziej dominuje na starcie: ciekawość czy ostrożność?`
+- `W jakim zadaniu chcesz dziś zobaczyć konkretny efekt?`
 
 ---
 
-## 6. LISTA NAJCZĘSTSZYCH TRUDNOŚCI NA SZKOLENIU
+## 6. Rekomendowane warianty szkolenia
 
-### Trudność 1: Problemy techniczne (logowanie, Wi-Fi, brak konta)
-**Strategia:** Miej przygotowane konto demo; testuj Wi-Fi przed szkoleniem; daj uczestnikom alternatywę pracy w parze.
+### Wariant A – 90 minut
+Cel: krótki start i pierwszy sukces.
 
-### Trudność 2: Zbyt zróżnicowany poziom grupy (zaawansowani vs. 0-doświadczeni)
-**Strategia:** Patrz sekcja 7 (różnicowanie grupy). Zaawansowani pracują jako "buddies" lub dostają trudniejsze ćwiczenia.
+Zakres:
+- Moduł 1: najważniejsze pojęcia i halucynacje,
+- Moduł 2: PARTS i jedno ćwiczenie promptowe,
+- Moduł 3 lub 4: jeden praktyczny przykład z pracy uczestników,
+- podsumowanie i jedno wdrożenie na tydzień.
 
-### Trudność 3: Uczestnicy piszą długie odpowiedzi i tracą wątek
-**Strategia:** Zawsze jasno sygnalizuj czas: "Macie teraz 10 minut – potem zatrzymujemy się." Timer na projektorze.
+Najlepsze ćwiczenia:
+- `ex1 – Mój pierwszy prompt`
+- `ex2 – Ulepsz słaby prompt`
+- `ex4 – AI w dokumentach – 3 opcje`
 
-### Trudność 4: Uczestnicy chcą "zobaczyć więcej narzędzi AI"
-**Strategia:** "To szkolenie nie jest o narzędziach – jest o kompetencji. Zasady działają we wszystkich narzędziach. Dziś skupiamy się na jednym, żeby być skutecznymi, a nie przytłoczonymi."
+### Wariant B – 180 minut
+Cel: praktyczne użycie AI w codziennej pracy.
 
-### Trudność 5: Opór emocjonalny / "nie dla mnie"
-**Strategia:** Nie przekonuj w teorii. Zapytaj: "Jakie jedno zadanie chciałbyś/chciałabyś dzisiaj ułatwić?" Skieruj wprost na narzędzie.
+Zakres:
+- Moduł 1,
+- Moduł 2,
+- Moduł 3,
+- Moduł 4 albo 5,
+- zakończenie z checklistą i planem wdrożenia.
 
-### Trudność 6: Uczestnik "utknął" na prostym zadaniu
-**Strategia:** Usiądź obok, zadawaj pytania naprowadzające: "Dla kogo tworzysz ten prompt? Jaki formato chcesz dostać?"
+Najlepsze ćwiczenia:
+- `ex1`
+- `ex2` lub `ex16`
+- `ex3` albo `ex4`
+- `ex17`
 
----
+### Wariant C – 240 minut
+Cel: pełny warsztat wdrożeniowy.
 
-## 7. WERSJA SZKOLENIA DLA GRUPY BARDZIEJ POCZĄTKUJĄCEJ
+Zakres:
+- Moduł 1,
+- Moduł 2,
+- Moduł 3,
+- Moduł 4,
+- Moduł 5,
+- Moduł 6,
+- podsumowanie i plan wdrożenia.
 
-*(jeśli większość uczestników nie miała żadnego kontaktu z AI)*
-
-**Zmiany w stosunku do wersji standardowej:**
-
-1. **Segment 1.2 wydłuż do 20 minut** – więcej czasu na demistyfikację; pokaż interfejs krok po kroku
-2. **Segment 1.3 wydłuż do 30 minut** – daj więcej czasu na logowanie i pierwszy prompt; nie śpiesz się
-3. **Ćwiczenie #2 (ulepsz prompt) – zmniejsz do 1 promptu** zamiast 2–3
-4. **Ćwiczenie #3 – praca w parach obowiązkowa**, nie opcjonalna
-5. **Ćwiczenie #5 – opcjonalne** (jeśli zostanie czas); zastąp omówieniem i dyskusją
-6. **Zwiększ czas na Stop-Klatkę 4 (RODO)** do 20 minut – uczestnicy potrzebują więcej czasu na przyswojenie zasad
-7. **Karte wdrożenia uprość**: "Jedno zadanie, jeden prompt, jedno ryzyko" – tylko trzy pola
-
-**Nastrój i ton:** Wolniejsze tempo, więcej pochwał za próby, mniejsze wymagania jakościowe w ćwiczeniach. Cel: "Pierwsze doświadczenie sukcesu."
-
----
-
-## 8. WERSJA SZKOLENIA DLA GRUPY BARDZIEJ ZAAWANSOWANEJ
-
-*(jeśli większość uczestników regularnie używa AI lub ma doświadczenie w narzędziach)*
-
-**Zmiany w stosunku do wersji standardowej:**
-
-1. **Segment 1.2 skróć do 5 minut** – szybkie przypomnienie mechanizmu halucynacji; skip podstawy
-2. **Ćwiczenie #1 – pomijasz** lub zamieniasz na "pokaż mi swój najlepszy prompt z ostatnich 30 dni"
-3. **Ćwiczenie #2 – wybierają opcję C (projekt)** – najtrudniejszy prompt
-4. **Dodaj ćwiczenie #6 (wykrywanie halucynacji)** zamiast demonstracji w segmencie 4.1
-5. **Ćwiczenie #5 – głębszy wariant: krytyczna ocena wygenerowanego opisu** + porównanie z rzeczywistym raportem
-6. **Zwiększ czas na dyskusję** (segment 4.2): zaawansowani użytkownicy mają pytania zaawansowane (prawa autorskie, Akt o AI, bias)
-7. **Dodaj: Ćwiczenie #11 (ranking zasad AI)** jako praca grupowa kończąca dzień
-
-**Nastrój i ton:** Szybsze tempo; więcej dyskusji na poziomie ekspertów; więcej "co byście zrobili inaczej?"; mniej demonstracji, więcej prób.
+Najlepsze ćwiczenia:
+- `ex1`
+- `ex16`
+- `ex3` lub `ex4`
+- `ex17`
+- `ex18`
 
 ---
 
-## 9. CZEGO EKSPRESOWO PILNOWAĆ (SZYBKIE ZASADY DLA TRENERA)
+## 7. Proponowany przebieg szkolenia 3-godzinnego
 
-✅ **Zawsze miej timer** – widoczny dla uczestników. Nie przedłużaj segmentów bez poinformowania grupy.
-✅ **Chodź po sali** – nie siedź za laptopem podczas ćwiczeń.
-✅ **Zawsze pytaj** – nie mów uczestnikowi, co ma wpisać. Zadawaj pytania naprowadzające.
-✅ **Wyłącz PowerPoint podczas ćwiczeń** – slajdy podczas pracy samodzielnej rozpraszają.
-✅ **Miej plan B** – na wypadek braku internetu, problemów z logowaniem, etc.
-✅ **Nie gaś pytań "co z polskim prawem X"** – odpowiedz: "Doskonałe pytanie. Polecam sprawdzić w [źródło]. Ja nie jestem prawnikiem."
-✅ **Podkreślaj wdrożenie** – nie wiedzę. "Co zrobisz jutro?" jest ważniejsze niż "co wiesz?"
+### Blok 1 – Start i pierwsze doświadczenie
+Czas: `0:00–0:35`
+
+Cel:
+- oswoić temat,
+- pokazać pierwsze działanie AI,
+- zbić mit, że AI zawsze daje dobre odpowiedzi.
+
+Przebieg:
+1. Krótko wyjaśnij cel szkolenia i pokaż strukturę platformy.
+2. Zadaj 2 pytania otwierające.
+3. Pokaż prosty pierwszy prompt na ekranie.
+4. Uruchom `ex1 – Mój pierwszy prompt`.
+5. Zbierz 2–3 obserwacje: co było dobre, co było zbyt ogólne.
+
+### Blok 2 – Prompting
+Czas: `0:35–1:20`
+
+Cel:
+- pokazać, że jakość promptu wpływa na jakość odpowiedzi,
+- nauczyć prostego modelu PARTS,
+- zbudować pierwszy prompt użyteczny zawodowo.
+
+Przebieg:
+1. Pokaż slajdy do modułu 2.
+2. Wyjaśnij PARTS na jednym przykładzie.
+3. Przeprowadź `ex2 – Ulepsz słaby prompt` albo `ex16 – Prompt w trzech wersjach`.
+4. Omów różnice między wersją prostą i doprecyzowaną.
+
+### Blok 3 – Praktyka dydaktyczna lub administracyjna
+Czas: `1:20–2:05`
+
+Cel:
+- przejść z abstrakcyjnego promptowania do realnych zadań zawodowych.
+
+Przebieg:
+1. Pokaż moduł 3.
+2. Poproś uczestników, by wybrali jeden kontekst:
+   - materiał dydaktyczny,
+   - różnicowanie,
+   - mail,
+   - streszczenie dokumentu,
+   - checklista organizacyjna.
+3. Uruchom `ex3` albo `ex4`.
+4. Zbierz 2 przykłady rezultatów i omów, co nadal wymaga ludzkiej korekty.
+
+### Blok 4 – Projekty, analityka i bezpieczeństwo
+Czas: `2:05–2:45`
+
+Cel:
+- pokazać, że AI może wspierać analizę, raportowanie i porządkowanie danych,
+- przypomnieć zasady bezpieczeństwa.
+
+Przebieg:
+1. Pokaż moduł 4 lub 5, zależnie od grupy.
+2. Jeśli grupa pracuje z danymi lub ankietami, użyj `ex17`.
+3. Jeśli grupa pracuje projektowo, pokaż moduł 5 i `ex5`.
+4. Zatrzymaj się na checkliście RODO i na zasadzie weryfikacji odpowiedzi.
+
+### Blok 5 – Odpowiedzialne użycie i zamknięcie
+Czas: `2:45–3:00`
+
+Cel:
+- zamknąć szkolenie jednym praktycznym wnioskiem,
+- przejść do działań po szkoleniu.
+
+Przebieg:
+1. Krótko pokaż moduł 6.
+2. Jeśli jest czas, uruchom `ex18 – Mini-kodeks odpowiedzialnego używania AI`.
+3. Poproś o wykonanie mini-testu i wejście do `Mój plan wdrożenia`.
+4. Zadaj pytanie zamykające: `Co wdrażasz jako pierwsze?`
+
+---
+
+## 8. Jak prowadzić kluczowe ćwiczenia
+
+### ex1 – Mój pierwszy prompt
+Kiedy użyć:
+- na samym początku,
+- w grupie początkującej.
+
+Na co uważać:
+- nie poprawiaj promptów za uczestników zbyt wcześnie,
+- pozwól im najpierw zobaczyć niedoskonały wynik.
+
+Produkt:
+- pierwszy wynik AI i krótka ocena użyteczności.
+
+### ex16 – Prompt w trzech wersjach
+Kiedy użyć:
+- gdy chcesz przejść od prostego promptu do bardziej świadomej pracy.
+
+Najlepszy układ grupy 2–3 osoby:
+- osoba 1 pisze wersję prostą,
+- osoba 2 doprecyzowuje wersję rozszerzoną,
+- osoba 3 ocenia wynik i buduje wersję finalną.
+
+Produkt:
+- porównanie trzech promptów i wybór najlepszego.
+
+### ex17 – Mini-laboratorium analizy ankiety
+Kiedy użyć:
+- dla grup pracujących z ankietami, ewaluacją, informacją zwrotną, raportowaniem.
+
+Na co uważać:
+- przypomnij o anonimizacji,
+- pilnuj, by grupa nie wyciągała zbyt dalekich wniosków z małej próbki.
+
+Produkt:
+- szkic mini-raportu i lista promptów do analizy.
+
+### ex18 – Mini-kodeks odpowiedzialnego używania AI
+Kiedy użyć:
+- pod koniec szkolenia,
+- gdy chcesz przejść od użycia narzędzia do zasad zespołowych.
+
+Na co uważać:
+- początkujące grupy potrzebują konkretnego kontekstu, np. szkoła, sekretariat, projekt UE, komunikacja z rodzicami.
+
+Produkt:
+- 5–7 zasad użycia AI dla wybranego zespołu.
+
+---
+
+## 9. Zasady, które prowadzący powinien powtarzać
+
+Warto wracać do tych zdań kilka razy w trakcie spotkania:
+
+- `AI daje wersję roboczą, nie gotowy dokument do podpisu.`
+- `Im lepszy kontekst i format w prompcie, tym lepsza odpowiedź.`
+- `Nie wklejamy danych osobowych, ocen i informacji wrażliwych.`
+- `Pierwszą odpowiedź sprawdzamy, poprawiamy i dopiero wtedy używamy.`
+- `Nie chodzi o użycie AI wszędzie, tylko tam, gdzie daje realny zysk czasu lub jakości.`
+
+---
+
+## 10. Najczęstsze trudności i reakcje prowadzącego
+
+### Problem: uczestnik nie ma konta albo nie może się zalogować
+Reakcja:
+- pozwól pracować w parze,
+- pokaż przykład na ekranie,
+- nie zatrzymuj całej grupy na jednym problemie technicznym.
+
+### Problem: grupa jest bardzo zróżnicowana
+Reakcja:
+- osoby bardziej zaawansowane niech pomagają sąsiadom,
+- dawaj dwie ścieżki: prostą i rozszerzoną,
+- nie przeciążaj grupy początkującej dodatkowymi narzędziami.
+
+### Problem: uczestnicy pytają głównie o prawo i polityki
+Reakcja:
+- odróżnij poradę prawną od dobrej praktyki,
+- wróć do checklisty RODO i odpowiedzialności człowieka za wynik,
+- jeśli trzeba, zaznacz ograniczenie: `to wymaga decyzji instytucji lub konsultacji prawnej`.
+
+### Problem: ktoś mówi, że AI napisała bzdury
+Reakcja:
+- potraktuj to jako przykład halucynacji,
+- pokaż, jak doprecyzować prompt albo jak zweryfikować wynik,
+- unikaj wniosku: `to narzędzie jest bez sensu`.
+
+### Problem: uczestnik chce gotowe odpowiedzi zamiast zrozumienia procesu
+Reakcja:
+- wracaj do pytania: `po czym poznasz, że wynik jest dobry?`
+- podkreśl, że najważniejsza jest umiejętność pracy z wersją roboczą.
+
+---
+
+## 11. Minimalny zestaw materiałów, które warto mieć obok platformy
+
+Jeśli szkolenie ma być prowadzone na żywo, warto przygotować dodatkowo:
+- kartę pracy uczestnika,
+- krótki promptownik do wydruku,
+- kartę porównania promptów do `ex16`,
+- arkusz analizy ankiety do `ex17`,
+- szablon mini-kodeksu AI do `ex18`,
+- ankietę wejściową i wyjściową.
+
+Jeśli tych materiałów nie ma jeszcze w finalnej formie, platforma nadal działa, ale prowadzenie warsztatu wymaga więcej ustnej moderacji.
+
+---
+
+## 12. Co zebrać po szkoleniu
+
+Po zakończeniu warto zebrać:
+- 1 przykład zadania, które uczestnik wdroży w ciągu tygodnia,
+- 1 prompt, który uczestnik zapisuje jako własny,
+- najczęściej powtarzające się obawy lub bariery,
+- listę zasad zespołowych, jeśli grupa pracowała na `ex18`,
+- krótką ankietę wyjściową.
+
+To pomoże dopracować kolejne edycje szkolenia oraz rozbudować platformę o potrzebne materiały.
+
+---
+
+## 13. Rekomendowana kolejność pracy na platformie podczas szkolenia
+
+Jeśli masz mało czasu:
+1. `Moduł 1`
+2. `Moduł 2`
+3. `Moduł 3` albo `Moduł 4`
+4. `Checklisty`
+5. `Mój plan wdrożenia`
+
+Jeśli prowadzisz pełny warsztat:
+1. `Moduł 1`
+2. `Moduł 2`
+3. `Moduł 3`
+4. `Moduł 4`
+5. `Moduł 5`
+6. `Moduł 6`
+7. `Ćwiczenia`
+8. `Promptownik`
+9. `Checklisty`
+10. `Mój plan wdrożenia`
+
+---
+
+## 14. Ostatnia wskazówka dla prowadzącego
+
+Najlepsze szkolenie z AI nie kończy się na tym, że uczestnik `wie więcej`.
+Kończy się na tym, że uczestnik:
+- zrobił jedno realne zadanie,
+- zobaczył ograniczenia narzędzia,
+- zapisał własny prompt,
+- i ma jasność, co wdroży po powrocie do pracy.
+
+To jest ważniejsze niż pokazanie dziesięciu narzędzi w jednej sesji.
