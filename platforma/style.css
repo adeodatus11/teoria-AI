@@ -61,14 +61,17 @@ body {
 }
 .topbar-logos {
   display: flex; align-items: center; gap: 18px;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
 }
 @media (max-width: 600px) {
   .topbar-logos { gap: 8px; min-width: 0; }
   .logo-zsz5, .logo-divider { display: none; }
   .topbar-inner { padding: 0 12px; }
   .logo-cove { height: 24px; }
-  .logo-win { height: 28px; }
-  .logo-eu { height: 28px; }
+  .logo-win { height: 31px; }
+  .logo-eu { height: 31px; }
 }
 .topbar-logos img {
   mix-blend-mode: multiply; /* Wtapia grafiki płynnie w biały topbar redukując krawędzie */
@@ -84,11 +87,11 @@ body {
   /* COVE Polska – logo z kolorowym tekstem → bez filtru */
 }
 .logo-win {
-  height: 34px; width: auto;
+  height: 38px; width: auto;
   /* WIN4SMEs EU – kolorowe logo → bez filtru */
 }
 .logo-eu {
-  height: 34px; width: auto;
+  height: 38px; width: auto;
 }
 .logo-divider {
   width: 1px; height: 28px;
@@ -1502,6 +1505,10 @@ body {
   height: 44px; width: auto; display: block;
   mix-blend-mode: multiply; /* Usuwa białe tła ujednolicając grafikę na listwie */
 }
+.footer-logo-zsz { height: 44px; }
+.footer-logo-cove { height: 42px; }
+.footer-logo-win { height: 48px; }
+.footer-logo-eu { height: 52px; }
 
 .footer-text { flex: 1; min-width: 200px; }
 .footer-text p { font-size: 13px; line-height: 1.6; }
@@ -1544,6 +1551,29 @@ body {
     top: 1.15em; right: 1.2em; gap: 8px; opacity: 0.72;
   }
   .slide-logo { max-height: 18px; }
+
+  .footer-inner {
+    gap: 18px;
+  }
+
+  .footer-logo-group {
+    width: 100%;
+    padding: 10px 12px;
+    gap: 12px;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    overflow-x: hidden;
+  }
+
+  .footer-logo-box {
+    min-width: 0;
+    flex: 0 1 auto;
+  }
+
+  .footer-logo-zsz { height: 30px; }
+  .footer-logo-cove { height: 28px; }
+  .footer-logo-win { height: 34px; }
+  .footer-logo-eu { height: 38px; }
 }
 
 @media (max-width: 400px) {
