@@ -31,6 +31,12 @@
   --font-mono: 'JetBrains Mono', monospace;
 }
 
+@media (min-width: 601px) {
+  :root {
+    --topbar-h: 82px;
+  }
+}
+
 html { scroll-behavior: smooth; }
 body {
   font-family: var(--font);
@@ -65,6 +71,10 @@ body {
   color: inherit;
   cursor: pointer;
 }
+@media (min-width: 601px) {
+  .topbar-inner { padding: 0 24px; }
+  .topbar-logos { gap: 24px; }
+}
 @media (max-width: 600px) {
   .topbar-logos { gap: 8px; min-width: 0; }
   .logo-zsz5, .logo-divider { display: none; }
@@ -96,6 +106,12 @@ body {
 .logo-divider {
   width: 1px; height: 34px;
   background: var(--clr-border);
+}
+@media (min-width: 601px) {
+  .logo-cove { height: 44px; }
+  .logo-win { height: 62px; }
+  .logo-eu { height: 62px; }
+  .logo-divider { height: 42px; }
 }
 
 .topbar-right { display: flex; align-items: center; gap: 8px; }
