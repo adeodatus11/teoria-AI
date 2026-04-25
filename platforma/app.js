@@ -159,12 +159,58 @@ function toggleScenario(el) {
   el.closest('.scenario-card').classList.toggle('open');
 }
 
-function copyPrompt(btn) {
+async function writeTextWithFallback(text) {
+  if (navigator.clipboard && window.isSecureContext) {
+    try {
+      await navigator.clipboard.writeText(text);
+      return { ok: true, mode: 'clipboard' };
+    } catch (err) {
+      // przechodzimy do fallbacku niżej
+    }
+  }
+
+  try {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.setAttribute('readonly', '');
+    ta.style.position = 'fixed';
+    ta.style.top = '-9999px';
+    ta.style.left = '-9999px';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.focus();
+    ta.select();
+    ta.setSelectionRange(0, ta.value.length);
+    const ok = document.execCommand('copy');
+    document.body.removeChild(ta);
+    if (ok) return { ok: true, mode: 'execCommand' };
+  } catch (err) {
+    // ostatni fallback niżej
+  }
+
+  try {
+    window.prompt('Nie udało się skopiować automatycznie. Skopiuj tekst ręcznie:', text);
+    return { ok: false, mode: 'manual' };
+  } catch (err) {
+    return { ok: false, mode: 'failed' };
+  }
+}
+
+function showCopyFeedback(btn, ok, defaultLabel, successLabel, manualLabel) {
+  if (!btn) return;
+  btn.textContent = ok ? successLabel : manualLabel;
+  btn.classList.toggle('copied', ok);
+  btn.classList.toggle('copy-failed', !ok);
+  setTimeout(() => {
+    btn.textContent = defaultLabel;
+    btn.classList.remove('copied', 'copy-failed');
+  }, 2200);
+}
+
+async function copyPrompt(btn) {
   const pre = btn.closest('.prompt-box').querySelector('pre');
-  navigator.clipboard.writeText(pre.textContent.trim()).then(() => {
-    btn.textContent = '✓ Skopiowano'; btn.classList.add('copied');
-    setTimeout(() => { btn.textContent = 'Kopiuj'; btn.classList.remove('copied'); }, 2000);
-  });
+  const result = await writeTextWithFallback(pre.textContent.trim());
+  showCopyFeedback(btn, result.ok, 'Kopiuj', '✓ Skopiowano', 'Skopiuj ręcznie');
 }
 
 function savePromptFromBox(btn) {
@@ -250,19 +296,18 @@ function deletePrompt(id) {
   renderNotesTabs('prompts');
 }
 
-function copyText(encoded) {
-  navigator.clipboard.writeText(decodeURIComponent(encoded));
+async function copyText(encoded) {
+  return writeTextWithFallback(decodeURIComponent(encoded));
 }
 
-function copyFromPanel(btn) {
+async function copyFromPanel(btn) {
   const item = btn.closest('.saved-prompt-item');
   const id = parseInt(item.dataset.id);
   const s = gs();
   const p = (s.savedPrompts || []).find(x => x.id === id);
   if (p) {
-    navigator.clipboard.writeText(p.text);
-    btn.textContent = '✓ Skopiowano';
-    setTimeout(() => { btn.textContent = '📋 Kopiuj'; }, 2000);
+    const result = await writeTextWithFallback(p.text);
+    showCopyFeedback(btn, result.ok, '📋 Kopiuj', '✓ Skopiowano', 'Skopiuj ręcznie');
   }
 }
 
@@ -1358,11 +1403,11 @@ PAGES.slides = () => `
 function renderAllSlides(setKey) {
   return SLIDE_SETS[setKey].slides.map((s, i) => `
     <div class="slide ${s.type} ${i === currentSlideIdx ? 'active' : ''}" data-idx="${i}">
-      <div class="slide-logos-overlay" style="position:absolute; top:35px; right:35px; display:flex; gap:16px; align-items:flex-start; opacity:0.9; z-index:100; pointer-events:none;">
-         <img src="assets/orzel-bez-tla.png" alt="ZSZ5" style="width: auto; height: 35px; object-fit: contain; mix-blend-mode: multiply;">
-         <img src="assets/cove-polska-logo.png" alt="COVE" style="width: auto; height: 35px; object-fit: contain; mix-blend-mode: multiply;">
-         <img src="assets/Logo-2025.png" alt="WIN4SMEs" style="width: auto; height: 35px; object-fit: contain; mix-blend-mode: multiply;">
-         <img src="assets/EN_Co-fundedbytheEU_RGB_POS.png" alt="EU" style="width: auto; height: 35px; object-fit: contain; mix-blend-mode: multiply;">
+      <div class="slide-logos-overlay" aria-hidden="true">
+         <img class="slide-logo slide-logo-desktop" src="assets/orzel-bez-tla.png" alt="ZSZ5">
+         <img class="slide-logo slide-logo-desktop" src="assets/cove-polska-logo.png" alt="COVE">
+         <img class="slide-logo slide-logo-core" src="assets/Logo-2025.png" alt="WIN4SMEs">
+         <img class="slide-logo slide-logo-core" src="assets/EN_Co-fundedbytheEU_RGB_POS.png" alt="EU">
       </div>
       <div class="slide-tag">${s.tag}</div>
       <h2 style="white-space:pre-line">${s.title}</h2>
@@ -1427,9 +1472,8 @@ const INFOGRAPHICS = [
     id: 'inf-parts',
     title: 'PARTS – anatomia dobrego promptu',
     moduleLabel: 'Moduł 2 – Prompting',
-    desc: 'Jednostronicowa ściąga pokazująca 5 elementów dobrego promptu: rolę, cel, odbiorcę, ton i strukturę odpowiedzi.',
-    points: ['krótkie pytania kontrolne do każdego elementu', 'przykład promptu złożonego z 5 części', 'materiał do wydruku lub otwarcia na ekranie'],
-    asset: 'assets/infographic-parts.svg',
+    desc: 'Tekstowa ściąga pokazująca 5 elementów dobrego promptu: rolę, cel, odbiorcę, ton i strukturę odpowiedzi.',
+    points: ['krótkie pytania kontrolne do każdego elementu', 'przykład promptu złożonego z 5 części', 'responsywna forma HTML/CSS, która dobrze działa także z tłumaczeniem w przeglądarce'],
     modulePage: 'module2',
     moduleAnchor: 'parts'
   },
@@ -1437,9 +1481,8 @@ const INFOGRAPHICS = [
     id: 'inf-rodo',
     title: 'RODO + AI – co wklejać, czego nie wklejać',
     moduleLabel: 'Moduł 4 – Projekty i analityka',
-    desc: 'Wizualna karta decyzji do pracy z dokumentami, ankietami i notatkami. Rozdziela treści zakazane, wymagające anonimizacji i zwykle bezpieczne.',
-    points: ['kolorystyczny podział na trzy poziomy ryzyka', 'przykłady danych osobowych i danych wrażliwych', 'krótka checklista przed wklejeniem treści do AI'],
-    asset: 'assets/infographic-rodo-ai.svg',
+    desc: 'Karta decyzji do pracy z dokumentami, ankietami i notatkami. Rozdziela treści zakazane, wymagające anonimizacji i zwykle bezpieczne.',
+    points: ['trzy poziomy ryzyka z przykładami', 'przykłady danych osobowych i danych wrażliwych', 'krótka checklista przed wklejeniem treści do AI'],
     modulePage: 'module4',
     moduleAnchor: 'rodo'
   },
@@ -1447,40 +1490,346 @@ const INFOGRAPHICS = [
     id: 'inf-proporcja',
     title: 'Zasada proporcji – kiedy AI daje realną wartość',
     moduleLabel: 'Moduł 6 – Zrównoważone AI',
-    desc: 'Infografika wspiera decyzję, czy dane użycie AI ma sens. Pomaga odróżnić pracę o wysokiej wartości od zbędnych iteracji.',
+    desc: 'Skrócona karta decyzji, która pomaga odróżnić pracę o wysokiej wartości od zbędnych iteracji.',
     points: ['dwa typy użycia: o wyraźnej i niskiej wartości', 'krótki test 4 pytań przed uruchomieniem AI', 'prosta zasada: używaj AI tam, gdzie daje realny zysk'],
-    asset: 'assets/infographic-zasada-proporcji.svg',
     modulePage: 'module6',
     moduleAnchor: 'proporcja'
   }
 ];
 
+function renderInfographicBranding() {
+  return `
+    <div class="infographic-branding">
+      <div class="infographic-brand-logos" aria-label="Partnerzy projektu">
+        <div class="infographic-brand-logo"><img src="assets/orzel-bez-tla.png" alt="ZSZ nr 5 Wrocław"></div>
+        <div class="infographic-brand-logo"><img src="assets/cove-polska-logo.png" alt="COVE Polska"></div>
+        <div class="infographic-brand-logo"><img src="assets/Logo-2025.png" alt="WIN4SMEs – Workplace Innovation for SMEs"></div>
+        <div class="infographic-brand-logo"><img src="assets/EN_Co-fundedbytheEU_RGB_POS.png" alt="Co-funded by the European Union"></div>
+      </div>
+      <p class="infographic-brand-caption">Kurs opracowany w ramach projektu WIN4SMEs – Workplace Innovation for SMEs · zadanie WP4 – training module for the teachers · COVE Polska · ZSZ nr 5 we Wrocławiu</p>
+    </div>
+  `;
+}
+
+function renderInfographicParts() {
+  return `
+    <section class="infographic-sheet parts-sheet" id="inf-parts">
+      ${renderInfographicBranding()}
+      <div class="infographic-sheet-head">
+        <div class="infographic-sheet-module">Moduł 2 – Prompting</div>
+        <h3><span translate="no" class="notranslate">PARTS</span> – anatomia dobrego promptu</h3>
+        <p>Dobry prompt działa jak dobra instrukcja dla współpracownika: mówi kto, co, dla kogo, jakim tonem i w jakim formacie ma powstać wynik.</p>
+      </div>
+
+      <div class="infographic-parts-grid">
+        <article class="infographic-parts-card parts-p">
+          <div class="infographic-parts-card-head">
+            <div class="infographic-parts-letter" translate="no">P</div>
+            <div>
+              <h4>Persona</h4>
+              <p>Jaką rolę ma przyjąć AI?</p>
+            </div>
+          </div>
+          <div class="infographic-parts-card-body">
+            <div class="infographic-note-box">
+              <strong>Pytanie kontrolne</strong>
+              <p>Kim ma być AI w tym zadaniu?</p>
+            </div>
+            <div class="infographic-example-box">
+              <span>Przykład</span>
+              <strong>„Działaj jako nauczyciel historii”</strong>
+            </div>
+            <div>
+              <div class="infographic-list-label">Możliwe role</div>
+              <ul>
+                <li>nauczyciel lub edukator</li>
+                <li>koordynator projektu</li>
+                <li>analityk lub redaktor</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="infographic-parts-card parts-a">
+          <div class="infographic-parts-card-head">
+            <div class="infographic-parts-letter" translate="no">A</div>
+            <div>
+              <h4>Aim</h4>
+              <p>Co ma powstać?</p>
+            </div>
+          </div>
+          <div class="infographic-parts-card-body">
+            <div class="infographic-note-box">
+              <strong>Pytanie kontrolne</strong>
+              <p>Jaki jest cel odpowiedzi?</p>
+            </div>
+            <div class="infographic-example-box">
+              <span>Przykład</span>
+              <strong>„Przygotuj konspekt lekcji na 45 minut”</strong>
+            </div>
+            <div>
+              <div class="infographic-list-label">Możliwe cele</div>
+              <ul>
+                <li>mail lub ogłoszenie</li>
+                <li>analiza dokumentu lub ankiety</li>
+                <li>plan, lista lub raport</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="infographic-parts-card parts-r">
+          <div class="infographic-parts-card-head">
+            <div class="infographic-parts-letter" translate="no">R</div>
+            <div>
+              <h4>Recipients</h4>
+              <p>Dla kogo jest wynik?</p>
+            </div>
+          </div>
+          <div class="infographic-parts-card-body">
+            <div class="infographic-note-box">
+              <strong>Pytanie kontrolne</strong>
+              <p>Kto będzie czytał lub używał wyniku?</p>
+            </div>
+            <div class="infographic-example-box">
+              <span>Przykład</span>
+              <strong>„Dla rodziców klasy 6”</strong>
+            </div>
+            <div>
+              <div class="infographic-list-label">Przykładowi odbiorcy</div>
+              <ul>
+                <li>uczniowie konkretnej klasy</li>
+                <li>rodzice lub zespół</li>
+                <li>partnerzy projektu lub dyrekcja</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="infographic-parts-card parts-t">
+          <div class="infographic-parts-card-head">
+            <div class="infographic-parts-letter" translate="no">T</div>
+            <div>
+              <h4>Tone</h4>
+              <p>Jak ma brzmieć odpowiedź?</p>
+            </div>
+          </div>
+          <div class="infographic-parts-card-body">
+            <div class="infographic-note-box">
+              <strong>Pytanie kontrolne</strong>
+              <p>Jaki styl i ton będą najlepsze?</p>
+            </div>
+            <div class="infographic-example-box">
+              <span>Przykład</span>
+              <strong>„Ton: prosty, rzeczowy, przyjazny”</strong>
+            </div>
+            <div>
+              <div class="infographic-list-label">Najczęstsze wybory</div>
+              <ul>
+                <li>formalny lub profesjonalny</li>
+                <li>prosty i angażujący</li>
+                <li>spokojny i neutralny</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="infographic-parts-card parts-s">
+          <div class="infographic-parts-card-head">
+            <div class="infographic-parts-letter" translate="no">S</div>
+            <div>
+              <h4>Structure</h4>
+              <p>W jakim formacie ma przyjść wynik?</p>
+            </div>
+          </div>
+          <div class="infographic-parts-card-body">
+            <div class="infographic-note-box">
+              <strong>Pytanie kontrolne</strong>
+              <p>Jak ma wyglądać wynik?</p>
+            </div>
+            <div class="infographic-example-box">
+              <span>Przykład</span>
+              <strong>„Tabela: czas | aktywność | materiały”</strong>
+            </div>
+            <div>
+              <div class="infographic-list-label">Typowe formaty</div>
+              <ul>
+                <li>lista kroków</li>
+                <li>mail do 120 słów</li>
+                <li>tabela lub akapit</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="infographic-summary-band">
+        <strong>Dobry prompt = Persona + Aim + Recipients + Tone + Structure</strong>
+        <p>Nie zawsze potrzebujesz wszystkich 5 elementów, ale każdy z nich zmniejsza ryzyko ogólnej i mało użytecznej odpowiedzi.</p>
+      </div>
+
+      <div class="infographic-actions">
+        <a class="bib-link" href="#" onclick="showPage('module2','parts');return false;">Przejdź do modułu →</a>
+      </div>
+    </section>
+  `;
+}
+
+function renderInfographicRodo() {
+  return `
+    <section class="infographic-sheet rodo-sheet" id="inf-rodo">
+      ${renderInfographicBranding()}
+      <div class="infographic-sheet-head">
+        <div class="infographic-sheet-module">Moduł 4 – Projekty i analityka</div>
+        <h3>RODO + AI – co wklejać, czego nie wklejać</h3>
+        <p>Zanim wkleisz dokument, ankietę albo notatki do AI, oceń poziom ryzyka: treści zakazane, wymagające anonimizacji albo zwykle bezpieczne.</p>
+      </div>
+
+      <div class="infographic-risk-grid">
+        <article class="infographic-risk-card risk-high">
+          <div class="infographic-risk-card-head">
+            <h4>Nie wklejaj</h4>
+            <p>bez zgody, podstawy prawnej i lokalnej polityki</p>
+          </div>
+          <div class="infographic-risk-card-body">
+            <div class="infographic-list-label">Przykłady wysokiego ryzyka</div>
+            <ul>
+              <li>imiona i nazwiska uczniów lub pracowników</li>
+              <li>oceny, frekwencja, numery telefonów, adresy</li>
+              <li>dane zdrowotne, SPE, opinie poradni</li>
+              <li>poufne raporty, budżety, oceny partnerów</li>
+              <li>treści pozwalające rozpoznać konkretną osobę</li>
+            </ul>
+            <p class="infographic-risk-note">Jeśli nie możesz tego bezpiecznie pokazać poza organizacją, nie wklejaj tego bezpośrednio do publicznej AI.</p>
+          </div>
+        </article>
+
+        <article class="infographic-risk-card risk-medium">
+          <div class="infographic-risk-card-head">
+            <h4>Tylko po anonimizacji</h4>
+            <p>usuń identyfikatory i zamień je na role lub kody</p>
+          </div>
+          <div class="infographic-risk-card-body">
+            <div class="infographic-list-label">Przykłady średniego ryzyka</div>
+            <ul>
+              <li>odpowiedzi z ankiety po usunięciu danych osobowych</li>
+              <li>notatki ze spotkania bez nazwisk i maili</li>
+              <li>dokument z rolami zamiast imion</li>
+              <li>zbiorcze statystyki bez możliwości identyfikacji</li>
+            </ul>
+            <p class="infographic-risk-note">Zamień imiona na role lub kody. Usuń maile, numery, dokładne klasy i nazwy instytucji. Sprawdź też, czy połączenie kilku szczegółów nie odtwarza tożsamości.</p>
+          </div>
+        </article>
+
+        <article class="infographic-risk-card risk-low">
+          <div class="infographic-risk-card-head">
+            <h4>Zwykle bezpieczne</h4>
+            <p>o ile nie dopisujesz danych poufnych w samym prompcie</p>
+          </div>
+          <div class="infographic-risk-card-body">
+            <div class="infographic-list-label">Przykłady niskiego ryzyka</div>
+            <ul>
+              <li>pomysł na lekcję lub konspekt</li>
+              <li>ogólny szkic maila lub ogłoszenia</li>
+              <li>fikcyjny przykład do ćwiczenia</li>
+              <li>publicznie dostępne informacje i dokumenty</li>
+            </ul>
+            <p class="infographic-risk-note">Bezpieczne nie znaczy automatycznie gotowe do wysłania. Nadal sprawdzaj fakty, ton i zgodność z celem.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="infographic-checklist-grid">
+        <div class="infographic-checklist-card"><strong>1. Czy są tu dane osobowe?</strong><p>Jeśli tak, nie wklejaj ich bez anonimizacji i jasnej podstawy działania.</p></div>
+        <div class="infographic-checklist-card"><strong>2. Czy można kogoś rozpoznać?</strong><p>Pomyśl o połączeniu kilku szczegółów, nie tylko o samym nazwisku.</p></div>
+        <div class="infographic-checklist-card"><strong>3. Czy wystarczy anonimizacja?</strong><p>Zamień osoby, klasy, instytucje i identyfikatory na role lub kody.</p></div>
+        <div class="infographic-checklist-card"><strong>4. Czy narzędzie jest zgodne z zasadami organizacji?</strong><p>Sprawdź, czy szkoła, projekt lub firma dopuszcza takie użycie AI.</p></div>
+      </div>
+
+      <div class="infographic-actions">
+        <a class="bib-link" href="#" onclick="showPage('module4','rodo');return false;">Przejdź do modułu →</a>
+      </div>
+    </section>
+  `;
+}
+
+function renderInfographicProportion() {
+  return `
+    <section class="infographic-sheet proporcja-sheet" id="inf-proporcja">
+      ${renderInfographicBranding()}
+      <div class="infographic-sheet-head">
+        <div class="infographic-sheet-module">Moduł 6 – Zrównoważone AI</div>
+        <h3>Zasada proporcji – kiedy AI daje realną wartość</h3>
+        <p>Nie chodzi o to, by używać AI wszędzie. Chodzi o to, by sięgać po nią tam, gdzie zysk czasu, jakości lub dostępności jest większy niż koszt kolejnych iteracji.</p>
+      </div>
+
+      <div class="infographic-value-grid">
+        <article class="infographic-value-card value-high">
+          <div class="infographic-value-card-head">
+            <h4>Użycie o wyraźnej wartości</h4>
+            <p>AI pomaga osiągnąć konkretny efekt szybciej lub lepiej.</p>
+          </div>
+          <ul>
+            <li>tworzysz bardziej dostępną wersję materiału dla ucznia</li>
+            <li>porządkujesz długi protokół albo dokument z wieloma zadaniami</li>
+            <li>skracasz czas pisania raportu lub maila roboczego</li>
+            <li>przygotowujesz pierwszą wersję, którą i tak sprawdza człowiek</li>
+          </ul>
+        </article>
+
+        <article class="infographic-value-card value-low">
+          <div class="infographic-value-card-head">
+            <h4>Użycie o niskiej wartości</h4>
+            <p>AI generuje kolejne wersje bez wyraźnego zysku.</p>
+          </div>
+          <ul>
+            <li>tworzysz wiele prawie identycznych wariantów bez celu</li>
+            <li>prosisz AI o coś, co szybciej poprawisz ręcznie</li>
+            <li>iterujesz dalej, chociaż materiał jest już wystarczająco dobry</li>
+            <li>zlecasz AI zadanie bez sprawdzenia, czy wynik będzie potrzebny</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="infographic-questions-title">Zanim uruchomisz AI, zadaj sobie 4 pytania</div>
+      <div class="infographic-checklist-grid">
+        <div class="infographic-checklist-card"><strong>1. Czy oszczędzam czas?</strong><p>Czy ręczna wersja zajęłaby wyraźnie dłużej?</p></div>
+        <div class="infographic-checklist-card"><strong>2. Czy podnoszę jakość?</strong><p>Czy AI pomaga uprościć, uporządkować albo dopasować materiał?</p></div>
+        <div class="infographic-checklist-card"><strong>3. Czy unikam zbędnych iteracji?</strong><p>Czy mam jasny cel, a nie kolejne wersje dla samego testowania?</p></div>
+        <div class="infographic-checklist-card"><strong>4. Czy wynik przejdzie przez człowieka?</strong><p>Czy ktoś sprawdzi fakty, ton, dane i decyzje przed użyciem?</p></div>
+      </div>
+
+      <div class="infographic-summary-band">
+        <strong>Używaj AI tam, gdzie daje realny zysk jakości, czasu lub dostępności.</strong>
+        <p>Jeżeli narzędzie produkuje tylko kolejne wersje bez wyraźnej potrzeby, zatrzymaj się i wróć do prostszego rozwiązania.</p>
+      </div>
+
+      <div class="infographic-actions">
+        <a class="bib-link" href="#" onclick="showPage('module6','proporcja');return false;">Przejdź do modułu →</a>
+      </div>
+    </section>
+  `;
+}
+
 PAGES.infographics = () => `
   <div class="page-header">
     <div class="breadcrumb"><a href="#" onclick="showPage('home')">🏠 Start</a> <span class="bc-sep">›</span> Infografiki</div>
     <h2>🖼️ Infografiki</h2>
-    <p>Trzy krótkie materiały wizualne do wykorzystania podczas szkolenia, samodzielnej nauki albo pracy z zespołem. Każdą infografikę możesz otworzyć jako osobny plik SVG i powiązać z odpowiednim modułem kursu.</p>
+    <p>Trzy krótkie materiały wizualne do wykorzystania podczas szkolenia, samodzielnej nauki albo pracy z zespołem. Infografiki są zbudowane z HTML i CSS, więc pozostają czytelne na różnych ekranach i tłumaczą się poprawnie w przeglądarce.</p>
   </div>
   <div class="infographic-page">
-    ${INFOGRAPHICS.map(info => `
-      <section class="infographic-card" id="${info.id}">
-        <div class="infographic-copy">
+    <div class="infographic-overview-grid">
+      ${INFOGRAPHICS.map(info => `
+        <a class="infographic-overview-card" href="#" onclick="showPage('infographics','${info.id}');return false;">
           <div class="infographic-module">${info.moduleLabel}</div>
           <h3>${info.title}</h3>
           <p>${info.desc}</p>
-          <ul>
-            ${info.points.map(point => `<li>${point}</li>`).join('')}
-          </ul>
-          <div class="infographic-actions">
-            <a class="bib-link" href="${info.asset}" target="_blank" rel="noopener noreferrer">Otwórz SVG ↗</a>
-            <a class="bib-link" href="#" onclick="showPage('${info.modulePage}','${info.moduleAnchor}');return false;">Przejdź do modułu →</a>
-          </div>
-        </div>
-        <div class="infographic-preview">
-          <img src="${info.asset}" alt="${info.title}">
-        </div>
-      </section>
-    `).join('')}
+        </a>
+      `).join('')}
+    </div>
+    ${renderInfographicParts()}
+    ${renderInfographicRodo()}
+    ${renderInfographicProportion()}
   </div>
 `;
 
