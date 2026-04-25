@@ -1498,12 +1498,29 @@ body {
   display: flex; align-items: center;
   text-decoration: none; transition: transform 0.2s;
 }
+.footer-logo-box-eu {
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+}
 .footer-logo-box:hover {
   transform: translateY(-2px);
 }
 .footer-logo-box img { 
   height: 44px; width: auto; display: block;
   mix-blend-mode: multiply; /* Usuwa białe tła ujednolicając grafikę na listwie */
+}
+.footer-eu-link {
+  font-size: 10px;
+  line-height: 1.2;
+  color: #0f172a;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-align: center;
+  white-space: nowrap;
+}
+.footer-eu-link:hover {
+  color: #1d4ed8;
 }
 .footer-logo-zsz { height: 44px; }
 .footer-logo-cove { height: 42px; }
@@ -1574,6 +1591,7 @@ body {
   .footer-logo-cove { height: 28px; }
   .footer-logo-win { height: 34px; }
   .footer-logo-eu { height: 38px; }
+  .footer-eu-link { font-size: 8.5px; }
 }
 
 @media (max-width: 400px) {
