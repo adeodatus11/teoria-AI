@@ -1670,6 +1670,15 @@ function triggerBlobDownload(filename, blob) {
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
+function escapeHtml(value) {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 async function buildInfographicSvgPayload(id) {
   const sheet = document.getElementById(id);
   if (!sheet) return null;
@@ -1711,6 +1720,110 @@ async function buildInfographicSvgPayload(id) {
   }
 }
 
+async function buildInfographicPrintHtml(id) {
+  const sheet = document.getElementById(id);
+  if (!sheet) return null;
+
+  let stage = null;
+  try {
+    stage = document.createElement('div');
+    stage.className = 'infographic-export-stage';
+    const exportSheet = sheet.cloneNode(true);
+    exportSheet.classList.add('export-render');
+    exportSheet.querySelectorAll('.no-export').forEach(el => el.remove());
+    stage.appendChild(exportSheet);
+    document.body.appendChild(stage);
+
+    await waitForImages(exportSheet);
+    await waitForNextFrames(2);
+
+    const clone = cloneWithInlineStyles(exportSheet);
+    await inlineImageSources(exportSheet, clone);
+
+    clone.style.margin = '0';
+    clone.style.width = '420mm';
+    clone.style.maxWidth = '420mm';
+    clone.style.minHeight = '297mm';
+    clone.style.boxSizing = 'border-box';
+
+    const info = INFOGRAPHICS.find(item => item.id === id);
+    const title = info ? info.title : 'Infografika';
+
+    return `<!doctype html>
+<html lang="${escapeHtml(document.documentElement.lang || 'pl')}">
+<head>
+  <meta charset="utf-8">
+  <title>${escapeHtml(title)} – PDF A3</title>
+  <style>
+    @page { size: A3 landscape; margin: 0; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 420mm;
+      min-height: 297mm;
+      background: #ffffff;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    body {
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    .print-root {
+      width: 420mm;
+      min-height: 297mm;
+      margin: 0;
+      padding: 0;
+      display: block;
+      overflow: hidden;
+    }
+    .print-root > * {
+      margin: 0 !important;
+    }
+  </style>
+</head>
+<body>
+  <div class="print-root">${clone.outerHTML}</div>
+  <script>
+    const waitForPrintAssets = async () => {
+      const images = Array.from(document.images || []);
+      await Promise.all(images.map(img => {
+        if (img.complete) return Promise.resolve();
+        return new Promise(resolve => {
+          let done = false;
+          const finish = () => {
+            if (done) return;
+            done = true;
+            resolve();
+          };
+          img.addEventListener('load', finish, { once: true });
+          img.addEventListener('error', finish, { once: true });
+          setTimeout(finish, 2500);
+        });
+      }));
+      if (document.fonts && document.fonts.ready) {
+        try { await document.fonts.ready; } catch (err) {}
+      }
+    };
+
+    window.addEventListener('load', async () => {
+      await waitForPrintAssets();
+      setTimeout(() => {
+        window.focus();
+        window.print();
+      }, 120);
+    });
+
+    window.addEventListener('afterprint', () => {
+      setTimeout(() => window.close(), 120);
+    });
+  <\/script>
+</body>
+</html>`;
+  } finally {
+    if (stage && stage.parentNode) stage.parentNode.removeChild(stage);
+  }
+}
+
 async function exportInfographicSvg(id, btn) {
   const defaultLabel = btn ? btn.textContent : '';
   if (btn) {
@@ -1742,57 +1855,23 @@ async function exportInfographicSvg(id, btn) {
   }
 }
 
-function loadImageFromUrl(url) {
-  return new Promise((resolve, reject) => {
-    const img = new Image();
-    img.decoding = 'async';
-    img.onload = () => resolve(img);
-    img.onerror = reject;
-    img.src = url;
-  });
-}
-
-function canvasToBlob(canvas) {
-  return new Promise((resolve, reject) => {
-    canvas.toBlob(blob => {
-      if (blob) resolve(blob);
-      else reject(new Error('Nie udało się wygenerować PNG.'));
-    }, 'image/png');
-  });
-}
-
-async function exportInfographicPng(id, btn) {
+async function exportInfographicPdf(id, btn) {
   const defaultLabel = btn ? btn.textContent : '';
   if (btn) {
     btn.disabled = true;
-    btn.textContent = 'Generuję PNG…';
+    btn.textContent = 'Otwieram PDF…';
   }
-
-  let svgUrl = null;
   try {
-    const payload = await buildInfographicSvgPayload(id);
-    if (!payload) return;
-
-    const svgBlob = new Blob([payload.svg], { type: 'image/svg+xml;charset=utf-8' });
-    svgUrl = URL.createObjectURL(svgBlob);
-    const img = await loadImageFromUrl(svgUrl);
-    const scale = window.devicePixelRatio > 1 ? 2 : 1.5;
-    const canvas = document.createElement('canvas');
-    canvas.width = Math.round(payload.width * scale);
-    canvas.height = Math.round(payload.height * scale);
-
-    const ctx = canvas.getContext('2d');
-    if (!ctx) throw new Error('Brak kontekstu canvas.');
-    ctx.scale(scale, scale);
-    ctx.fillStyle = '#ffffff';
-    ctx.fillRect(0, 0, payload.width, payload.height);
-    ctx.drawImage(img, 0, 0, payload.width, payload.height);
-
-    const pngBlob = await canvasToBlob(canvas);
-    triggerBlobDownload(`${id}.png`, pngBlob);
+    const html = await buildInfographicPrintHtml(id);
+    if (!html) return;
+    const printWindow = window.open('', '_blank', 'width=1600,height=1100');
+    if (!printWindow) throw new Error('Przeglądarka zablokowała okno drukowania PDF.');
+    printWindow.document.open();
+    printWindow.document.write(html);
+    printWindow.document.close();
 
     if (btn) {
-      btn.textContent = '✓ PNG gotowe';
+      btn.textContent = '✓ PDF otwarte';
       setTimeout(() => {
         btn.textContent = defaultLabel;
         btn.disabled = false;
@@ -1807,8 +1886,6 @@ async function exportInfographicPng(id, btn) {
       }, 2200);
     }
     console.error(err);
-  } finally {
-    if (svgUrl) URL.revokeObjectURL(svgUrl);
   }
 }
 
@@ -1970,7 +2047,7 @@ function renderInfographicParts() {
       </div>
 
       <div class="infographic-actions no-export">
-        <button class="bib-link export-link" onclick="exportInfographicPng('inf-parts', this)">Eksportuj PNG ↗</button>
+        <button class="bib-link export-link" onclick="exportInfographicPdf('inf-parts', this)">Eksportuj PDF ↗</button>
         <a class="bib-link" href="#" onclick="showPage('module2','parts');return false;">Przejdź do modułu →</a>
       </div>
     </section>
@@ -2049,7 +2126,7 @@ function renderInfographicRodo() {
       </div>
 
       <div class="infographic-actions no-export">
-        <button class="bib-link export-link" onclick="exportInfographicPng('inf-rodo', this)">Eksportuj PNG ↗</button>
+        <button class="bib-link export-link" onclick="exportInfographicPdf('inf-rodo', this)">Eksportuj PDF ↗</button>
         <a class="bib-link" href="#" onclick="showPage('module4','rodo');return false;">Przejdź do modułu →</a>
       </div>
     </section>
@@ -2108,7 +2185,7 @@ function renderInfographicProportion() {
       </div>
 
       <div class="infographic-actions no-export">
-        <button class="bib-link export-link" onclick="exportInfographicPng('inf-proporcja', this)">Eksportuj PNG ↗</button>
+        <button class="bib-link export-link" onclick="exportInfographicPdf('inf-proporcja', this)">Eksportuj PDF ↗</button>
         <a class="bib-link" href="#" onclick="showPage('module6','proporcja');return false;">Przejdź do modułu →</a>
       </div>
     </section>
@@ -2119,7 +2196,7 @@ PAGES.infographics = () => `
   <div class="page-header">
     <div class="breadcrumb"><a href="#" onclick="showPage('home')">🏠 Start</a> <span class="bc-sep">›</span> Infografiki</div>
     <h2>🖼️ Infografiki</h2>
-    <p>Trzy krótkie materiały wizualne do wykorzystania podczas szkolenia, samodzielnej nauki albo pracy z zespołem. Infografiki są zbudowane z HTML i CSS, więc pozostają czytelne na różnych ekranach i tłumaczą się poprawnie w przeglądarce. Eksport PNG bierze aktualny tekst z ekranu, także po tłumaczeniu przeglądarkowym.</p>
+    <p>Trzy krótkie materiały wizualne do wykorzystania podczas szkolenia, samodzielnej nauki albo pracy z zespołem. Infografiki są zbudowane z HTML i CSS, więc pozostają czytelne na różnych ekranach i tłumaczą się poprawnie w przeglądarce. Eksport PDF otwiera wydruk w formacie A3 poziomo i bierze aktualny tekst z ekranu, także po tłumaczeniu przeglądarkowym.</p>
   </div>
   <div class="infographic-page">
     <div class="infographic-overview-grid">
