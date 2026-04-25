@@ -63,12 +63,16 @@ body {
   display: flex; align-items: center; gap: 18px;
 }
 @media (max-width: 600px) {
-  .topbar-logos { gap: 10px; }
-  .logo-divider, .logo-cove, .logo-win, .logo-eu { display: none; }
+  .topbar-logos { gap: 8px; min-width: 0; }
+  .logo-zsz5, .logo-divider { display: none; }
   .topbar-inner { padding: 0 12px; }
+  .logo-cove { height: 24px; }
+  .logo-win { height: 28px; }
+  .logo-eu { height: 28px; }
 }
 .topbar-logos img {
   mix-blend-mode: multiply; /* Wtapia grafiki płynnie w biały topbar redukując krawędzie */
+  flex-shrink: 0;
 }
 
 /* Logo fixes – natywne kolory, bez filtrów degradujących */
@@ -874,6 +878,8 @@ body {
   max-height: 28px; width: auto; object-fit: contain; mix-blend-mode: multiply;
 }
 .slide-deck:fullscreen .slide-logo { max-height: 2.2em; width: auto; }
+.slide-logo-optional { display: block; }
+.is-hidden-by-fit { display: none !important; }
 
 .slide.active { display: flex; }
 
@@ -958,7 +964,7 @@ body {
 .slide-set-btn:hover { border-color: var(--clr-primary); color: var(--clr-primary); }
 
 /* ═══════════════════ INFOGRAPHICS ═══════════════════ */
-.infographic-page { max-width: 1280px; margin: 0 auto; padding: 28px 40px; display: flex; flex-direction: column; gap: 24px; }
+.infographic-page { max-width: 1680px; margin: 0 auto; padding: 28px 32px; display: flex; flex-direction: column; gap: 24px; }
 .infographic-overview-grid {
   display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px;
 }
@@ -984,6 +990,9 @@ body {
   background: white; border: 1px solid var(--clr-border);
   border-radius: 28px; padding: 28px;
   box-shadow: var(--shadow-sm);
+  max-width: 1600px;
+  margin: 0 auto;
+  overflow: hidden;
 }
 .parts-sheet { background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%); }
 .rodo-sheet { background: linear-gradient(180deg, #ffffff 0%, #fffaf5 100%); }
@@ -1006,6 +1015,10 @@ body {
 }
 
 .infographic-sheet-head { margin-bottom: 24px; }
+.infographic-sheet-module {
+  font-size: 12px; font-weight: 800; letter-spacing: .09em;
+  text-transform: uppercase; color: var(--clr-primary); margin-bottom: 12px;
+}
 .infographic-sheet-head h3 {
   font-size: clamp(30px, 4.8vw, 56px);
   line-height: 1.04;
@@ -1016,12 +1029,12 @@ body {
   font-size: clamp(17px, 2vw, 22px);
   color: #475569;
   line-height: 1.6;
-  max-width: 1000px;
+  max-width: none;
   margin: 0;
 }
 
 .infographic-parts-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px;
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; align-items: stretch;
 }
 .infographic-parts-card {
   background: white; border: 1px solid var(--clr-border); border-radius: 24px;
@@ -1030,6 +1043,7 @@ body {
 .infographic-parts-card-head {
   padding: 20px 22px; display: flex; gap: 16px; align-items: flex-start;
 }
+.infographic-parts-card-head > div { min-width: 0; }
 .infographic-parts-letter {
   font-size: clamp(58px, 7vw, 78px);
   font-weight: 800; line-height: .9; flex: 0 0 auto;
@@ -1062,6 +1076,7 @@ body {
 .infographic-sheet ul { list-style: none; margin: 0; }
 .infographic-sheet ul li {
   font-size: 15px; line-height: 1.65; padding: 4px 0 4px 18px; position: relative;
+  overflow-wrap: anywhere;
 }
 .infographic-sheet ul li::before {
   content: '→'; position: absolute; left: 0; top: 4px; color: var(--clr-primary); font-size: 12px;
@@ -1096,9 +1111,9 @@ body {
 .infographic-checklist-grid {
   display: grid; gap: 18px;
 }
-.infographic-risk-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
-.infographic-value-grid { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
-.infographic-checklist-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.infographic-risk-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.infographic-value-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.infographic-checklist-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
 .infographic-risk-card {
   border: 1px solid var(--clr-border); border-radius: 24px; overflow: hidden; min-width: 0;
@@ -1195,6 +1210,245 @@ body {
   opacity: .7; cursor: default;
 }
 
+.infographic-export-stage {
+  position: fixed;
+  left: -100000px;
+  top: 0;
+  width: 1600px;
+  opacity: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@media (min-width: 701px) and (max-width: 1099px) {
+  .infographic-overview-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .infographic-parts-grid,
+  .infographic-risk-grid,
+  .infographic-checklist-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (min-width: 1100px) {
+  .infographic-sheet {
+    padding: 24px 26px 22px;
+  }
+
+  .parts-sheet,
+  .rodo-sheet,
+  .proporcja-sheet {
+    aspect-ratio: 1.414 / 1;
+  }
+
+  .infographic-branding {
+    margin-bottom: 18px;
+  }
+
+  .infographic-brand-logos {
+    gap: 14px;
+    padding: 12px 16px;
+  }
+
+  .infographic-brand-logo img {
+    height: 34px;
+  }
+
+  .infographic-brand-caption {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .infographic-sheet-head {
+    margin-bottom: 18px;
+  }
+
+  .infographic-sheet-head h3 {
+    font-size: clamp(28px, 3.3vw, 48px);
+    margin-bottom: 10px;
+  }
+
+  .infographic-sheet-head p {
+    font-size: clamp(15px, 1.3vw, 19px);
+    line-height: 1.5;
+  }
+
+  .infographic-parts-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .infographic-parts-card-head {
+    padding: 14px 14px 12px;
+    gap: 12px;
+    min-height: 112px;
+  }
+
+  .infographic-parts-letter {
+    font-size: clamp(46px, 3.7vw, 64px);
+  }
+
+  .infographic-parts-card-head h4 {
+    font-size: 16px;
+    line-height: 1.15;
+  }
+
+  .infographic-parts-card-head p {
+    font-size: 13px;
+    line-height: 1.35;
+  }
+
+  .infographic-parts-card-body {
+    padding: 14px 14px 16px;
+    gap: 12px;
+  }
+
+  .infographic-note-box,
+  .infographic-example-box {
+    padding: 12px 14px;
+    border-radius: 14px;
+  }
+
+  .infographic-note-box strong,
+  .infographic-example-box span,
+  .infographic-list-label {
+    font-size: 11px;
+    margin-bottom: 6px;
+  }
+
+  .infographic-note-box p,
+  .infographic-example-box strong {
+    font-size: 14px;
+    line-height: 1.35;
+  }
+
+  .infographic-sheet ul li {
+    font-size: 13px;
+    line-height: 1.45;
+    padding: 3px 0 3px 15px;
+  }
+
+  .infographic-sheet ul li::before {
+    top: 3px;
+  }
+
+  .infographic-risk-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .infographic-risk-card-head {
+    padding: 16px 18px;
+  }
+
+  .infographic-risk-card-head h4 {
+    font-size: 24px;
+  }
+
+  .infographic-risk-card-head p,
+  .infographic-risk-note {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .infographic-risk-card-body {
+    padding: 16px 18px 18px;
+    gap: 12px;
+  }
+
+  .infographic-value-grid {
+    gap: 14px;
+  }
+
+  .infographic-value-card {
+    padding: 18px 18px 20px;
+  }
+
+  .infographic-value-card-head {
+    margin-bottom: 12px;
+  }
+
+  .infographic-value-card-head h4 {
+    font-size: 22px;
+  }
+
+  .infographic-value-card-head p {
+    font-size: 14px;
+    line-height: 1.45;
+  }
+
+  .infographic-questions-title {
+    margin: 18px 0 14px;
+    font-size: 24px;
+  }
+
+  .infographic-checklist-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .infographic-checklist-card {
+    padding: 16px 16px 14px;
+  }
+
+  .infographic-checklist-card strong {
+    font-size: 16px;
+  }
+
+  .infographic-checklist-card p {
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  .infographic-summary-band {
+    margin-top: 16px;
+    padding: 18px 20px;
+  }
+
+  .infographic-summary-band strong {
+    font-size: clamp(22px, 2.3vw, 32px);
+    margin-bottom: 6px;
+  }
+
+  .infographic-summary-band p {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .infographic-actions {
+    margin-top: 14px;
+  }
+}
+
+.infographic-export-stage .infographic-sheet {
+  width: 1600px;
+  max-width: none;
+  margin: 0;
+}
+
+.infographic-export-stage .parts-sheet,
+.infographic-export-stage .rodo-sheet,
+.infographic-export-stage .proporcja-sheet {
+  min-height: 1131px;
+}
+
+.infographic-export-stage .infographic-parts-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.infographic-export-stage .infographic-risk-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.infographic-export-stage .infographic-value-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.infographic-export-stage .infographic-checklist-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
 /* ═══════════════════ BIBLIOGRAPHY ═══════════════════ */
 .bib-page { max-width: 840px; margin: 0 auto; padding: 28px 40px; }
 .bib-entry {
@@ -1277,8 +1531,8 @@ body {
   .infographic-overview-grid { grid-template-columns: 1fr; }
   .infographic-sheet { padding: 20px 18px; }
   .infographic-sheet-head h3 { font-size: 34px; }
-  .infographic-brand-logos { gap: 14px; }
-  .infographic-brand-logo img { height: 34px; }
+  .infographic-brand-logos { gap: 10px; justify-content: flex-start; }
+  .infographic-brand-logo img { height: 30px; }
   .infographic-parts-grid,
   .infographic-risk-grid,
   .infographic-value-grid,
@@ -1287,10 +1541,9 @@ body {
 
   .slide { padding: 1.6em 1.3em 2em; }
   .slide-logos-overlay {
-    top: 1.15em; right: 1.2em; gap: 10px; opacity: 0.62;
+    top: 1.15em; right: 1.2em; gap: 8px; opacity: 0.72;
   }
   .slide-logo { max-height: 18px; }
-  .slide-logo-desktop { display: none; }
 }
 
 @media (max-width: 400px) {

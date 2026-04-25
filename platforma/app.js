@@ -81,6 +81,8 @@ function showPage(id, arg2) {
 
   updateProgress();
   updateContinueBtn();
+  requestAnimationFrame(updateResponsiveBranding);
+  setTimeout(updateResponsiveBranding, 120);
 }
 
 function postRender(id) {
@@ -225,6 +227,45 @@ function savePromptFromBox(btn) {
   btn.textContent = '✓ Zapisano'; btn.classList.add('saved');
   setTimeout(() => { btn.textContent = '⭐ Zapisz'; btn.classList.remove('saved'); }, 2000);
   if (document.getElementById('notesPanel').classList.contains('open')) renderNotesTabs('prompts');
+}
+
+function updateResponsiveBranding() {
+  const isMobileRange = window.innerWidth <= 700;
+
+  const topbarLogos = document.querySelector('.topbar-logos');
+  const topbarOptional = topbarLogos && topbarLogos.querySelector('.logo-eu');
+  if (topbarOptional) {
+    topbarOptional.classList.remove('is-hidden-by-fit');
+    if (isMobileRange) {
+      const topbarInner = document.querySelector('.topbar-inner');
+      const topbarRight = document.querySelector('.topbar-right');
+      const available = (topbarInner ? topbarInner.clientWidth : 0) - (topbarRight ? Math.ceil(topbarRight.getBoundingClientRect().width) : 0) - 28;
+      const fits = available > 0 && topbarLogos.scrollWidth <= available;
+      topbarOptional.classList.toggle('is-hidden-by-fit', !fits);
+    }
+  }
+
+  document.querySelectorAll('.slide-logos-overlay').forEach(overlay => {
+    const optional = overlay.querySelector('.slide-logo-optional');
+    if (!optional) return;
+    optional.classList.remove('is-hidden-by-fit');
+    if (!isMobileRange) return;
+    const slide = overlay.closest('.slide');
+    const available = slide ? slide.clientWidth - 34 : 0;
+    const fits = available > 0 && overlay.scrollWidth <= available;
+    optional.classList.toggle('is-hidden-by-fit', !fits);
+  });
+
+  document.querySelectorAll('.infographic-brand-logos').forEach(brandRow => {
+    const optional = brandRow.querySelector('.infographic-brand-logo-optional');
+    if (!optional) return;
+    optional.classList.remove('is-hidden-by-fit');
+    if (!isMobileRange) return;
+    const visibleItems = Array.from(brandRow.children).filter(el => getComputedStyle(el).display !== 'none');
+    const rowTops = new Set(visibleItems.map(el => Math.round(el.getBoundingClientRect().top)));
+    const fits = rowTops.size <= 1;
+    optional.classList.toggle('is-hidden-by-fit', !fits);
+  });
 }
 
 /* ══════════════════════════════════════
@@ -1404,10 +1445,9 @@ function renderAllSlides(setKey) {
   return SLIDE_SETS[setKey].slides.map((s, i) => `
     <div class="slide ${s.type} ${i === currentSlideIdx ? 'active' : ''}" data-idx="${i}">
       <div class="slide-logos-overlay" aria-hidden="true">
-         <img class="slide-logo slide-logo-desktop" src="assets/orzel-bez-tla.png" alt="ZSZ5">
-         <img class="slide-logo slide-logo-desktop" src="assets/cove-polska-logo.png" alt="COVE">
+         <img class="slide-logo slide-logo-core" src="assets/cove-polska-logo.png" alt="COVE Polska">
          <img class="slide-logo slide-logo-core" src="assets/Logo-2025.png" alt="WIN4SMEs">
-         <img class="slide-logo slide-logo-core" src="assets/EN_Co-fundedbytheEU_RGB_POS.png" alt="EU">
+         <img class="slide-logo slide-logo-optional" src="assets/EN_co_fundedvertical_RGB_Monochrome.png" alt="Co-funded by the European Union">
       </div>
       <div class="slide-tag">${s.tag}</div>
       <h2 style="white-space:pre-line">${s.title}</h2>
@@ -1432,6 +1472,7 @@ function switchSlideSet(key, startIdx = 0) {
   const title = document.getElementById('slideSetTitle');
   if (title) title.textContent = SLIDE_SETS[key].title;
   updateSlideUI();
+  requestAnimationFrame(updateResponsiveBranding);
 }
 function goSlide(idx) {
   const slides = document.querySelectorAll('#slideArea .slide');
@@ -1501,10 +1542,9 @@ function renderInfographicBranding() {
   return `
     <div class="infographic-branding">
       <div class="infographic-brand-logos" aria-label="Partnerzy projektu">
-        <div class="infographic-brand-logo"><img src="assets/orzel-bez-tla.png" alt="ZSZ nr 5 Wrocław"></div>
-        <div class="infographic-brand-logo"><img src="assets/cove-polska-logo.png" alt="COVE Polska"></div>
-        <div class="infographic-brand-logo"><img src="assets/Logo-2025.png" alt="WIN4SMEs – Workplace Innovation for SMEs"></div>
-        <div class="infographic-brand-logo"><img src="assets/EN_Co-fundedbytheEU_RGB_POS.png" alt="Co-funded by the European Union"></div>
+        <div class="infographic-brand-logo infographic-brand-logo-core"><img src="assets/Logo-2025.png" alt="WIN4SMEs – Workplace Innovation for SMEs"></div>
+        <div class="infographic-brand-logo infographic-brand-logo-core"><img src="assets/cove-polska-logo.png" alt="COVE Polska"></div>
+        <div class="infographic-brand-logo infographic-brand-logo-optional"><img src="assets/EN_co_fundedvertical_RGB_Monochrome.png" alt="Co-funded by the European Union"></div>
       </div>
       <p class="infographic-brand-caption">Kurs opracowany w ramach projektu WIN4SMEs – Workplace Innovation for SMEs · zadanie WP4 – training module for the teachers · COVE Polska · ZSZ nr 5 we Wrocławiu</p>
     </div>
@@ -1550,13 +1590,73 @@ async function inlineImageSources(sourceRoot, cloneRoot) {
     const src = sourceImages[i].currentSrc || sourceImages[i].src;
     if (!src || !cloneImages[i]) continue;
     try {
-      const response = await fetch(src);
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), 3000);
+      const response = await fetch(src, { signal: controller.signal, cache: 'force-cache' });
+      clearTimeout(timer);
       const blob = await response.blob();
       cloneImages[i].setAttribute('src', await blobToDataUrl(blob));
     } catch (err) {
       cloneImages[i].setAttribute('src', src);
     }
   }
+}
+
+function serializeXhtmlNode(node) {
+  return node.outerHTML.replace(
+    /<(area|base|br|col|embed|hr|img|input|link|meta|param|source|track|wbr)([^>]*?)>/gi,
+    '<$1$2 />'
+  );
+}
+
+function waitForNextFrames(count = 2) {
+  return new Promise(resolve => {
+    let done = false;
+    const finish = () => {
+      if (done) return;
+      done = true;
+      resolve();
+    };
+
+    const timer = setTimeout(finish, 180);
+    const step = () => {
+      if (count <= 0) {
+        clearTimeout(timer);
+        return finish();
+      }
+      count -= 1;
+      requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  });
+}
+
+async function waitForImages(root) {
+  const images = Array.from(root.querySelectorAll('img'));
+  await Promise.all(images.map(img => {
+    return new Promise(resolve => {
+      let done = false;
+      const finish = () => {
+        if (done) return;
+        done = true;
+        resolve();
+      };
+
+      if (img.complete) {
+        finish();
+        return;
+      }
+
+      img.addEventListener('load', finish, { once: true });
+      img.addEventListener('error', finish, { once: true });
+
+      if (typeof img.decode === 'function') {
+        img.decode().then(finish).catch(finish);
+      }
+
+      setTimeout(finish, 2500);
+    });
+  }));
 }
 
 function triggerSvgDownload(filename, content) {
@@ -1581,25 +1681,42 @@ async function exportInfographicSvg(id, btn) {
     btn.textContent = 'Generuję SVG…';
   }
 
+  let stage = null;
   try {
-    const clone = cloneWithInlineStyles(sheet);
-    clone.querySelectorAll('.no-export').forEach(el => el.remove());
-    await inlineImageSources(sheet, clone);
+    stage = document.createElement('div');
+    stage.className = 'infographic-export-stage';
+    const exportSheet = sheet.cloneNode(true);
+    exportSheet.classList.add('export-render');
+    exportSheet.querySelectorAll('.no-export').forEach(el => el.remove());
+    stage.appendChild(exportSheet);
+    document.body.appendChild(stage);
 
-    const width = Math.ceil(sheet.getBoundingClientRect().width);
-    const height = Math.ceil(sheet.getBoundingClientRect().height);
+    await waitForImages(exportSheet);
+    await waitForNextFrames(2);
+
+    const clone = cloneWithInlineStyles(exportSheet);
+    await inlineImageSources(exportSheet, clone);
+
+    const width = Math.ceil(exportSheet.getBoundingClientRect().width);
+    const height = Math.ceil(exportSheet.getBoundingClientRect().height);
     clone.setAttribute('xmlns', 'http://www.w3.org/1999/xhtml');
     clone.style.margin = '0';
     clone.style.width = `${width}px`;
 
+    const xhtml = serializeXhtmlNode(clone);
     const svg = `<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">
   <foreignObject width="100%" height="100%">
-    ${clone.outerHTML}
+    ${xhtml}
   </foreignObject>
 </svg>`;
 
     triggerSvgDownload(`${id}.svg`, svg);
+
+    if (stage) {
+      document.body.removeChild(stage);
+      stage = null;
+    }
 
     if (btn) {
       btn.textContent = '✓ SVG gotowe';
@@ -1617,6 +1734,7 @@ async function exportInfographicSvg(id, btn) {
       }, 2200);
     }
     console.error(err);
+    if (stage && stage.parentNode) stage.parentNode.removeChild(stage);
   }
 }
 
@@ -2076,6 +2194,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const startPage = (s.lastPage && PAGES[s.lastPage]) ? s.lastPage : 'home';
   showPage(startPage);
   updateContinueBtn();
+  updateResponsiveBranding();
+});
+
+let resizeBrandingTimer = null;
+window.addEventListener('resize', () => {
+  clearTimeout(resizeBrandingTimer);
+  resizeBrandingTimer = setTimeout(updateResponsiveBranding, 80);
 });
 /* ══════════════════════════════════════
    HIDING TOPBAR ON SCROLL
