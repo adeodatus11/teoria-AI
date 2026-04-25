@@ -1470,6 +1470,14 @@ body {
 
 /* ═══════════════════ BIBLIOGRAPHY ═══════════════════ */
 .bib-page { max-width: 840px; margin: 0 auto; padding: 28px 40px; }
+.bib-section { margin-bottom: 28px; }
+.bib-section-head { margin-bottom: 14px; }
+.bib-section-head h3 {
+  font-size: 18px; font-weight: 800; color: var(--clr-text); margin-bottom: 6px;
+}
+.bib-section-head p {
+  font-size: 13px; color: var(--clr-text-muted); line-height: 1.55;
+}
 .bib-entry {
   background: white; border: 1px solid var(--clr-border);
   border-radius: var(--radius-md); padding: 20px 22px; margin-bottom: 12px;
@@ -1481,6 +1489,18 @@ body {
 .bib-3 { background: #fffbeb; color: #92400e; }
 .bib-title { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
 .bib-detail { font-size: 13px; color: var(--clr-text-muted); margin-bottom: 8px; }
+.bib-chip-row {
+  display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px;
+}
+.bib-chip {
+  display: inline-flex; align-items: center;
+  font-size: 11px; font-weight: 600;
+  padding: 3px 8px; border-radius: 999px;
+  background: var(--clr-bg2); color: var(--clr-text-muted);
+}
+.bib-chip-kind {
+  background: #eefaf3; color: #166534;
+}
 .bib-note { font-size: 13px; background: var(--clr-bg2); border-radius: 6px;
   padding: 10px 14px; line-height: 1.5; }
 .bib-link-row { margin-top: 12px; }

@@ -2217,42 +2217,108 @@ PAGES.infographics = () => `
 /* ══════════════════════════════════════
    PAGE: BIBLIOGRAPHY
 ══════════════════════════════════════ */
+const BIB_SECTIONS = [
+  {
+    id: 'core',
+    title: 'Źródła podstawowe do kursu',
+    intro: 'Raporty, wytyczne i dokumenty instytucjonalne, które najlepiej uzasadniają treści zawarte w modułach.'
+  },
+  {
+    id: 'practice',
+    title: 'Materiały praktyczne i dalsza biblioteczka',
+    intro: 'Przewodniki, kursy, centra pomocy i strony pokazujące, jak pracować z AI w edukacji, analizie i projektach.'
+  },
+  {
+    id: 'providers',
+    title: 'Aktualizacje modeli i możliwości narzędzi',
+    intro: 'Strony dostawców, które warto śledzić po szkoleniu, gdy chcesz sprawdzić aktualne modele, limity i nowe funkcje.'
+  }
+];
+
+const MODULE_LIBRARY_LABELS = {
+  1: 'Moduł 1 · Czym jest AI',
+  2: 'Moduł 2 · Prompting',
+  3: 'Moduł 3 · AI w dydaktyce',
+  4: 'Moduł 4 · Projekty i analityka',
+  5: 'Moduł 5 · Praca projektowa z AI',
+  6: 'Moduł 6 · Zrównoważone AI'
+};
+
 const BIB_SOURCES = [
-  { id: 'bib-unesco-framework', title: 'UNESCO AI Competency Framework for Teachers', year: '2024', org: 'UNESCO', note: 'Definiuje kompetencje AI dla nauczycieli i porządkuje rozwój zawodowy wokół użycia AI w edukacji.', prio: '1', url: 'https://www.unesco.org/en/articles/ai-competency-framework-teachers' },
-  { id: 'bib-talis-2024', title: 'Results from TALIS 2024', year: '2024', org: 'OECD', note: 'Oficjalny raport TALIS z danymi o pracy nauczycieli, lukach kompetencyjnych i potrzebie rozwoju zawodowego.', prio: '1', url: 'https://www.oecd.org/en/publications/results-from-talis-2024_90df6235-en.html' },
-  { id: 'bib-gallup-ai-time', title: 'Three in 10 Teachers Are Saving Weeks of Time With AI', year: '2025', org: 'Gallup', note: 'Źródło danych o oszczędności czasu przy regularnym używaniu AI w pracy nauczycieli.', prio: '1', url: 'https://news.gallup.com/poll/691967/three-teachers-weekly-saving-six-weeks-year.aspx' },
-  { id: 'bib-ec-ethical-guidelines', title: 'Ethical guidelines on the use of artificial intelligence and data in teaching and learning for educators', year: '2024', org: 'Komisja Europejska', note: 'Wytyczne dotyczące etycznego i odpowiedzialnego użycia AI oraz danych w edukacji.', prio: '1', url: 'https://education.ec.europa.eu/news/ethical-guidelines-on-the-use-of-artificial-intelligence-and-data-in-teaching-and-learning-for-educators' },
-  { id: 'bib-digcompedu', title: 'DigCompEdu', year: '2017', org: 'Joint Research Centre, Komisja Europejska', note: 'Europejskie ramy kompetencji cyfrowych edukatorów. Ważny punkt odniesienia dla wdrożeń AI w edukacji.', prio: '1', url: 'https://joint-research-centre.ec.europa.eu/digcompedu_en' },
-  { id: 'bib-deap', title: 'Digital Education Action Plan 2021–2027', year: '2021', org: 'Komisja Europejska', note: 'Strategiczny kontekst dla edukacji cyfrowej, kompetencji i działań systemowych w UE.', prio: '2', url: 'https://education.ec.europa.eu/focus-topics/digital-education/action-plan' },
-  { id: 'bib-unesco-generative-ai', title: 'Guidance for generative AI in education and research', year: '2023', org: 'UNESCO', note: 'Praktyczne wskazówki dotyczące wdrażania generatywnej AI w edukacji i badaniach.', prio: '2', url: 'https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research' },
-  { id: 'bib-ai-in-education-platform', title: 'AI in Education', year: '2024', org: 'European School Education Platform', note: 'Kurs i zasoby dla osób pracujących w edukacji, pokazujące praktyczne scenariusze użycia AI.', prio: '2', url: 'https://school-education.ec.europa.eu/en/learn/courses/ai-education' },
-  { id: 'bib-gemini-for-education', title: 'Gemini for Education', year: '2025', org: 'Google for Education', note: 'Oficjalny opis narzędzia edukacyjnego i jego ograniczeń oraz zabezpieczeń.', prio: '3', url: 'https://edu.google.com/ai/gemini-for-education/' },
-  { id: 'bib-iea-energy-ai', title: 'Energy and AI', year: '2025', org: 'International Energy Agency', note: 'Oficjalny raport o energii, centrach danych i wpływie rozwoju AI na zapotrzebowanie energetyczne.', prio: '2', url: 'https://www.iea.org/reports/energy-and-ai' },
-  { id: 'bib-li-water-footprint', title: 'Making AI Less "Thirsty": Uncovering and Addressing the Secret Water Footprint of AI Models', year: '2025', org: 'Li et al.', note: 'Badanie o śladzie wodnym modeli AI, wykorzystywane w module o zrównoważonym AI.', prio: '2', url: 'https://arxiv.org/abs/2304.03271' },
-  { id: 'bib-luccioni-bloom', title: 'Estimating the Carbon Footprint of BLOOM, a 176B Parameter Language Model', year: '2022', org: 'Luccioni et al.', note: 'Opracowanie porównawcze dotyczące śladu węglowego dużych modeli językowych.', prio: '2', url: 'https://www.jmlr.org/papers/v24/23-0069.html' }
+  { id: 'bib-unesco-framework', section: 'core', title: 'UNESCO AI Competency Framework for Teachers', year: '2024', org: 'UNESCO', kind: 'Ramy kompetencji', modules: [1, 3], prio: '1', note: 'Definiuje kompetencje AI dla nauczycieli i porządkuje rozwój zawodowy wokół użycia AI w edukacji.', url: 'https://www.unesco.org/en/articles/ai-competency-framework-teachers' },
+  { id: 'bib-talis-2024', section: 'core', title: 'Results from TALIS 2024', year: '2024', org: 'OECD', kind: 'Raport', modules: [1, 3], prio: '1', note: 'Oficjalny raport TALIS z danymi o pracy nauczycieli, lukach kompetencyjnych i potrzebie rozwoju zawodowego.', url: 'https://www.oecd.org/en/publications/results-from-talis-2024_90df6235-en.html' },
+  { id: 'bib-gallup-ai-time', section: 'core', title: 'Three in 10 Teachers Are Saving Weeks of Time With AI', year: '2025', org: 'Gallup', kind: 'Badanie', modules: [1, 3], prio: '1', note: 'Źródło danych o oszczędności czasu przy regularnym używaniu AI w pracy nauczycieli.', url: 'https://news.gallup.com/poll/691967/three-teachers-weekly-saving-six-weeks-year.aspx' },
+  { id: 'bib-ec-ethical-guidelines', section: 'core', title: 'Ethical guidelines on the use of artificial intelligence and data in teaching and learning for educators', year: '2024', org: 'Komisja Europejska', kind: 'Wytyczne', modules: [3, 4, 5, 6], prio: '1', note: 'Wytyczne dotyczące etycznego i odpowiedzialnego użycia AI oraz danych w edukacji.', url: 'https://education.ec.europa.eu/news/ethical-guidelines-on-the-use-of-artificial-intelligence-and-data-in-teaching-and-learning-for-educators' },
+  { id: 'bib-digcompedu', section: 'core', title: 'DigCompEdu', year: '2017', org: 'Joint Research Centre, Komisja Europejska', kind: 'Ramy kompetencji', modules: [3, 5], prio: '1', note: 'Europejskie ramy kompetencji cyfrowych edukatorów. Ważny punkt odniesienia dla wdrożeń AI w edukacji.', url: 'https://joint-research-centre.ec.europa.eu/digcompedu_en' },
+  { id: 'bib-deap', section: 'core', title: 'Digital Education Action Plan 2021–2027', year: '2021', org: 'Komisja Europejska', kind: 'Strategia', modules: [3, 5], prio: '2', note: 'Strategiczny kontekst dla edukacji cyfrowej, kompetencji i działań systemowych w UE.', url: 'https://education.ec.europa.eu/focus-topics/digital-education/action-plan' },
+  { id: 'bib-unesco-generative-ai', section: 'core', title: 'Guidance for generative AI in education and research', year: '2023', org: 'UNESCO', kind: 'Przewodnik', modules: [1, 3, 6], prio: '1', note: 'Praktyczne wskazówki dotyczące wdrażania generatywnej AI w edukacji i badaniach.', url: 'https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research' },
+  { id: 'bib-ai-act-overview', section: 'core', title: 'Regulatory framework proposal on artificial intelligence', year: '2026', org: 'Komisja Europejska', kind: 'Przegląd regulacyjny', modules: [4, 5, 6], prio: '2', note: 'Oficjalne omówienie europejskich ram regulacyjnych dla AI. Przydaje się tam, gdzie kurs mówi o odpowiedzialności, przejrzystości i wdrożeniach instytucjonalnych.', url: 'https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai' },
+  { id: 'bib-edpb-ai-models', section: 'core', title: 'Opinion 28/2024 on certain data protection aspects related to the processing of personal data in the context of AI models', year: '2024', org: 'European Data Protection Board', kind: 'Opinia', modules: [4, 5, 6], prio: '1', note: 'Ważne źródło do pracy z RODO, danymi osobowymi i legalnością użycia modeli AI w organizacjach.', url: 'https://www.edpb.europa.eu/our-work-tools/our-documents/opinion-board-art-64/opinion-282024-certain-data-protection-aspects_en' },
+  { id: 'bib-iea-energy-ai', section: 'core', title: 'Energy and AI', year: '2025', org: 'International Energy Agency', kind: 'Raport', modules: [6], prio: '1', note: 'Oficjalny raport o energii, centrach danych i wpływie rozwoju AI na zapotrzebowanie energetyczne.', url: 'https://www.iea.org/reports/energy-and-ai' },
+  { id: 'bib-li-water-footprint', section: 'core', title: 'Making AI Less "Thirsty": Uncovering and Addressing the Secret Water Footprint of AI Models', year: '2025', org: 'Li et al.', kind: 'Artykuł naukowy', modules: [6], prio: '2', note: 'Badanie o śladzie wodnym modeli AI, przydatne do modułu o zrównoważonym AI.', url: 'https://arxiv.org/abs/2304.03271' },
+  { id: 'bib-luccioni-bloom', section: 'core', title: 'Estimating the Carbon Footprint of BLOOM, a 176B Parameter Language Model', year: '2022', org: 'Luccioni et al.', kind: 'Artykuł naukowy', modules: [6], prio: '2', note: 'Opracowanie porównawcze dotyczące śladu węglowego dużych modeli językowych.', url: 'https://www.jmlr.org/papers/v24/23-0069.html' },
+
+  { id: 'bib-ai-in-education-platform', section: 'practice', title: 'AI in Education', year: '2024', org: 'European School Education Platform', kind: 'Kurs online', modules: [3], prio: '2', note: 'Kurs i zasoby dla osób pracujących w edukacji, pokazujące praktyczne scenariusze użycia AI.', url: 'https://school-education.ec.europa.eu/en/learn/courses/ai-education' },
+  { id: 'bib-openai-prompting', section: 'practice', title: 'Prompting', year: '2026', org: 'OpenAI API', kind: 'Przewodnik', modules: [2], prio: '2', note: 'Oficjalny przewodnik OpenAI o tworzeniu promptów, iteracji i wersjonowaniu promptów.', url: 'https://developers.openai.com/api/docs/guides/prompting' },
+  { id: 'bib-anthropic-prompting', section: 'practice', title: 'Prompt engineering overview', year: '2026', org: 'Anthropic Docs', kind: 'Przewodnik', modules: [2], prio: '2', note: 'Praktyczne techniki promptowania dla Claude, w tym jasne instrukcje, przykłady i długi kontekst.', url: 'https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview' },
+  { id: 'bib-google-prompting', section: 'practice', title: 'Prompt design strategies', year: '2026', org: 'Google AI for Developers', kind: 'Przewodnik', modules: [2], prio: '2', note: 'Oficjalny przewodnik Google pokazujący, jak poprawiać jakość promptów i odpowiedzi modeli Gemini.', url: 'https://ai.google.dev/gemini-api/docs/prompting-strategies' },
+  { id: 'bib-anthropic-prompt-library', section: 'practice', title: 'Prompt Library', year: '2026', org: 'Anthropic Docs', kind: 'Biblioteka promptów', modules: [2, 5], prio: '3', note: 'Gotowe przykłady promptów do różnych zadań. Dobre miejsce do porównania własnych instrukcji z praktyką dostawcy.', url: 'https://docs.anthropic.com/en/prompt-library/library' },
+  { id: 'bib-notebooklm-chat', section: 'practice', title: 'Use chat in NotebookLM', year: '2026', org: 'NotebookLM Help', kind: 'Centrum pomocy', modules: [4], prio: '2', note: 'Oficjalny opis pracy na źródłach i cytatach w NotebookLM. Szczególnie przydatny przy sekcji o RAG i analizie dokumentów.', url: 'https://support.google.com/notebooklm/answer/16179559?hl=en' },
+  { id: 'bib-notebooklm-sources', section: 'practice', title: 'Add or discover new sources for your notebook', year: '2026', org: 'NotebookLM Help', kind: 'Centrum pomocy', modules: [4], prio: '2', note: 'Pokazuje typy źródeł, limity i sposób budowania notatnika opartego na materiałach własnych.', url: 'https://support.google.com/notebooklm/answer/16215270?co=GENIE.Platform%3DDesktop&hl=en' },
+  { id: 'bib-pmi-ai-essentials', section: 'practice', title: 'AI Essentials for Project Professionals', year: '2026', org: 'PMI', kind: 'Przewodnik', modules: [4, 5], prio: '2', note: 'Dobre, praktyczne źródło o tym, jak używać AI w zarządzaniu projektami, komunikacji i pracy z danymi projektowymi.', url: 'https://www.pmi.org/standards/ai-essentials-for-project-professionals' },
+  { id: 'bib-pmi-prompt-engineering', section: 'practice', title: 'Talking to the Machine: Prompt Engineering Essentials for Project Professionals', year: '2025', org: 'PMI', kind: 'Artykuł ekspercki', modules: [2, 4, 5], prio: '3', note: 'Krótki materiał o promptowaniu w kontekście zadań projektowych, raportowania i komunikacji.', url: 'https://www.pmi.org/learning/thought-leadership/prompt-engineering' },
+  { id: 'bib-google-ai-prompts-educators', section: 'practice', title: 'AI-Powered Teaching Prompts for Educators', year: '2026', org: 'Google for Education', kind: 'Zestaw materiałów', modules: [2, 3], prio: '3', note: 'Gotowe prompty i inspiracje do lekcji, planowania i personalizacji nauczania.', url: 'https://edu.google.com/resources/ai-for-k-12-educators/' },
+  { id: 'bib-gemini-for-education', section: 'practice', title: 'Gemini for Education', year: '2026', org: 'Google for Education', kind: 'Strona produktu', modules: [3, 5], prio: '3', note: 'Oficjalny opis narzędzia edukacyjnego, zabezpieczeń i zastosowań dla nauczycieli, uczniów i zespołów szkolnych.', url: 'https://edu.google.com/ai/gemini-for-education/' },
+  { id: 'bib-openai-academy-education', section: 'practice', title: 'ChatGPT for education', year: '2026', org: 'OpenAI Academy', kind: 'Biblioteka materiałów', modules: [2, 3, 5], prio: '3', note: 'Warsztaty, przewodniki i nagrania dla nauczycieli, liderów szkół i osób wdrażających AI w edukacji.', url: 'https://openai.com/academy/chatgpt-for-education/' },
+  { id: 'bib-openai-academy', section: 'practice', title: 'OpenAI Academy', year: '2026', org: 'OpenAI', kind: 'Platforma edukacyjna', modules: [1, 2, 3, 5], prio: '3', note: 'Szeroka baza materiałów o podstawach AI, promptowaniu i praktycznym użyciu ChatGPT.', url: 'https://openai.com/academy/' },
+  { id: 'bib-chatgpt-for-teachers', section: 'practice', title: 'A free version of ChatGPT built for teachers', year: '2025', org: 'OpenAI', kind: 'Strona produktu', modules: [3, 5], prio: '3', note: 'Przydatny materiał dla szkół i nauczycieli, którzy chcą sprawdzić, jak OpenAI opisuje użycie narzędzia w praktyce edukacyjnej.', url: 'https://openai.com/index/chatgpt-for-teachers/' },
+  { id: 'bib-claude-for-education', section: 'practice', title: 'Introducing Claude for Education', year: '2025', org: 'Anthropic', kind: 'Strona produktu', modules: [3, 5], prio: '3', note: 'Opis edukacyjnego wdrożenia Claude oraz funkcji wspierających nauczanie, uczenie się i administrację.', url: 'https://www.anthropic.com/news/introducing-claude-for-education' },
+
+  { id: 'bib-openai-models', section: 'providers', title: 'Models', year: '2026', org: 'OpenAI API', kind: 'Modele i możliwości', modules: [1, 2], prio: '3', note: 'Oficjalna lista modeli OpenAI wraz z opisem zastosowań i możliwości. Dobre miejsce do sprawdzania, co dany model umie dziś, a nie pół roku temu.', url: 'https://developers.openai.com/api/docs/models', linkLabel: 'Otwórz stronę modeli ↗' },
+  { id: 'bib-openai-release-notes', section: 'providers', title: 'Model Release Notes', year: '2026', org: 'OpenAI Help Center', kind: 'Aktualizacje modeli', modules: [1, 2], prio: '3', note: 'Bieżące zmiany modeli i zachowania ChatGPT. Warto śledzić po ukończeniu kursu, bo tu najszybciej widać, co się zmienia.', url: 'https://help.openai.com/en/articles/9624314-model-release-notes', linkLabel: 'Otwórz aktualizacje ↗' },
+  { id: 'bib-anthropic-models', section: 'providers', title: 'Models overview', year: '2026', org: 'Anthropic Docs', kind: 'Modele i możliwości', modules: [1, 2], prio: '3', note: 'Porównanie modeli Claude, ich mocnych stron, okna kontekstowego i nazw wersji.', url: 'https://platform.claude.com/docs/en/about-claude/models/overview', linkLabel: 'Otwórz stronę modeli ↗' },
+  { id: 'bib-anthropic-release-notes', section: 'providers', title: 'Release notes overview', year: '2026', org: 'Anthropic Docs', kind: 'Aktualizacje modeli', modules: [1, 2], prio: '3', note: 'Oficjalny changelog Anthropic dla API, aplikacji Claude i zmian w system promptach.', url: 'https://platform.claude.com/docs/en/release-notes/overview', linkLabel: 'Otwórz aktualizacje ↗' },
+  { id: 'bib-google-models', section: 'providers', title: 'Gemini models', year: '2026', org: 'Google AI for Developers', kind: 'Modele i możliwości', modules: [1, 2], prio: '3', note: 'Opis modeli Gemini, kontekstu, danych wejściowych i dostępnych funkcji.', url: 'https://ai.google.dev/gemini-api/docs/models/gemini', linkLabel: 'Otwórz stronę modeli ↗' },
+  { id: 'bib-google-release-notes', section: 'providers', title: 'Release notes', year: '2026', org: 'Google AI for Developers', kind: 'Aktualizacje modeli', modules: [1, 2], prio: '3', note: 'Changelog Gemini API i nowych funkcji. Przydatny, gdy kurs ma pozostać aktualny mimo szybkich zmian po stronie dostawców.', url: 'https://ai.google.dev/gemini-api/docs/changelog', linkLabel: 'Otwórz aktualizacje ↗' }
 ];
 
 PAGES.bibliography = () => `
   <div class="page-header">
     <div class="breadcrumb"><a href="#" onclick="showPage('home')">🏠 Start</a> <span class="bc-sep">›</span> Źródła</div>
-    <h2>📚 Źródła i literatura</h2>
-    <p>Badania, raporty i dokumenty instytucjonalne, na których oparty jest kurs. Każdy wpis zawiera link do źródła, które możesz otworzyć w przeglądarce.</p>
+    <h2>📚 Źródła, literatura i materiały dodatkowe</h2>
+    <p>Ta biblioteka łączy trzy typy materiałów: źródła cytowane w kursie, praktyczne materiały do dalszej pracy oraz strony, na których warto śledzić aktualizacje modeli i narzędzi.</p>
   </div>
   <div class="bib-page">
-    ${BIB_SOURCES.map(source => bib(source)).join('')}
+    ${BIB_SECTIONS.map(section => renderBibSection(section)).join('')}
   </div>
 `;
 
+function renderBibSection(section) {
+  const items = BIB_SOURCES.filter(source => source.section === section.id);
+  return `<section class="bib-section">
+    <div class="bib-section-head">
+      <h3>${section.title}</h3>
+      <p>${section.intro}</p>
+    </div>
+    ${items.map(source => bib(source)).join('')}
+  </section>`;
+}
+
 function bib(source) {
-  const { id, title, year, org, note, prio, url } = source;
-  const prioLabel = { 1: 'Kluczowe źródło', 2: 'Uzupełniające', 3: 'Zasoby dodatkowe' };
+  const { id, title, year, org, note, prio, url, kind, modules = [], linkLabel } = source;
+  const prioLabel = { 1: 'Kluczowe źródło', 2: 'Uzupełniające', 3: 'Warto mieć pod ręką' };
   const prioCls = { 1: 'bib-1', 2: 'bib-2', 3: 'bib-3' };
+  const moduleChips = modules.map(mod => `<span class="bib-chip">${MODULE_LIBRARY_LABELS[mod] || `Moduł ${mod}`}</span>`).join('');
   return `<div class="bib-entry" id="${id}">
     <span class="bib-badge ${prioCls[prio]}">${prioLabel[prio]}</span>
     <div class="bib-title">${title}</div>
     <div class="bib-detail">${org} · ${year}</div>
+    <div class="bib-chip-row">
+      ${kind ? `<span class="bib-chip bib-chip-kind">${kind}</span>` : ''}
+      ${moduleChips}
+    </div>
     <div class="bib-note">${note}</div>
-    ${url ? `<div class="bib-link-row"><a class="bib-link" href="${url}" target="_blank" rel="noopener noreferrer">Otwórz źródło ↗</a></div>` : ''}
+    ${url ? `<div class="bib-link-row"><a class="bib-link" href="${url}" target="_blank" rel="noopener noreferrer">${linkLabel || 'Otwórz materiał ↗'}</a></div>` : ''}
   </div>`;
 }
 
@@ -2290,12 +2356,17 @@ function extendSearchIndex() {
   });
 
   BIB_SOURCES.forEach(source => {
+    const sectionTitle = (BIB_SECTIONS.find(section => section.id === source.section) || {}).title || 'Źródła';
+    const moduleTags = (source.modules || []).flatMap(mod => {
+      const label = MODULE_LIBRARY_LABELS[mod] || `Moduł ${mod}`;
+      return [label, `moduł ${mod}`];
+    });
     extras.push({
       t: `Źródło: ${source.title}`,
       p: 'bibliography',
       a: source.id,
-      tags: ['źródło', 'bibliografia', source.org, source.year],
-      c: source.note
+      tags: ['źródło', 'bibliografia', source.org, source.year, source.kind || '', sectionTitle, ...moduleTags].filter(Boolean),
+      c: `${source.note} ${moduleTags.join(' · ')}`
     });
   });
 
