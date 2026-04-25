@@ -1187,6 +1187,13 @@ body {
 }
 
 .infographic-actions { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 18px; }
+.export-link {
+  border: none; background: none; padding: 0; cursor: pointer;
+  font-family: inherit;
+}
+.export-link:disabled {
+  opacity: .7; cursor: default;
+}
 
 /* ═══════════════════ BIBLIOGRAPHY ═══════════════════ */
 .bib-page { max-width: 840px; margin: 0 auto; padding: 28px 40px; }
