@@ -7,6 +7,7 @@ PAGES.home = () => {
     module5: 'Moduł 5 – Praca projektowa z AI', module6: 'Moduł 6 – Zrównoważone AI',
     exercises: 'Ćwiczenia', prompts: 'Promptownik', checklists: 'Checklisty',
     myplan: 'Mój plan wdrożenia', slides: 'Prezentacje', bibliography: 'Źródła i literatura', infographics: 'Infografiki',
+    projectinfo: 'O projekcie',
   };
   const lastName = NAMES[s.lastPage] || '';
 
@@ -80,6 +81,10 @@ PAGES.home = () => {
       <div class="entry-card" onclick="showPage('infographics')">
         <div class="ec-icon">🖼️</div>
         <div class="ec-text"><div class="ec-title">Infografiki</div><div class="ec-desc">PARTS, RODO + AI i zasada proporcji w krótkiej formie wizualnej.</div><span class="ec-tag">Ściągi</span></div>
+      </div>
+      <div class="entry-card" onclick="showPage('projectinfo')">
+        <div class="ec-icon">ℹ️</div>
+        <div class="ec-text"><div class="ec-title">O projekcie</div><div class="ec-desc">COVE Polska, WIN4SMEs i partnerzy regionalni stojący za tym kursem.</div><span class="ec-tag">Kontekst</span></div>
       </div>
       <div class="entry-card" onclick="showPage('module6')">
         <div class="ec-icon">🌱</div>

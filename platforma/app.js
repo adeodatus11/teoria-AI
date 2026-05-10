@@ -2215,6 +2215,146 @@ PAGES.infographics = () => `
 `;
 
 /* ══════════════════════════════════════
+   PAGE: PROJECT INFO
+══════════════════════════════════════ */
+const PROJECT_INFO_PILLARS = [
+  {
+    id: 'pillar-education',
+    icon: '🎓',
+    title: 'Doskonałość edukacyjna',
+    desc: 'Podnoszenie jakości kształcenia zawodowego przez integrację sprawdzonych praktyk europejskich z lokalnym nauczaniem i szkoleniami.'
+  },
+  {
+    id: 'pillar-smes',
+    icon: '🏭',
+    title: 'Transfer do MŚP',
+    desc: 'Przekładanie wypracowanych rozwiązań na realne potrzeby małych i średnich przedsiębiorstw Dolnego Śląska.'
+  },
+  {
+    id: 'pillar-partnership',
+    icon: '🤝',
+    title: 'Partnerstwo regionalne',
+    desc: 'Łączenie szkół, uczelni i partnerów gospodarczych w jeden ekosystem współpracy wokół kompetencji zawodowych i innowacji.'
+  },
+  {
+    id: 'pillar-europe',
+    icon: '🌍',
+    title: 'Wymiar europejski',
+    desc: 'Korzystanie z doświadczeń partnerów międzynarodowych i przenoszenie ich do praktyki edukacyjnej oraz projektowej w regionie.'
+  }
+];
+
+const PROJECT_INFO_PARTNERS = [
+  {
+    id: 'partner-pwr',
+    name: 'Politechnika Wrocławska',
+    logo: 'assets/pwr-logo.png',
+    alt: 'Politechnika Wrocławska',
+    url: 'https://pwr.edu.pl',
+    siteLabel: 'pwr.edu.pl',
+    desc: 'Wnosi potencjał badawczy, wiedzę ekspercką z zakresu innowacji organizacyjnych oraz wsparcie merytoryczne transferu wiedzy do MŚP.'
+  },
+  {
+    id: 'partner-zsz5',
+    name: 'Zespół Szkół Zawodowych nr 5 we Wrocławiu',
+    logo: 'assets/zsz5-szkola-mistrzow.png',
+    alt: 'Zespół Szkół Zawodowych nr 5 we Wrocławiu',
+    url: 'https://zsz5.edupage.org',
+    siteLabel: 'zsz5.edupage.org',
+    desc: 'Łączy kształcenie techniczne i branżowe z praktyką zawodową, współpracą z pracodawcami oraz doświadczeniem w nauczaniu dualnym.'
+  },
+  {
+    id: 'partner-dir',
+    name: 'Dolnośląska Izba Rzemieślnicza',
+    logo: 'assets/dolnoslaska-izba-rzemieslnicza.png',
+    alt: 'Dolnośląska Izba Rzemieślnicza',
+    url: 'https://izba.wroc.pl',
+    siteLabel: 'izba.wroc.pl',
+    desc: 'Zapewnia kontakt z rzemiosłem i małą przedsiębiorczością regionu oraz pomaga przenieść rezultaty projektu do codzienności firm.'
+  }
+];
+
+PAGES.projectinfo = () => `
+  <div class="page-header">
+    <div class="breadcrumb"><a href="#" onclick="showPage('home')">🏠 Start</a> <span class="bc-sep">›</span> O projekcie</div>
+    <h2>ℹ️ O projekcie</h2>
+    <p>Ta podstrona zbiera najważniejsze informacje o kontekście projektu, partnerach oraz miejscu kursu w działaniach WIN4SMEs i COVE Polska. Treść jest zapisana jako zwykły HTML, więc pozostaje czytelna także po tłumaczeniu przeglądarkowym.</p>
+  </div>
+
+  <div class="project-page">
+    <section class="project-hero-card" id="project-overview">
+      <div class="project-hero-copy">
+        <div class="project-kicker">WIN4SMEs · COVE Polska · Dolny Śląsk</div>
+        <h3>Centrum Doskonałości Kształcenia Zawodowego w praktyce szkoleniowej</h3>
+        <p>Centrum Doskonałości Kształcenia Zawodowego (CoVE) w Polsce łączy edukację, naukę i biznes, aby wzmacniać innowacje w miejscu pracy oraz lepiej dopasowywać kompetencje zawodowe do potrzeb regionu.</p>
+        <div class="project-action-row">
+          <a class="btn-hero-primary" href="https://covepolska.pl" target="_blank" rel="noopener noreferrer">Strona COVE Polska ↗</a>
+          <a class="project-btn-secondary" href="https://win4smes.eu" target="_blank" rel="noopener noreferrer">Strona WIN4SMEs ↗</a>
+        </div>
+      </div>
+      <div class="project-hero-brand" aria-hidden="true">
+        <img src="assets/cove-polska-logo.png" alt="">
+      </div>
+    </section>
+
+    <section class="project-grid">
+      <article class="project-copy-card" id="project-cove">
+        <div class="section-label">O inicjatywie</div>
+        <h3>Czym jest COVE Polska?</h3>
+        <p>Centrum Doskonałości Kształcenia Zawodowego (CoVE, Centre of Vocational Excellence) to europejska inicjatywa budująca regionalne ekosystemy doskonałości w kształceniu i szkoleniu zawodowym. Łączy instytucje edukacyjne, uczelnie i partnerów biznesowych, aby rozwijać kompetencje potrzebne dziś i w przyszłości.</p>
+        <p>COVE Polska działa w ramach projektu WIN4SMEs i koncentruje się na Dolnym Śląsku. Misją konsorcjum jest przenoszenie najlepszych praktyk innowacji w miejscu pracy do lokalnych małych i średnich przedsiębiorstw, z korzyścią zarówno dla edukacji, jak i dla pracodawców.</p>
+        <p>Ta platforma szkoleniowa jest jednym z rezultatów tego podejścia. Porządkuje praktyczne zastosowania AI w dydaktyce, pracy organizacyjnej i projektowej, a jednocześnie wpisuje się w szerszy cel rozwoju kompetencji zawodowych i współpracy międzysektorowej.</p>
+      </article>
+
+      <aside class="project-side-card" id="project-course-link">
+        <div class="section-label">Powiązanie z kursem</div>
+        <h3>Jak ta podstrona wspiera kurs?</h3>
+        <ul class="project-checklist">
+          <li>Wyjaśnia, z jakiego projektu i partnerstwa wynika cały materiał szkoleniowy.</li>
+          <li>Ułatwia prowadzącemu krótko wprowadzić uczestników w kontekst COVE Polska i WIN4SMEs.</li>
+          <li>Pokazuje, które instytucje odpowiadają za zaplecze edukacyjne, badawcze i gospodarcze kursu.</li>
+          <li>Działa poprawnie z tłumaczeniem przeglądarkowym, bo treść strony nie jest zaszyta w grafikach.</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section class="project-pillars-section" id="project-pillars">
+      <div class="section-label">Filary działania</div>
+      <h3>Na czym opiera się COVE Polska?</h3>
+      <div class="project-pillars-grid">
+        ${PROJECT_INFO_PILLARS.map(pillar => `
+          <article class="project-pillar-card" id="${pillar.id}">
+            <div class="project-pillar-icon" aria-hidden="true">${pillar.icon}</div>
+            <h4>${pillar.title}</h4>
+            <p>${pillar.desc}</p>
+          </article>
+        `).join('')}
+      </div>
+    </section>
+
+    <section class="project-partners-section" id="project-partners">
+      <div class="section-label">Konsorcjum regionalne</div>
+      <h3>Partnerzy COVE Polska</h3>
+      <p class="project-section-intro">Trzy instytucje tworzące zaplecze merytoryczne i organizacyjne dla działań edukacyjnych, projektowych oraz współpracy z przedsiębiorstwami.</p>
+      <div class="project-partners-grid">
+        ${PROJECT_INFO_PARTNERS.map(partner => `
+          <a class="project-partner-card" id="${partner.id}" href="${partner.url}" target="_blank" rel="noopener noreferrer">
+            <div class="project-partner-logo-wrap">
+              <img src="${partner.logo}" alt="${partner.alt}" loading="lazy">
+            </div>
+            <div class="project-partner-body">
+              <h4>${partner.name}</h4>
+              <p>${partner.desc}</p>
+              <span class="project-partner-link">${partner.siteLabel} ↗</span>
+            </div>
+          </a>
+        `).join('')}
+      </div>
+    </section>
+  </div>
+`;
+
+/* ══════════════════════════════════════
    PAGE: BIBLIOGRAPHY
 ══════════════════════════════════════ */
 const BIB_SECTIONS = [
@@ -2377,6 +2517,42 @@ function extendSearchIndex() {
       a: info.id,
       tags: ['infografika', 'infografiki', info.moduleLabel, 'materiały'],
       c: info.desc
+    });
+  });
+
+  extras.push({
+    t: 'O projekcie – COVE Polska i WIN4SMEs',
+    p: 'projectinfo',
+    a: 'project-overview',
+    tags: ['projekt', 'COVE Polska', 'WIN4SMEs', 'partnerzy'],
+    c: 'Kontekst projektu, cele partnerstwa oraz powiązanie platformy szkoleniowej z działaniami COVE Polska.'
+  });
+
+  extras.push({
+    t: 'Czym jest COVE Polska?',
+    p: 'projectinfo',
+    a: 'project-cove',
+    tags: ['COVE Polska', 'centrum doskonałości', 'kształcenie zawodowe'],
+    c: 'Wyjaśnienie roli CoVE, kontekstu regionalnego i powiązania z projektem WIN4SMEs.'
+  });
+
+  PROJECT_INFO_PILLARS.forEach(pillar => {
+    extras.push({
+      t: `Filar projektu: ${pillar.title}`,
+      p: 'projectinfo',
+      a: pillar.id,
+      tags: ['projekt', 'COVE Polska', 'filar', pillar.title],
+      c: pillar.desc
+    });
+  });
+
+  PROJECT_INFO_PARTNERS.forEach(partner => {
+    extras.push({
+      t: `Partner projektu: ${partner.name}`,
+      p: 'projectinfo',
+      a: partner.id,
+      tags: ['partner', 'COVE Polska', partner.name],
+      c: partner.desc
     });
   });
 
