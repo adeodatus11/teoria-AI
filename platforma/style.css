@@ -1594,6 +1594,9 @@ body {
   gap: 22px;
   margin-top: 28px;
 }
+.project-grid-single {
+  grid-template-columns: 1fr;
+}
 .project-copy-card,
 .project-side-card,
 .project-pillar-card,

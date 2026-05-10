@@ -2297,7 +2297,7 @@ PAGES.projectinfo = () => `
       </div>
     </section>
 
-    <section class="project-grid">
+    <section class="project-grid project-grid-single">
       <article class="project-copy-card" id="project-cove">
         <div class="section-label">O inicjatywie</div>
         <h3>Czym jest COVE Polska?</h3>
@@ -2305,17 +2305,6 @@ PAGES.projectinfo = () => `
         <p>COVE Polska działa w ramach projektu WIN4SMEs i koncentruje się na Dolnym Śląsku. Misją konsorcjum jest przenoszenie najlepszych praktyk innowacji w miejscu pracy do lokalnych małych i średnich przedsiębiorstw, z korzyścią zarówno dla edukacji, jak i dla pracodawców.</p>
         <p>Ta platforma szkoleniowa jest jednym z rezultatów tego podejścia. Porządkuje praktyczne zastosowania AI w dydaktyce, pracy organizacyjnej i projektowej, a jednocześnie wpisuje się w szerszy cel rozwoju kompetencji zawodowych i współpracy międzysektorowej.</p>
       </article>
-
-      <aside class="project-side-card" id="project-course-link">
-        <div class="section-label">Powiązanie z kursem</div>
-        <h3>Jak ta podstrona wspiera kurs?</h3>
-        <ul class="project-checklist">
-          <li>Wyjaśnia, z jakiego projektu i partnerstwa wynika cały materiał szkoleniowy.</li>
-          <li>Ułatwia prowadzącemu krótko wprowadzić uczestników w kontekst COVE Polska i WIN4SMEs.</li>
-          <li>Pokazuje, które instytucje odpowiadają za zaplecze edukacyjne, badawcze i gospodarcze kursu.</li>
-          <li>Działa poprawnie z tłumaczeniem przeglądarkowym, bo treść strony nie jest zaszyta w grafikach.</li>
-        </ul>
-      </aside>
     </section>
 
     <section class="project-pillars-section" id="project-pillars">
