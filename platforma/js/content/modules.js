@@ -16,7 +16,7 @@ PAGES.module1 = () => `
     <div class="learning-goals">
       <h3>📌 Po przejściu tego modułu będziesz wiedzieć / umieć:</h3>
       <ul class="lg-list">
-        <li>wyjaśnić, czym jest <span translate="no" class="notranslate">LLM</span> i dlaczego AI może się mylić</li>
+        <li>wyjaśnić, czym jest model językowy i dlaczego AI może się mylić</li>
         <li>otworzyć narzędzie AI (ChatGPT / Gemini / Claude) i wpisać pierwszy prompt</li>
         <li>ocenić wynik AI: co jest trafne, co wymaga weryfikacji</li>
         <li>rozumieć, czemu ogólne prompty dają ogólne wyniki</li>
@@ -25,23 +25,23 @@ PAGES.module1 = () => `
 
     <div class="lesson-section">
       <h3><span class="ls-icon">🤖</span> Co to jest AI językowa?</h3>
-      <p>Narzędzia AI, z których korzystamy w tej platformie (<span translate="no" class="notranslate">ChatGPT</span>, <span translate="no" class="notranslate">Gemini</span>, <span translate="no" class="notranslate">Claude</span>), to tzw. <strong>duże modele językowe</strong> (<span translate="no" class="notranslate">Large Language Models, LLM</span>). Generują odpowiedzi na podstawie wzorców językowych poznanych podczas trenowania na bardzo dużych zbiorach tekstu.</p>
+      <p>Narzędzia AI, z których korzystamy w tej platformie (<span translate="no" class="notranslate">ChatGPT</span>, <span translate="no" class="notranslate">Gemini</span>, <span translate="no" class="notranslate">Claude</span>), tworzą odpowiedzi na podstawie wzorców językowych. Często nazywa się je dużymi modelami językowymi. Nie rozumieją świata tak jak człowiek, ale potrafią dobrze pracować z tekstem, strukturą i stylem wypowiedzi.</p>
       <div class="key-insight">
         <strong>Kluczowa zasada:</strong> AI nie sprawdza prawdy tak jak wyszukiwarka, baza wiedzy lub ekspert. Buduje odpowiedź, przewidując najbardziej prawdopodobny ciąg słów na podstawie kontekstu rozmowy.
       </div>
       <div class="key-insight">
-        <strong>Pułapka okna kontekstowego (<span translate="no" class="notranslate">Context Window</span>):</strong> Model pracuje tylko na ograniczonej porcji tekstu, którą „widzi” w danym momencie. Gdy materiał jest bardzo długi, część informacji może zostać pominięta albo słabiej uwzględniona. Dlatego przy obszernych dokumentach warto pracować etapami albo korzystać z rozwiązań typu <span translate="no" class="notranslate">RAG</span>.
+        <strong>Ograniczona ilość tekstu:</strong> Model pracuje tylko na tej części materiału, którą ma w rozmowie. Gdy dokument jest bardzo długi, część informacji może zostać pominięta albo słabiej uwzględniona. Dlatego przy obszernych dokumentach warto pracować etapami albo korzystać z narzędzi opartych na wskazanych źródłach.
       </div>
       <p>W praktyce oznacza to, że AI dobrze radzi sobie z redagowaniem, streszczaniem i porządkowaniem treści, ale przy faktach, prawie i liczbach wymaga weryfikacji.</p>
       
       <div class="info-grid">
         <div class="info-card">
-          <h4>🧩 Tokeny zamiast liter</h4>
-          <p>Model nie pracuje na pojedynczych literach, tylko na mniejszych fragmentach tekstu zwanych <strong>tokenami</strong>. Dzięki temu potrafi rozpoznawać podobieństwa znaczeniowe i styl wypowiedzi, co dobrze widać przy parafrazach, streszczeniach i dopasowywaniu tonu odpowiedzi.</p>
+          <h4>🧩 Fragmenty tekstu zamiast pojedynczych liter</h4>
+          <p>Model dzieli tekst na małe części i szuka między nimi wzorców. Dzięki temu potrafi rozpoznawać podobieństwa znaczeniowe i styl wypowiedzi, co dobrze widać przy parafrazach, streszczeniach i dopasowywaniu tonu odpowiedzi.</p>
         </div>
         <div class="info-card">
-          <h4>🌡️ Temperatura (<span translate="no" class="notranslate">Temperature</span>)</h4>
-          <p><strong>Temperatura</strong> wpływa na to, jak przewidywalna albo kreatywna będzie odpowiedź modelu. Niższa sprzyja większej powtarzalności, wyższa daje więcej różnorodności. Dla użytkownika oznacza to tyle, że AI może czasem pisać bardzo zachowawczo, a czasem bardziej swobodnie.</p>
+          <h4>🌡️ Ustawienia kreatywności</h4>
+          <p>Niektóre narzędzia pozwalają ustawić, czy odpowiedź ma być bardziej przewidywalna, czy bardziej twórcza. Dla użytkownika oznacza to tyle, że AI może czasem pisać bardzo zachowawczo, a czasem bardziej swobodnie.</p>
         </div>
       </div>
     </div>
@@ -84,12 +84,12 @@ PAGES.module1 = () => `
     <div class="lesson-section">
       <h3><span class="ls-icon">📊</span> Dlaczego warto – dane z badań</h3>
       <div class="stats-row">
-        <div class="stat-item"><div class="stat-num">5,9h</div><div class="stat-label">oszczędności tygodniowo dla regularnych użytkowników AI (Gallup 2025)</div></div>
+        <div class="stat-item"><div class="stat-num">5,9h</div><div class="stat-label">oszczędności tygodniowo wśród regularnych użytkowników AI w badaniu nauczycieli w USA (Gallup 2025)</div></div>
         <div class="stat-item"><div class="stat-num">29%</div><div class="stat-label">nauczycieli zgłasza potrzebę szkoleń z AI (OECD TALIS 2024)</div></div>
-        <div class="stat-item"><div class="stat-num">74%</div><div class="stat-label">nauczycieli uważa, że AI poprawiła jakość pracy administracyjnej (European School Education Platform 2024)</div></div>
+        <div class="stat-item"><div class="stat-num">3</div><div class="stat-label">rzeczy do sprawdzenia przed użyciem wyniku: fakty, dane osobowe i odpowiedzialność</div></div>
       </div>
-      <p>Nauczyciele, którzy regularnie korzystają z AI, oszczędzają prawie godzinę dziennie. Nie dlatego, że AI robi wszystko za nich, ale dlatego, że skraca czas wykonywania zadań powtarzalnych: pisania maili, tworzenia checklist i redagowania tekstów.</p>
-      <p style="font-size:12.5px;color:var(--clr-text-muted)">Źródła: Gallup / Walton Family Foundation (2025), OECD TALIS (2024), European School Education Platform (2024).</p>
+      <p>W badaniu Gallup/Walton Family Foundation nauczyciele z USA, którzy regularnie korzystali z AI, deklarowali dużą oszczędność czasu. Nie dlatego, że AI robi wszystko za nich, ale dlatego, że skraca zadania powtarzalne: pisanie maili, tworzenie checklist i redagowanie tekstów.</p>
+      <p style="font-size:12.5px;color:var(--clr-text-muted)">Źródła danych liczbowych: Gallup / Walton Family Foundation (2025), OECD TALIS (2024).</p>
     </div>
 
     <div class="lesson-section" id="tools">
@@ -486,7 +486,7 @@ PAGES.module4 = () => `
     <h2>Projekty i analityka</h2>
     <div class="lesson-meta">
       <span class="meta-badge">⏱ ok. 35 minut</span>
-      <span class="meta-badge">🎯 Dokumenty · Analiza · RAG · Bezpieczeństwo</span>
+      <span class="meta-badge">🎯 Dokumenty · Analiza · Źródła · Bezpieczeństwo</span>
       <span class="meta-badge">🤝 1 ćwiczenie grupowe</span>
     </div>
     <p class="lesson-intro">W tym module pracujesz z informacją: długimi dokumentami, wielowątkowymi wiadomościami i większymi plikami. Celem jest szybkie oddzielanie decyzji i zadań od szumu oraz wybór właściwego narzędzia do analizy.</p>
@@ -499,7 +499,7 @@ PAGES.module4 = () => `
       <ul class="lg-list">
         <li>wyciągać decyzje, zadania i terminy z długich dokumentów oraz wątków</li>
         <li>porównywać dwa teksty i wykrywać sprzeczności lub luki</li>
-        <li>rozumieć różnicę między publicznym <span translate="no" class="notranslate">LLM</span> a rozwiązaniem typu <span translate="no" class="notranslate">RAG</span></li>
+        <li>rozumieć różnicę między zwykłym czatem a narzędziem pracującym na wskazanych źródłach</li>
         <li>wybrać bezpieczniejszy sposób analizy dużych plików</li>
         <li>stosować podstawowe zasady ochrony danych przy pracy analitycznej</li>
       </ul>
@@ -549,8 +549,8 @@ Tekst: [WKLEJ]</pre>
     </div>
 
     <div class="lesson-section" id="sandbox">
-      <h3><span class="ls-icon">📦</span> Zamknięte piaskownice – kiedy wybrać rozwiązanie typu RAG?</h3>
-      <p>Przy bardzo długich plikach, wielu załącznikach i materiałach, które muszą być analizowane dokładnie, zwykły czat może okazać się niewystarczający. Wtedy lepiej działa rozwiązanie typu <span translate="no" class="notranslate">RAG</span>, czyli narzędzie odpowiadające na podstawie wskazanych przez Ciebie źródeł.</p>
+      <h3><span class="ls-icon">📦</span> Praca na własnych źródłach – kiedy zwykły czat nie wystarcza?</h3>
+      <p>Przy bardzo długich plikach, wielu załącznikach i materiałach, które muszą być analizowane dokładnie, zwykły czat może okazać się niewystarczający. Wtedy lepiej działa narzędzie, które odpowiada na podstawie wskazanych przez Ciebie źródeł. Takie rozwiązania bywają nazywane <span translate="no" class="notranslate">RAG</span>.</p>
 
       <div class="info-grid">
         <div class="info-card">
@@ -563,7 +563,7 @@ Tekst: [WKLEJ]</pre>
           </ul>
         </div>
         <div class="info-card">
-          <h4>Piaskownice RAG (np. NotebookLM)</h4>
+          <h4>Narzędzia pracujące na źródłach (np. NotebookLM)</h4>
           <ul>
             <li>Budujesz bazę z własnych dokumentów</li>
             <li>Model odpowiada na podstawie wskazanych źródeł</li>

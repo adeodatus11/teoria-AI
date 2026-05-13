@@ -4,7 +4,7 @@
 Ten dokument porządkuje prowadzenie szkolenia lub warsztatu z użyciem platformy:
 `AI w edukacji, organizacji i projektach – samodzielny kurs online`.
 
-Platforma działa jako kurs self-learningowy, ale została też przygotowana do pracy:
+Platforma działa jako samodzielny kurs online, ale została też przygotowana do pracy:
 - z radą pedagogiczną,
 - z zespołem nauczycieli i edukatorów,
 - z pracownikami administracji,
@@ -128,7 +128,9 @@ Propozycje:
 
 ## 7. Rekomendowane warianty szkolenia
 
-### Wariant A – 90 minut
+Warianty różnią się zakresem pracy, nie sztywnym czasem. Dobierz tempo do poziomu grupy, liczby pytań i sposobu pracy: indywidualnie, w parach albo w zespołach.
+
+### Wariant A – krótki start
 Cel: krótki start i pierwszy sukces.
 
 Zakres:
@@ -149,7 +151,7 @@ Infografiki:
 - `PARTS`,
 - opcjonalnie `RODO + AI`.
 
-### Wariant B – 180 minut
+### Wariant B – warsztat praktyczny
 Cel: praktyczne użycie AI w codziennej pracy.
 
 Zakres:
@@ -172,7 +174,7 @@ Infografiki:
 - `PARTS`,
 - `RODO + AI`.
 
-### Wariant C – 240 minut
+### Wariant C – pełny warsztat wdrożeniowy
 Cel: pełny warsztat wdrożeniowy.
 
 Zakres:
@@ -201,10 +203,9 @@ Infografiki:
 
 ---
 
-## 8. Proponowany przebieg szkolenia 3-godzinnego
+## 8. Proponowany przebieg szkolenia warsztatowego
 
 ### Blok 1 – Start i pierwsze doświadczenie
-Czas: `0:00–0:30`
 
 Cel:
 - oswoić temat,
@@ -219,7 +220,6 @@ Przebieg:
 5. Zbierz 2–3 obserwacje: co było przydatne, a co było zbyt ogólne.
 
 ### Blok 2 – Prompting
-Czas: `0:30–1:10`
 
 Cel:
 - pokazać, że jakość promptu wpływa na jakość odpowiedzi,
@@ -234,7 +234,6 @@ Przebieg:
 5. Na końcu poproś grupę o wskazanie jednego elementu promptu, który dał największą zmianę.
 
 ### Blok 3 – Praktyka zawodowa
-Czas: `1:10–1:55`
 
 Cel:
 - przejść od promptowania do realnych zadań zawodowych.
@@ -251,7 +250,6 @@ Przebieg:
 4. Zbierz 2 przykłady rezultatów i omów, co nadal wymaga ludzkiej korekty.
 
 ### Blok 4 – Projekty, analityka i bezpieczeństwo
-Czas: `1:55–2:35`
 
 Cel:
 - pokazać, że AI wspiera analizę, raportowanie i porządkowanie danych,
@@ -265,7 +263,6 @@ Przebieg:
 5. Zatrzymaj się na checkliście RODO i na zasadzie weryfikacji odpowiedzi.
 
 ### Blok 5 – Odpowiedzialne użycie i zamknięcie
-Czas: `2:35–3:00`
 
 Cel:
 - zamknąć szkolenie jednym praktycznym wnioskiem,
@@ -274,7 +271,7 @@ Cel:
 Przebieg:
 1. Pokaż `m6`.
 2. Otwórz infografikę `Zasada proporcji`.
-3. Jeśli jest czas, uruchom `ex18`.
+3. Jeśli grupa pracuje sprawnie, uruchom `ex18`.
 4. Poproś o wejście do mini-testu i `Mój plan wdrożenia`.
 5. Zadaj pytanie zamykające: `Co wdrażasz jako pierwsze?`
 

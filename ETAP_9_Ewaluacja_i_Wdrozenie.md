@@ -95,7 +95,7 @@
 
 | Umiejętność | TAK | CZĘŚCIOWO | NIE |
 |-------------|-----|-----------|-----|
-| Wyjaśnić, czym jest LLM i dlaczego może się mylić | | | |
+| Wyjaśnić, czym jest model językowy i dlaczego AI może się mylić | | | |
 | Napisać skuteczny prompt według frameworku PARTS | | | |
 | Krytycznie ocenić odpowiedź AI | | | |
 | Użyć AI do tworzenia materiałów dydaktycznych | | | |

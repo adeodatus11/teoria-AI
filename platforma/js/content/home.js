@@ -14,14 +14,14 @@ PAGES.home = () => {
   return `
   <div class="hero">
     <div class="hero-inner">
-      <div class="hero-badge">🎓 Kurs self-learning · edukacja · organizacja · projekty</div>
+      <div class="hero-badge">🎓 Samodzielny kurs online · edukacja · organizacja · projekty</div>
       <h1>AI w edukacji, organizacji i projektach<br><em>Samodzielny kurs online</em></h1>
-      <p class="hero-subtitle">Kurs self-learning dla nauczycieli oraz innych osób pracujących w edukacji, organizacji i projektach. Przechodź moduły, rozwiązuj ćwiczenia i korzystaj z gotowych promptów we własnym tempie. Postęp i zapisane materiały są przechowywane lokalnie w Twojej przeglądarce.</p>
+      <p class="hero-subtitle">Samodzielny kurs online dla nauczycieli oraz innych osób pracujących w edukacji, organizacji i projektach. Przechodź moduły, rozwiązuj ćwiczenia i korzystaj z gotowych promptów we własnym tempie. Postęp i zapisane materiały są przechowywane lokalnie w Twojej przeglądarce.</p>
       <div class="hero-stats">
         <div class="hero-stat"><div class="sn">6</div><div class="sl">modułów samodzielnej nauki</div></div>
         <div class="hero-stat"><div class="sn">28</div><div class="sl">wariantów promptów do skopiowania</div></div>
         <div class="hero-stat"><div class="sn">18</div><div class="sl">ćwiczeń z instrukcjami</div></div>
-        <div class="hero-stat"><div class="sn">5,9h</div><div class="sl">oszczędności / tydzień (Gallup 2025)<sup>*</sup></div></div>
+        <div class="hero-stat"><div class="sn">5,9h</div><div class="sl">oszczędności / tydzień w badaniu nauczycieli w USA (Gallup 2025)<sup>*</sup></div></div>
       </div>
       <div class="hero-cta">
         <button class="btn-hero-primary" onclick="showPage('module1')">🚀 Zacznij kurs od początku</button>

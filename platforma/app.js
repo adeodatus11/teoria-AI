@@ -60,7 +60,7 @@ function showPage(id, arg2) {
   } else {
     main.innerHTML = `<div style="padding:80px 40px;text-align:center;color:#94a3b8">
       <div style="font-size:52px;margin-bottom:16px">🚧</div>
-      <p style="font-size:16px">Strona <strong>${id}</strong> – wkrótce dostępna.</p>
+      <p style="font-size:16px">Nie znaleziono strony: <strong>${id}</strong>.</p>
       <button class="btn-primary" style="margin-top:20px" onclick="showPage('home')">← Wróć do strony głównej</button>
     </div>`;
   }
@@ -596,13 +596,13 @@ Zaznacz [UZUPEŁNIJ] gdzie potrzebne konkretne dane.</pre>
       <div class="prompt-box" style="position:relative">
         <button class="prompt-copy-btn" onclick="copyPrompt(this)">Kopiuj</button>
         <pre>Wciel się w audytora. Przeanalizuj załączony dokument.
-Wypunktuj WYŁĄCZNIE sztywne warunki zaporowe
-(tzw. red flags i twarde obowiązki z terminami).
-Zignoruj cały ogólny żargon i "wodę".
-Oddaj to w postaci tabeli roboczej dla Project Managera.</pre>
+Wypunktuj WYŁĄCZNIE warunki zaporowe
+i twarde obowiązki z terminami.
+Pomiń ogólne fragmenty, które nie zmieniają decyzji.
+Oddaj wynik w tabeli: Warunek | Termin | Konsekwencja | Co sprawdzić.</pre>
       </div>
-      <div class="alert-box"><strong>Krytyczna weryfikacja:</strong> Skonfrontuj tabelę z dokumentem. Czy AI pominęła jakiś warunek brzegowy ukryty pod koniec tekstu? Jeśli tak - właśnie doświadczyłeś ograniczenia otwartych modeli przy dużej ilości tekstu. Do takich zadań sprawdzają się zamknięte piaskownice jak NotebookLM.</div>`,
-  `<ul><li>Zrozumiałeś/aś ryzyko podawania długiego PDFa do otwartego <span translate="no" class="notranslate">LLM</span></li><li>Zauważyłeś/aś próbę kompresji z pominięciem detali</li><li>Znasz prompt audytowy do skanowania warunków zaporowych</li></ul>`
+      <div class="alert-box"><strong>Krytyczna weryfikacja:</strong> Skonfrontuj tabelę z dokumentem. Czy AI pominęła jakiś warunek brzegowy ukryty pod koniec tekstu? Jeśli tak, właśnie widać ograniczenie zwykłego czatu przy dużej ilości tekstu. Do takich zadań lepiej używać narzędzi pracujących na wskazanych źródłach, np. NotebookLM.</div>`,
+  `<ul><li>Rozumiesz ryzyko podawania długiego PDF-a do zwykłego czatu AI</li><li>Zauważyłeś/aś, że model może streścić tekst z pominięciem detali</li><li>Znasz prompt audytowy do skanowania warunków zaporowych</li></ul>`
 )}
     ${ex('ex7', '7', 'Mail w języku obcym', 'basic', '15 min',
   'Przećwicz użycie AI do korespondencji projektowej w języku obcym.',
@@ -709,12 +709,12 @@ Przygotuj:
   'Sprawdź, czy znasz podstawowe zasady bezpiecznego używania AI.',
   `<div class="alert-box"><strong>Zweryfikuj samego siebie przed wyjazdem ze szkolenia:</strong>
       <ol>
-      <li>Wiem, co to jest LLM i dlaczego AI potrafi "kłamać"?</li>
+      <li>Wiem, czym jest model językowy i dlaczego AI może tworzyć błędne odpowiedzi?</li>
       <li>Potrafię zbudować prompt ze zwrotami PARTS?</li>
       <li>Wiem, co grozi za wklejenie danych wrażliwych ucznia?</li>
       <li>Mam ściągnięty do notatnika chociaż jeden "mój" prompt na ułatwienie życia w tym tygodniu?</li>
       </ol></div>`,
-  `<ul><li>Rozumienie ograniczeń modelu LLM</li><li>Gotowość do zaprzęgnięcia narzędzia bezpiecznie w pracy dydaktycznej</li></ul>`
+  `<ul><li>Rozumienie ograniczeń modelu językowego</li><li>Gotowość do bezpiecznego użycia narzędzia w pracy dydaktycznej</li></ul>`
 )}
     ${ex('ex13', '13', 'Trening rezyliencji – AI jako trudny rodzic', 'med', '20 min',
   'Przećwicz trudną rozmowę z pomocą AI w formie roleplay.',
@@ -991,7 +991,7 @@ PAGES.prompts = () => `
       <button class="cat-btn" onclick="filterPrompts('B',this)">🗂️ Dokumenty</button>
       <button class="cat-btn" onclick="filterPrompts('C',this)">📧 Komunikacja</button>
       <button class="cat-btn" onclick="filterPrompts('D',this)">🌍 Projekty UE</button>
-      <button class="cat-btn" onclick="filterPrompts('E',this)">💼 Zarządzanie i PM</button>
+      <button class="cat-btn" onclick="filterPrompts('E',this)">💼 Zarządzanie projektem</button>
       <button class="cat-btn" onclick="filterPrompts('H',this)">🔍 Weryfikacja AI</button>
     </div>
 
@@ -1151,17 +1151,17 @@ Przygotuj:
 2. Akapit na stronę szkoły (max 100 słów, oficjalny, rzeczowy)
 3. Trzy propozycje tematu maila do rodziców o wynikach projektu`)}
 
-    ${pc('pE1', 'E', 'E1 – Pre-mortem projektu (ocena ryzyk)',
+    ${pc('pE1', 'E', 'E1 – Analiza ryzyk przed startem projektu',
                       'Gdy planujesz nowe przedsięwzięcie i chcesz zabezpieczyć się przed porażką.',
                       '⚠️ Wymaga nałożenia własnej znajomości zespołu i kontekstu placówki.',
-                      `Przyjrzyj się procedurze / planowi projektu: [WKLEJ].
-Zrób "pre-mortem". Załóżmy, że projekt całkowicie się zawalił.
-Napisz 3 główne scenariusze dlaczego tak się stało i zaproponuj środki zaradcze.`,
-                      `Działaj jako Analityk Ryzyka i Senior Project Manager.
-Oto plan mojego nowego przedsięwzięcia: [WKLEJ PLAN/ZŁOŻENIA]
+                      `Przyjrzyj się procedurze lub planowi projektu: [WKLEJ].
+Załóżmy, że projekt nie przyniósł oczekiwanych rezultatów.
+Napisz 3 główne scenariusze, dlaczego tak się stało, i zaproponuj środki zaradcze.`,
+                      `Działaj jako analityk ryzyka projektu.
+Oto plan mojego nowego przedsięwzięcia: [WKLEJ PLAN/ZAŁOŻENIA]
 
-Wykonaj analizę typu "Pre-mortem". Pokaż scenariusze porażki. Załóżmy, że jesteśmy pół roku w przyszłości i to przedsięwzięcie nie przyniosło oczekiwanych rezultatów.
-1. Zidentyfikuj 3 najbardziej prawdopodobne punkty krytyczne (bottlenecks/ryzyka) na których projekt się wywrócił.
+Pokaż możliwe scenariusze porażki. Załóżmy, że jesteśmy pół roku w przyszłości i to przedsięwzięcie nie przyniosło oczekiwanych rezultatów.
+1. Zidentyfikuj 3 najbardziej prawdopodobne punkty krytyczne, przez które projekt mógł się nie udać.
 2. Spróbuj wskazać błędy w komunikacji ludzkiej i niedoszacowania zasobów.
 3. Przedstaw do każdego punktu konkretną tabelę ze środkami zapobiegawczymi (Co zrobić już dziś, by tego uniknąć).`)}
 
@@ -1169,25 +1169,25 @@ Wykonaj analizę typu "Pre-mortem". Pokaż scenariusze porażki. Załóżmy, że
                         'Gdy dokumenty robocze lub ustalenia nie spinają się ze sobą.',
                         '⚠️ Sprawdź czy piaskownica/AI na pewno odczytała najnowszą wersję.',
                         `Zestaw raport A [WKLEJ] z wytycznymi B [WKLEJ].
-Oznacz czerwoną flagą miejsca, w których oba teksty są ze sobą sprzeczne.`,
+Wskaż miejsca, w których oba teksty są ze sobą sprzeczne.`,
                         `Wciel się w rygorystycznego weryfikatora dokumentacji (Audytor QA).
 Załączam dwa teksty dotyczące tej samej sprawy (np. regulamin i mail od wicedyrektora lub wytyczne KE i zarys raportu):
 Tekst A (Procedura domyślna): [WKLEJ TEKST A]
 Tekst B (Stan faktyczny): [WKLEJ TEKST B]
 
 Twoje zadanie: Pomiń powielenia i skup się WYŁĄCZNIE na tym, gdzie Tekst B zaprzecza Tekstowi A, albo łamie podane wytyczne.
-Generuj listę "Red Flags" (Czerwone flagi) - punkt, na czym polega sprzeczność i kto musi podjąć decyzję arbitrażową.`)}
+Wygeneruj listę ryzyk: punkt, na czym polega sprzeczność i kto musi podjąć decyzję.`)}
 
     ${pc('pE3', 'E', 'E3 – Porządkowanie przeciążenia informacyjnego',
                           'Gdy masz długi wątek z wieloma odpowiedziami i nie wiesz na czym stoisz.',
                           '⚠️ Usuń ze skopiowanego wątku loginy, imiona uczniów i inne dane osobowe przed wklejeniem.',
                           `Wklejam długi wątek mailowy lub komunikacyjny: [WKLEJ].
 Uporządkuj go i pokaż, kto co ma zrobić oraz do kiedy.`,
-                          `Działaj jako mój asystent do dekompozycji szumu informacyjnego.
+                          `Działaj jako mój asystent do porządkowania informacji.
 Mam tylko kilka minut przed spotkaniem. Poniżej wklejam długi, sklejony wątek z maili i komunikatora:
 [WKLEJ CAŁOŚĆ WĄTKU (bez danych osobowych)]
 
-Twoje zadanie to wyłuskać wyłącznie "sygnał" i ukryć "szum":
+Twoje zadanie to oddzielić informacje ważne od mniej ważnych:
 1. W jednym zdaniu - o czym jest ten wątek lub dyskusja.
 2. Tabela: [Kto musi to zrobić] | [Konkretne zadanie przypisane u] | [Deadline]
 3. Oznacz pilne sprawy lub pytania, które pozostają bez odpowiedzi od dwóch dni.`)}
@@ -1204,7 +1204,7 @@ założenia, które mogą być błędne.`,
 Teraz wciel się w krytycznego recenzenta i odpowiedz:
 1. Które stwierdzenia są oparte na weryfikowalnych danych?
 2. Które stwierdzenia mogą być „generatywnym wypełnieniem" bez pewności faktycznej?
-3. Jakie informacje mogą być nieaktualne (knowledge cutoff)?
+3. Jakie informacje mogą być nieaktualne z powodu zakresu dat wiedzy modelu?
 4. Jakie założenia przyjąłeś/aś, które mogą być błędne w kontekście systemu oświaty w moim kraju?
 5. Co powinienem/powinnam sprawdzić w oficjalnych źródłach przed użyciem?
 Podaj konkretne wskazania – nie ogólniki.`)}
@@ -1214,7 +1214,7 @@ Podaj konkretne wskazania – nie ogólniki.`)}
 const defaultPromptCards = new Set(['pA1', 'pB1', 'pD1']);
 
 function pc(anchor, cat, title, when, warn, basic, advanced) {
-  const catLabel = { A: 'Dydaktyka', B: 'Dokumenty i org.', C: 'Komunikacja', D: 'Projekty UE', E: 'Zarządzanie i PM', H: 'Weryfikacja AI' }[cat];
+  const catLabel = { A: 'Dydaktyka', B: 'Dokumenty i org.', C: 'Komunikacja', D: 'Projekty UE', E: 'Zarządzanie projektem', H: 'Weryfikacja AI' }[cat];
   return `
   <div class="prompt-card ${defaultPromptCards.has(anchor) ? 'open' : ''}" id="${anchor}" data-cat="${cat}">
     <div class="prompt-card-hdr" onclick="togglePromptCard(this)">
@@ -1319,7 +1319,7 @@ PAGES.checklists = () => `
     <div class="checklist-block" id="chk-selftest">
       <h3>🧠 Mini-test wiedzy po kursie</h3>
       <p class="clb-desc">Odpowiedz szczerze – to tylko dla Ciebie. Każda odpowiedź „NIE" to wskazówka, co powtórzyć.</p>
-      ${chk('cs1', 'Wiem, co to jest <span translate="no" class="notranslate">LLM</span> i dlaczego AI może generować halucynacje')}
+      ${chk('cs1', 'Wiem, czym jest model językowy i dlaczego AI może generować błędne odpowiedzi')}
       ${chk('cs2', 'Potrafię napisać prompt z co najmniej 3 elementami frameworku PARTS')}
       ${chk('cs3', 'Wiem, jakich danych NIE wolno wklejać do publicznej AI (RODO)')}
       ${chk('cs4', 'Mam co najmniej 1 konkretne zadanie, do którego użyję AI w tym tygodniu')}
@@ -2375,13 +2375,13 @@ const MODULE_LIBRARY_LABELS = {
 
 const BIB_SOURCES = [
   { id: 'bib-unesco-framework', section: 'core', title: 'UNESCO AI Competency Framework for Teachers', year: '2024', org: 'UNESCO', kind: 'Ramy kompetencji', modules: [1, 3], prio: '1', note: 'Definiuje kompetencje AI dla nauczycieli i porządkuje rozwój zawodowy wokół użycia AI w edukacji.', url: 'https://www.unesco.org/en/articles/ai-competency-framework-teachers' },
-  { id: 'bib-talis-2024', section: 'core', title: 'Results from TALIS 2024', year: '2024', org: 'OECD', kind: 'Raport', modules: [1, 3], prio: '1', note: 'Oficjalny raport TALIS z danymi o pracy nauczycieli, lukach kompetencyjnych i potrzebie rozwoju zawodowego.', url: 'https://www.oecd.org/en/publications/results-from-talis-2024_90df6235-en.html' },
+  { id: 'bib-talis-2024', section: 'core', title: 'Results from TALIS 2024', year: '2025', org: 'OECD', kind: 'Raport', modules: [1, 3], prio: '1', note: 'Oficjalny raport TALIS z danymi o pracy nauczycieli, lukach kompetencyjnych i potrzebie rozwoju zawodowego, w tym potrzebie szkoleń z użycia AI.', url: 'https://www.oecd.org/content/dam/oecd/en/publications/reports/2025/10/results-from-talis-2024_28fbde1d/90df6235-en.pdf' },
   { id: 'bib-gallup-ai-time', section: 'core', title: 'Three in 10 Teachers Are Saving Weeks of Time With AI', year: '2025', org: 'Gallup', kind: 'Badanie', modules: [1, 3], prio: '1', note: 'Źródło danych o oszczędności czasu przy regularnym używaniu AI w pracy nauczycieli.', url: 'https://news.gallup.com/poll/691967/three-teachers-weekly-saving-six-weeks-year.aspx' },
-  { id: 'bib-ec-ethical-guidelines', section: 'core', title: 'Ethical guidelines on the use of artificial intelligence and data in teaching and learning for educators', year: '2024', org: 'Komisja Europejska', kind: 'Wytyczne', modules: [3, 4, 5, 6], prio: '1', note: 'Wytyczne dotyczące etycznego i odpowiedzialnego użycia AI oraz danych w edukacji.', url: 'https://education.ec.europa.eu/news/ethical-guidelines-on-the-use-of-artificial-intelligence-and-data-in-teaching-and-learning-for-educators' },
+  { id: 'bib-ec-ethical-guidelines', section: 'core', title: 'Ethical guidelines on the use of artificial intelligence and data in teaching and learning for educators', year: '2022', org: 'Komisja Europejska', kind: 'Wytyczne', modules: [3, 4, 5, 6], prio: '1', note: 'Wytyczne dotyczące etycznego i odpowiedzialnego użycia AI oraz danych w edukacji. To nadal ważny punkt odniesienia w ramach Digital Education Action Plan 2021-2027.', url: 'https://op.europa.eu/en/publication-detail/-/publication/d81a0d54-5348-11ed-92ed-01aa75ed71a1/language-en' },
   { id: 'bib-digcompedu', section: 'core', title: 'DigCompEdu', year: '2017', org: 'Joint Research Centre, Komisja Europejska', kind: 'Ramy kompetencji', modules: [3, 5], prio: '1', note: 'Europejskie ramy kompetencji cyfrowych edukatorów. Ważny punkt odniesienia dla wdrożeń AI w edukacji.', url: 'https://joint-research-centre.ec.europa.eu/digcompedu_en' },
   { id: 'bib-deap', section: 'core', title: 'Digital Education Action Plan 2021–2027', year: '2021', org: 'Komisja Europejska', kind: 'Strategia', modules: [3, 5], prio: '2', note: 'Strategiczny kontekst dla edukacji cyfrowej, kompetencji i działań systemowych w UE.', url: 'https://education.ec.europa.eu/focus-topics/digital-education/action-plan' },
   { id: 'bib-unesco-generative-ai', section: 'core', title: 'Guidance for generative AI in education and research', year: '2023', org: 'UNESCO', kind: 'Przewodnik', modules: [1, 3, 6], prio: '1', note: 'Praktyczne wskazówki dotyczące wdrażania generatywnej AI w edukacji i badaniach.', url: 'https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research' },
-  { id: 'bib-ai-act-overview', section: 'core', title: 'Regulatory framework proposal on artificial intelligence', year: '2026', org: 'Komisja Europejska', kind: 'Przegląd regulacyjny', modules: [4, 5, 6], prio: '2', note: 'Oficjalne omówienie europejskich ram regulacyjnych dla AI. Przydaje się tam, gdzie kurs mówi o odpowiedzialności, przejrzystości i wdrożeniach instytucjonalnych.', url: 'https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai' },
+  { id: 'bib-ai-act-overview', section: 'core', title: 'AI Act: regulatory framework on artificial intelligence', year: '2024-2026', org: 'Komisja Europejska', kind: 'Przegląd regulacyjny', modules: [4, 5, 6], prio: '2', note: 'Oficjalne omówienie europejskich ram regulacyjnych dla AI. AI Act wszedł w życie w 2024 r., a obowiązki są wdrażane etapami.', url: 'https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai' },
   { id: 'bib-edpb-ai-models', section: 'core', title: 'Opinion 28/2024 on certain data protection aspects related to the processing of personal data in the context of AI models', year: '2024', org: 'European Data Protection Board', kind: 'Opinia', modules: [4, 5, 6], prio: '1', note: 'Ważne źródło do pracy z RODO, danymi osobowymi i legalnością użycia modeli AI w organizacjach.', url: 'https://www.edpb.europa.eu/our-work-tools/our-documents/opinion-board-art-64/opinion-282024-certain-data-protection-aspects_en' },
   { id: 'bib-iea-energy-ai', section: 'core', title: 'Energy and AI', year: '2025', org: 'International Energy Agency', kind: 'Raport', modules: [6], prio: '1', note: 'Oficjalny raport o energii, centrach danych i wpływie rozwoju AI na zapotrzebowanie energetyczne.', url: 'https://www.iea.org/reports/energy-and-ai' },
   { id: 'bib-li-water-footprint', section: 'core', title: 'Making AI Less "Thirsty": Uncovering and Addressing the Secret Water Footprint of AI Models', year: '2025', org: 'Li et al.', kind: 'Artykuł naukowy', modules: [6], prio: '2', note: 'Badanie o śladzie wodnym modeli AI, przydatne do modułu o zrównoważonym AI.', url: 'https://arxiv.org/abs/2304.03271' },
@@ -2392,7 +2392,7 @@ const BIB_SOURCES = [
   { id: 'bib-anthropic-prompting', section: 'practice', title: 'Prompt engineering overview', year: '2026', org: 'Anthropic Docs', kind: 'Przewodnik', modules: [2], prio: '2', note: 'Praktyczne techniki promptowania dla Claude, w tym jasne instrukcje, przykłady i długi kontekst.', url: 'https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview' },
   { id: 'bib-google-prompting', section: 'practice', title: 'Prompt design strategies', year: '2026', org: 'Google AI for Developers', kind: 'Przewodnik', modules: [2], prio: '2', note: 'Oficjalny przewodnik Google pokazujący, jak poprawiać jakość promptów i odpowiedzi modeli Gemini.', url: 'https://ai.google.dev/gemini-api/docs/prompting-strategies' },
   { id: 'bib-anthropic-prompt-library', section: 'practice', title: 'Prompt Library', year: '2026', org: 'Anthropic Docs', kind: 'Biblioteka promptów', modules: [2, 5], prio: '3', note: 'Gotowe przykłady promptów do różnych zadań. Dobre miejsce do porównania własnych instrukcji z praktyką dostawcy.', url: 'https://docs.anthropic.com/en/prompt-library/library' },
-  { id: 'bib-notebooklm-chat', section: 'practice', title: 'Use chat in NotebookLM', year: '2026', org: 'NotebookLM Help', kind: 'Centrum pomocy', modules: [4], prio: '2', note: 'Oficjalny opis pracy na źródłach i cytatach w NotebookLM. Szczególnie przydatny przy sekcji o RAG i analizie dokumentów.', url: 'https://support.google.com/notebooklm/answer/16179559?hl=en' },
+  { id: 'bib-notebooklm-chat', section: 'practice', title: 'Use chat in NotebookLM', year: '2026', org: 'NotebookLM Help', kind: 'Centrum pomocy', modules: [4], prio: '2', note: 'Oficjalny opis pracy na źródłach i cytatach w NotebookLM. Szczególnie przydatny przy analizie dokumentów opartych na wskazanych materiałach.', url: 'https://support.google.com/notebooklm/answer/16179559?hl=en' },
   { id: 'bib-notebooklm-sources', section: 'practice', title: 'Add or discover new sources for your notebook', year: '2026', org: 'NotebookLM Help', kind: 'Centrum pomocy', modules: [4], prio: '2', note: 'Pokazuje typy źródeł, limity i sposób budowania notatnika opartego na materiałach własnych.', url: 'https://support.google.com/notebooklm/answer/16215270?co=GENIE.Platform%3DDesktop&hl=en' },
   { id: 'bib-pmi-ai-essentials', section: 'practice', title: 'AI Essentials for Project Professionals', year: '2026', org: 'PMI', kind: 'Przewodnik', modules: [4, 5], prio: '2', note: 'Dobre, praktyczne źródło o tym, jak używać AI w zarządzaniu projektami, komunikacji i pracy z danymi projektowymi.', url: 'https://www.pmi.org/standards/ai-essentials-for-project-professionals' },
   { id: 'bib-pmi-prompt-engineering', section: 'practice', title: 'Talking to the Machine: Prompt Engineering Essentials for Project Professionals', year: '2025', org: 'PMI', kind: 'Artykuł ekspercki', modules: [2, 4, 5], prio: '3', note: 'Krótki materiał o promptowaniu w kontekście zadań projektowych, raportowania i komunikacji.', url: 'https://www.pmi.org/learning/thought-leadership/prompt-engineering' },

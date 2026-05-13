@@ -11,7 +11,7 @@ const IDX = [
   { t: 'AI w administracji i komunikacji', p: 'module3', a: 'administracja', tags: ['administracja', 'mail', 'protokół'], c: 'Maile, ogłoszenia, podsumowania i teksty organizacyjne.' },
 
   { t: 'Analiza dokumentów i przepływu informacji', p: 'module4', a: 'documents', tags: ['dokumenty', 'analiza', 'wątek'], c: 'Wyciąganie decyzji, zadań i terminów z długich tekstów.' },
-  { t: 'Zamknięte piaskownice i RAG', p: 'module4', a: 'sandbox', tags: ['RAG', 'NotebookLM', 'źródła'], c: 'Kiedy zwykły czat nie wystarcza i warto pracować na źródłach.' },
+  { t: 'Praca na własnych źródłach', p: 'module4', a: 'sandbox', tags: ['źródła', 'NotebookLM', 'RAG'], c: 'Kiedy zwykły czat nie wystarcza i warto pracować na wskazanych źródłach.' },
   { t: 'Porównanie dwóch dokumentów', p: 'module4', a: 'compare', tags: ['porównanie', 'różnice', 'sprzeczności'], c: 'Tabela rozbieżności i luk między tekstami.' },
   { t: 'Ćwiczenie grupowe – Mini-laboratorium analizy ankiety', p: 'module4', a: 'survey-lab', tags: ['ćwiczenie grupowe', 'ankiety', 'analiza'], c: 'Zespołowe projektowanie analizy krótkich danych z ankiet i informacji zwrotnych.' },
   { t: 'Bezpieczeństwo danych w pracy analitycznej', p: 'module4', a: 'rodo', tags: ['RODO', 'anonimizacja', 'dane'], c: 'Zasady bezpiecznego wklejania dokumentów do AI.' },
