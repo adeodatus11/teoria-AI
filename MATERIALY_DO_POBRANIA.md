@@ -2,6 +2,8 @@
 
 Ten plik porządkuje materiały, które warto udostępnić uczestnikom i prowadzącemu jako osobne pliki do pobrania. To lista produkcyjna, nie nowa strona platformy.
 
+Szczegółowa lista brakujących plików wejściowych do ćwiczeń znajduje się w pliku `BRAKUJACE_INPUTY_DO_CWICZEN.md`.
+
 ## 1. Materiały źródłowe już obecne w repozytorium
 
 | Materiał | Plik źródłowy | Dla kogo | Status |
