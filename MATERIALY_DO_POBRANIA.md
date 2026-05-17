@@ -1,52 +1,49 @@
-# Materialy do pobrania
+# Materiały do pobrania
 
-Ten plik porządkuje materiały, które warto udostępnić uczestnikom i prowadzącemu jako osobne pliki do pobrania. To lista produkcyjna, nie nowa strona platformy.
+Ten plik porządkuje materiały dostępne dla uczestnika i prowadzącego. To lista produkcyjna, nie osobna podstrona platformy.
 
-Szczegółowa lista brakujących plików wejściowych do ćwiczeń znajduje się w pliku `BRAKUJACE_INPUTY_DO_CWICZEN.md`.
+Aktualny status inputów do ćwiczeń znajduje się w pliku `BRAKUJACE_INPUTY_DO_CWICZEN.md`.
 
-## 1. Materiały źródłowe już obecne w repozytorium
+## 1. Inputy do ćwiczeń wdrożone w platformie
 
-| Materiał | Plik źródłowy | Dla kogo | Status |
+| Materiał | Plik | Gdzie używany | Status |
 |---|---|---|---|
-| Platforma szkoleniowa 6-modułowa | `platforma/index.html` | uczestnik i prowadzący | gotowe jako strona |
-| Materiały dla prowadzącego | `ETAP_6_Materialy_dla_Prowadzacego.md` | prowadzący | źródło Markdown |
-| Materiały dla uczestników | `ETAP_7_Materialy_dla_Uczestnikow.md` | uczestnik | źródło Markdown |
-| Ewaluacja i wdrożenie | `ETAP_9_Ewaluacja_i_Wdrozenie.md` | prowadzący i uczestnik | źródło Markdown |
-| Plan prowadzenia PL/EN | `README_DLA_PROWADZACEGO.md` | prowadzący | gotowy plik README |
-| Analiza ankiet | `ankiety_AI_szkolenie_analiza.docx` | prowadzący / organizator | gotowy plik DOCX |
-| Infografika PARTS | `platforma/assets/infographic-parts.svg` | uczestnik | gotowy plik SVG |
-| Infografika RODO i AI | `platforma/assets/infographic-rodo-ai.svg` | uczestnik | gotowy plik SVG |
-| Infografika zasady proporcji | `platforma/assets/infographic-zasada-proporcji.svg` | uczestnik | gotowy plik SVG |
+| Dokument szkolny do streszczenia - procedura odbioru uczniów | `files/input_01a_dokument_szkolny_do_streszczenia_procedura_odbioru_uczniow.pdf` | Moduł 3, `ex4`, prompt `B1` | wdrożone, wymaga decyzji publikacyjnej |
+| Dokument szkolny do streszczenia - regulamin wycieczek | `files/input_01b_dokument_szkolny_do_streszczenia_regulamin_wycieczek.pdf` | Moduł 3, `ex4`, prompt `B1` | wdrożone, wymaga decyzji publikacyjnej |
+| Długi dokument do analizy - egzamin ósmoklasisty | `files/input_02a_dlugi_dokument_do_analizy_egzamin_8kl_2026.pdf` | Moduł 4, `ex6` | wdrożone, wymaga decyzji publikacyjnej |
+| Długi dokument do analizy - matura | `files/input_02b_dlugi_dokument_do_analizy_matura_2026.pdf` | Moduł 4, `ex6` | wdrożone, wymaga decyzji publikacyjnej |
+| Rekomendowany dokument A do porównania | `files/input_03a_dokument_do_porownania_poradnik_wyjazdow_ko_bialystok.pdf` | Moduł 4, prompt `E2` | wdrożone, wymaga decyzji publikacyjnej |
+| Rekomendowany dokument B do porównania | `files/input_03d_dokument_do_porownania_procedura_wycieczek.pdf` | Moduł 4, prompt `E2` | wdrożone, wymaga decyzji publikacyjnej |
+| Długi wątek mailowy - 80-lecie szkoły | `files/input_04a_dlugi_watek_mailowy_80_lecie_szkoly.docx` | Moduł 4, `ex9`, prompt `B2`, prompt `E3` | wdrożone |
+| Długi wątek mailowy - szkolenie WDN | `files/input_04b_dlugi_watek_mailowy_szkolenie_wdn.docx` | Moduł 4, `ex9`, prompt `B2`, prompt `E3` | wdrożone |
+| Tekst dydaktyczny do adaptacji | `files/input_05_tekst_dydaktyczny_do_adaptacji.docx` | Moduł 3, `ex3`, `ex8`, prompt `A2` | wdrożone |
+| Dane ankietowe - bezpieczeństwo w szkole, CSV | `files/input_06a_ankieta_bezpieczenstwo_w_szkole.csv` | Moduł 4, `ex14`, `ex17` | wdrożone |
+| Dane ankietowe - ankieta po szkoleniu, CSV | `files/input_06b_ankieta_po_szkoleniu.csv` | Moduł 4, `ex14`, `ex17` | wdrożone |
+| Dane ankietowe - bezpieczeństwo w szkole, XLSX | `files/input_06a_ankieta_bezpieczenstwo_w_szkole.xlsx` | Moduł 4, `ex17` | wdrożone jako format pomocniczy |
+| Dane ankietowe - ankieta po szkoleniu, XLSX | `files/input_06b_ankieta_po_szkoleniu.xlsx` | Moduł 4, `ex17` | wdrożone jako format pomocniczy |
+| Brief projektu edukacyjnego | `files/input_07_brief_projektu_edukacyjnego_2_przyklady.docx` | Moduł 5, `ex5`, `ex10`, prompt `D1`, prompt `D3` | wdrożone |
+| Notatki do maila po angielsku | `files/input_08_notatki_do_maila_partner_angielski.docx` | Moduł 5, `ex7`, prompt `D2` | wdrożone |
+| Teksty wzorcowe do reverse prompting | `files/input_09_tekst_wzorcowy_do_reverse_prompting.docx` | `ex15` | wdrożone |
+| Karty zasad AI do rankingu | `files/input_10_karty_zasad_ai_do_rankingu.docx` | Moduł 6, `ex11`, `ex18` | wdrożone |
+| Szablon porównania promptów | `files/input_11_szablon_porownania_promptow.docx` | Moduł 2, `ex16` | wdrożone |
+| Szablon mini-kodeksu AI | `files/input_12_szablon_mini_kodeksu_ai.docx` | Moduł 6, `ex18` | wdrożone |
+| Plan projektu do analizy ryzyka | `files/input_13_plan_projektu_do_analizy_ryzyka.docx` | Moduł 5, prompt `E1` | wdrożone |
+| Karta refleksji i oceny wyniku AI | `files/input_14_karta_refleksji_i_oceny_wyniku_ai.docx` | Moduł 1, `ex1`, `ex2` | wdrożone |
 
-## 2. Docelowe pliki do przygotowania dla uczestników
+## 2. Materiały dodatkowe
 
-| Proponowana nazwa pliku | Źródło treści | Dlaczego potrzebne |
+| Materiał | Plik | Uwagi |
 |---|---|---|
-| `Karta_pracy_uczestnika_AI.docx` lub `.pdf` | `ETAP_7_Materialy_dla_Uczestnikow.md` | uczestnik ma jedno miejsce na notatki, ćwiczenia i plan użycia AI po szkoleniu |
-| `Sciaga_AI_rozsadnie_i_skutecznie.pdf` | `ETAP_7_Materialy_dla_Uczestnikow.md` | szybka pomoc po szkoleniu, bez wracania do całej platformy |
-| `Checklista_dobrego_promptu.pdf` | checklisty w platformie i `ETAP_7_Materialy_dla_Uczestnikow.md` | uczestnik może sprawdzić prompt przed użyciem |
-| `Checklista_weryfikacji_odpowiedzi_AI.pdf` | checklisty w platformie i `ETAP_7_Materialy_dla_Uczestnikow.md` | wzmacnia nawyk weryfikacji faktów, dat, prawa i danych liczbowych |
-| `Checklista_RODO_i_AI.pdf` | checklisty w platformie i `ETAP_7_Materialy_dla_Uczestnikow.md` | przypomina, czego nie wolno wklejać do narzędzi AI |
-| `10_zasad_odpowiedzialnego_uzywania_AI_w_szkole.pdf` | `ETAP_7_Materialy_dla_Uczestnikow.md` oraz moduły 5-6 | materiał do powieszenia w pokoju nauczycielskim lub wykorzystania w zespole |
-| `Mini_plan_wdrozenia_AI_po_szkoleniu.docx` lub `.pdf` | `ETAP_7_Materialy_dla_Uczestnikow.md` | pomaga przełożyć szkolenie na jedno konkretne działanie |
-| `Przykladowy_tekst_dydaktyczny_do_cwiczen.docx` | moduł 3 | uczestnik bez własnego materiału nadal może wykonać ćwiczenie |
-| `Przykladowe_notatki_ze_spotkania_do_analizy.docx` | moduł 4 | daje bezpieczny tekst bez danych osobowych do ćwiczenia analizy |
-| `Przykladowy_opis_dzialania_projektowego.docx` | moduł 5 | ułatwia ćwiczenia z raportowaniem i komunikacją projektową |
-| `Promptownik_AI_dla_nauczyciela.pdf` | sekcja `Promptownik` w platformie | uczestnik dostaje gotowy zestaw promptów do pracy po szkoleniu |
+| Dodatkowy statut do porównań | `files/input_03b_dokument_do_porownania_statut_sp_108_wroclaw.pdf` | nie jest rekomendowaną parą w platformie; może zostać jako materiał dodatkowy |
+| Dodatkowy statut do porównań | `files/input_03c_dokument_do_porownania_statut_sp_suchy_las.pdf` | nie jest rekomendowaną parą w platformie; może zostać jako materiał dodatkowy |
+| Plan prowadzenia PL/EN | `README_DLA_PROWADZACEGO.md` | dla prowadzącego, bez osobnej strony pobierania |
+| Raport poprawek inputów | `RAPORT_POPRAWEK_INPUTY.md` | dokument roboczy |
+| Infografika PARTS | `platforma/assets/infographic-parts.svg` | dostępna w platformie |
+| Infografika RODO i AI | `platforma/assets/infographic-rodo-ai.svg` | dostępna w platformie |
+| Infografika zasady proporcji | `platforma/assets/infographic-zasada-proporcji.svg` | dostępna w platformie |
 
-## 3. Docelowe pliki do przygotowania dla prowadzącego
+## 3. Decyzje przed publikacją
 
-| Proponowana nazwa pliku | Źródło treści | Dlaczego potrzebne |
-|---|---|---|
-| `Przewodnik_prowadzacego_AI_PL_EN.pdf` | `README_DLA_PROWADZACEGO.md` oraz `ETAP_6_Materialy_dla_Prowadzacego.md` | prowadzący ma plan i warianty pracy z grupą w jednym pliku |
-| `Ankieta_wejsciowa_AI.docx` lub formularz online | `ETAP_9_Ewaluacja_i_Wdrozenie.md` | pomaga rozpoznać poziom grupy przed startem |
-| `Ankieta_koncowa_AI.docx` lub formularz online | `ETAP_9_Ewaluacja_i_Wdrozenie.md` | pozwala zebrać ocenę szkolenia i deklaracje wdrożeniowe |
-| `Lista_kontrolna_przed_szkoleniem.docx` | `README_DLA_PROWADZACEGO.md` | porządkuje przygotowanie sali, linków, narzędzi i przykładowych danych |
-| `Karta_obserwacji_cwiczen.docx` | moduły 2-5 | ułatwia prowadzącemu omawianie pracy uczestników bez oceniania osób |
-
-## 4. Materiały, których nie przygotowujemy teraz
-
-- Nie przygotowuję nowych wersji PPTX.
-- Nie dodaję nowej strony z pobieraniem do platformy.
-- Nie oznaczam ćwiczeń dodatkowymi etykietami w platformie.
-- Nie dodaję nowych czasów do modułów ani ćwiczeń.
+1. Potwierdzić prawo do publicznego udostępnienia realnych PDF-ów `input_01`-`input_03`.
+2. Zdecydować, czy w publikacji zostają zarówno CSV, jak i XLSX dla `input_06`, czy tylko CSV.
+3. Nie przygotowujemy teraz wersji PPTX ani osobnej strony pobierania.

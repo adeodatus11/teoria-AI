@@ -130,6 +130,7 @@ PAGES.module1 = () => `
         <p><strong>Krok 2:</strong> Pomyśl o jednym zadaniu zawodowym, które regularnie zajmuje Ci dużo czasu.</p>
         <p><strong>Krok 3:</strong> Wpisz je do AI tak, jak napisałbyś/napisałabyś do kolegi proszącego o pomoc.</p>
         <p><strong>Krok 4:</strong> Przeczytaj wynik. Oceń go w skali 1–5. Zanotuj: co AI zrobiła dobrze? Co nie?</p>
+        ${materialsBox('Karta pracy po ćwiczeniu', [{ key: 'input14', label: 'Pobierz kartę refleksji i oceny wyniku AI' }])}
         <div class="tip-box" style="margin-top:12px">
           <strong>Nie wiesz od czego zacząć?</strong> Wpisz: <em>„Napisz email do partnerów zagranicznych z Włoch o przełożeniu spotkania projektowego na jutro na godzinę 15:00 na platformie Teams"</em>
         </div>
@@ -304,6 +305,7 @@ PROMPT C: „Opisz projekt."</pre>
       <div class="try-it">
         <div class="try-label">🧪 Ćwiczenie zespołowe – prompt w trzech wersjach</div>
         <p><strong>Sytuacja wyjściowa:</strong> wybierzcie jedno realne zadanie: mail, streszczenie dokumentu, plan lekcji, opis działania albo analizę krótkiej ankiety.</p>
+        ${materialsBox('Karta pracy do porównania promptów', [{ key: 'input11', label: 'Pobierz szablon porównania promptów' }])}
         <ol>
           <li>Ustalcie, jaki ma być efekt końcowy i po czym poznacie, że wynik jest dobry.</li>
           <li>Przygotujcie trzy wersje promptu: prostą, doprecyzowaną i ekspercką.</li>
@@ -397,6 +399,7 @@ podsumowanie z pytaniami sprawdzającymi.
 Format: tabela | Czas | Aktywność | Opis | Materiały</pre>
         </div>
         <p>Po otrzymaniu wyniku napisz kolejny prompt: <em>„Teraz napisz wersję fragmentu [X] dostosowaną dla ucznia z dysleksją lub trudnościami w nauce."</em></p>
+        ${materialsBox('Materiał opcjonalny do adaptacji', [{ key: 'input05', label: 'Pobierz tekst dydaktyczny do adaptacji' }])}
         <p>Porównaj obie wersje – co AI zmieniła? Czy to wystarczające? Co byś jeszcze poprawił/a?</p>
       </div>
     </div>
@@ -444,6 +447,10 @@ Ton: ciepły, rzeczowy. Format: Temat + treść (max 140 słów)</pre>
         </div>
 
         <p><strong>Opcja B – Streszczenie dokumentu:</strong> Wklej fragment dowolnego dokumentu szkolnego (zarządzenie, regulamin, protokół – bez danych osobowych) i wpisz:</p>
+        ${materialsBox('Dokumenty wejściowe do opcji B', [
+          { key: 'input01a', label: 'Pobierz procedurę odbioru uczniów' },
+          { key: 'input01b', label: 'Pobierz regulamin wycieczek' }
+        ])}
         <div class="prompt-box" style="position:relative">
           <button class="prompt-copy-btn" onclick="copyPrompt(this)">Kopiuj</button>
           <pre>Przeczytaj poniższy dokument i przygotuj:
@@ -533,6 +540,10 @@ PAGES.module4 = () => `
       <div class="try-it">
         <div class="try-label">🧪 Ćwiczenie własne – uporządkuj długi wątek</div>
         <p>Użyj poniższego promptu do długiego maila, protokołu, komunikacji projektowej albo pisma z wieloma wątkami:</p>
+        ${materialsBox('Materiały do uporządkowania', [
+          { key: 'input04a', label: 'Pobierz wątek mailowy: 80-lecie szkoły' },
+          { key: 'input04b', label: 'Pobierz wątek mailowy: szkolenie WDN' }
+        ])}
         <div class="prompt-box" style="position:relative">
           <button class="prompt-copy-btn" onclick="copyPrompt(this)">Kopiuj</button>
           <button class="prompt-save-btn" onclick="savePromptFromBox(this)">⭐ Zapisz</button>
@@ -576,6 +587,10 @@ Tekst: [WKLEJ]</pre>
       <div class="key-insight">
         <strong>Praktyczna zasada:</strong> im dłuższy dokument i im większa odpowiedzialność za poprawność odpowiedzi, tym bardziej opłaca się pracować na narzędziu, które pokazuje źródło i nie opiera się wyłącznie na pamięci rozmowy.
       </div>
+      ${materialsBox('Długie dokumenty do testu pracy na źródłach', [
+        { key: 'input02a', label: 'Pobierz dokument o egzaminie ósmoklasisty' },
+        { key: 'input02b', label: 'Pobierz dokument o egzaminie maturalnym' }
+      ])}
     </div>
 
     <div class="lesson-section" id="compare">
@@ -583,6 +598,11 @@ Tekst: [WKLEJ]</pre>
       <p>AI dobrze sprawdza się wtedy, gdy porównujesz dwa teksty: procedurę i praktykę, wytyczne i roboczy szkic, plan i raport. Zamiast czytać oba materiały liniowo, możesz od razu poprosić o listę rozbieżności.</p>
       <div class="try-it">
         <div class="try-label">🧪 Ćwiczenie własne – porównaj dwa dokumenty</div>
+        <p><strong>Rekomendowana para do porównania:</strong> input_03a_dokument_do_porownania_poradnik_wyjazdow_ko_bialystok.pdf oraz input_03d_dokument_do_porownania_procedura_wycieczek.pdf.</p>
+        ${materialsBox('Dokumenty do porównania', [
+          { key: 'input03a', label: 'Pobierz dokument A: poradnik organizacji wyjazdów' },
+          { key: 'input03d', label: 'Pobierz dokument B: procedura wycieczek' }
+        ])}
         <div class="prompt-box" style="position:relative">
           <button class="prompt-copy-btn" onclick="copyPrompt(this)">Kopiuj</button>
           <button class="prompt-save-btn" onclick="savePromptFromBox(this)">⭐ Zapisz</button>
@@ -614,6 +634,12 @@ Obszar | Na czym polega rozbieżność | Co trzeba doprecyzować</pre>
       <div class="try-it">
         <div class="try-label">🧪 Ćwiczenie zespołowe – analiza ankiety</div>
         <p><strong>Sytuacja wyjściowa:</strong> macie krótkie odpowiedzi z ankiety po szkoleniu, wydarzeniu, projekcie albo działaniu szkolnym i chcecie przygotować z nich uporządkowane wnioski.</p>
+        ${materialsBox('Dane ankietowe do analizy', [
+          { key: 'input06aCsv', label: 'Pobierz CSV: bezpieczeństwo w szkole' },
+          { key: 'input06bCsv', label: 'Pobierz CSV: ankieta po szkoleniu' },
+          { key: 'input06aXlsx', label: 'Pobierz XLSX: bezpieczeństwo w szkole' },
+          { key: 'input06bXlsx', label: 'Pobierz XLSX: ankieta po szkoleniu' }
+        ])}
         <ol>
           <li>Ustalcie cel analizy: co chcecie wiedzieć po lekturze odpowiedzi?</li>
           <li>Sprawdźcie, czego nie wolno wklejać do publicznego narzędzia AI.</li>
@@ -717,6 +743,7 @@ PAGES.module5 = () => `
       <p>Jednym z najczęstszych zastosowań AI w pracy projektowej jest przygotowanie pierwszej wersji opisu działania. Najlepiej działa tu model, który dostaje fakty, zakres działania i jasny limit długości. Wszystkie brakujące dane warto oznaczać jako pola do uzupełnienia.</p>
       <div class="try-it">
         <div class="try-label">🧪 Ćwiczenie własne – opis działania</div>
+        ${materialsBox('Materiał wejściowy do opisu działania', [{ key: 'input07', label: 'Pobierz brief projektu edukacyjnego' }])}
         <div class="prompt-box" style="position:relative">
           <button class="prompt-copy-btn" onclick="copyPrompt(this)">Kopiuj</button>
           <button class="prompt-save-btn" onclick="savePromptFromBox(this)">⭐ Zapisz</button>
@@ -739,6 +766,7 @@ Zaznacz [UZUPEŁNIJ], jeśli brakuje danych liczbowych lub faktów.</pre>
       <p>AI dobrze wspiera pisanie roboczych maili: zmian terminu, potwierdzeń, próśb o informację lub podsumowań ustaleń. To szczególnie przydatne, gdy komunikacja odbywa się po angielsku lub gdy trzeba zachować profesjonalny, ale prosty styl.</p>
       <div class="try-it">
         <div class="try-label">🧪 Ćwiczenie własne – mail do partnera</div>
+        ${materialsBox('Materiał wejściowy do maila', [{ key: 'input08', label: 'Pobierz notatki do maila po angielsku' }])}
         <div class="prompt-box" style="position:relative">
           <button class="prompt-copy-btn" onclick="copyPrompt(this)">Kopiuj</button>
           <button class="prompt-save-btn" onclick="savePromptFromBox(this)">⭐ Zapisz</button>
@@ -763,6 +791,7 @@ Ton: profesjonalny, uprzejmy, prosty dla nienatywnych użytkowników języka.</p
       <p>Po wydarzeniu projektowym AI może pomóc szybko przygotować krótkie podsumowanie na stronę szkoły, media społecznościowe lub mail informacyjny. Warunkiem jest podanie faktów i jasne rozdzielenie tego, co już się wydarzyło, od tego, co jest planowane.</p>
       <div class="try-it">
         <div class="try-label">🧪 Ćwiczenie własne – komunikacja o projekcie</div>
+        ${materialsBox('Materiał wejściowy do treści promocyjnych', [{ key: 'input07', label: 'Pobierz brief projektu edukacyjnego' }])}
         <div class="prompt-box" style="position:relative">
           <button class="prompt-copy-btn" onclick="copyPrompt(this)">Kopiuj</button>
           <button class="prompt-save-btn" onclick="savePromptFromBox(this)">⭐ Zapisz</button>
@@ -791,6 +820,7 @@ Przygotuj:
         <li><div><strong>Zachowuj wersję źródłową.</strong> Przed użyciem porównaj tekst AI z notatkami, dokumentem lub ustaleniami zespołu.</div></li>
         <li><div><strong>Traktuj AI jako wsparcie redakcyjne.</strong> Nie jako autora faktów, decyzji i wyników projektu.</div></li>
       </ol>
+      ${materialsBox('Materiał do analizy ryzyka projektu', [{ key: 'input13', label: 'Pobierz plan projektu do analizy ryzyka' }])}
     </div>
 
     <div class="lesson-nav">
@@ -920,6 +950,10 @@ PAGES.module6 = () => `
       <div class="try-it">
         <div class="try-label">🧪 Ćwiczenie zespołowe – mini-kodeks AI</div>
         <p><strong>Sytuacja wyjściowa:</strong> Wasz zespół chce korzystać z AI, ale potrzebuje prostych zasad, które da się zastosować od jutra w codziennej pracy.</p>
+        ${materialsBox('Szablon i materiał pomocniczy', [
+          { key: 'input12', label: 'Pobierz szablon mini-kodeksu AI' },
+          { key: 'input10', label: 'Pobierz karty zasad AI do rankingu' }
+        ])}
         <ol>
           <li>Wybierzcie jeden kontekst: szkoła, dział administracyjny, projekt UE, zespół nauczycieli albo organizacja.</li>
           <li>Wypiszcie 5–7 sytuacji, w których ktoś może chcieć użyć AI.</li>

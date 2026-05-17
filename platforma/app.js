@@ -470,6 +470,56 @@ function modulePills() {
 }
 
 /* ══════════════════════════════════════
+   DOWNLOADABLE EXERCISE MATERIALS
+══════════════════════════════════════ */
+const COURSE_FILE_BASE = '../files/';
+const COURSE_FILES = {
+  input01a: { path: 'input_01a_dokument_szkolny_do_streszczenia_procedura_odbioru_uczniow.pdf', label: 'dokument szkolny do streszczenia: procedura odbioru uczniów' },
+  input01b: { path: 'input_01b_dokument_szkolny_do_streszczenia_regulamin_wycieczek.pdf', label: 'dokument szkolny do streszczenia: regulamin wycieczek' },
+  input02a: { path: 'input_02a_dlugi_dokument_do_analizy_egzamin_8kl_2026.pdf', label: 'długi dokument do analizy: egzamin ósmoklasisty' },
+  input02b: { path: 'input_02b_dlugi_dokument_do_analizy_matura_2026.pdf', label: 'długi dokument do analizy: egzamin maturalny' },
+  input03a: { path: 'input_03a_dokument_do_porownania_poradnik_wyjazdow_ko_bialystok.pdf', label: 'dokument A do porównania: poradnik organizacji wyjazdów' },
+  input03d: { path: 'input_03d_dokument_do_porownania_procedura_wycieczek.pdf', label: 'dokument B do porównania: procedura wycieczek' },
+  input04a: { path: 'input_04a_dlugi_watek_mailowy_80_lecie_szkoly.docx', label: 'długi wątek mailowy: 80-lecie szkoły' },
+  input04b: { path: 'input_04b_dlugi_watek_mailowy_szkolenie_wdn.docx', label: 'długi wątek mailowy: szkolenie WDN' },
+  input05: { path: 'input_05_tekst_dydaktyczny_do_adaptacji.docx', label: 'tekst dydaktyczny do uproszczenia i adaptacji' },
+  input06aCsv: { path: 'input_06a_ankieta_bezpieczenstwo_w_szkole.csv', label: 'dane ankietowe CSV: bezpieczeństwo w szkole' },
+  input06bCsv: { path: 'input_06b_ankieta_po_szkoleniu.csv', label: 'dane ankietowe CSV: ankieta po szkoleniu' },
+  input06aXlsx: { path: 'input_06a_ankieta_bezpieczenstwo_w_szkole.xlsx', label: 'dane ankietowe XLSX: bezpieczeństwo w szkole' },
+  input06bXlsx: { path: 'input_06b_ankieta_po_szkoleniu.xlsx', label: 'dane ankietowe XLSX: ankieta po szkoleniu' },
+  input07: { path: 'input_07_brief_projektu_edukacyjnego_2_przyklady.docx', label: 'brief projektu edukacyjnego z dwoma przykładami' },
+  input08: { path: 'input_08_notatki_do_maila_partner_angielski.docx', label: 'notatki do maila po angielsku do partnera' },
+  input09: { path: 'input_09_tekst_wzorcowy_do_reverse_prompting.docx', label: 'teksty wzorcowe do reverse prompting' },
+  input10: { path: 'input_10_karty_zasad_ai_do_rankingu.docx', label: 'karty zasad AI do rankingu' },
+  input11: { path: 'input_11_szablon_porownania_promptow.docx', label: 'szablon porównania promptów' },
+  input12: { path: 'input_12_szablon_mini_kodeksu_ai.docx', label: 'szablon mini-kodeksu AI' },
+  input13: { path: 'input_13_plan_projektu_do_analizy_ryzyka.docx', label: 'plan projektu do analizy ryzyka' },
+  input14: { path: 'input_14_karta_refleksji_i_oceny_wyniku_ai.docx', label: 'karta refleksji i oceny wyniku AI' },
+};
+
+const POLISH_FILE_NOTE = 'Uwaga: pliki do pobrania są przygotowane w języku polskim. Jeśli pracujesz w innym języku, przetłumacz dokument albo wklej jego treść do narzędzia AI i poproś o tłumaczenie oraz dalszą pracę w wybranym języku.';
+
+function materialDownloadLink(key, customLabel) {
+  const file = COURSE_FILES[key];
+  if (!file) return '';
+  return `<a class="material-download-link" href="${COURSE_FILE_BASE}${file.path}" download>${customLabel || file.label}</a>`;
+}
+
+function materialsBox(title, items, note = POLISH_FILE_NOTE) {
+  const links = items.map(item => {
+    if (typeof item === 'string') return materialDownloadLink(item);
+    return materialDownloadLink(item.key, item.label);
+  }).filter(Boolean).join('');
+
+  return `
+    <div class="materials-box">
+      <div class="materials-box-title">${title}</div>
+      <div class="materials-links">${links}</div>
+      ${note ? `<p class="materials-note">${note}</p>` : ''}
+    </div>`;
+}
+
+/* ══════════════════════════════════════
    PAGE: HOME
 ══════════════════════════════════════ */
 
@@ -504,7 +554,8 @@ PAGES.exercises = () => `
         <li>Zapisz: co AI zrobiła dobrze? Co jest ogólne lub błędne? Co byś zmienił/a?</li>
       </ol>
       <div class="tip-box" style="margin-top:12px"><strong>Jeśli nie wiesz od czego zacząć:</strong> Wpisz: „Napisz ogłoszenie dla rodziców klasy 6 o zebraniu w czwartek o 17:00. Temat: wyniki klasyfikacji i plan wycieczki szkolnej do Krakowa."</div>
-      <div class="key-insight" style="margin-top:12px"><strong>Na co zwróć uwagę:</strong> czy wynik jest konkretny, czy ogólny? czy byłbyś/abyś gotowy/a go użyć bez edycji? To pokaże Ci, jak ważny jest dobry prompt.</div>`,
+      <div class="key-insight" style="margin-top:12px"><strong>Na co zwróć uwagę:</strong> czy wynik jest konkretny, czy ogólny? czy byłbyś/abyś gotowy/a go użyć bez edycji? To pokaże Ci, jak ważny jest dobry prompt.</div>
+      ${materialsBox('Karta pracy po ćwiczeniu', [{ key: 'input14', label: 'Pobierz kartę refleksji i oceny wyniku AI' }])}`,
   `<ul><li>Masz działające konto w narzędziu AI</li><li>Masz swój pierwszy wynik AI</li><li>Potrafisz wskazać co jest dobre, co nie</li><li>Wiesz, co zmienić w prompcie, żeby wynik był lepszy</li></ul>`
 )}
     ${ex('ex2', '2', 'Ulepsz słaby prompt – technika PARTS', 'basic', '20–25 min',
@@ -521,7 +572,8 @@ PROMPT C: „Opisz projekt."</pre></div>
         <li>Porównaj oba wyniki. Jaka jest różnica? Który jest bardziej przydatny?</li>
       </ol>
       <div class="tip-box" style="margin-top:10px"><strong>Przykład ulepszonego Promptu B:</strong><br>„Działaj jako wychowawca klasy VI. Napisz profesjonalny mail do rodziców klasy zapraszający na zebranie w środę 15 maja o 17:00. Tematyka: podsumowanie semestru, plan wycieczki szkolnej. Ton: przyjazny, rzeczowy. Format: temat maila + treść (max 140 słów)"</div>
-      <p style="margin-top:12px"><strong>Kryteria oceny własnego promptu:</strong> czy zawiera min. 3 z 5 elementów PARTS? Czy wynik jest wyraźnie lepszy niż bez PARTS?</p>`,
+      <p style="margin-top:12px"><strong>Kryteria oceny własnego promptu:</strong> czy zawiera min. 3 z 5 elementów PARTS? Czy wynik jest wyraźnie lepszy niż bez PARTS?</p>
+      ${materialsBox('Karta do porównania wyników', [{ key: 'input14', label: 'Pobierz kartę refleksji i oceny wyniku AI' }])}`,
   `<ul><li>Napisałeś/aś przynajmniej 1 ulepszony prompt</li><li>Przetestowałeś/aś oba warianty i widzisz różnicę</li><li>Potrafisz nazwać elementy PARTS, które dodałeś/aś</li></ul>`
 )}
     ${ex('ex3', '3', 'Konspekt lekcji + różnicowanie', 'med', '20–25 min',
@@ -541,6 +593,7 @@ dla uczniów [KLASA, WIEK], [OPIS GRUPY].
 Uwzględnij: angażujące intro (max 5 min), pracę aktywną, podsumowanie.
 Format: tabela | Czas | Aktywność | Opis | Materiały</pre>
       </div>
+      ${materialsBox('Materiał opcjonalny do adaptacji', [{ key: 'input05', label: 'Pobierz tekst dydaktyczny do uproszczenia i adaptacji' }])}
       <p><strong>Nie jesteś nauczycielem przedmiotowym?</strong> Zamiast konspektu – przygotuj plan działania lub harmonogram dowolnego projektu szkolnego.</p>`,
   `<ul><li>Masz wygenerowany konspekt gotowy do adaptacji</li><li>Masz wersję zróżnicowaną (uproszczoną lub rozszerzoną)</li><li>Wiesz, co zmienić przed użyciem w klasie</li></ul>`
 )}
@@ -548,6 +601,10 @@ Format: tabela | Czas | Aktywność | Opis | Materiały</pre>
   'Wybierz zadanie z Twojej codziennej pracy i wykonaj je z pomocą AI.',
   `<p>Wybierz jedno zadanie:</p>
       <p><strong>Opcja A – Streszczenie dokumentu:</strong><br>Skopiuj fragment dowolnego dokumentu szkolnego (zarządzenie, regulamin, protokół). Usuń wszystkie imiona i nazwiska. Wklej do AI z promptem:</p>
+      ${materialsBox('Dokumenty wejściowe do opcji A', [
+        { key: 'input01a', label: 'Pobierz procedurę odbioru uczniów' },
+        { key: 'input01b', label: 'Pobierz regulamin wycieczek' }
+      ])}
       <div class="prompt-box" style="position:relative"><button class="prompt-copy-btn" onclick="copyPrompt(this)">Kopiuj</button><pre>Przeczytaj poniższy dokument i przygotuj:
 1. Streszczenie w max 5 zdaniach
 2. Listę moich zadań / działań z terminami
@@ -567,9 +624,10 @@ Podziel na etapy: 2 tyg. przed / 1 tyg. przed / dzień przed / w dniu</pre></div
     ${ex('ex5', '5', 'Opis działania projektowego', 'med', '10–15 min',
   'Wygeneruj szkic opisu działania do raportu projektowego i oceń krytycznie wynik.',
   `<ol>
-        <li>Pomyśl o projekcie, przy którym pracujesz lub pracowałeś/aś (możesz też wymyślić fikcyjny projekt Erasmus+).</li>
+        <li>Pomyśl o projekcie, przy którym pracujesz lub pracowałeś/aś. Jeśli nie masz własnego przykładu, pobierz brief projektu edukacyjnego.</li>
         <li>Wpisz do AI poniższy prompt – uzupełnij dane w nawiasach:</li>
       </ol>
+      ${materialsBox('Materiał wejściowy do opisu działania', [{ key: 'input07', label: 'Pobierz brief projektu edukacyjnego' }])}
       <div class="prompt-box" style="position:relative">
         <button class="prompt-copy-btn" onclick="copyPrompt(this)">Kopiuj</button>
         <pre>Jestem koordynatorem/ką projektu [TYP: Erasmus+/WIN4SMEs]
@@ -589,10 +647,14 @@ Zaznacz [UZUPEŁNIJ] gdzie potrzebne konkretne dane.</pre>
     ${ex('ex6', '6', 'Analiza obszernego dokumentu', 'med', '20 min',
   'Przećwicz pracę z długim wnioskiem lub procedurą metodą ekstrakcji, wykrywając granice modelu językowego.',
   `<ol>
-        <li>Wybierz długi dokument roboczy (np. statut, regulamin, przewodnik Erasmus+), min. 10 stron. Skopiuj jego sporą część (kilka stron).</li>
+        <li>Wybierz długi dokument roboczy (np. statut, regulamin, przewodnik Erasmus+), min. 10 stron. Jeśli nie masz własnego dokumentu, pobierz jeden z plików poniżej.</li>
         <li>Wklej do klasycznego AI (w razie problemów z długością, wgraj jako PDF jeśli używasz płatnej wersji).</li>
         <li>Wpisz prompt weryfikacyjny:</li>
       </ol>
+      ${materialsBox('Długie dokumenty do analizy', [
+        { key: 'input02a', label: 'Pobierz dokument o egzaminie ósmoklasisty' },
+        { key: 'input02b', label: 'Pobierz dokument o egzaminie maturalnym' }
+      ])}
       <div class="prompt-box" style="position:relative">
         <button class="prompt-copy-btn" onclick="copyPrompt(this)">Kopiuj</button>
         <pre>Wciel się w audytora. Przeanalizuj załączony dokument.
@@ -607,9 +669,10 @@ Oddaj wynik w tabeli: Warunek | Termin | Konsekwencja | Co sprawdzić.</pre>
     ${ex('ex7', '7', 'Mail w języku obcym', 'basic', '15 min',
   'Przećwicz użycie AI do korespondencji projektowej w języku obcym.',
   `<ol>
-        <li>Napisz w języku polskim, co chcesz przekazać (luźne notatki, np. spotkanie planowane było na 15 maja, zmieniamy na 22 maja).</li>
+        <li>Napisz w języku polskim, co chcesz przekazać, albo pobierz gotowe notatki robocze do maila.</li>
         <li>Wpisz do AI:</li>
       </ol>
+      ${materialsBox('Materiał wejściowy do maila', [{ key: 'input08', label: 'Pobierz notatki do maila po angielsku' }])}
       <div class="prompt-box" style="position:relative">
         <button class="prompt-copy-btn" onclick="copyPrompt(this)">Kopiuj</button>
         <pre>Działaj jako doświadczony koordynator projektów międzynarodowych.
@@ -624,9 +687,10 @@ Format: Temat maila + Treść (max 120 słów) + Podpis [TWOJE IMIE]</pre>
     ${ex('ex8', '8', 'Dostosowanie materiału do ucznia SPE', 'med', '15 min',
   'Dostosuj materiał dydaktyczny do potrzeb ucznia ze SPE.',
   `<ol>
-        <li>Przygotuj krótki tekst dydaktyczny ze swojego przedmiotu.</li>
+        <li>Przygotuj krótki tekst dydaktyczny ze swojego przedmiotu. Jeśli nie masz własnego tekstu, pobierz materiał ćwiczeniowy.</li>
         <li>Wklej jego treść do narzędzia AI i napisz:</li>
       </ol>
+      ${materialsBox('Tekst do uproszczenia', [{ key: 'input05', label: 'Pobierz tekst dydaktyczny do adaptacji' }])}
       <div class="prompt-box" style="position:relative">
         <button class="prompt-copy-btn" onclick="copyPrompt(this)">Kopiuj</button>
         <pre>Mam tekst dydaktyczny przeznaczony dla uczniów:
@@ -647,6 +711,10 @@ Przepisz go w wersji dostosowanej do ucznia z dysleksją:
   `<ol>
         <li>Wklej poniższe notatki ze spotkania rady pedagogicznej do AI i poproś o protokół:</li>
       </ol>
+      ${materialsBox('Dłuższy wariant do uporządkowania', [
+        { key: 'input04a', label: 'Pobierz długi wątek mailowy o uroczystości szkolnej' },
+        { key: 'input04b', label: 'Pobierz długi wątek mailowy o szkoleniu WDN' }
+      ])}
       <div class="prompt-box" style="position:relative">
         <button class="prompt-copy-btn" onclick="copyPrompt(this)">Kopiuj</button>
         <pre>Przeanalizuj notatki i przygotuj: 1. Formalny protokół 2. Listę działań z odpowiedzialnymi 3. Streszczenie dla nieobecnych (3 zdania)
@@ -661,8 +729,9 @@ Przepisz go w wersji dostosowanej do ucznia z dysleksją:
     ${ex('ex10', '10', 'Tworzenie treści promocyjnych projektu', 'basic', '15 min',
   'Przygotuj krótkie treści informacyjne i promocyjne o projekcie.',
   `<ol>
-        <li>Pomyśl o szkolnym projekcie i wymyśl co chcesz o nim napisać (Facebook/Strona www).</li>
+        <li>Pomyśl o szkolnym projekcie i wymyśl, co chcesz o nim napisać. Jeśli nie masz własnego przykładu, pobierz brief z dwoma opisami projektów.</li>
       </ol>
+      ${materialsBox('Materiał wejściowy do treści promocyjnych', [{ key: 'input07', label: 'Pobierz brief projektu edukacyjnego' }])}
       <div class="prompt-box" style="position:relative">
         <button class="prompt-copy-btn" onclick="copyPrompt(this)">Kopiuj</button>
         <pre>Działaj jako specjalista ds. komunikacji projektu.
@@ -678,6 +747,7 @@ Przygotuj:
   'Ustal wspólną listę zasad odpowiedzialnego używania AI.',
   `<p><strong>Praca:</strong> zespoły 2–3 osoby</p>
       <p><strong>Sytuacja wyjściowa:</strong> Wasz zespół chce korzystać z AI w sposób odpowiedzialny, ale zamiast długiej polityki potrzebuje krótkiej listy zasad, które naprawdę da się stosować w codziennej pracy szkoły, projektu albo biura.</p>
+      ${materialsBox('Karty do pracy zespołowej', [{ key: 'input10', label: 'Pobierz karty zasad AI do rankingu' }])}
       <table class="data-table">
         <thead><tr><th>Rola</th><th>Zakres odpowiedzialności</th></tr></thead>
         <tbody>
@@ -758,8 +828,12 @@ Zaczynam: Dzień dobry, Panie Tomaszu, chciałem omówić ostatnie wyniki syna..
     ${ex('ex14', '14', 'Ujarzmienie chaosu z ankiet', 'med', '15 min',
   'Uporządkuj chaotyczne odpowiedzi z ankiety i zamień je w tabelę.',
   `<ol>
-        <li>Skopiuj i wklej do AI poniższy zlepek "surowych" uwag uczniów wraz z podanym promptem:</li>
+        <li>Skopiuj i wklej do AI poniższy zlepek surowych uwag uczniów albo pobierz pełniejszy plik CSV z danymi ankietowymi.</li>
       </ol>
+      ${materialsBox('Dane ankietowe do analizy', [
+        { key: 'input06aCsv', label: 'Pobierz CSV: bezpieczeństwo w szkole' },
+        { key: 'input06bCsv', label: 'Pobierz CSV: ankieta po szkoleniu' }
+      ])}
       <div class="prompt-box" style="position:relative">
         <button class="prompt-copy-btn" onclick="copyPrompt(this)">Kopiuj</button>
         <pre>Jesteś analitykiem szkolnym. Przeanalizuj poniższe notatki.
@@ -773,9 +847,10 @@ Dane wejściowe:
     ${ex('ex15', '15', 'Odwrócona inżynieria (Reverse Prompting)', 'med', '15 min',
   'Odtwórz dobry prompt na podstawie gotowego tekstu.',
   `<ol>
-        <li>Znajdź w internecie bardzo dobry konspekt lekcji lub oficjalne ogłoszenie z urzędu.</li>
+        <li>Znajdź w internecie bardzo dobry konspekt lekcji lub oficjalne ogłoszenie. Możesz też użyć gotowego pliku z tekstami wzorcowymi.</li>
         <li>Wklej cały jego tekst do okna AI wraz z komendą inżynierii wstecznej:</li>
       </ol>
+      ${materialsBox('Teksty wzorcowe do ćwiczenia', [{ key: 'input09', label: 'Pobierz teksty wzorcowe do reverse prompting' }])}
       <div class="prompt-box" style="position:relative">
         <button class="prompt-copy-btn" onclick="copyPrompt(this)">Kopiuj</button>
         <pre>Oto świetny tekst z mojego obszaru zawodowego: 
@@ -790,6 +865,7 @@ Zaprojektuj dla mnie doskonały prompt w układzie PARTS, którego użycie zmusi
   'Przećwicz pracę zespołową nad jednym zadaniem i sprawdź, które elementy promptu realnie poprawiają wynik AI.',
   `<p><strong>Praca:</strong> zespoły 2–3 osoby</p>
       <p><strong>Sytuacja wyjściowa:</strong> Wasz zespół ma przygotować jeden konkretny materiał z pomocą AI, np. mail, streszczenie dokumentu, plan lekcji, opis działania projektowego albo analizę krótkich odpowiedzi z ankiety. Chcecie porównać, jak zmienia się wynik przy trzech poziomach doprecyzowania promptu.</p>
+      ${materialsBox('Karta pracy do porównania promptów', [{ key: 'input11', label: 'Pobierz szablon porównania promptów' }])}
       <table class="data-table">
         <thead><tr><th>Rola</th><th>Zakres odpowiedzialności</th></tr></thead>
         <tbody>
@@ -833,6 +909,12 @@ Zaprojektuj dla mnie doskonały prompt w układzie PARTS, którego użycie zmusi
   'Zaprojektuj bezpieczny sposób analizy krótkich odpowiedzi z ankiety i przygotuj z pomocą AI szkic mini-raportu.',
   `<p><strong>Praca:</strong> zespoły 2–3 osoby</p>
       <p><strong>Sytuacja wyjściowa:</strong> macie krótkie, zanonimizowane odpowiedzi z ankiety po szkoleniu, spotkaniu, wydarzeniu szkolnym lub działaniu projektowym. Chcecie szybko wyciągnąć główne kategorie, wnioski i rekomendacje, ale bez utraty kontroli nad danymi.</p>
+      ${materialsBox('Pełniejsze dane do ćwiczenia', [
+        { key: 'input06aCsv', label: 'Pobierz CSV: bezpieczeństwo w szkole' },
+        { key: 'input06bCsv', label: 'Pobierz CSV: ankieta po szkoleniu' },
+        { key: 'input06aXlsx', label: 'Pobierz XLSX: bezpieczeństwo w szkole' },
+        { key: 'input06bXlsx', label: 'Pobierz XLSX: ankieta po szkoleniu' }
+      ])}
       <table class="data-table">
         <thead><tr><th>Rola</th><th>Zakres odpowiedzialności</th></tr></thead>
         <tbody>
@@ -888,6 +970,10 @@ Dane: [WKLEJ ZANONIMIZOWANE ODPOWIEDZI]</pre>
   'Stwórz praktyczny zestaw zasad dla wybranego zespołu, tak żeby AI wspierała pracę bez osłabiania odpowiedzialności, prywatności i jakości treści.',
   `<p><strong>Praca:</strong> zespoły 2–3 osoby</p>
       <p><strong>Sytuacja wyjściowa:</strong> zespół nauczycieli, dział administracyjny, koordynatorzy projektu albo pracownicy organizacji chcą korzystać z AI, ale potrzebują krótkiego dokumentu z jasnymi zasadami: kiedy wolno użyć AI, czego nie wolno wkleić, co trzeba oznaczyć i co musi sprawdzić człowiek.</p>
+      ${materialsBox('Szablon i materiał pomocniczy', [
+        { key: 'input12', label: 'Pobierz szablon mini-kodeksu AI' },
+        { key: 'input10', label: 'Pobierz karty zasad AI do rankingu' }
+      ])}
       <table class="data-table">
         <thead><tr><th>Rola</th><th>Zakres odpowiedzialności</th></tr></thead>
         <tbody>
@@ -1023,7 +1109,8 @@ A) Dla uczniów z trudnościami / dysleksją:
    – każde kluczowe pojęcie wyjaśnione od razu
 B) Oryginalna (bez zmian)
 C) Dla uczniów zdolnych:
-   – 3 pytania do refleksji, zadanie badawcze „dla chętnych"`)}
+   – 3 pytania do refleksji, zadanie badawcze „dla chętnych"`,
+    materialsBox('Materiał do ćwiczenia', [{ key: 'input05', label: 'Pobierz tekst dydaktyczny do adaptacji' }]))}
 
     ${pc('pA3', 'A', 'A3 – Pytania sprawdzające (Bloom)',
       'Gdy chcesz stworzyć test, quiz lub exit ticket z różnymi poziomami trudności.',
@@ -1052,7 +1139,11 @@ Przygotuj:
 1. Streszczenie: 3–5 zdań – o czym jest i co z tego wynika
 2. Lista moich zadań: co ja muszę zrobić (checklista z terminami)
 3. Pytania do wyjaśnienia: co jest niejasne lub wymaga doprecyzowania
-Format: trzy osobne sekcje z nagłówkami`)}
+Format: trzy osobne sekcje z nagłówkami`,
+        materialsBox('Dokumenty wejściowe', [
+          { key: 'input01a', label: 'Pobierz procedurę odbioru uczniów' },
+          { key: 'input01b', label: 'Pobierz regulamin wycieczek' }
+        ]))}
 
     ${pc('pB2', 'B', 'B2 – Protokół ze spotkania',
           'Gdy masz luźne notatki ze spotkania i chcesz je zamienić w formalny protokół.',
@@ -1071,7 +1162,11 @@ Protokół powinien zawierać:
 4. Podjęte decyzje i uchwały
 5. Tabela zadań: Zadanie | Kto odpowiada | Termin
 6. Podpis (do uzupełnienia)
-Styl: formalny, rzeczowy, czas przeszły`)}
+Styl: formalny, rzeczowy, czas przeszły`,
+          materialsBox('Materiały do uporządkowania', [
+            { key: 'input04a', label: 'Pobierz wątek mailowy: 80-lecie szkoły' },
+            { key: 'input04b', label: 'Pobierz wątek mailowy: szkolenie WDN' }
+          ]))}
 
     ${pc('pC1', 'C', 'C1 – Mail do rodziców',
             'Gdy piszesz komunikat do rodziców i chcesz go przygotować profesjonalnie w ciągu minut.',
@@ -1117,7 +1212,8 @@ Napisz opis działania (180–220 słów) do raportu narracyjnego:
 – neutralny, rzeczowy styl (typowy dla dokumentów UE)
 – podkreśl: cel, przebieg, uczestnictwo, wartość dodaną, efekty
 – ZAZNACZ [UZUPEŁNIJ DANE] wszędzie gdzie potrzebne konkretne liczby
-Format: jeden akapit narracyjny. Język: [POLSKI / ANGIELSKI]`)}
+Format: jeden akapit narracyjny. Język: [POLSKI / ANGIELSKI]`,
+                materialsBox('Materiał wejściowy', [{ key: 'input07', label: 'Pobierz brief projektu edukacyjnego' }]))}
 
     ${pc('pD2', 'D', 'D2 – Mail do zagranicznego partnera projektu',
                   'Gdy piszesz korespondencję z partnerami zagranicznymi projektu.',
@@ -1133,7 +1229,8 @@ Kluczowe informacje:
 – [PUNKT 3: np. prośba o potwierdzenie]
 Ton: profesjonalny, ale przyjazny (wieloletni współpracownik)
 Język: angielski C1, czytelny dla nienatywnych użytkowników
-Format: Subject: + Greeting + Body (max 110 słów) + Closing + Signature`)}
+Format: Subject: + Greeting + Body (max 110 słów) + Closing + Signature`,
+                  materialsBox('Materiał wejściowy', [{ key: 'input08', label: 'Pobierz notatki do maila po angielsku' }]))}
 
     ${pc('pD3', 'D', 'D3 – Treści promocyjne o projekcie',
                     'Gdy chcesz opowiedzieć o projekcie szkołom, rodzicom lub mediom.',
@@ -1149,7 +1246,8 @@ Ostatnie działanie: [OPIS, np. "warsztaty mobilności w Bolonii dla 12 nauczyci
 Przygotuj:
 1. Post na Facebook/Instagram szkoły (max 80 słów, #hashtagi, angażujący)
 2. Akapit na stronę szkoły (max 100 słów, oficjalny, rzeczowy)
-3. Trzy propozycje tematu maila do rodziców o wynikach projektu`)}
+3. Trzy propozycje tematu maila do rodziców o wynikach projektu`,
+                    materialsBox('Materiał wejściowy', [{ key: 'input07', label: 'Pobierz brief projektu edukacyjnego' }]))}
 
     ${pc('pE1', 'E', 'E1 – Analiza ryzyk przed startem projektu',
                       'Gdy planujesz nowe przedsięwzięcie i chcesz zabezpieczyć się przed porażką.',
@@ -1163,7 +1261,8 @@ Oto plan mojego nowego przedsięwzięcia: [WKLEJ PLAN/ZAŁOŻENIA]
 Pokaż możliwe scenariusze porażki. Załóżmy, że jesteśmy pół roku w przyszłości i to przedsięwzięcie nie przyniosło oczekiwanych rezultatów.
 1. Zidentyfikuj 3 najbardziej prawdopodobne punkty krytyczne, przez które projekt mógł się nie udać.
 2. Spróbuj wskazać błędy w komunikacji ludzkiej i niedoszacowania zasobów.
-3. Przedstaw do każdego punktu konkretną tabelę ze środkami zapobiegawczymi (Co zrobić już dziś, by tego uniknąć).`)}
+3. Przedstaw do każdego punktu konkretną tabelę ze środkami zapobiegawczymi (Co zrobić już dziś, by tego uniknąć).`,
+                      materialsBox('Materiał wejściowy', [{ key: 'input13', label: 'Pobierz plan projektu do analizy ryzyka' }]))}
 
     ${pc('pE2', 'E', 'E2 – Zestawianie sprzeczności',
                         'Gdy dokumenty robocze lub ustalenia nie spinają się ze sobą.',
@@ -1176,7 +1275,11 @@ Tekst A (Procedura domyślna): [WKLEJ TEKST A]
 Tekst B (Stan faktyczny): [WKLEJ TEKST B]
 
 Twoje zadanie: Pomiń powielenia i skup się WYŁĄCZNIE na tym, gdzie Tekst B zaprzecza Tekstowi A, albo łamie podane wytyczne.
-Wygeneruj listę ryzyk: punkt, na czym polega sprzeczność i kto musi podjąć decyzję.`)}
+Wygeneruj listę ryzyk: punkt, na czym polega sprzeczność i kto musi podjąć decyzję.`,
+                        `${materialsBox('Rekomendowana para do porównania', [
+                          { key: 'input03a', label: 'Pobierz dokument A: poradnik organizacji wyjazdów' },
+                          { key: 'input03d', label: 'Pobierz dokument B: procedura wycieczek' }
+                        ])}<div class="tip-box" style="margin-top:10px"><strong>Rekomendowana para do porównania:</strong> input_03a_dokument_do_porownania_poradnik_wyjazdow_ko_bialystok.pdf oraz input_03d_dokument_do_porownania_procedura_wycieczek.pdf.</div>`)}
 
     ${pc('pE3', 'E', 'E3 – Porządkowanie przeciążenia informacyjnego',
                           'Gdy masz długi wątek z wieloma odpowiedziami i nie wiesz na czym stoisz.',
@@ -1190,7 +1293,11 @@ Mam tylko kilka minut przed spotkaniem. Poniżej wklejam długi, sklejony wątek
 Twoje zadanie to oddzielić informacje ważne od mniej ważnych:
 1. W jednym zdaniu - o czym jest ten wątek lub dyskusja.
 2. Tabela: [Kto musi to zrobić] | [Konkretne zadanie przypisane u] | [Deadline]
-3. Oznacz pilne sprawy lub pytania, które pozostają bez odpowiedzi od dwóch dni.`)}
+3. Oznacz pilne sprawy lub pytania, które pozostają bez odpowiedzi od dwóch dni.`,
+                          materialsBox('Materiały do uporządkowania', [
+                            { key: 'input04a', label: 'Pobierz wątek mailowy: 80-lecie szkoły' },
+                            { key: 'input04b', label: 'Pobierz wątek mailowy: szkolenie WDN' }
+                          ]))}
 
     ${pc('pH1', 'H', 'H1 – Weryfikacja i krytyczna analiza odpowiedzi AI',
                             'Użyj <em>zawsze</em> po otrzymaniu ważnej odpowiedzi AI – szczególnie w kwestiach faktycznych, prawnych lub projektowych.',
@@ -1213,7 +1320,7 @@ Podaj konkretne wskazania – nie ogólniki.`)}
 
 const defaultPromptCards = new Set(['pA1', 'pB1', 'pD1']);
 
-function pc(anchor, cat, title, when, warn, basic, advanced) {
+function pc(anchor, cat, title, when, warn, basic, advanced, materials = '') {
   const catLabel = { A: 'Dydaktyka', B: 'Dokumenty i org.', C: 'Komunikacja', D: 'Projekty UE', E: 'Zarządzanie projektem', H: 'Weryfikacja AI' }[cat];
   return `
   <div class="prompt-card ${defaultPromptCards.has(anchor) ? 'open' : ''}" id="${anchor}" data-cat="${cat}">
@@ -1227,6 +1334,7 @@ function pc(anchor, cat, title, when, warn, basic, advanced) {
     <div class="prompt-card-body">
       ${when ? `<p class="prompt-when">📌 <strong>Kiedy używać:</strong> ${when}</p>` : ''}
       ${warn ? `<div class="prompt-warning">⚠️ <span>${warn}</span></div>` : ''}
+      ${materials || ''}
       <div class="prompt-version-label pvl-basic">WERSJA PROSTA</div>
       <div class="prompt-box" style="position:relative">
         <button class="prompt-copy-btn" onclick="copyPrompt(this)">Kopiuj</button>
