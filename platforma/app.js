@@ -497,7 +497,7 @@ const COURSE_FILES = {
   input14: { path: 'input_14_karta_refleksji_i_oceny_wyniku_ai.docx', label: 'karta refleksji i oceny wyniku AI' },
 };
 
-const POLISH_FILE_NOTE = 'Uwaga: pliki do pobrania są przygotowane w języku polskim. Jeśli pracujesz w innym języku, przetłumacz dokument albo wklej jego treść do narzędzia AI i poproś o tłumaczenie oraz dalszą pracę w wybranym języku.';
+const POLISH_FILE_NOTE = 'Uwaga: plik jest po polsku. Jeśli pracujesz w innym języku, przetłumacz dokument albo wklej jego treść do narzędzia AI i poproś o dalszą pracę w wybranym języku.';
 
 function materialDownloadLink(key, customLabel) {
   const file = COURSE_FILES[key];
@@ -534,7 +534,7 @@ PAGES.exercises = () => `
   <div class="page-header">
     <div class="breadcrumb"><a href="#" onclick="showPage('home')">🏠 Start</a> <span class="bc-sep">›</span> Ćwiczenia</div>
     <h2>🧩 Ćwiczenia praktyczne</h2>
-    <p>18 głównych ćwiczeń kursu. Każde zawiera cel, instrukcję krok po kroku, materiał startowy lub gotowy prompt oraz kryteria sukcesu.</p>
+    <p>18 ćwiczeń kursu. Każde ma cel, instrukcję, materiał startowy lub prompt oraz kryteria sukcesu.</p>
     <button id="doneBtn_exercises" class="mark-done-btn" onclick="markDone('exercises')">✓ Oznacz jako ukończony</button>
   </div>
   <div class="filter-bar">
@@ -554,21 +554,21 @@ PAGES.exercises = () => `
         <li>Zapisz: co AI zrobiła dobrze? Co jest ogólne lub błędne? Co byś zmienił/a?</li>
       </ol>
       <div class="tip-box" style="margin-top:12px"><strong>Jeśli nie wiesz od czego zacząć:</strong> Wpisz: „Napisz ogłoszenie dla rodziców klasy 6 o zebraniu w czwartek o 17:00. Temat: wyniki klasyfikacji i plan wycieczki szkolnej do Krakowa."</div>
-      <div class="key-insight" style="margin-top:12px"><strong>Na co zwróć uwagę:</strong> czy wynik jest konkretny, czy ogólny? czy byłbyś/abyś gotowy/a go użyć bez edycji? To pokaże Ci, jak ważny jest dobry prompt.</div>
+      <div class="key-insight" style="margin-top:12px"><strong>Na co zwróć uwagę:</strong> czy wynik jest konkretny, czy ogólny? Czy możesz go użyć po krótkiej edycji? Zapisz, czego zabrakło w poleceniu.</div>
       ${materialsBox('Karta pracy po ćwiczeniu', [{ key: 'input14', label: 'Pobierz kartę refleksji i oceny wyniku AI' }])}`,
   `<ul><li>Masz działające konto w narzędziu AI</li><li>Masz swój pierwszy wynik AI</li><li>Potrafisz wskazać co jest dobre, co nie</li><li>Wiesz, co zmienić w prompcie, żeby wynik był lepszy</li></ul>`
 )}
     ${ex('ex2', '2', 'Ulepsz słaby prompt – technika PARTS', 'basic', '20–25 min',
-  'Zastosuj framework PARTS, żeby zobaczyć, jak zmiana promptu zmienia wynik AI.',
+  'Popraw jeden z trzech promptów i porównaj odpowiedzi przed i po zmianie.',
   `<p><strong>Masz 3 słabe prompty. Wybierz jeden i popraw go według PARTS.</strong></p>
       <div class="prompt-box"><pre>PROMPT A: „Napisz lekcję o wojnie."
 PROMPT B: „Zrób mail do rodziców."
 PROMPT C: „Opisz projekt."</pre></div>
       <ol>
         <li>Wybierz jeden prompt (najlepiej ten, który pasuje do Twojej pracy).</li>
-        <li>Wpisz go do AI – przepisz wynik.</li>
+        <li>Wpisz go do AI – zapisz wynik.</li>
         <li>Teraz przepisz ten sam prompt według PARTS: dodaj Personę, Cel, Odbiorców, Ton, Format.</li>
-        <li>Wpisz ulepszoną wersję do AI – przepisz wynik.</li>
+        <li>Wpisz ulepszoną wersję do AI – zapisz wynik.</li>
         <li>Porównaj oba wyniki. Jaka jest różnica? Który jest bardziej przydatny?</li>
       </ol>
       <div class="tip-box" style="margin-top:10px"><strong>Przykład ulepszonego Promptu B:</strong><br>„Działaj jako wychowawca klasy VI. Napisz profesjonalny mail do rodziców klasy zapraszający na zebranie w środę 15 maja o 17:00. Tematyka: podsumowanie semestru, plan wycieczki szkolnej. Ton: przyjazny, rzeczowy. Format: temat maila + treść (max 140 słów)"</div>
@@ -577,7 +577,7 @@ PROMPT C: „Opisz projekt."</pre></div>
   `<ul><li>Napisałeś/aś przynajmniej 1 ulepszony prompt</li><li>Przetestowałeś/aś oba warianty i widzisz różnicę</li><li>Potrafisz nazwać elementy PARTS, które dodałeś/aś</li></ul>`
 )}
     ${ex('ex3', '3', 'Konspekt lekcji + różnicowanie', 'med', '20–25 min',
-  'Wygeneruj konspekt lekcji ze swojego przedmiotu, a potem dostosuj wybrany fragment do uczniów o różnych potrzebach.',
+  'Przygotuj konspekt lekcji, a potem dostosuj wybrany fragment do innej grupy uczniów.',
   `<ol>
         <li>Wybierz temat swojej najbliższej lekcji (lub temat, który masz zaplanowany).</li>
         <li>Wpisz do AI prompt z frameworkiem PARTS – patrz gotowy prompt poniżej.</li>
@@ -590,7 +590,7 @@ PROMPT C: „Opisz projekt."</pre></div>
         <pre>Działaj jako doświadczony nauczyciel [TWÓJ PRZEDMIOT] w [TYP SZKOŁY].
 Przygotuj konspekt lekcji (45 min) na temat [TEMAT]
 dla uczniów [KLASA, WIEK], [OPIS GRUPY].
-Uwzględnij: angażujące intro (max 5 min), pracę aktywną, podsumowanie.
+Uwzględnij: krótkie wprowadzenie (max 5 min), pracę aktywną, podsumowanie.
 Format: tabela | Czas | Aktywność | Opis | Materiały</pre>
       </div>
       ${materialsBox('Materiał opcjonalny do adaptacji', [{ key: 'input05', label: 'Pobierz tekst dydaktyczny do uproszczenia i adaptacji' }])}
@@ -598,7 +598,7 @@ Format: tabela | Czas | Aktywność | Opis | Materiały</pre>
   `<ul><li>Masz wygenerowany konspekt gotowy do adaptacji</li><li>Masz wersję zróżnicowaną (uproszczoną lub rozszerzoną)</li><li>Wiesz, co zmienić przed użyciem w klasie</li></ul>`
 )}
     ${ex('ex4', '4', 'AI w dokumentach – 3 opcje', 'basic', '15–20 min',
-  'Wybierz zadanie z Twojej codziennej pracy i wykonaj je z pomocą AI.',
+  'Wybierz jedno zadanie z codziennej pracy i przygotuj pierwszy szkic z AI.',
   `<p>Wybierz jedno zadanie:</p>
       <p><strong>Opcja A – Streszczenie dokumentu:</strong><br>Skopiuj fragment dowolnego dokumentu szkolnego (zarządzenie, regulamin, protokół). Usuń wszystkie imiona i nazwiska. Wklej do AI z promptem:</p>
       ${materialsBox('Dokumenty wejściowe do opcji A', [
@@ -612,17 +612,17 @@ Format: tabela | Czas | Aktywność | Opis | Materiały</pre>
 Dokument: [WKLEJ TEKST]</pre></div>
       <p><strong>Opcja B – Mail do rodziców:</strong><br>Wklej poniższe notatki i poproś AI o gotowy mail:</p>
       <div class="prompt-box" style="position:relative"><button class="prompt-copy-btn" onclick="copyPrompt(this)">Kopiuj</button><pre>Wychowawca klasy VI. Napisz mail do rodziców na podstawie notatek:
-„Czwartek g.16.00, zebranie, zabrać notatki, info o wycieczce
+„Czwartek, godz. 16:00, zebranie, zabrać notatki, info o wycieczce
 do stolicy 7 marca, 120 EUR, formularz, spotkanie z dyrekcją"
 Ton: ciepły, rzeczowy. Format: temat + treść (max 130 słów)</pre></div>
       <p><strong>Opcja C – Checklista organizacyjna:</strong></p>
       <div class="prompt-box" style="position:relative"><button class="prompt-copy-btn" onclick="copyPrompt(this)">Kopiuj</button><pre>Przygotuj checklistę do organizacji:
 [wycieczki szkolnej / olimpiady / dni otwartych / konferencji]
 Podziel na etapy: 2 tyg. przed / 1 tyg. przed / dzień przed / w dniu</pre></div>`,
-  `<ul><li>Masz gotowy wytwór: streszczenie / mail / checklista</li><li>Wskazujesz, co poprawić lub uzupełnić przed użyciem</li><li>Szacujesz: ile czasu zajęłoby to bez AI?</li></ul>`
+  `<ul><li>Masz szkic: streszczenie, mail albo checklistę</li><li>Wskazujesz, co poprawić lub uzupełnić przed użyciem</li><li>Szacujesz, ile czasu zajęłoby to bez AI</li></ul>`
 )}
     ${ex('ex5', '5', 'Opis działania projektowego', 'med', '10–15 min',
-  'Wygeneruj szkic opisu działania do raportu projektowego i oceń krytycznie wynik.',
+  'Przygotuj szkic opisu działania i sprawdź, gdzie wymaga faktów.',
   `<ol>
         <li>Pomyśl o projekcie, przy którym pracujesz lub pracowałeś/aś. Jeśli nie masz własnego przykładu, pobierz brief projektu edukacyjnego.</li>
         <li>Wpisz do AI poniższy prompt – uzupełnij dane w nawiasach:</li>
@@ -636,16 +636,16 @@ W [MIESIĄC ROK] odbyło się [DZIAŁANIE] z udziałem [OPIS].
 Tematyka: [TEMAT].
 
 Napisz opis działania (180–220 słów) do raportu narracyjnego UE.
-Styl: rzeczowy, profesjonalny, wartość dodana.
+Styl: rzeczowy. Pokaż, co działanie wniosło dla uczestników.
 Zaznacz [UZUPEŁNIJ] gdzie potrzebne konkretne dane.</pre>
       </div>
       <div class="alert-box"><strong>Po otrzymaniu wyniku sprawdź krytycznie:</strong><br>
       Ile miejsc [UZUPEŁNIJ] jest w tekście? Co AI „zmyśliła" lub przesadziła? Czy ton pasuje do dokumentów UE? Czy możesz ten tekst podpisać i wysłać?</div>
-      <div class="tip-box" style="margin-top:10px"><strong>Ważne:</strong> Wynik AI to zawsze punkt wyjścia, nigdy gotowy raport. Bierzesz pełną odpowiedzialność za to, co wyślesz do instytucji grantowej.</div>`,
+      <div class="tip-box" style="margin-top:10px"><strong>Ważne:</strong> Wynik AI to punkt wyjścia, nie gotowy raport. Przed wysłaniem sprawdź fakty i uzupełnij dane.</div>`,
   `<ul><li>Masz szkic opisu działania</li><li>Wskazałeś/aś min. 2 miejsca do weryfikacji</li><li>Wiesz, czego AI nie mogła wiedzieć o Twoim projekcie</li></ul>`
 )}
     ${ex('ex6', '6', 'Analiza obszernego dokumentu', 'med', '20 min',
-  'Przećwicz pracę z długim wnioskiem lub procedurą metodą ekstrakcji, wykrywając granice modelu językowego.',
+  'Sprawdź, jak AI wyciąga obowiązki i terminy z długiego dokumentu.',
   `<ol>
         <li>Wybierz długi dokument roboczy (np. statut, regulamin, przewodnik Erasmus+), min. 10 stron. Jeśli nie masz własnego dokumentu, pobierz jeden z plików poniżej.</li>
         <li>Wklej do klasycznego AI (w razie problemów z długością, wgraj jako PDF jeśli używasz płatnej wersji).</li>
@@ -663,11 +663,11 @@ i twarde obowiązki z terminami.
 Pomiń ogólne fragmenty, które nie zmieniają decyzji.
 Oddaj wynik w tabeli: Warunek | Termin | Konsekwencja | Co sprawdzić.</pre>
       </div>
-      <div class="alert-box"><strong>Krytyczna weryfikacja:</strong> Skonfrontuj tabelę z dokumentem. Czy AI pominęła jakiś warunek brzegowy ukryty pod koniec tekstu? Jeśli tak, właśnie widać ograniczenie zwykłego czatu przy dużej ilości tekstu. Do takich zadań lepiej używać narzędzi pracujących na wskazanych źródłach, np. NotebookLM.</div>`,
+      <div class="alert-box"><strong>Sprawdź wynik:</strong> porównaj tabelę z dokumentem. Czy AI pominęła warunek zapisany pod koniec tekstu? Przy takich zadaniach lepiej używać narzędzi, które pokazują źródła, np. NotebookLM.</div>`,
   `<ul><li>Rozumiesz ryzyko podawania długiego PDF-a do zwykłego czatu AI</li><li>Zauważyłeś/aś, że model może streścić tekst z pominięciem detali</li><li>Znasz prompt audytowy do skanowania warunków zaporowych</li></ul>`
 )}
     ${ex('ex7', '7', 'Mail w języku obcym', 'basic', '15 min',
-  'Przećwicz użycie AI do korespondencji projektowej w języku obcym.',
+  'Przygotuj roboczy mail po angielsku na podstawie krótkich notatek.',
   `<ol>
         <li>Napisz w języku polskim, co chcesz przekazać, albo pobierz gotowe notatki robocze do maila.</li>
         <li>Wpisz do AI:</li>
@@ -676,11 +676,11 @@ Oddaj wynik w tabeli: Warunek | Termin | Konsekwencja | Co sprawdzić.</pre>
       <div class="prompt-box" style="position:relative">
         <button class="prompt-copy-btn" onclick="copyPrompt(this)">Kopiuj</button>
         <pre>Działaj jako doświadczony koordynator projektów międzynarodowych.
-Na podstawie poniższych notatek napisz profesjonalny email do partnerów z Włoch.
+Na podstawie poniższych notatek napisz krótki email do partnerów z Włoch.
 Notatki: [WKLEJ NOTATKI]
 Język: angielski (B2-C1)
-Ton: profesjonalny, ale przyjazny; projektowy
-Format: Temat maila + Treść (max 120 słów) + Podpis [TWOJE IMIE]</pre>
+Ton: uprzejmy i rzeczowy
+Format: Temat maila + Treść (max 120 słów) + Podpis [TWOJE IMIĘ]</pre>
       </div>`,
   `<ul><li>Język jest poprawny gramatycznie i grzecznościowo</li><li>Uchwycono kluczowe zmiany z notatek</li><li>Wygenerowany mail nadaje się do wysłania po korekcie danych osobowych</li></ul>`
 )}
@@ -718,15 +718,15 @@ Przepisz go w wersji dostosowanej do ucznia z dysleksją:
       <div class="prompt-box" style="position:relative">
         <button class="prompt-copy-btn" onclick="copyPrompt(this)">Kopiuj</button>
         <pre>Przeanalizuj notatki i przygotuj: 1. Formalny protokół 2. Listę działań z odpowiedzialnymi 3. Streszczenie dla nieobecnych (3 zdania)
-[NOTATKI]: Środa 12 marca, 15:00. Obecni: dyrektor Wiśniewski, 18 n-cli. 
+[NOTATKI]: Środa 12 marca, 15:00. Obecni: dyrektor, 18 nauczycieli.
 1. Wyniki klasyfikacji – ogólnie dobrze, 3 uczniów zagrożonych z matematyki (VII kl.) – zebrania z rodzicami do 20 marca.
-2. Dzień Ziemi 22 kwietnia, Kowalska potrzebuje 3 wolontariuszy.
-3. Erasmus+ – spotkanie w Palermo – 4 nauczycieli, Adamska sprawdza finanse.
-4. Ogrzewanie w sali 12 (zgłosi Wiśniewski).</pre>
+2. Dzień Ziemi 22 kwietnia, nauczyciel A potrzebuje 3 wolontariuszy.
+3. Erasmus+ – spotkanie w Palermo – 4 nauczycieli, koordynator projektu sprawdza finanse.
+4. Ogrzewanie w sali 12 (zgłasza dyrektor).</pre>
       </div>`,
   `<ul><li>Powstał uporządkowany protokół</li><li>Wyodrębniono konkretne zadania dla osób</li><li>Streszczenie jest zwięzłe i trafne</li></ul>`
 )}
-    ${ex('ex10', '10', 'Tworzenie treści promocyjnych projektu', 'basic', '15 min',
+    ${ex('ex10', '10', 'Treści informacyjne o projekcie', 'basic', '15 min',
   'Przygotuj krótkie treści informacyjne i promocyjne o projekcie.',
   `<ol>
         <li>Pomyśl o szkolnym projekcie i wymyśl, co chcesz o nim napisać. Jeśli nie masz własnego przykładu, pobierz brief z dwoma opisami projektów.</li>
@@ -741,12 +741,12 @@ Przygotuj:
 2. Krótki akapit na stronę www (100 słów, oficjalny, rzeczowy)
 3. 3 propozycje tematu emaila do rodziców z informacją o wynikach</pre>
       </div>`,
-  `<ul><li>Ton postu na Facebooka diametralnie różni się od opisu na stronę www</li><li>Tekst nie używa ciężkiego "projektowego" żargonu</li><li>Wymaga minimalnej redakcji przed publikacją</li></ul>`
+  `<ul><li>Post i opis na stronę mają różny ton</li><li>Tekst nie używa ciężkiego żargonu projektowego</li><li>Wymaga tylko krótkiej redakcji przed publikacją</li></ul>`
 )}
     ${ex('ex11', '11', '10 Zasad AI – Ranking Postaw', 'basic', '20 min',
-  'Ustal wspólną listę zasad odpowiedzialnego używania AI.',
+  'Ułóżcie ranking zasad używania AI w Waszym zespole.',
   `<p><strong>Praca:</strong> zespoły 2–3 osoby</p>
-      <p><strong>Sytuacja wyjściowa:</strong> Wasz zespół chce korzystać z AI w sposób odpowiedzialny, ale zamiast długiej polityki potrzebuje krótkiej listy zasad, które naprawdę da się stosować w codziennej pracy szkoły, projektu albo biura.</p>
+      <p><strong>Sytuacja wyjściowa:</strong> Wasz zespół chce używać AI, ale potrzebuje krótkich zasad do codziennej pracy w szkole, projekcie lub biurze.</p>
       ${materialsBox('Karty do pracy zespołowej', [{ key: 'input10', label: 'Pobierz karty zasad AI do rankingu' }])}
       <table class="data-table">
         <thead><tr><th>Rola</th><th>Zakres odpowiedzialności</th></tr></thead>
@@ -782,12 +782,12 @@ Przygotuj:
       <li>Wiem, czym jest model językowy i dlaczego AI może tworzyć błędne odpowiedzi?</li>
       <li>Potrafię zbudować prompt ze zwrotami PARTS?</li>
       <li>Wiem, co grozi za wklejenie danych wrażliwych ucznia?</li>
-      <li>Mam ściągnięty do notatnika chociaż jeden "mój" prompt na ułatwienie życia w tym tygodniu?</li>
+      <li>Mam zapisany co najmniej jeden prompt do zadania z mojej pracy?</li>
       </ol></div>`,
   `<ul><li>Rozumienie ograniczeń modelu językowego</li><li>Gotowość do bezpiecznego użycia narzędzia w pracy dydaktycznej</li></ul>`
 )}
-    ${ex('ex13', '13', 'Trening rezyliencji – AI jako trudny rodzic', 'med', '20 min',
-  'Przećwicz trudną rozmowę z pomocą AI w formie roleplay.',
+    ${ex('ex13', '13', 'Trudna rozmowa – AI jako rodzic', 'med', '20 min',
+  'Przećwicz krótką rozmowę z wymagającym rodzicem.',
   `<p><strong>Praca:</strong> solo lub w parze</p>
       <p><strong>Sytuacja wyjściowa:</strong> chcesz przećwiczyć trudną rozmowę z rodzicem, zanim odbędzie się ona naprawdę. AI ma odegrać wymagającego rozmówcę, a jeśli pracujecie w parze, druga osoba ma obserwować przebieg i dać informację zwrotną.</p>
       <table class="data-table">
@@ -812,7 +812,7 @@ Jesteś wymagający, roszczeniowy, obwiniasz metody szkoły za oceny syna.
 Ja zagram rolę nauczyciela. Będę symulował rozmowę przez okno czatu.
 Pisz bardzo krótkie wiadomości, max 2-3 zdania.
 Zawsze czekaj na moją odpowiedź. Nie pisz całego dialogu na raz.
-Zaczynam: Dzień dobry, Panie Tomaszu, chciałem omówić ostatnie wyniki syna...</pre>
+Zaczynam: Dzień dobry, chciałbym omówić ostatnie wyniki Pana/Pani dziecka...</pre>
       </div>
       <div class="tip-box" style="margin-top:12px"><strong>Efekt końcowy:</strong> zapis 3-4 wymian zdań oraz krótka notatka z informacją, co zadziałało dobrze, a co wymaga dalszego ćwiczenia.</div>
       <div class="reflection-box">
@@ -825,10 +825,10 @@ Zaczynam: Dzień dobry, Panie Tomaszu, chciałem omówić ostatnie wyniki syna..
       </div>`,
   `<ul><li>Udało się przeprowadzić rozmowę krok po kroku, bez generowania całego dialogu naraz</li><li>Masz zapis co najmniej 3 odpowiedzi na trudne komunikaty</li><li>Powstała krótka notatka z mocnymi stronami i obszarami do poprawy</li><li>Ćwiczenie pomogło przełożyć prompt na realną sytuację komunikacyjną</li></ul>`
 )}
-    ${ex('ex14', '14', 'Ujarzmienie chaosu z ankiet', 'med', '15 min',
-  'Uporządkuj chaotyczne odpowiedzi z ankiety i zamień je w tabelę.',
+    ${ex('ex14', '14', 'Porządkowanie odpowiedzi z ankiet', 'med', '15 min',
+  'Pogrupuj krótkie odpowiedzi z ankiety i przygotuj tabelę wniosków.',
   `<ol>
-        <li>Skopiuj i wklej do AI poniższy zlepek surowych uwag uczniów albo pobierz pełniejszy plik CSV z danymi ankietowymi.</li>
+        <li>Skopiuj i wklej do AI krótką próbkę odpowiedzi albo pobierz pełniejszy plik CSV z danymi ankietowymi.</li>
       </ol>
       ${materialsBox('Dane ankietowe do analizy', [
         { key: 'input06aCsv', label: 'Pobierz CSV: bezpieczeństwo w szkole' },
@@ -838,31 +838,31 @@ Zaczynam: Dzień dobry, Panie Tomaszu, chciałem omówić ostatnie wyniki syna..
         <button class="prompt-copy-btn" onclick="copyPrompt(this)">Kopiuj</button>
         <pre>Jesteś analitykiem szkolnym. Przeanalizuj poniższe notatki.
 Pogrupuj odpowiedzi w powtarzające się Kategorie tematyczne (np. Relacje).
-Wygeneruj czystą tabelę podsumowującą w układzie tabelarycznym: Kategoria | Główne wnioski | Cytat.
+Zwróć wynik w tabeli: Kategoria | Główne wnioski | Cytat.
 Dane wejściowe: 
-"nudno na historii", "dlaczego znowu klasówka w piątek?!", "kasia mnie ignoruje", "za zimno w klasie nr 5", "pani kowalska za dużo krzyczy", "super była wczoraj gra", "nic nie rozumiem z fizyki", "chcę więcej przerw", "kiedy wycieczka?"</pre>
+"nudno na historii", "dlaczego znowu klasówka w piątek?!", "koleżanka mnie ignoruje", "za zimno w klasie nr 5", "nauczyciel za dużo krzyczy", "dobra była wczoraj gra", "nic nie rozumiem z fizyki", "chcę więcej przerw", "kiedy wycieczka?"</pre>
       </div>`,
-  `<ul><li>AI poprawnie pogrupowała chaotyczne myśli</li><li>Wygenerowano format tabeli zamiast opowiadania</li><li>Zrozumiano użyteczność AI do pracy analitycznej</li></ul>`
+  `<ul><li>AI poprawnie pogrupowała odpowiedzi</li><li>Wygenerowano format tabeli zamiast opowiadania</li><li>Wiesz, jak użyć AI do prostej analizy ankiety</li></ul>`
 )}
     ${ex('ex15', '15', 'Odwrócona inżynieria (Reverse Prompting)', 'med', '15 min',
   'Odtwórz dobry prompt na podstawie gotowego tekstu.',
   `<ol>
-        <li>Znajdź w internecie bardzo dobry konspekt lekcji lub oficjalne ogłoszenie. Możesz też użyć gotowego pliku z tekstami wzorcowymi.</li>
+        <li>Znajdź dobry konspekt lekcji lub oficjalne ogłoszenie. Możesz też użyć gotowego pliku z tekstami wzorcowymi.</li>
         <li>Wklej cały jego tekst do okna AI wraz z komendą inżynierii wstecznej:</li>
       </ol>
       ${materialsBox('Teksty wzorcowe do ćwiczenia', [{ key: 'input09', label: 'Pobierz teksty wzorcowe do reverse prompting' }])}
       <div class="prompt-box" style="position:relative">
         <button class="prompt-copy-btn" onclick="copyPrompt(this)">Kopiuj</button>
-        <pre>Oto świetny tekst z mojego obszaru zawodowego: 
+        <pre>Oto tekst wzorcowy z mojego obszaru pracy:
 [WKLEJ TEKST]
 
-Chcę tworzyć tak dobre materiały za pomocą AI w przyszłości. 
-Zaprojektuj dla mnie doskonały prompt w układzie PARTS, którego użycie zmusiłoby Cię do napisania dokładnie tego, co powyżej.</pre>
+Chcę tworzyć podobne materiały z pomocą AI.
+Zaprojektuj prompt w układzie PARTS, który prowadzi do tekstu o podobnej strukturze, tonie i poziomie szczegółowości.</pre>
       </div>`,
-  `<ul><li>AI podała poprawną konstrukcję promptu naśladującego</li><li>Wychwycono "Ton" i "Personę" oryginału</li><li>Zdobyto wiedzę o promptach budowanych przez samą AI</li></ul>`
+  `<ul><li>AI podała konstrukcję promptu naśladującego</li><li>Wychwycono ton i strukturę tekstu wzorcowego</li><li>Widzisz, jakie elementy promptu odtwarzają styl tekstu</li></ul>`
 )}
     ${ex('ex16', '16', 'Prompt w trzech wersjach', 'basic', '20–25 min',
-  'Przećwicz pracę zespołową nad jednym zadaniem i sprawdź, które elementy promptu realnie poprawiają wynik AI.',
+  'Porównajcie trzy wersje promptu i wybierzcie, co poprawia wynik AI.',
   `<p><strong>Praca:</strong> zespoły 2–3 osoby</p>
       <p><strong>Sytuacja wyjściowa:</strong> Wasz zespół ma przygotować jeden konkretny materiał z pomocą AI, np. mail, streszczenie dokumentu, plan lekcji, opis działania projektowego albo analizę krótkich odpowiedzi z ankiety. Chcecie porównać, jak zmienia się wynik przy trzech poziomach doprecyzowania promptu.</p>
       ${materialsBox('Karta pracy do porównania promptów', [{ key: 'input11', label: 'Pobierz szablon porównania promptów' }])}
@@ -879,7 +879,7 @@ Zaprojektuj dla mnie doskonały prompt w układzie PARTS, którego użycie zmusi
         <li>Wybierzcie jedno zadanie i dopiszcie dwa kryteria sukcesu, np. „ma być gotowe do użycia jutro" albo „ma zawierać tabelę z terminami".</li>
         <li>Napiszcie <strong>wersję 1 – prostą</strong>: tylko sam cel zadania.</li>
         <li>Napiszcie <strong>wersję 2 – doprecyzowaną</strong>: dodajcie kontekst, odbiorcę i format odpowiedzi.</li>
-        <li>Napiszcie <strong>wersję 3 – ekspercką</strong>: dodajcie rolę AI, ograniczenia, kryteria jakości i prośbę o zaznaczenie miejsc do weryfikacji.</li>
+        <li>Napiszcie <strong>wersję 3 – pełną</strong>: dodajcie rolę AI, ograniczenia, kryteria jakości i prośbę o zaznaczenie miejsc do weryfikacji.</li>
         <li>Uruchomcie wszystkie trzy prompty w tym samym narzędziu AI i porównajcie wyniki.</li>
         <li>Uzupełnijcie tabelę porównawczą: co się poprawiło, co nadal jest słabe i które elementy promptu miały największy wpływ.</li>
         <li>Na końcu przygotujcie jedną wspólną wersję finalną promptu, którą można zapisać i użyć ponownie.</li>
@@ -889,7 +889,7 @@ Zaprojektuj dla mnie doskonały prompt w układzie PARTS, którego użycie zmusi
         <tbody>
           <tr><td>1. Prosta</td><td>sam cel zadania</td><td></td><td></td></tr>
           <tr><td>2. Doprecyzowana</td><td>kontekst, odbiorca, format</td><td></td><td></td></tr>
-          <tr><td>3. Ekspercka</td><td>rola, ograniczenia, kryteria jakości, weryfikacja</td><td></td><td></td></tr>
+          <tr><td>3. Pełna</td><td>rola, ograniczenia, kryteria jakości, weryfikacja</td><td></td><td></td></tr>
           <tr><td>4. Finalna</td><td>najlepsze elementy z trzech wersji</td><td></td><td></td></tr>
         </tbody>
       </table>
@@ -906,9 +906,9 @@ Zaprojektuj dla mnie doskonały prompt w układzie PARTS, którego użycie zmusi
   `<ul><li>Zespół przetestował trzy wersje tego samego promptu</li><li>Potraficie wskazać, które elementy najbardziej poprawiły odpowiedź</li><li>Macie jedną finalną wersję promptu do ponownego użycia</li><li>Wskazaliście przynajmniej jedno miejsce, które nadal wymaga weryfikacji człowieka</li></ul>`
 )}
     ${ex('ex17', '17', 'Mini-laboratorium analizy ankiety', 'med', '25–30 min',
-  'Zaprojektuj bezpieczny sposób analizy krótkich odpowiedzi z ankiety i przygotuj z pomocą AI szkic mini-raportu.',
+  'Przeanalizuj krótkie odpowiedzi z ankiety bez wklejania danych osobowych.',
   `<p><strong>Praca:</strong> zespoły 2–3 osoby</p>
-      <p><strong>Sytuacja wyjściowa:</strong> macie krótkie, zanonimizowane odpowiedzi z ankiety po szkoleniu, spotkaniu, wydarzeniu szkolnym lub działaniu projektowym. Chcecie szybko wyciągnąć główne kategorie, wnioski i rekomendacje, ale bez utraty kontroli nad danymi.</p>
+      <p><strong>Sytuacja wyjściowa:</strong> macie zanonimizowane odpowiedzi z ankiety po szkoleniu, spotkaniu lub projekcie. Chcecie wyciągnąć kategorie, wnioski i rekomendacje bez utraty kontroli nad danymi.</p>
       ${materialsBox('Pełniejsze dane do ćwiczenia', [
         { key: 'input06aCsv', label: 'Pobierz CSV: bezpieczeństwo w szkole' },
         { key: 'input06bCsv', label: 'Pobierz CSV: ankieta po szkoleniu' },
@@ -967,9 +967,9 @@ Dane: [WKLEJ ZANONIMIZOWANE ODPOWIEDZI]</pre>
   `<ul><li>Zespół zaprojektował prosty i bezpieczny proces analizy danych</li><li>Powstały trzy prompty do pracy z ankietą</li><li>Macie mini-raport z kategoriami, wnioskami i rekomendacjami</li><li>Wskazaliście, których danych nie wolno wkleić do publicznego narzędzia AI</li></ul>`
 )}
     ${ex('ex18', '18', 'Mini-kodeks odpowiedzialnego używania AI', 'med', '20–25 min',
-  'Stwórz praktyczny zestaw zasad dla wybranego zespołu, tak żeby AI wspierała pracę bez osłabiania odpowiedzialności, prywatności i jakości treści.',
+  'Przygotujcie krótki kodeks używania AI dla wybranego zespołu.',
   `<p><strong>Praca:</strong> zespoły 2–3 osoby</p>
-      <p><strong>Sytuacja wyjściowa:</strong> zespół nauczycieli, dział administracyjny, koordynatorzy projektu albo pracownicy organizacji chcą korzystać z AI, ale potrzebują krótkiego dokumentu z jasnymi zasadami: kiedy wolno użyć AI, czego nie wolno wkleić, co trzeba oznaczyć i co musi sprawdzić człowiek.</p>
+      <p><strong>Sytuacja wyjściowa:</strong> zespół nauczycieli, administracja lub koordynatorzy projektu chcą używać AI. Potrzebują krótkiego dokumentu: kiedy wolno użyć AI, czego nie wolno wkleić, co trzeba oznaczyć i co musi sprawdzić człowiek.</p>
       ${materialsBox('Szablon i materiał pomocniczy', [
         { key: 'input12', label: 'Pobierz szablon mini-kodeksu AI' },
         { key: 'input10', label: 'Pobierz karty zasad AI do rankingu' }
@@ -1011,7 +1011,7 @@ Sytuacja | Wolno / Wolno warunkowo / Nie używamy | Ryzyko | Zabezpieczenie.
 Nie twórz gotowej polityki za zespół.
 Zaproponuj roboczą strukturę i pytania, które zespół powinien sam rozstrzygnąć.</pre>
       </div>
-      <div class="alert-box"><strong>Ważne:</strong> AI może pomóc uporządkować materiał, ale nie powinna sama decydować o zasadach. Ostateczny kodeks musi zatwierdzić człowiek odpowiedzialny za zespół, dokumenty i dane.</div>
+      <div class="alert-box"><strong>Ważne:</strong> AI porządkuje materiał, ale nie decyduje o zasadach. Kodeks zatwierdza człowiek odpowiedzialny za zespół, dokumenty i dane.</div>
       <div class="tip-box" style="margin-top:12px"><strong>Efekt końcowy:</strong> mini-kodeks na 1 stronę z tabelą sytuacji użycia AI i zasadami bezpieczeństwa.</div>
       <div class="reflection-box">
         <div class="rb-label">Pytania do refleksji</div>
@@ -1066,7 +1066,7 @@ PAGES.prompts = () => `
   <div class="page-header">
     <div class="breadcrumb"><a href="#" onclick="showPage('home')">🏠 Start</a> <span class="bc-sep">›</span> Promptownik</div>
     <h2>💡 Promptownik – gotowe prompty do użycia</h2>
-    <p>Znajdziesz tu <strong>14 kart i 28 wariantów promptów</strong>. Skopiuj, wklej do AI i dostosuj do swojej sytuacji. Każda karta pokazuje też, <strong>kiedy używać</strong> promptu i <strong>na co uważać</strong>. Kliknij ⭐ Zapisz, żeby dodać prompt do swojej listy w panelu notatek.</p>
+    <p>Skopiuj prompt, wklej do AI i uzupełnij nawiasy. Karty pokazują, kiedy użyć promptu i co sprawdzić przed wykorzystaniem wyniku. Kliknij ⭐ Zapisz, żeby dodać prompt do notatek.</p>
     <button id="doneBtn_prompts" class="mark-done-btn" onclick="markDone('prompts')">✓ Oznacz jako ukończony</button>
   </div>
 
@@ -1090,7 +1090,7 @@ Format: tabela Czas | Aktywność | Materiały`,
   `Działaj jako doświadczony nauczyciel [PRZEDMIOT] w [TYP SZKOŁY].
 Przygotuj konspekt lekcji (45 min) na temat [TEMAT SZCZEGÓŁOWY]
 dla uczniów [KLASA, WIEK], [OPIS GRUPY].
-Wymagania: angażujące intro (max 5 min), aktywność grupowa,
+Wymagania: krótkie wprowadzenie (max 5 min), aktywność grupowa,
 co najmniej jedno narzędzie sprawdzające wiedzę na wyjście.
 Format: tabela | Czas | Aktywność | Opis | Materiały | Uwagi`)}
 
@@ -1169,8 +1169,8 @@ Styl: formalny, rzeczowy, czas przeszły`,
           ]))}
 
     ${pc('pC1', 'C', 'C1 – Mail do rodziców',
-            'Gdy piszesz komunikat do rodziców i chcesz go przygotować profesjonalnie w ciągu minut.',
-            '⚠️ NIE wpisuj nazwisk konkretnych uczniów (RODO); finalna wersja wymaga Twojego przejrzenia.',
+            'Gdy piszesz komunikat do rodziców i potrzebujesz wersji roboczej.',
+            '⚠️ NIE wpisuj nazwisk konkretnych uczniów (RODO). Przed wysłaniem sprawdź ton, daty i dane.',
             `Napisz mail do rodziców klasy [KLASA]
 z info o [TEMAT]. Ton: przyjazny. Max 120 słów.`,
             `Działaj jako koordynator lub wychowawca klasy [KLASA] w systemie oświaty [TWÓJ KRAJ].
@@ -1200,7 +1200,7 @@ Unikaj: biurokratycznego języka, długich zdań`)}
                 '⚠️ Zaznaczaj [UZUPEŁNIJ]; nigdy nie traktuj wyniku jako gotowego; sprawdź zgodność z wymaganiami instytucji grantowej.',
                 `Napisz 180-słowowy opis działania projektowego:
 Projekt: [TYTUŁ], działanie: [OPIS].
-Styl: narracyjny, profesjonalny, wartość dodana.`,
+Styl: rzeczowy. Pokaż, co działanie wniosło dla uczestników.`,
                 `Działaj jako koordynator projektów edukacyjnych UE (Erasmus+).
 Projekt: [TYTUŁ PROJEKTU]
 Działanie: [OPIS, np. "3-dniowe warsztaty mobilności dla nauczycieli, Bolonia, październik"]
@@ -1210,7 +1210,7 @@ Wyniki / osiągnięcia: [CO OSIĄGNIĘTO]
 
 Napisz opis działania (180–220 słów) do raportu narracyjnego:
 – neutralny, rzeczowy styl (typowy dla dokumentów UE)
-– podkreśl: cel, przebieg, uczestnictwo, wartość dodaną, efekty
+– podkreśl: cel, przebieg, uczestnictwo, efekty i to, co działanie wniosło
 – ZAZNACZ [UZUPEŁNIJ DANE] wszędzie gdzie potrzebne konkretne liczby
 Format: jeden akapit narracyjny. Język: [POLSKI / ANGIELSKI]`,
                 materialsBox('Materiał wejściowy', [{ key: 'input07', label: 'Pobierz brief projektu edukacyjnego' }]))}
@@ -1250,7 +1250,7 @@ Przygotuj:
                     materialsBox('Materiał wejściowy', [{ key: 'input07', label: 'Pobierz brief projektu edukacyjnego' }]))}
 
     ${pc('pE1', 'E', 'E1 – Analiza ryzyk przed startem projektu',
-                      'Gdy planujesz nowe przedsięwzięcie i chcesz zabezpieczyć się przed porażką.',
+                      'Gdy planujesz nowe przedsięwzięcie i chcesz sprawdzić ryzyka przed startem.',
                       '⚠️ Wymaga nałożenia własnej znajomości zespołu i kontekstu placówki.',
                       `Przyjrzyj się procedurze lub planowi projektu: [WKLEJ].
 Załóżmy, że projekt nie przyniósł oczekiwanych rezultatów.
@@ -1265,34 +1265,34 @@ Pokaż możliwe scenariusze porażki. Załóżmy, że jesteśmy pół roku w prz
                       materialsBox('Materiał wejściowy', [{ key: 'input13', label: 'Pobierz plan projektu do analizy ryzyka' }]))}
 
     ${pc('pE2', 'E', 'E2 – Zestawianie sprzeczności',
-                        'Gdy dokumenty robocze lub ustalenia nie spinają się ze sobą.',
-                        '⚠️ Sprawdź czy piaskownica/AI na pewno odczytała najnowszą wersję.',
+                        'Gdy dokumenty robocze lub ustalenia nie są ze sobą zgodne.',
+                        '⚠️ Sprawdź, czy narzędzie odczytało aktualne wersje plików.',
                         `Zestaw raport A [WKLEJ] z wytycznymi B [WKLEJ].
 Wskaż miejsca, w których oba teksty są ze sobą sprzeczne.`,
-                        `Wciel się w rygorystycznego weryfikatora dokumentacji (Audytor QA).
+                        `Działaj jako weryfikator dokumentacji.
 Załączam dwa teksty dotyczące tej samej sprawy (np. regulamin i mail od wicedyrektora lub wytyczne KE i zarys raportu):
 Tekst A (Procedura domyślna): [WKLEJ TEKST A]
 Tekst B (Stan faktyczny): [WKLEJ TEKST B]
 
 Twoje zadanie: Pomiń powielenia i skup się WYŁĄCZNIE na tym, gdzie Tekst B zaprzecza Tekstowi A, albo łamie podane wytyczne.
-Wygeneruj listę ryzyk: punkt, na czym polega sprzeczność i kto musi podjąć decyzję.`,
+Zwróć listę ryzyk: punkt, na czym polega sprzeczność i kto musi podjąć decyzję.`,
                         `${materialsBox('Rekomendowana para do porównania', [
                           { key: 'input03a', label: 'Pobierz dokument A: poradnik organizacji wyjazdów' },
                           { key: 'input03d', label: 'Pobierz dokument B: procedura wycieczek' }
                         ])}<div class="tip-box" style="margin-top:10px"><strong>Rekomendowana para do porównania:</strong> input_03a_dokument_do_porownania_poradnik_wyjazdow_ko_bialystok.pdf oraz input_03d_dokument_do_porownania_procedura_wycieczek.pdf.</div>`)}
 
     ${pc('pE3', 'E', 'E3 – Porządkowanie przeciążenia informacyjnego',
-                          'Gdy masz długi wątek z wieloma odpowiedziami i nie wiesz na czym stoisz.',
+                          'Gdy trzeba ustalić, kto co robi i do kiedy.',
                           '⚠️ Usuń ze skopiowanego wątku loginy, imiona uczniów i inne dane osobowe przed wklejeniem.',
                           `Wklejam długi wątek mailowy lub komunikacyjny: [WKLEJ].
 Uporządkuj go i pokaż, kto co ma zrobić oraz do kiedy.`,
-                          `Działaj jako mój asystent do porządkowania informacji.
-Mam tylko kilka minut przed spotkaniem. Poniżej wklejam długi, sklejony wątek z maili i komunikatora:
+                          `Działaj jako asystent do porządkowania informacji.
+Poniżej wklejam długi, sklejony wątek z maili i komunikatora:
 [WKLEJ CAŁOŚĆ WĄTKU (bez danych osobowych)]
 
-Twoje zadanie to oddzielić informacje ważne od mniej ważnych:
+Uporządkuj informacje:
 1. W jednym zdaniu - o czym jest ten wątek lub dyskusja.
-2. Tabela: [Kto musi to zrobić] | [Konkretne zadanie przypisane u] | [Deadline]
+2. Tabela: [Kto musi to zrobić] | [Konkretne zadanie] | [Termin]
 3. Oznacz pilne sprawy lub pytania, które pozostają bez odpowiedzi od dwóch dni.`,
                           materialsBox('Materiały do uporządkowania', [
                             { key: 'input04a', label: 'Pobierz wątek mailowy: 80-lecie szkoły' },
@@ -1310,7 +1310,7 @@ założenia, które mogą być błędne.`,
 
 Teraz wciel się w krytycznego recenzenta i odpowiedz:
 1. Które stwierdzenia są oparte na weryfikowalnych danych?
-2. Które stwierdzenia mogą być „generatywnym wypełnieniem" bez pewności faktycznej?
+2. Które stwierdzenia brzmią wiarygodnie, ale nie mają pewnego źródła?
 3. Jakie informacje mogą być nieaktualne z powodu zakresu dat wiedzy modelu?
 4. Jakie założenia przyjąłeś/aś, które mogą być błędne w kontekście systemu oświaty w moim kraju?
 5. Co powinienem/powinnam sprawdzić w oficjalnych źródłach przed użyciem?
@@ -1434,12 +1434,12 @@ PAGES.checklists = () => `
       ${chk('cs5', 'Wiem, jak sprawdzić, czy odpowiedź AI jest merytorycznie poprawna')}
       ${chk('cs6', 'Znam co najmniej 3 zastosowania AI w pracy dydaktycznej')}
       ${chk('cs7', 'Znam co najmniej 2 zastosowania AI w pracy administracyjnej i komunikacji')}
-      ${chk('cs8', 'Wiem, jak AI może pomóc mi w projektach UE i czego nie wolno AI zlecać')}
-      ${chk('cs9', 'Mam zapisany co najmniej 1 prompt, który zabieram z tego kursu do codziennej pracy')}
+      ${chk('cs8', 'Wiem, jak używać AI w projektach UE i czego nie wolno AI zlecać')}
+      ${chk('cs9', 'Mam zapisany co najmniej 1 prompt do codziennej pracy')}
       ${chk('cs10', 'Wiem, do kogo w szkole zwrócić się z pytaniem o politykę AI i RODO')}
       <div class="tip-box" style="margin-top:14px">
         <strong>Gdzie zaznaczasz NIE:</strong> wróć do odpowiedniego modułu lub ćwiczenia.<br>
-        <strong>Gdzie zaznaczasz same TAK:</strong> jesteś gotowy/a do wdrożenia AI! 🎉
+        <strong>Gdzie zaznaczasz same TAK:</strong> przejdź do planu wdrożenia.
       </div>
       <button class="checklist-reset" onclick="resetChecks('cs')">↺ Zacznij od nowa</button>
     </div>
@@ -1474,12 +1474,12 @@ PAGES.myplan = () => `
     </div>
 
     <div class="checklist-block">
-      <h3>📌 Mój osobisty kontrakt z AI</h3>
+      <h3>📌 Mój plan użycia AI</h3>
       <p class="clb-desc">Wypełnij zdania poniżej w myślach lub na kartce. To Twój plan wdrożenia.</p>
       <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px">
         ${planItem('1', 'Jedno zadanie, w którym zacznę używać AI <strong>już jutro</strong>:', 'np. pisanie maili do rodziców, tworzenie ogłoszeń szkolnych...')}
-        ${planItem('2', 'Jeden prompt, który <strong>zabieram ze sobą</strong> z tego kursu:', 'np. prompt do konspektu lekcji, prompt do streszczenia dokumentu...')}
-        ${planItem('3', 'Jedno ryzyko, o którym <strong>zawsze będę pamiętać</strong>:', 'np. weryfikacja faktów, brak danych osobowych w AI, transparentność w projektach...')}
+        ${planItem('2', 'Jeden prompt, który <strong>zapisuję do użycia</strong> po kursie:', 'np. prompt do konspektu lekcji, prompt do streszczenia dokumentu...')}
+        ${planItem('3', 'Jedno ryzyko, które <strong>sprawdzę przed użyciem AI</strong>:', 'np. weryfikacja faktów, brak danych osobowych w AI, transparentność w projektach...')}
         ${planItem('4', 'Jedna osoba w szkole, z którą <strong>podzielę się wiedzą</strong> o AI:', 'np. kolega/koleżanka z zespołu, dyrekcja, bibliotekarz...')}
       </div>
     </div>
@@ -1522,7 +1522,7 @@ PAGES.slides = () => `
   <div class="page-header">
     <div class="breadcrumb"><a href="#" onclick="showPage('home')">🏠 Start</a> <span class="bc-sep">›</span> Prezentacje</div>
     <h2>📊 Prezentacje – slajdy kursu</h2>
-    <p>Zestaw interaktywnych slajdów do każdego modułu. Możesz używać ich jako krótkiego wprowadzenia do szkolenia, materiału dla prowadzącego albo szybkiej powtórki treści. Do nawigacji możesz używać strzałek na klawiaturze.</p>
+    <p>Slajdy do każdego modułu. Użyj ich jako wprowadzenia, materiału dla prowadzącego albo krótkiej powtórki. Do nawigacji służą strzałki na klawiaturze.</p>
   </div>
   <div class="slide-viewer-wrap">
     <div class="slide-set-nav">
@@ -2329,8 +2329,8 @@ const PROJECT_INFO_PILLARS = [
   {
     id: 'pillar-education',
     icon: '🎓',
-    title: 'Doskonałość edukacyjna',
-    desc: 'Podnoszenie jakości kształcenia zawodowego przez integrację sprawdzonych praktyk europejskich z lokalnym nauczaniem i szkoleniami.'
+    title: 'Edukacja zawodowa',
+    desc: 'Łączenie sprawdzonych praktyk europejskich z lokalnym nauczaniem i szkoleniami.'
   },
   {
     id: 'pillar-smes',
@@ -2342,7 +2342,7 @@ const PROJECT_INFO_PILLARS = [
     id: 'pillar-partnership',
     icon: '🤝',
     title: 'Partnerstwo regionalne',
-    desc: 'Łączenie szkół, uczelni i partnerów gospodarczych w jeden ekosystem współpracy wokół kompetencji zawodowych i innowacji.'
+    desc: 'Łączenie szkół, uczelni i partnerów gospodarczych wokół kompetencji zawodowych i pracy projektowej.'
   },
   {
     id: 'pillar-europe',
@@ -2360,7 +2360,7 @@ const PROJECT_INFO_PARTNERS = [
     alt: 'Politechnika Wrocławska',
     url: 'https://pwr.edu.pl',
     siteLabel: 'pwr.edu.pl',
-    desc: 'Wnosi potencjał badawczy, wiedzę ekspercką z zakresu innowacji organizacyjnych oraz wsparcie merytoryczne transferu wiedzy do MŚP.'
+    desc: 'Wspiera część badawczą, analizę innowacji organizacyjnych i transfer wiedzy do MŚP.'
   },
   {
     id: 'partner-zsz5',
@@ -2386,15 +2386,15 @@ PAGES.projectinfo = () => `
   <div class="page-header">
     <div class="breadcrumb"><a href="#" onclick="showPage('home')">🏠 Start</a> <span class="bc-sep">›</span> O projekcie</div>
     <h2>ℹ️ O projekcie</h2>
-    <p>Ta podstrona zbiera najważniejsze informacje o kontekście projektu, partnerach oraz miejscu kursu w działaniach WIN4SMEs i COVE Polska. Treść jest zapisana jako zwykły HTML, więc pozostaje czytelna także po tłumaczeniu przeglądarkowym.</p>
+    <p>Ta podstrona wyjaśnia kontekst projektu, partnerów oraz miejsce kursu w działaniach WIN4SMEs i COVE Polska.</p>
   </div>
 
   <div class="project-page">
     <section class="project-hero-card" id="project-overview">
       <div class="project-hero-copy">
         <div class="project-kicker">WIN4SMEs · COVE Polska · Dolny Śląsk</div>
-        <h3>Centrum Doskonałości Kształcenia Zawodowego w praktyce szkoleniowej</h3>
-        <p>Centrum Doskonałości Kształcenia Zawodowego (CoVE) w Polsce łączy edukację, naukę i biznes, aby wzmacniać innowacje w miejscu pracy oraz lepiej dopasowywać kompetencje zawodowe do potrzeb regionu.</p>
+        <h3>Centrum Doskonałości Kształcenia Zawodowego i ten kurs</h3>
+        <p>Centrum Doskonałości Kształcenia Zawodowego (CoVE) w Polsce łączy edukację, naukę i biznes. Celem jest lepsze dopasowanie kompetencji zawodowych do potrzeb regionu.</p>
         <div class="project-action-row">
           <a class="btn-hero-primary" href="https://covepolska.pl" target="_blank" rel="noopener noreferrer">Strona COVE Polska ↗</a>
           <a class="project-btn-secondary" href="https://win4smes.eu" target="_blank" rel="noopener noreferrer">Strona WIN4SMEs ↗</a>
@@ -2409,9 +2409,9 @@ PAGES.projectinfo = () => `
       <article class="project-copy-card" id="project-cove">
         <div class="section-label">O inicjatywie</div>
         <h3>Czym jest COVE Polska?</h3>
-        <p>Centrum Doskonałości Kształcenia Zawodowego (CoVE, Centre of Vocational Excellence) to europejska inicjatywa budująca regionalne ekosystemy doskonałości w kształceniu i szkoleniu zawodowym. Łączy instytucje edukacyjne, uczelnie i partnerów biznesowych, aby rozwijać kompetencje potrzebne dziś i w przyszłości.</p>
-        <p>COVE Polska działa w ramach projektu WIN4SMEs i koncentruje się na Dolnym Śląsku. Misją konsorcjum jest przenoszenie najlepszych praktyk innowacji w miejscu pracy do lokalnych małych i średnich przedsiębiorstw, z korzyścią zarówno dla edukacji, jak i dla pracodawców.</p>
-        <p>Ta platforma szkoleniowa jest jednym z rezultatów tego podejścia. Porządkuje praktyczne zastosowania AI w dydaktyce, pracy organizacyjnej i projektowej, a jednocześnie wpisuje się w szerszy cel rozwoju kompetencji zawodowych i współpracy międzysektorowej.</p>
+        <p>Centrum Doskonałości Kształcenia Zawodowego (CoVE, Centre of Vocational Excellence) to europejska inicjatywa łącząca szkoły, uczelnie i partnerów biznesowych. Jej celem jest rozwój kompetencji potrzebnych w pracy zawodowej.</p>
+        <p>COVE Polska działa w ramach projektu WIN4SMEs i koncentruje się na Dolnym Śląsku. Konsorcjum przenosi dobre praktyki innowacji w miejscu pracy do lokalnych małych i średnich przedsiębiorstw.</p>
+        <p>Ta platforma szkoleniowa jest jednym z rezultatów projektu. Porządkuje zastosowania AI w dydaktyce, pracy organizacyjnej i projektowej.</p>
       </article>
     </section>
 
@@ -2432,7 +2432,7 @@ PAGES.projectinfo = () => `
     <section class="project-partners-section" id="project-partners">
       <div class="section-label">Konsorcjum regionalne</div>
       <h3>Partnerzy COVE Polska</h3>
-      <p class="project-section-intro">Trzy instytucje tworzące zaplecze merytoryczne i organizacyjne dla działań edukacyjnych, projektowych oraz współpracy z przedsiębiorstwami.</p>
+      <p class="project-section-intro">Trzy instytucje odpowiadają za zaplecze merytoryczne, organizacyjne i współpracę z przedsiębiorstwami.</p>
       <div class="project-partners-grid">
         ${PROJECT_INFO_PARTNERS.map(partner => `
           <a class="project-partner-card" id="${partner.id}" href="${partner.url}" target="_blank" rel="noopener noreferrer">

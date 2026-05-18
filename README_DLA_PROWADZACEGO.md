@@ -16,7 +16,7 @@ Nie zakładam sztywnych czasów modułów. Tempo dobierz do poziomu grupy, liczb
 
 ### Cel szkolenia
 
-Uczestnik po szkoleniu powinien umieć korzystać z AI w pracy edukacyjnej, organizacyjnej i projektowej w sposób praktyczny, bezpieczny i krytyczny. Najważniejsze jest nie samo poznanie narzędzi, ale wypracowanie nawyku: prompt, wynik, weryfikacja, decyzja człowieka.
+Uczestnik po szkoleniu powinien umieć użyć AI do konkretnego zadania, ocenić wynik, sprawdzić dane i zdecydować, czy materiał można wykorzystać. Najważniejszy nawyk to: prompt, wynik, weryfikacja, decyzja człowieka.
 
 ### Plan prowadzenia
 
@@ -214,7 +214,7 @@ I do not assume fixed module durations. Adjust the pace to the group level, the 
 
 ### Training Goal
 
-After the training, participants should be able to use AI in educational, organisational, and project work in a practical, safe, and critical way. The key habit is: prompt, output, verification, human decision.
+After the training, participants should be able to use AI for a concrete task, assess the output, check the data, and decide whether the material can be used. The key habit is: prompt, output, verification, human decision.
 
 ### Delivery Plan
 

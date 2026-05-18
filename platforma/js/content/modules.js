@@ -8,7 +8,7 @@ PAGES.module1 = () => `
       <span class="meta-badge">🎯 Podstawy AI · Halucynacje · Pierwsze użycie</span>
       <span class="meta-badge">📈 Poziom: podstawowy</span>
     </div>
-    <p class="lesson-intro">W tym module poznasz podstawy działania AI językowej, zrozumiesz źródła typowych błędów i wykonasz pierwsze proste zadanie. To fundament potrzebny do świadomej pracy z narzędziami AI w dalszej części kursu.</p>
+    <p class="lesson-intro">Zobaczysz, jak działa AI językowa, gdzie może się mylić i wykonasz pierwsze zadanie. Te zasady przydadzą się w kolejnych modułach.</p>
     <button id="doneBtn_module1" class="mark-done-btn" onclick="markDone('module1')">✓ Oznacz jako ukończony</button>
   </div>
 
@@ -25,12 +25,12 @@ PAGES.module1 = () => `
 
     <div class="lesson-section">
       <h3><span class="ls-icon">🤖</span> Co to jest AI językowa?</h3>
-      <p>Narzędzia AI, z których korzystamy w tej platformie (<span translate="no" class="notranslate">ChatGPT</span>, <span translate="no" class="notranslate">Gemini</span>, <span translate="no" class="notranslate">Claude</span>), tworzą odpowiedzi na podstawie wzorców językowych. Często nazywa się je dużymi modelami językowymi. Nie rozumieją świata tak jak człowiek, ale potrafią dobrze pracować z tekstem, strukturą i stylem wypowiedzi.</p>
+      <p>Narzędzia takie jak <span translate="no" class="notranslate">ChatGPT</span>, <span translate="no" class="notranslate">Gemini</span> i <span translate="no" class="notranslate">Claude</span> tworzą odpowiedzi na podstawie wzorców językowych. Nie rozumieją świata jak człowiek. Dobrze pracują z tekstem, strukturą i stylem wypowiedzi.</p>
       <div class="key-insight">
         <strong>Kluczowa zasada:</strong> AI nie sprawdza prawdy tak jak wyszukiwarka, baza wiedzy lub ekspert. Buduje odpowiedź, przewidując najbardziej prawdopodobny ciąg słów na podstawie kontekstu rozmowy.
       </div>
       <div class="key-insight">
-        <strong>Ograniczona ilość tekstu:</strong> Model pracuje tylko na tej części materiału, którą ma w rozmowie. Gdy dokument jest bardzo długi, część informacji może zostać pominięta albo słabiej uwzględniona. Dlatego przy obszernych dokumentach warto pracować etapami albo korzystać z narzędzi opartych na wskazanych źródłach.
+        <strong>Ograniczona ilość tekstu:</strong> Model korzysta tylko z tekstu dostępnego w rozmowie. Przy długich dokumentach może pominąć ważny fragment. Pracuj etapami albo użyj narzędzia, które pokazuje źródła.
       </div>
       <p>W praktyce oznacza to, że AI dobrze radzi sobie z redagowaniem, streszczaniem i porządkowaniem treści, ale przy faktach, prawie i liczbach wymaga weryfikacji.</p>
       
@@ -139,7 +139,7 @@ PAGES.module1 = () => `
 
     <div class="lesson-section">
       <h3><span class="ls-icon">💡</span> Co zaobserwowałeś/aś?</h3>
-      <p>Jeśli wynik był ogólnikowy lub mało konkretny – to normalne. Właśnie dlatego istnieje Moduł 2: nauczysz się pisać prompty, które dają naprawdę przydatne odpowiedzi.</p>
+      <p>Jeśli wynik był ogólny, sprawdź, czego brakowało w poleceniu: celu, kontekstu, odbiorcy czy formatu. W module 2 poprawisz taki prompt.</p>
       <div class="reflection-box">
         <div class="rb-label">💭 Chwila refleksji</div>
         <p>Zanim przejdziesz dalej, odpowiedz sobie na te pytania:</p>
@@ -191,7 +191,7 @@ PAGES.module2 = () => `
 
     <div class="lesson-section" id="parts">
       <h3><span class="ls-icon">🧠</span> Framework <span translate="no" class="notranslate">PARTS</span> – anatomia dobrego promptu</h3>
-      <p><span translate="no" class="notranslate">PARTS</span> to prosta struktura, która pomaga napisać prompt dający naprawdę przydatny wynik. Nie musisz używać wszystkich 5 elementów za każdym razem – ale im więcej, tym lepiej.</p>
+      <p><span translate="no" class="notranslate">PARTS</span> to prosta struktura promptu. Nie musisz używać wszystkich 5 elementów za każdym razem. Im ważniejsze zadanie, tym bardziej warto doprecyzować polecenie.</p>
 
       <table class="parts-table">
         <thead><tr><th>Litera</th><th>Co oznacza</th><th>Przykład w praktyce</th></tr></thead>
@@ -199,7 +199,7 @@ PAGES.module2 = () => `
           <tr><td><span class="parts-letter" translate="no" class="notranslate">P</span></td><td><strong translate="no" class="notranslate">Persona</strong> – jaką rolę ma AI pełnić</td><td>„Działaj jako doświadczony nauczyciel historii w szkole podstawowej…"</td></tr>
           <tr><td><span class="parts-letter" translate="no" class="notranslate">A</span></td><td><strong translate="no" class="notranslate">Aim</strong> – co ma powstać (cel)</td><td>„…przygotuj konspekt lekcji (45 min) na temat wybuchu I Wojny Światowej…"</td></tr>
           <tr><td><span class="parts-letter" translate="no" class="notranslate">R</span></td><td><strong translate="no" class="notranslate">Recipients</strong> – dla kogo jest wynik</td><td>„…dla uczniów klasy VIII (14 lat), zróżnicowanej poziomowo…"</td></tr>
-          <tr><td><span class="parts-letter" translate="no" class="notranslate">T</span></td><td><strong translate="no" class="notranslate">Tone</strong> – styl i ton odpowiedzi</td><td>„…pisząc angażującym językiem z odniesieniami do współczesności…"</td></tr>
+          <tr><td><span class="parts-letter" translate="no" class="notranslate">T</span></td><td><strong translate="no" class="notranslate">Tone</strong> – styl i ton odpowiedzi</td><td>„…pisząc prostym językiem z odniesieniami do współczesności…"</td></tr>
           <tr><td><span class="parts-letter" translate="no" class="notranslate">S</span></td><td><strong translate="no" class="notranslate">Structure</strong> – format wyjścia</td><td>„…w formacie tabeli: Czas | Aktywność | Materiały | Uwagi."</td></tr>
         </tbody>
       </table>
@@ -218,7 +218,7 @@ PAGES.module2 = () => `
 Przygotuj konspekt lekcji (45 min) na temat wybuchu
 I Wojny Światowej dla uczniów klasy VIII (14 lat).
 Uwzględnij element dla uczniów zdolnych.
-Styl: angażujący, z odniesieniami do dziś.
+Styl: prosty, z odniesieniami do dziś.
 Format: tabela Czas | Aktywność | Materiały | Uwagi</pre>
           </div>
           <div class="compare-note">Wynik: konkretny, gotowy do adaptacji.</div>
@@ -254,7 +254,7 @@ Format: tabela Czas | Aktywność | Materiały | Uwagi</pre>
 
     <div class="lesson-section">
       <h3><span class="ls-icon">🔄</span> Technika iteracji – jak poprawiać wynik</h3>
-      <p>Praca z AI to dialog, nie jednorazowe zapytanie. Oto jak wygląda efektywna iteracja:</p>
+      <p>Praca z AI zwykle wymaga poprawiania wyniku. Przykład:</p>
       <div class="info-grid">
         <div class="info-card">
           <h4>Przykład iteracji – konspekt lekcji</h4>
@@ -291,7 +291,7 @@ PROMPT C: „Opisz projekt."</pre>
 
     <div class="lesson-section" id="group-prompt-lab">
       <h3><span class="ls-icon">🤝</span> Ćwiczenie grupowe – Prompt w trzech wersjach</h3>
-      <p>To zadanie pokazuje, jak dużo daje wspólna praca nad jednym promptem. Jedna osoba pilnuje celu, druga testuje kolejne wersje w narzędziu, a trzecia ocenia wynik pod kątem jakości i użyteczności.</p>
+      <p>W tym zadaniu zespół poprawia jeden prompt. Jedna osoba pilnuje celu, druga testuje wersje w narzędziu, a trzecia ocenia wynik.</p>
 
       <table class="data-table">
         <thead><tr><th>Rola</th><th>Za co odpowiada</th></tr></thead>
@@ -308,7 +308,7 @@ PROMPT C: „Opisz projekt."</pre>
         ${materialsBox('Karta pracy do porównania promptów', [{ key: 'input11', label: 'Pobierz szablon porównania promptów' }])}
         <ol>
           <li>Ustalcie, jaki ma być efekt końcowy i po czym poznacie, że wynik jest dobry.</li>
-          <li>Przygotujcie trzy wersje promptu: prostą, doprecyzowaną i ekspercką.</li>
+          <li>Przygotujcie trzy wersje promptu: prostą, doprecyzowaną i pełną.</li>
           <li>Wpiszcie wszystkie trzy wersje do AI i porównajcie odpowiedzi.</li>
           <li>Zapiszcie, które elementy najbardziej poprawiły wynik: rola, kontekst, format, kryteria jakości czy prośba o weryfikację.</li>
           <li>Na końcu zbudujcie jedną wspólną wersję promptu, którą można wykorzystać ponownie.</li>
@@ -350,7 +350,7 @@ PAGES.module3 = () => `
       <span class="meta-badge">🎯 Dydaktyka · Administracja · Komunikacja</span>
       <span class="meta-badge">🧩 2 ćwiczenia praktyczne</span>
     </div>
-    <p class="lesson-intro">W tym module przechodzisz do codziennych zastosowań. Użyjesz AI do materiałów dydaktycznych, dokumentów szkolnych i komunikacji z rodzicami. Każdy podrozdział zawiera gotowy prompt do przetestowania.</p>
+    <p class="lesson-intro">Użyjesz AI do konspektu, prostszego tekstu, dokumentu szkolnego i komunikatu do rodziców. Każda część ma prompt do przetestowania.</p>
     <button id="doneBtn_module3" class="mark-done-btn" onclick="markDone('module3')">✓ Oznacz jako ukończony</button>
   </div>
 
@@ -368,7 +368,7 @@ PAGES.module3 = () => `
 
     <div class="lesson-section" id="dydaktyka">
       <h3><span class="ls-icon">🎓</span> AI w dydaktyce – co możesz zrobić już dziś?</h3>
-      <p>AI nie zastąpi Twojej wiedzy o przedmiocie ani znajomości Twoich uczniów. Ale może zdjąć z Ciebie ciężar formatowania, strukturyzowania i redagowania – a to właśnie zajmuje najwięcej czasu.</p>
+      <p>AI nie zna Twoich uczniów ani programu lepiej od Ciebie. Może jednak przygotować szkic, uporządkować treść i skrócić redakcję materiału.</p>
 
       <table class="data-table">
         <thead><tr><th>Zadanie dydaktyczne</th><th>AI proponuje (~80%)</th><th>Ty decydujesz (100%)</th></tr></thead>
@@ -382,7 +382,7 @@ PAGES.module3 = () => `
       </table>
 
       <div class="tip-box">
-        <strong>Zasada:</strong> AI robi ciężką, powtarzalną pracę redakcyjną. Ty robisz wartościową, pedagogiczną robotę – tę, której AI nie może zrobić za Ciebie.
+        <strong>Zasada:</strong> AI przygotowuje wersję roboczą. Ty decydujesz, czy treść pasuje do klasy, celu lekcji i poziomu uczniów.
       </div>
 
       <div class="try-it">
@@ -394,7 +394,7 @@ PAGES.module3 = () => `
           <pre>Działaj jako doświadczony nauczyciel [TWÓJ PRZEDMIOT] w [TYP SZKOŁY].
 Przygotuj konspekt lekcji (45 min) na temat [TWÓJ TEMAT]
 dla uczniów [KLASA, WIEK], [OPIS GRUPY np. 'zróżnicowanej poziomowo'].
-Wymagania: angażujące wprowadzenie (max 5 min), praca grupowa,
+Wymagania: krótkie wprowadzenie (max 5 min), praca grupowa,
 podsumowanie z pytaniami sprawdzającymi.
 Format: tabela | Czas | Aktywność | Opis | Materiały</pre>
         </div>
@@ -406,7 +406,7 @@ Format: tabela | Czas | Aktywność | Opis | Materiały</pre>
 
     <div class="lesson-section" id="administracja">
       <h3><span class="ls-icon">🗂️</span> AI w administracji i komunikacji</h3>
-      <p>To obszar, gdzie oszczędność czasu jest największa. Dokumenty, maile, protokoły, ogłoszenia – AI radzi sobie z nimi świetnie, jeśli dajesz jej odpowiedni kontekst.</p>
+      <p>W dokumentach i komunikacji AI pomaga wtedy, gdy dostaje jasny kontekst: odbiorcę, cel, ton i format odpowiedzi.</p>
 
       <div class="info-grid">
         <div class="info-card">
@@ -496,7 +496,7 @@ PAGES.module4 = () => `
       <span class="meta-badge">🎯 Dokumenty · Analiza · Źródła · Bezpieczeństwo</span>
       <span class="meta-badge">🤝 1 ćwiczenie grupowe</span>
     </div>
-    <p class="lesson-intro">W tym module pracujesz z informacją: długimi dokumentami, wielowątkowymi wiadomościami i większymi plikami. Celem jest szybkie oddzielanie decyzji i zadań od szumu oraz wybór właściwego narzędzia do analizy.</p>
+    <p class="lesson-intro">Będziesz pracować z długimi dokumentami, wątkami wiadomości i ankietami. Celem jest wyciągnięcie decyzji, zadań, terminów i różnic między tekstami.</p>
     <button id="doneBtn_module4" class="mark-done-btn" onclick="markDone('module4')">✓ Oznacz jako ukończony</button>
   </div>
 
@@ -514,11 +514,11 @@ PAGES.module4 = () => `
 
     <div class="lesson-section" id="documents">
       <h3><span class="ls-icon">📄</span> AI w analizie dokumentów i przepływu informacji</h3>
-      <p>Gdy masz do przeczytania protokół, procedurę, pismo lub długi wątek mailowy, AI może bardzo szybko oddzielić informacje ważne od drugorzędnych. Najlepiej sprawdza się wtedy, gdy prosisz ją o konkretne dane wyjściowe: decyzje, zadania, terminy i pytania otwarte.</p>
+      <p>Przy protokole, procedurze lub długim wątku mailowym proś AI o konkretny wynik: decyzje, zadania, terminy i pytania otwarte.</p>
 
       <div class="info-grid">
         <div class="info-card">
-          <h4>✅ AI pomoże Ci szybko:</h4>
+          <h4>✅ Poproś AI o:</h4>
           <ul>
             <li>streścić dokument do kilku zdań</li>
             <li>wyciągnąć listę zadań i terminów</li>
@@ -561,7 +561,7 @@ Tekst: [WKLEJ]</pre>
 
     <div class="lesson-section" id="sandbox">
       <h3><span class="ls-icon">📦</span> Praca na własnych źródłach – kiedy zwykły czat nie wystarcza?</h3>
-      <p>Przy bardzo długich plikach, wielu załącznikach i materiałach, które muszą być analizowane dokładnie, zwykły czat może okazać się niewystarczający. Wtedy lepiej działa narzędzie, które odpowiada na podstawie wskazanych przez Ciebie źródeł. Takie rozwiązania bywają nazywane <span translate="no" class="notranslate">RAG</span>.</p>
+      <p>Przy bardzo długich plikach zwykły czat może pominąć część treści. Do dokładnej analizy wielu źródeł użyj narzędzia, które odpowiada na podstawie wskazanych dokumentów. Takie rozwiązania bywają nazywane <span translate="no" class="notranslate">RAG</span>.</p>
 
       <div class="info-grid">
         <div class="info-card">
@@ -585,7 +585,7 @@ Tekst: [WKLEJ]</pre>
       </div>
 
       <div class="key-insight">
-        <strong>Praktyczna zasada:</strong> im dłuższy dokument i im większa odpowiedzialność za poprawność odpowiedzi, tym bardziej opłaca się pracować na narzędziu, które pokazuje źródło i nie opiera się wyłącznie na pamięci rozmowy.
+        <strong>Zasada:</strong> im ważniejszy dokument, tym bardziej potrzebujesz źródeł, cytatów i możliwości sprawdzenia odpowiedzi.
       </div>
       ${materialsBox('Długie dokumenty do testu pracy na źródłach', [
         { key: 'input02a', label: 'Pobierz dokument o egzaminie ósmoklasisty' },
@@ -595,7 +595,7 @@ Tekst: [WKLEJ]</pre>
 
     <div class="lesson-section" id="compare">
       <h3><span class="ls-icon">🔍</span> Zestawianie sprzeczności i luk między dokumentami</h3>
-      <p>AI dobrze sprawdza się wtedy, gdy porównujesz dwa teksty: procedurę i praktykę, wytyczne i roboczy szkic, plan i raport. Zamiast czytać oba materiały liniowo, możesz od razu poprosić o listę rozbieżności.</p>
+      <p>Porównaj dwa teksty dotyczące tej samej sprawy: procedurę i praktykę, wytyczne i szkic albo plan i raport. Poproś AI tylko o różnice, braki i sprzeczności.</p>
       <div class="try-it">
         <div class="try-label">🧪 Ćwiczenie własne – porównaj dwa dokumenty</div>
         <p><strong>Rekomendowana para do porównania:</strong> input_03a_dokument_do_porownania_poradnik_wyjazdow_ko_bialystok.pdf oraz input_03d_dokument_do_porownania_procedura_wycieczek.pdf.</p>
@@ -620,7 +620,7 @@ Obszar | Na czym polega rozbieżność | Co trzeba doprecyzować</pre>
 
     <div class="lesson-section" id="survey-lab">
       <h3><span class="ls-icon">📊</span> Ćwiczenie grupowe – Mini-laboratorium analizy ankiety</h3>
-      <p>W pracy projektowej i organizacyjnej AI przydaje się nie tylko do pisania, ale też do porządkowania odpowiedzi z ankiet, notatek i informacji zwrotnych. To ćwiczenie uczy, jak zaprojektować analizę, nie tracąc kontroli nad danymi i wnioskami.</p>
+      <p>W ankietach i informacjach zwrotnych AI może grupować odpowiedzi. Ty sprawdzasz, czy kategorie mają sens i czy dane są zanonimizowane.</p>
 
       <table class="data-table">
         <thead><tr><th>Rola</th><th>Za co odpowiada</th></tr></thead>
@@ -694,13 +694,13 @@ PAGES.module5 = () => `
       <span class="meta-badge">🎯 Raporty · Partnerzy · Komunikacja projektowa</span>
       <span class="meta-badge">🧩 3 zastosowania praktyczne</span>
     </div>
-    <p class="lesson-intro">W tym module pracujesz na zadaniach projektowych: opisach działań, korespondencji z partnerami, materiałach promocyjnych i dokumentacji grantowej. Celem jest szybsza redakcja bez utraty kontroli nad faktami i wymaganiami programu.</p>
+    <p class="lesson-intro">Przygotujesz szkic opisu działania, mail do partnera, komunikat promocyjny i analizę ryzyka. Każdy wynik sprawdzisz pod kątem faktów i wymagań projektu.</p>
     <button id="doneBtn_module5" class="mark-done-btn" onclick="markDone('module5')">✓ Oznacz jako ukończony</button>
   </div>
 
   <div class="lesson-body">
     <div class="learning-goals">
-      <h3>📌 Po tym module będziesz rozumieć i umieć:</h3>
+      <h3>📌 Po tym module będziesz umieć:</h3>
       <ul class="lg-list">
         <li>do czego AI może realnie pomóc w pracy projektowej, a czego nie powinna zastępować</li>
         <li>przygotować szkic opisu działania do raportu lub sprawozdania</li>
@@ -712,10 +712,10 @@ PAGES.module5 = () => `
 
     <div class="lesson-section" id="projekty">
       <h3><span class="ls-icon">🤝</span> AI w pracy projektowej – co może, a czego nie zastąpi</h3>
-      <p>AI dobrze sprawdza się jako asystent redakcyjny i organizacyjny. Pomaga uporządkować informacje, skrócić czas pisania i przygotować pierwszą wersję tekstu. Nie zastępuje jednak wiedzy o faktycznym przebiegu działań, wymaganiach instytucji finansującej ani odpowiedzialności autora dokumentu.</p>
+      <p>AI może przygotować pierwszą wersję tekstu projektowego. Nie zna jednak faktycznego przebiegu działań, wymagań instytucji finansującej ani danych, których jej nie podasz.</p>
       <div class="info-grid">
         <div class="info-card">
-          <h4>✅ AI może pomóc Ci w:</h4>
+          <h4>✅ Użyj AI do:</h4>
           <ul>
             <li>szkicowaniu opisów działań i rezultatów</li>
             <li>porządkowaniu ustaleń po spotkaniu</li>
@@ -740,7 +740,7 @@ PAGES.module5 = () => `
 
     <div class="lesson-section" id="reporting">
       <h3><span class="ls-icon">📝</span> Opis działania do raportu lub sprawozdania</h3>
-      <p>Jednym z najczęstszych zastosowań AI w pracy projektowej jest przygotowanie pierwszej wersji opisu działania. Najlepiej działa tu model, który dostaje fakty, zakres działania i jasny limit długości. Wszystkie brakujące dane warto oznaczać jako pola do uzupełnienia.</p>
+      <p>Opis działania przygotuj z faktów: daty, miejsca, uczestników, celu i efektu. Jeśli czegoś brakuje, oznacz to jako [UZUPEŁNIJ].</p>
       <div class="try-it">
         <div class="try-label">🧪 Ćwiczenie własne – opis działania</div>
         ${materialsBox('Materiał wejściowy do opisu działania', [{ key: 'input07', label: 'Pobierz brief projektu edukacyjnego' }])}
@@ -763,7 +763,7 @@ Zaznacz [UZUPEŁNIJ], jeśli brakuje danych liczbowych lub faktów.</pre>
 
     <div class="lesson-section" id="partnerzy">
       <h3><span class="ls-icon">📧</span> Korespondencja z partnerami i interesariuszami</h3>
-      <p>AI dobrze wspiera pisanie roboczych maili: zmian terminu, potwierdzeń, próśb o informację lub podsumowań ustaleń. To szczególnie przydatne, gdy komunikacja odbywa się po angielsku lub gdy trzeba zachować profesjonalny, ale prosty styl.</p>
+      <p>Do maila projektowego podaj cel wiadomości, odbiorcę, trzy fakty i oczekiwane działanie partnera. Potem sprawdź ton i wszystkie daty.</p>
       <div class="try-it">
         <div class="try-label">🧪 Ćwiczenie własne – mail do partnera</div>
         ${materialsBox('Materiał wejściowy do maila', [{ key: 'input08', label: 'Pobierz notatki do maila po angielsku' }])}
@@ -788,7 +788,7 @@ Ton: profesjonalny, uprzejmy, prosty dla nienatywnych użytkowników języka.</p
 
     <div class="lesson-section" id="promocja">
       <h3><span class="ls-icon">📣</span> Treści promocyjne i informacyjne</h3>
-      <p>Po wydarzeniu projektowym AI może pomóc szybko przygotować krótkie podsumowanie na stronę szkoły, media społecznościowe lub mail informacyjny. Warunkiem jest podanie faktów i jasne rozdzielenie tego, co już się wydarzyło, od tego, co jest planowane.</p>
+      <p>Przy komunikacji promocyjnej oddziel fakty od planów. Podaj datę, miejsce, uczestników i efekt wydarzenia.</p>
       <div class="try-it">
         <div class="try-label">🧪 Ćwiczenie własne – komunikacja o projekcie</div>
         ${materialsBox('Materiał wejściowy do treści promocyjnych', [{ key: 'input07', label: 'Pobierz brief projektu edukacyjnego' }])}
@@ -811,7 +811,7 @@ Przygotuj:
     <div class="lesson-section" id="transparentnosc">
       <h3><span class="ls-icon">⚖️</span> Transparentność i odpowiedzialność w dokumentach projektowych</h3>
       <div class="alert-box">
-        <strong>Najważniejsza zasada:</strong> AI może pomóc w przygotowaniu wersji roboczej, ale odpowiedzialność za finalny dokument zawsze ponosi człowiek podpisujący lub wysyłający materiał.
+        <strong>Najważniejsza zasada:</strong> AI przygotowuje szkic. Za finalny dokument odpowiada osoba, która go podpisuje lub wysyła.
       </div>
       <ol class="rules-list">
         <li><div><strong>Oznaczaj brakujące dane.</strong> Używaj pól typu [UZUPEŁNIJ], zamiast pozwalać AI dopowiadać liczby.</div></li>
@@ -846,13 +846,13 @@ PAGES.module6 = () => `
       <span class="meta-badge">🌱 Energia · Woda · Infrastruktura · Proporcja użycia</span>
       <span class="meta-badge">🤝 1 ćwiczenie grupowe</span>
     </div>
-    <p class="lesson-intro">Ten moduł pokazuje, że AI nie działa w abstrakcyjnej „chmurze”, tylko na fizycznej infrastrukturze: serwerach, energii i systemach chłodzenia. Celem nie jest zniechęcanie do AI, tylko bardziej świadome wybieranie sytuacji, w których daje realną wartość.</p>
+    <p class="lesson-intro">AI działa w centrach danych, które zużywają energię i wymagają chłodzenia. W tym module wybierzesz zastosowania, w których użycie AI ma sens.</p>
     <button id="doneBtn_module6" class="mark-done-btn" onclick="markDone('module6')">✓ Oznacz jako ukończony</button>
   </div>
 
   <div class="lesson-body">
     <div class="learning-goals">
-      <h3>📌 Po tym module będziesz rozumieć i umieć:</h3>
+      <h3>📌 Po tym module będziesz umieć:</h3>
       <ul class="lg-list">
         <li>dlaczego działanie AI wiąże się z zużyciem energii i zasobów chłodzenia</li>
         <li>jak czytać liczby dotyczące śladu AI bez nadmiernych uproszczeń</li>
@@ -912,7 +912,7 @@ PAGES.module6 = () => `
 
     <div class="lesson-section" id="proporcja">
       <h3><span class="ls-icon">⚖️</span> Zasada proporcji w codziennej pracy</h3>
-      <p>Z perspektywy użytkownika najrozsądniejsze pytanie brzmi nie "czy używać AI w ogóle?", ale <strong>kiedy użycie AI jest uzasadnione</strong>. Jeśli narzędzie oszczędza realny czas, poprawia dostępność materiałów albo podnosi jakość pracy, jego użycie ma większy sens niż wtedy, gdy generuje kolejne wersje bez wyraźnej potrzeby.</p>
+      <p>Nie pytaj tylko, czy używać AI. Zapytaj, czy w tym zadaniu AI oszczędza czas, poprawia dostępność albo podnosi jakość pracy.</p>
       
       <div class="slide-two-col" style="margin-top:20px;">
         <div class="slide-col-card sc-green">
@@ -926,7 +926,7 @@ PAGES.module6 = () => `
       </div>
 
       <div class="alert-box" style="margin-top:20px">
-        <strong>Wniosek praktyczny:</strong> zrównoważone użycie AI polega na wybieraniu takich zastosowań, w których narzędzie daje wyraźny zysk merytoryczny, organizacyjny lub dostępnościowy. Nie chodzi o zakaz, tylko o lepszą decyzję, kiedy warto po nie sięgnąć.
+        <strong>Wniosek:</strong> używaj AI tam, gdzie wynik pomaga wykonać realne zadanie. Nie generuj kolejnych wersji bez celu.
       </div>
 
       <div class="tip-box" style="margin-top:14px">
@@ -936,7 +936,7 @@ PAGES.module6 = () => `
 
     <div class="lesson-section" id="mini-codeks">
       <h3><span class="ls-icon">🧭</span> Ćwiczenie grupowe – Mini-kodeks odpowiedzialnego używania AI</h3>
-      <p>Świadome używanie AI nie kończy się na pojedynczej decyzji. W praktyce zespół potrzebuje kilku prostych zasad: kiedy AI wolno użyć, czego nie wolno wklejać, co trzeba oznaczyć i co musi sprawdzić człowiek przed użyciem wyniku.</p>
+      <p>Zespół potrzebuje kilku prostych zasad: kiedy wolno użyć AI, czego nie wolno wklejać, co trzeba oznaczyć i co musi sprawdzić człowiek.</p>
 
       <table class="data-table">
         <thead><tr><th>Rola</th><th>Za co odpowiada</th></tr></thead>
@@ -961,7 +961,7 @@ PAGES.module6 = () => `
           <li>Ustalcie obowiązkowe zabezpieczenia: anonimizacja, weryfikacja faktów, oznaczanie użycia AI, odpowiedzialność człowieka.</li>
           <li>Na końcu przygotujcie mini-kodeks, który zmieści się na jednej stronie.</li>
         </ol>
-        <p><strong>Efekt końcowy:</strong> praktyczny mini-kodeks odpowiedzialnego używania AI dla wybranego zespołu.</p>
+        <p><strong>Efekt końcowy:</strong> mini-kodeks używania AI dla wybranego zespołu.</p>
         <p><strong>Pełna instrukcja:</strong> <a href="#" onclick="showPage('exercises','ex18')" style="color:var(--clr-primary)">Ćwiczenie #18 – Mini-kodeks odpowiedzialnego używania AI</a>.</p>
       </div>
 

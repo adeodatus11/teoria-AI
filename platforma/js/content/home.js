@@ -16,7 +16,7 @@ PAGES.home = () => {
     <div class="hero-inner">
       <div class="hero-badge">🎓 Samodzielny kurs online · edukacja · organizacja · projekty</div>
       <h1>AI w edukacji, organizacji i projektach<br><em>Samodzielny kurs online</em></h1>
-      <p class="hero-subtitle">Samodzielny kurs online dla nauczycieli oraz innych osób pracujących w edukacji, organizacji i projektach. Przechodź moduły, rozwiązuj ćwiczenia i korzystaj z gotowych promptów we własnym tempie. Postęp i zapisane materiały są przechowywane lokalnie w Twojej przeglądarce.</p>
+      <p class="hero-subtitle">Kurs dla nauczycieli i osób pracujących w edukacji. Przechodź moduły, wykonuj ćwiczenia i kopiuj prompty we własnym tempie. Postęp i zapisane materiały zostają w Twojej przeglądarce.</p>
       <div class="hero-stats">
         <div class="hero-stat"><div class="sn">6</div><div class="sl">modułów samodzielnej nauki</div></div>
         <div class="hero-stat"><div class="sn">28</div><div class="sl">wariantów promptów do skopiowania</div></div>
@@ -46,7 +46,7 @@ PAGES.home = () => {
         <div class="ec-icon">🚀</div>
         <div class="ec-text">
           <div class="ec-title">Pełny kurs – 6 modułów</div>
-          <div class="ec-desc">Przejdź kurs od podstaw AI po dydaktykę, analitykę, pracę projektową i zrównoważone użycie narzędzi.</div>
+          <div class="ec-desc">Zacznij od podstaw AI, a potem przejdź do dydaktyki, dokumentów, projektów i zasad użycia.</div>
           <span class="ec-tag">⭐ Polecamy dla początkujących</span>
         </div>
       </div>
@@ -98,7 +98,7 @@ PAGES.home = () => {
 
     <div class="section-label">GOTOWE DO UŻYCIA OD RAZU</div>
     <div class="section-title">Najczęściej wybierane</div>
-    <div class="section-subtitle">Kliknij i zacznij – nie wymaga przerabiania całego kursu.</div>
+    <div class="section-subtitle">Otwórz wybrany materiał bez przechodzenia całego kursu.</div>
     <div class="quick-grid">
       <div class="quick-card" onclick="showPage('prompts','pA1')"><div class="qc-icon">📝</div><div class="qc-title">Konspekt lekcji</div><div class="qc-sub">Gotowy prompt do skopiowania</div></div>
       <div class="quick-card" onclick="showPage('prompts','pC1')"><div class="qc-icon">📧</div><div class="qc-title">Mail do rodziców</div><div class="qc-sub">Szybki komunikat do dopracowania</div></div>
