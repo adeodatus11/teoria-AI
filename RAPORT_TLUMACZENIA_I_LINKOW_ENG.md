@@ -2,10 +2,10 @@
 
 ## 1. Podsumowanie
 
-- Przetłumaczono 14 plików: 10 plików DOCX, 2 pliki CSV i 2 pliki XLSX.
+- Przetłumaczono 15 plików: 11 plików DOCX, 2 pliki CSV i 2 pliki XLSX.
 - Wersje angielskie zapisano w folderze `files`, obok wersji polskich, z sufiksem `_EN` przed rozszerzeniem.
 - Na platformie dodano dodatkowe linki `Download ENG version` obok polskich linków do pobrania.
-- `input_08_notatki_do_maila_partner_angielski.docx` pominięto zgodnie z poleceniem.
+- `input_08_notatki_do_maila_partner_angielski.docx` został przetłumaczony i podlinkowany po zmianie decyzji.
 - Nie nadpisano wersji polskich.
 - Problem techniczny: nie wykonano wizualnego renderu DOCX do PNG/PDF, ponieważ w środowisku brakuje programu `soffice`. Pliki DOCX sprawdzono przez odczyt struktury i treści.
 
@@ -21,6 +21,7 @@
 | `files/input_06b_ankieta_po_szkoleniu.csv` | `files/input_06b_ankieta_po_szkoleniu_EN.csv` | CSV | OK | Zachowano strukturę tabelaryczną i liczbę wierszy. |
 | `files/input_06b_ankieta_po_szkoleniu.xlsx` | `files/input_06b_ankieta_po_szkoleniu_EN.xlsx` | XLSX | OK | Zachowano strukturę arkusza; nazwy arkuszy: `Description`, `Survey`. |
 | `files/input_07_brief_projektu_edukacyjnego_2_przyklady.docx` | `files/input_07_brief_projektu_edukacyjnego_2_przyklady_EN.docx` | DOCX | OK | Zachowano dwa przykłady briefu projektu. |
+| `files/input_08_notatki_do_maila_partner_angielski.docx` | `files/input_08_notatki_do_maila_partner_angielski_EN.docx` | DOCX | OK | Przetłumaczono notatki robocze do przygotowania maila po angielsku. |
 | `files/input_09_tekst_wzorcowy_do_reverse_prompting.docx` | `files/input_09_tekst_wzorcowy_do_reverse_prompting_EN.docx` | DOCX | OK | Zachowano strukturę ćwiczenia reverse prompting. |
 | `files/input_10_karty_zasad_ai_do_rankingu.docx` | `files/input_10_karty_zasad_ai_do_rankingu_EN.docx` | DOCX | OK | Przetłumaczono karty zasad i pola do rankingu. |
 | `files/input_11_szablon_porownania_promptow.docx` | `files/input_11_szablon_porownania_promptow_EN.docx` | DOCX | OK | Zachowano tabelę porównania trzech wersji promptu. |
@@ -30,9 +31,7 @@
 
 ## 3. Pliki pominięte
 
-| Plik | Status | Uwagi |
-|---|---|---|
-| `files/input_08_notatki_do_maila_partner_angielski.docx` | Pominięto | Pominięto zgodnie z poleceniem. Nie utworzono pliku `_EN` i nie dodano linku ENG. |
+Brak. Po zmianie decyzji przetłumaczono również `input_08`.
 
 ## 4. Linki dodane na stronie
 
@@ -48,6 +47,7 @@ Linki dodano przez wspólną konfigurację materiałów w `platforma/app.js`. Te
 | Moduł 4, ćwiczenie `ex17` / `platforma/app.js`, `platforma/js/content/modules.js` | `../files/input_06a_ankieta_bezpieczenstwo_w_szkole_EN.xlsx` |
 | Moduł 4, ćwiczenie `ex17` / `platforma/app.js`, `platforma/js/content/modules.js` | `../files/input_06b_ankieta_po_szkoleniu_EN.xlsx` |
 | Moduł 5, ćwiczenia `ex5`, `ex10`, prompt `D1`, prompt `D3` / `platforma/app.js`, `platforma/js/content/modules.js` | `../files/input_07_brief_projektu_edukacyjnego_2_przyklady_EN.docx` |
+| Moduł 5, ćwiczenie `ex7`, prompt `D2` / `platforma/app.js`, `platforma/js/content/modules.js` | `../files/input_08_notatki_do_maila_partner_angielski_EN.docx` |
 | Ćwiczenie `ex15` / `platforma/app.js` | `../files/input_09_tekst_wzorcowy_do_reverse_prompting_EN.docx` |
 | Moduł 6, ćwiczenia `ex11`, `ex18` / `platforma/app.js`, `platforma/js/content/modules.js` | `../files/input_10_karty_zasad_ai_do_rankingu_EN.docx` |
 | Moduł 2, ćwiczenie `ex16` / `platforma/app.js`, `platforma/js/content/modules.js` | `../files/input_11_szablon_porownania_promptow_EN.docx` |
@@ -55,14 +55,14 @@ Linki dodano przez wspólną konfigurację materiałów w `platforma/app.js`. Te
 | Moduł 5, prompt `E1` / `platforma/app.js`, `platforma/js/content/modules.js` | `../files/input_13_plan_projektu_do_analizy_ryzyka_EN.docx` |
 | Moduł 1, ćwiczenia `ex1`, `ex2` / `platforma/app.js`, `platforma/js/content/modules.js` | `../files/input_14_karta_refleksji_i_oceny_wyniku_ai_EN.docx` |
 
-Kontrola Playwright wykazała 41 widocznych wystąpień linku `Download ENG version` na podstronach platformy. Wszystkie prowadzą do istniejących plików.
+Kontrola Playwright wykazała 44 widoczne wystąpienia linku `Download ENG version` na podstronach platformy. Wszystkie prowadzą do istniejących plików.
 
 ## 5. Problemy techniczne
 
 - Nie udało się wykonać wizualnego renderu DOCX, ponieważ narzędzie renderujące wymaga `soffice`, którego nie ma w środowisku.
 - Nie wykryto problemów z odczytem plików DOCX, CSV ani XLSX.
 - Nie wykryto problemów z linkami do plików `_EN`.
-- Nie dodano linku ENG przy `input_08`.
+- Dodano link ENG przy `input_08`.
 - Projekt jest stroną statyczną i nie ma skryptu `package.json` z buildem, testem ani lintem.
 
 ## 6. Kontrola jakości
@@ -79,6 +79,5 @@ Kontrola Playwright wykazała 41 widocznych wystąpień linku `Download ENG vers
 
 1. Otworzyć wizualnie wybrane pliki DOCX w Wordzie lub LibreOffice przed publikacją, ponieważ automatyczny render nie był dostępny w tym środowisku.
 2. Jeżeli materiały będą drukowane, sprawdzić podział stron w najdłuższych plikach DOCX.
-3. Zachować `input_08` wyłącznie w wersji polskiej, zgodnie z aktualną decyzją.
-4. Przy kolejnych zmianach w polskich plikach aktualizować odpowiadające im wersje `_EN`.
-5. Po publikacji sprawdzić linki z docelowego adresu GitHub Pages lub hostingu.
+3. Przy kolejnych zmianach w polskich plikach aktualizować odpowiadające im wersje `_EN`.
+4. Po publikacji sprawdzić linki z docelowego adresu GitHub Pages lub hostingu.

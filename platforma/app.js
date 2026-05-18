@@ -488,7 +488,7 @@ const COURSE_FILES = {
   input06aXlsx: { path: 'input_06a_ankieta_bezpieczenstwo_w_szkole.xlsx', enPath: 'input_06a_ankieta_bezpieczenstwo_w_szkole_EN.xlsx', label: 'dane ankietowe XLSX: bezpieczeństwo w szkole' },
   input06bXlsx: { path: 'input_06b_ankieta_po_szkoleniu.xlsx', enPath: 'input_06b_ankieta_po_szkoleniu_EN.xlsx', label: 'dane ankietowe XLSX: ankieta po szkoleniu' },
   input07: { path: 'input_07_brief_projektu_edukacyjnego_2_przyklady.docx', enPath: 'input_07_brief_projektu_edukacyjnego_2_przyklady_EN.docx', label: 'brief projektu edukacyjnego z dwoma przykładami' },
-  input08: { path: 'input_08_notatki_do_maila_partner_angielski.docx', label: 'notatki do maila po angielsku do partnera' },
+  input08: { path: 'input_08_notatki_do_maila_partner_angielski.docx', enPath: 'input_08_notatki_do_maila_partner_angielski_EN.docx', label: 'notatki do maila po angielsku do partnera' },
   input09: { path: 'input_09_tekst_wzorcowy_do_reverse_prompting.docx', enPath: 'input_09_tekst_wzorcowy_do_reverse_prompting_EN.docx', label: 'teksty wzorcowe do reverse prompting' },
   input10: { path: 'input_10_karty_zasad_ai_do_rankingu.docx', enPath: 'input_10_karty_zasad_ai_do_rankingu_EN.docx', label: 'karty zasad AI do rankingu' },
   input11: { path: 'input_11_szablon_porownania_promptow.docx', enPath: 'input_11_szablon_porownania_promptow_EN.docx', label: 'szablon porównania promptów' },
