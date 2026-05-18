@@ -138,7 +138,7 @@ ____________________________________________________________________________
 Przed wysłaniem promptu – sprawdź:
 
 **☐ Persona:** Czy powiedziałem/łam AI, jaką rolę ma przyjąć?
-*(np. "Działaj jako nauczyciel historii w szkole podstawowej...")*
+*(np. "Działaj jako nauczyciel geografii w szkole podstawowej...")*
 
 **☐ Aim:** Czy jasno określiłem/łam, co ma powstać?
 *(np. "Przygotuj konspekt lekcji 45 minut...")*

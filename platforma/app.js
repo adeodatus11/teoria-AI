@@ -480,29 +480,33 @@ const COURSE_FILES = {
   input02b: { path: 'input_02b_dlugi_dokument_do_analizy_matura_2026.pdf', label: 'długi dokument do analizy: egzamin maturalny' },
   input03a: { path: 'input_03a_dokument_do_porownania_poradnik_wyjazdow_ko_bialystok.pdf', label: 'dokument A do porównania: poradnik organizacji wyjazdów' },
   input03d: { path: 'input_03d_dokument_do_porownania_procedura_wycieczek.pdf', label: 'dokument B do porównania: procedura wycieczek' },
-  input04a: { path: 'input_04a_dlugi_watek_mailowy_80_lecie_szkoly.docx', label: 'długi wątek mailowy: 80-lecie szkoły' },
-  input04b: { path: 'input_04b_dlugi_watek_mailowy_szkolenie_wdn.docx', label: 'długi wątek mailowy: szkolenie WDN' },
-  input05: { path: 'input_05_tekst_dydaktyczny_do_adaptacji.docx', label: 'tekst dydaktyczny do uproszczenia i adaptacji' },
-  input06aCsv: { path: 'input_06a_ankieta_bezpieczenstwo_w_szkole.csv', label: 'dane ankietowe CSV: bezpieczeństwo w szkole' },
-  input06bCsv: { path: 'input_06b_ankieta_po_szkoleniu.csv', label: 'dane ankietowe CSV: ankieta po szkoleniu' },
-  input06aXlsx: { path: 'input_06a_ankieta_bezpieczenstwo_w_szkole.xlsx', label: 'dane ankietowe XLSX: bezpieczeństwo w szkole' },
-  input06bXlsx: { path: 'input_06b_ankieta_po_szkoleniu.xlsx', label: 'dane ankietowe XLSX: ankieta po szkoleniu' },
-  input07: { path: 'input_07_brief_projektu_edukacyjnego_2_przyklady.docx', label: 'brief projektu edukacyjnego z dwoma przykładami' },
+  input04a: { path: 'input_04a_dlugi_watek_mailowy_80_lecie_szkoly.docx', enPath: 'input_04a_dlugi_watek_mailowy_80_lecie_szkoly_EN.docx', label: 'długi wątek mailowy: 80-lecie szkoły' },
+  input04b: { path: 'input_04b_dlugi_watek_mailowy_szkolenie_wdn.docx', enPath: 'input_04b_dlugi_watek_mailowy_szkolenie_wdn_EN.docx', label: 'długi wątek mailowy: szkolenie WDN' },
+  input05: { path: 'input_05_tekst_dydaktyczny_do_adaptacji.docx', enPath: 'input_05_tekst_dydaktyczny_do_adaptacji_EN.docx', label: 'tekst dydaktyczny do uproszczenia i adaptacji' },
+  input06aCsv: { path: 'input_06a_ankieta_bezpieczenstwo_w_szkole.csv', enPath: 'input_06a_ankieta_bezpieczenstwo_w_szkole_EN.csv', label: 'dane ankietowe CSV: bezpieczeństwo w szkole' },
+  input06bCsv: { path: 'input_06b_ankieta_po_szkoleniu.csv', enPath: 'input_06b_ankieta_po_szkoleniu_EN.csv', label: 'dane ankietowe CSV: ankieta po szkoleniu' },
+  input06aXlsx: { path: 'input_06a_ankieta_bezpieczenstwo_w_szkole.xlsx', enPath: 'input_06a_ankieta_bezpieczenstwo_w_szkole_EN.xlsx', label: 'dane ankietowe XLSX: bezpieczeństwo w szkole' },
+  input06bXlsx: { path: 'input_06b_ankieta_po_szkoleniu.xlsx', enPath: 'input_06b_ankieta_po_szkoleniu_EN.xlsx', label: 'dane ankietowe XLSX: ankieta po szkoleniu' },
+  input07: { path: 'input_07_brief_projektu_edukacyjnego_2_przyklady.docx', enPath: 'input_07_brief_projektu_edukacyjnego_2_przyklady_EN.docx', label: 'brief projektu edukacyjnego z dwoma przykładami' },
   input08: { path: 'input_08_notatki_do_maila_partner_angielski.docx', label: 'notatki do maila po angielsku do partnera' },
-  input09: { path: 'input_09_tekst_wzorcowy_do_reverse_prompting.docx', label: 'teksty wzorcowe do reverse prompting' },
-  input10: { path: 'input_10_karty_zasad_ai_do_rankingu.docx', label: 'karty zasad AI do rankingu' },
-  input11: { path: 'input_11_szablon_porownania_promptow.docx', label: 'szablon porównania promptów' },
-  input12: { path: 'input_12_szablon_mini_kodeksu_ai.docx', label: 'szablon mini-kodeksu AI' },
-  input13: { path: 'input_13_plan_projektu_do_analizy_ryzyka.docx', label: 'plan projektu do analizy ryzyka' },
-  input14: { path: 'input_14_karta_refleksji_i_oceny_wyniku_ai.docx', label: 'karta refleksji i oceny wyniku AI' },
+  input09: { path: 'input_09_tekst_wzorcowy_do_reverse_prompting.docx', enPath: 'input_09_tekst_wzorcowy_do_reverse_prompting_EN.docx', label: 'teksty wzorcowe do reverse prompting' },
+  input10: { path: 'input_10_karty_zasad_ai_do_rankingu.docx', enPath: 'input_10_karty_zasad_ai_do_rankingu_EN.docx', label: 'karty zasad AI do rankingu' },
+  input11: { path: 'input_11_szablon_porownania_promptow.docx', enPath: 'input_11_szablon_porownania_promptow_EN.docx', label: 'szablon porównania promptów' },
+  input12: { path: 'input_12_szablon_mini_kodeksu_ai.docx', enPath: 'input_12_szablon_mini_kodeksu_ai_EN.docx', label: 'szablon mini-kodeksu AI' },
+  input13: { path: 'input_13_plan_projektu_do_analizy_ryzyka.docx', enPath: 'input_13_plan_projektu_do_analizy_ryzyka_EN.docx', label: 'plan projektu do analizy ryzyka' },
+  input14: { path: 'input_14_karta_refleksji_i_oceny_wyniku_ai.docx', enPath: 'input_14_karta_refleksji_i_oceny_wyniku_ai_EN.docx', label: 'karta refleksji i oceny wyniku AI' },
 };
 
-const POLISH_FILE_NOTE = 'Uwaga: plik jest po polsku. Jeśli pracujesz w innym języku, przetłumacz dokument albo wklej jego treść do narzędzia AI i poproś o dalszą pracę w wybranym języku.';
+const POLISH_FILE_NOTE = 'Uwaga: wersja PL jest po polsku. Jeśli pracujesz w innym języku, pobierz wersję ENG, jeśli jest dostępna, albo przetłumacz dokument przed użyciem.';
 
 function materialDownloadLink(key, customLabel) {
   const file = COURSE_FILES[key];
   if (!file) return '';
-  return `<a class="material-download-link" href="${COURSE_FILE_BASE}${file.path}" download>${customLabel || file.label}</a>`;
+  const polishLink = `<a class="material-download-link" href="${COURSE_FILE_BASE}${file.path}" download>${customLabel || file.label}</a>`;
+  const englishLink = file.enPath
+    ? `<a class="material-download-link" href="${COURSE_FILE_BASE}${file.enPath}" download>Download ENG version</a>`
+    : '';
+  return `${polishLink}${englishLink}`;
 }
 
 function materialsBox(title, items, note = POLISH_FILE_NOTE) {
@@ -561,7 +565,7 @@ PAGES.exercises = () => `
     ${ex('ex2', '2', 'Ulepsz słaby prompt – technika PARTS', 'basic', '20–25 min',
   'Popraw jeden z trzech promptów i porównaj odpowiedzi przed i po zmianie.',
   `<p><strong>Masz 3 słabe prompty. Wybierz jeden i popraw go według PARTS.</strong></p>
-      <div class="prompt-box"><pre>PROMPT A: „Napisz lekcję o wojnie."
+      <div class="prompt-box"><pre>PROMPT A: „Napisz lekcję o oszczędzaniu energii."
 PROMPT B: „Zrób mail do rodziców."
 PROMPT C: „Opisz projekt."</pre></div>
       <ol>
@@ -2023,7 +2027,7 @@ function renderInfographicParts() {
             </div>
             <div class="infographic-example-box">
               <span>Przykład</span>
-              <strong>„Działaj jako nauczyciel historii”</strong>
+              <strong>„Działaj jako nauczyciel geografii”</strong>
             </div>
             <div>
               <div class="infographic-list-label">Możliwe role</div>

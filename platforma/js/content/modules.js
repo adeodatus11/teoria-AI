@@ -196,10 +196,10 @@ PAGES.module2 = () => `
       <table class="parts-table">
         <thead><tr><th>Litera</th><th>Co oznacza</th><th>Przykład w praktyce</th></tr></thead>
         <tbody>
-          <tr><td><span class="parts-letter" translate="no" class="notranslate">P</span></td><td><strong translate="no" class="notranslate">Persona</strong> – jaką rolę ma AI pełnić</td><td>„Działaj jako doświadczony nauczyciel historii w szkole podstawowej…"</td></tr>
-          <tr><td><span class="parts-letter" translate="no" class="notranslate">A</span></td><td><strong translate="no" class="notranslate">Aim</strong> – co ma powstać (cel)</td><td>„…przygotuj konspekt lekcji (45 min) na temat wybuchu I Wojny Światowej…"</td></tr>
-          <tr><td><span class="parts-letter" translate="no" class="notranslate">R</span></td><td><strong translate="no" class="notranslate">Recipients</strong> – dla kogo jest wynik</td><td>„…dla uczniów klasy VIII (14 lat), zróżnicowanej poziomowo…"</td></tr>
-          <tr><td><span class="parts-letter" translate="no" class="notranslate">T</span></td><td><strong translate="no" class="notranslate">Tone</strong> – styl i ton odpowiedzi</td><td>„…pisząc prostym językiem z odniesieniami do współczesności…"</td></tr>
+          <tr><td><span class="parts-letter" translate="no" class="notranslate">P</span></td><td><strong translate="no" class="notranslate">Persona</strong> – jaką rolę ma AI pełnić</td><td>„Działaj jako nauczyciel geografii w szkole podstawowej…"</td></tr>
+          <tr><td><span class="parts-letter" translate="no" class="notranslate">A</span></td><td><strong translate="no" class="notranslate">Aim</strong> – co ma powstać (cel)</td><td>„…przygotuj konspekt lekcji 45-minutowej o oszczędzaniu energii…"</td></tr>
+          <tr><td><span class="parts-letter" translate="no" class="notranslate">R</span></td><td><strong translate="no" class="notranslate">Recipients</strong> – dla kogo jest wynik</td><td>„…dla uczniów klasy 7, w wieku 13–14 lat…"</td></tr>
+          <tr><td><span class="parts-letter" translate="no" class="notranslate">T</span></td><td><strong translate="no" class="notranslate">Tone</strong> – styl i ton odpowiedzi</td><td>„…prosty, praktyczny, powiązany z codziennym życiem uczniów…"</td></tr>
           <tr><td><span class="parts-letter" translate="no" class="notranslate">S</span></td><td><strong translate="no" class="notranslate">Structure</strong> – format wyjścia</td><td>„…w formacie tabeli: Czas | Aktywność | Materiały | Uwagi."</td></tr>
         </tbody>
       </table>
@@ -207,18 +207,27 @@ PAGES.module2 = () => `
       <div class="compare-grid">
         <div>
           <div class="compare-label bad">❌ Bez <span translate="no" class="notranslate">PARTS</span></div>
-          <div class="prompt-box"><pre>Napisz lekcję o wojnie.</pre></div>
-          <div class="compare-note">Wynik: ogólny, bezużyteczny, nie wiesz dla kogo ani w jakiej formie.</div>
+          <div class="prompt-box"><pre>Napisz lekcję o oszczędzaniu energii.</pre></div>
+          <div class="compare-note">Wynik: ogólny i mało użyteczny — nie wiadomo, dla jakiej klasy ma być lekcja, jaki jest przedmiot, ile ma trwać, jakie aktywności uwzględnić ani w jakiej formie przygotować odpowiedź.</div>
         </div>
         <div>
           <div class="compare-label good">✅ Z <span translate="no" class="notranslate">PARTS</span></div>
           <div class="prompt-box" style="position:relative">
             <button class="prompt-copy-btn" onclick="copyPrompt(this)">Kopiuj</button>
-            <pre>Działaj jako nauczyciel historii w szkole podstawowej.
-Przygotuj konspekt lekcji (45 min) na temat wybuchu
-I Wojny Światowej dla uczniów klasy VIII (14 lat).
-Uwzględnij element dla uczniów zdolnych.
-Styl: prosty, z odniesieniami do dziś.
+            <pre>Działaj jako nauczyciel geografii w szkole podstawowej.
+
+Przygotuj konspekt lekcji 45-minutowej na temat:
+„Jak oszczędzać energię w szkole i w domu?”
+
+Lekcja jest przeznaczona dla uczniów klasy 7, w wieku 13–14 lat.
+
+Uwzględnij:
+- jedno krótkie ćwiczenie w grupach,
+- jeden praktyczny przykład z życia codziennego,
+- jedno zadanie rozszerzające dla uczniów zdolnych.
+
+Styl: prosty, praktyczny, powiązany z codziennym życiem uczniów.
+
 Format: tabela Czas | Aktywność | Materiały | Uwagi</pre>
           </div>
           <div class="compare-note">Wynik: konkretny, gotowy do adaptacji.</div>
@@ -281,7 +290,7 @@ Format: tabela Czas | Aktywność | Materiały | Uwagi</pre>
         <div class="try-label">🧪 Krótki test – popraw słaby prompt</div>
         <p>Poniżej masz trzy słabe prompty. Wybierz jeden i popraw go według PARTS, wpisz oba do AI i porównaj:</p>
         <div class="prompt-box">
-          <pre>PROMPT A: „Napisz lekcję o wojnie."
+          <pre>PROMPT A: „Napisz lekcję o oszczędzaniu energii."
 PROMPT B: „Zrób mail do rodziców."
 PROMPT C: „Opisz projekt."</pre>
         </div>
